@@ -13,9 +13,12 @@
     }
 
     [building = 'supermarket'] {
-      polygon-fill: @supermarket;
-      polygon-opacity: 0.5;
-      polygon-clip: false;
+      polygon-fill: lighten(@supermarket, 50%);
+      polygon-opacity: 0.9;
+//      polygon-clip: false;
+      building-height: 40; //px
+      building-fill-opacity: 0.6;
+      building-fill: @supermarket; // ściany
     }
 
     [amenity = 'place_of_worship']::amenity {
@@ -39,9 +42,13 @@
     polygon-clip: false;
   }
   [building != 'INT-light'][building != ''][zoom >= 12] {
-    polygon-fill: @building;
+    polygon-fill: lighten(@building,30%);
     polygon-opacity: 0.9;
     polygon-clip: false;
+//UMP
+      building-height: 25; //px
+      building-fill-opacity: 0.6;
+      building-fill: @building; // end UMP
     [zoom >= 16] {
       line-color: saturate(darken(@building, 50%), 10%);
       line-width: 0.2;
