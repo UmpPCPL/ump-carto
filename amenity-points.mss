@@ -25,7 +25,8 @@
   }
 
   [feature = 'amenity_atm'][zoom >=17] {
-    point-file: url('symbols/atm2.p.16.png');
+//    point-file: url('symbols/atm2.p.16.png');
+    point-file: url('symbols_ump/2f06_Bank-ATM_Bank-ATM_day.png');
     point-placement: interior;
   }
 
@@ -174,7 +175,8 @@
   }
 
   [feature = 'tourism_museum'][zoom >= 16] {
-    point-file: url('symbols/museum.p.16.png');
+//    point-file: url('symbols/museum.p.16.png');
+    point-file: url('symbols_ump/2c02_Museum_Muzeum_day.png');
     point-placement: interior;
   }
 

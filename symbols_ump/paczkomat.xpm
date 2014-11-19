@@ -1,0 +1,30 @@
+/* XPM */
+static char *paczkomat_png[] = {
+/* columns rows colors chars-per-pixel */
+"20 20 5 1 ",
+". c #FEF834",
+"o c #DDD200",
+"X c #BBBBBB",
+"@ c #666666",
+/* pixels */
+"                    ",
+"        @@@@@@      ",
+" @@@@@@@@@@@@X      ",
+"@@@@@@@@@XXXXXX     ",
+" @@XXXXXX....XoXXX  ",
+" XX...@@@....XooooX ",
+" X....@@@....XooooX ",
+" X....@@@....XooooX ",
+" X....@@@....XooooX ",
+" X....@@@....XooooX ",
+" X....@@@....XooooX ",
+" X......@....XooooX ",
+" X...........XooooX ",
+" X...........XooooX ",
+" X...........XooooX ",
+" X...........XooooX ",
+" XXX.........XooooX ",
+"    XXXXXX...XoXXXX ",
+"          XXXXX     ",
+"                    "
+};

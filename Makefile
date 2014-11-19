@@ -1,5 +1,5 @@
 styl:
-	carto project.mml > UMP.xml
+	carto project.mml > styl.xml
 	echo renderd restart
 	service renderd restart
 
