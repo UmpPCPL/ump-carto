@@ -1,9 +1,13 @@
 @station-color: #7981b0;
 
 .stations {
-  [railway = 'subway_entrance'][zoom >= 18] {
-    point-file: url('symbols/walking.n.12.png');
+  [railway = 'subway_entrance'][zoom >= 15] {
+// UMP    point-file: url('symbols/walking.n.12.png');
+    point-file: url('symbols_ump/metro.12.png');
     point-placement: interior;
+    [zoom >= 18] {
+    point-file: url('symbols_ump/metro.22.png');
+    }
   }
 
   [railway = 'station'][zoom >= 12] {
