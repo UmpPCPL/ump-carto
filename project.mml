@@ -89,7 +89,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "gis"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -112,7 +112,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "gis"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -135,7 +135,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "gis"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -158,7 +158,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "gis"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -181,7 +181,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "gis"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -204,7 +204,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "gis"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -227,7 +227,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "gis"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -250,7 +250,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "gis"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -273,7 +273,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "gis"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -296,7 +296,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "gis"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -319,7 +319,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "gis"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -342,7 +342,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "gis"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -365,7 +365,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "gis"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -388,7 +388,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "gis"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -412,7 +412,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "gis"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -437,7 +437,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "gis"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -460,7 +460,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "gis"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -483,7 +483,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "gis"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -506,7 +506,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "gis"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -529,7 +529,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "gis"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -552,7 +552,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "gis"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -575,7 +575,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "gis"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -598,7 +598,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "gis"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -621,7 +621,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "gis"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -644,7 +644,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "gis"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -667,7 +667,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "gis"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -690,7 +690,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "gis"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -712,7 +712,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "gis"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -735,7 +735,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "gis"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -758,7 +758,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "gis"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -781,7 +781,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "gis"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -804,7 +804,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "gis"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -827,7 +827,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "gis"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -851,7 +851,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "gis"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -876,7 +876,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "gis"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -899,7 +899,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "gis"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -922,7 +922,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "gis"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -945,7 +945,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "gis"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -968,7 +968,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "gis"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -991,7 +991,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "gis"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -1014,7 +1014,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "gis"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -1037,7 +1037,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "gis"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -1082,7 +1082,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "gis"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -1105,7 +1105,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "gis"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -1128,7 +1128,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "gis"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -1151,7 +1151,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "gis"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -1174,7 +1174,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "gis"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -1197,7 +1197,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "gis"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -1220,7 +1220,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "gis"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -1243,7 +1243,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "gis"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -1266,7 +1266,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "gis"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -1289,7 +1289,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "gis"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -1312,7 +1312,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "gis"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -1335,7 +1335,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "gis"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -1358,7 +1358,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "gis"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -1381,7 +1381,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "gis"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -1404,7 +1404,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "gis"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -1427,7 +1427,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "gis"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -1450,7 +1450,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "gis"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -1473,7 +1473,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "gis"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -1496,7 +1496,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "gis"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -1519,7 +1519,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "gis"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -1542,7 +1542,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "gis"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -1565,7 +1565,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "gis"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -1588,7 +1588,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "gis"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -1611,7 +1611,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "gis"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -1634,7 +1634,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "gis"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -1657,7 +1657,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "gis"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -1680,7 +1680,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "gis"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -1703,7 +1703,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "gis"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -1726,7 +1726,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "gis"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -1749,7 +1749,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "gis"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -1782,7 +1782,7 @@
     "osm2pgsql": {
       "geometry_field": "way", 
       "type": "postgis", 
-      "dbname": "gis", 
+      "dbname": "umpgis", 
       "extent": "-20037508,-20037508,20037508,20037508", 
       "key_field": ""
     }, 
@@ -1826,6 +1826,6 @@
     "addressing.mss"
   ], 
   "minzoom": 0, 
-  "maxzoom": 22, 
+  "maxzoom": 20, 
   "description": "A faithful reimplementation of the standard OpenStreetMap style"
 }
