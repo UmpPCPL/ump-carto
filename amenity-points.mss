@@ -100,7 +100,8 @@
   }
 
   [feature = 'amenity_cinema'][zoom >= 16] {
-    point-file: url('symbols/cinema.p.24.png');
+//    point-file: url('symbols/cinema.p.24.png');
+    point-file: url('symbols_ump/2d03_Cinema_Kino_day.png');
     point-placement: interior;
   }
 
@@ -121,6 +122,11 @@
 
   [feature = 'amenity_hospital'][zoom >= 15] {
     point-file: url('symbols/hospital.p.16.png');
+    point-placement: interior;
+  }
+// UMP
+  [feature = 'amenity_veterinary'][zoom >= 15] {
+    point-file: url('symbols_ump/wet.png');
     point-placement: interior;
   }
 
@@ -469,10 +475,11 @@
     [zoom >= 17] {
       text-name: "[name]";
       text-size: 10;
-      text-fill: #734a08;
+//      text-fill: #734a08;
+      text-fill: #ee2200;
       text-dy: 13;
       text-face-name: @bold-fonts;
-      text-halo-radius: 1;
+      text-halo-radius: 3; // 1
       text-wrap-width: @standard-wrap-width;
       text-placement: interior;
       [feature = 'amenity_cinema'] {
@@ -1093,14 +1100,15 @@
     ele/text-placement: interior;
   }
 
-  [feature = 'amenity_bank'][zoom >= 17] {
+  [feature = 'amenity_bank'][zoom >= 17],
+  [feature = 'amenity_atm'][zoom >= 17] {
     text-name: "[name]";
     text-size: 9;
     text-fill: black;
-    text-dy: 12;
+    text-dy: 15; //12
     text-halo-radius: 1;
     text-wrap-width: @standard-wrap-width;
-    text-placement: interior;
+//    text-placement: interior;
     text-face-name: @book-fonts;
   }
 
@@ -1238,12 +1246,13 @@
   [feature = 'tourism_museum'][zoom >= 17] {
     text-name: "[name]";
     text-size: 10;
-    text-dy: 11;
-    text-fill: #734a08;
+    text-dy: 25; //11 chyba
+//    text-fill: #734a08;
+    text-fill: #00da08;
     text-face-name: @book-fonts;
     text-halo-radius: 1;
     text-wrap-width: @standard-wrap-width;
-    text-placement: interior;
+//    text-placement: interior;
   }
 
   [feature = 'amenity_prison'][zoom >= 17] {
@@ -1352,7 +1361,8 @@
     text-placement: interior;
   }
 
-  [feature = 'amenity_hospital'][zoom >= 16] {
+  [feature = 'amenity_hospital'][zoom >= 16],
+  [feature = 'amenity_veterinary'][zoom >= 16] {
     text-name: "[name]";
     text-fill: #da0092;
     text-size: 8;
