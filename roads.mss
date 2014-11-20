@@ -44,7 +44,7 @@
 @service-construction: #aaa;
 
 @destination-marking: #c2e0ff;
-@private-marking: #efa9a9;
+@private-marking: #ef2233; // #efa9a9;
 
 @tunnel-casing: grey;
 @bridge-casing: black;
@@ -71,7 +71,7 @@
 @secondary-width-z13:             7;
 @tertiary-width-z13:              5;
 @residential-width-z13:           3;
-@living-street-width-z13:         2;
+@living-street-width-z13:         1; //2
 @pedestrian-width-z13:            2;
 @bridleway-width-z13:             0.3;
 @footway-width-z13:               0.7;
@@ -84,7 +84,7 @@
 
 @tertiary-width-z14:              7.5;
 @residential-width-z14:           4.5;
-@living-street-width-z14:         4;
+@living-street-width-z14:         2; //4
 @pedestrian-width-z14:            4;
 @service-width-z14:               2.5;
 
@@ -95,7 +95,7 @@
 @secondary-width-z15:            12.8;
 @tertiary-width-z15:             11.2;
 @residential-width-z15:           8.3;
-@living-street-width-z15:         6;
+@living-street-width-z15:         4; //6
 @pedestrian-width-z15:            6;
 @bridleway-width-z15:             1.2;
 @footway-width-z15:               1.5;
@@ -107,7 +107,7 @@
 @steps-width-z15:                 4;
 
 @residential-width-z16:          11.2;
-@living-street-width-z16:         9;
+@living-street-width-z16:         5; //9
 @pedestrian-width-z16:            9;
 @service-width-z16:               6;
 @minor-service-width-z16:         4;
@@ -119,7 +119,7 @@
 @secondary-width-z17:            18;
 @tertiary-width-z17:             15.5;
 @residential-width-z17:          15.5;
-@living-street-width-z17:        14;
+@living-street-width-z17:        7; //14
 @pedestrian-width-z17:           14;
 @service-width-z17:               7;
 
