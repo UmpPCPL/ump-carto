@@ -2397,7 +2397,8 @@
 
 .directions::directions {
   [zoom >= 16] {
-    [oneway = 'yes'] {
+    [oneway = 'yes'],
+    [oneway = '1'] {
       dira/line-width: 1;
       dira/line-dasharray: 0,12,10,152;
       dira/line-color: #6c70d5;
