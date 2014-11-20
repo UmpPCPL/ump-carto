@@ -13,12 +13,12 @@
 @pedestrian-fill: #ededed;
 @raceway-fill: pink;
 @road-fill: #ddd;
-@path-fill: black;
+@path-fill: #a87000;
 @footway-fill: salmon;
 @steps-fill: @footway-fill;
 @cycleway-fill: blue;
 @bridleway-fill: green;
-@track-fill: #996600;
+@track-fill: #b37700;
 @aeroway-fill: #bbc;
 @runway-fill: @aeroway-fill;
 @taxiway-fill: @aeroway-fill;
@@ -79,17 +79,17 @@
 @bridleway-width-z13:             0.3;
 @footway-width-z13:               0.7;
 @cycleway-width-z13:              0.7;
-@path-width-z13:                  0.2;
-@track-width-z13:                 0.5;
-@track-grade1-width-z13:          0.5;
-@track-grade2-width-z13:          0.5;
+@path-width-z13:                  1; //0.2;
+@track-width-z13:                 2; //0.5;
+@track-grade1-width-z13:          2; //0.5;
+@track-grade2-width-z13:          2; //0.5;
 @steps-width-z13:                 0.7;
 
 @tertiary-width-z14:              6; //7.5;
 @residential-width-z14:           4.5;
 @living-street-width-z14:         2; //4
 @pedestrian-width-z14:            2; //4;
-@service-width-z14:               2.5;
+@service-width-z14:               3; //2.5;
 
 @motorway-width-z15:             9; //12.8;
 @motorway-link-width-z15:         7.8;
@@ -103,10 +103,10 @@
 @bridleway-width-z15:             1.2;
 @footway-width-z15:               1.5;
 @cycleway-width-z15:              1.2;
-@path-width-z15:                  0.5;
-@track-width-z15:                 1.5;
-@track-grade1-width-z15:          0.75;
-@track-grade2-width-z15:          0.75;
+@path-width-z15:                  1.5; //0.5;
+@track-width-z15:                 4; //1.5;
+@track-grade1-width-z15:          4; //0.75;
+@track-grade2-width-z15:          4; //0.75;
 @steps-width-z15:                 3; // 4;
 
 @residential-width-z16:          6; //11.2;
