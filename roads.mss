@@ -1,11 +1,11 @@
 /* For the main linear features, such as roads and railways. */
 
-@motorway-fill: #89a4cb;
-@trunk-fill: #94d494;
+@motorway-fill: #809BC0;
+@trunk-fill: #A9DBA9;
 @trunk-fill-alternative: #97d397;
-@primary-fill: #dd9f9f;
-@secondary-fill: #f9d6aa;
-@tertiary-fill: #f8f8ba;
+@primary-fill: #EC989A;
+@secondary-fill: #fed7a5;
+@tertiary-fill: #FFFFCC;
 @residential-fill: #ffffff;
 @ramp-fill: #ec989a;
 @service-fill: @residential-fill;
@@ -50,6 +50,7 @@
 
 @tunnel-casing: grey;
 @bridge-casing: black;
+@tram-fill:     #1A92FB;
 
 @motorway-tunnel-fill: lighten(@motorway-fill, 25%);
 @trunk-tunnel-fill: lighten(@trunk-fill, 10%);
@@ -477,7 +478,7 @@
 
     [feature = 'railway_tram'] {
       .bridges-casing {
-        [zoom >= 13] {
+        [zoom >= 14] {
           line-width: 4;
           [zoom >= 15] {
             line-width: 5;
@@ -692,7 +693,7 @@
 
     [feature = 'railway_tram'] {
       .bridges-casing {
-        [zoom >= 13] {
+        [zoom >= 14] {
           line-width: 3;
           [zoom >= 15] {
             line-width: 4;
@@ -1466,8 +1467,8 @@
     }
 
     [feature = 'railway_tram'] {
-      [zoom >= 13] {
-        line-color: #444;
+      [zoom >= 14] {
+        line-color: @tram-fill;
         line-width: 1;
         [zoom >= 15] {
           line-width: 2;
@@ -2009,17 +2010,6 @@
       line-width: 1;
       line-color: #aaa;
       line-join: round;
-    }
-  }
-
-  [feature = 'railway_tram'],
-  [feature = 'railway_light_rail'],
-  [feature = 'railway_funicular'],
-  [feature = 'railway_narrow_gauge'] {
-    [zoom >= 8][zoom < 13] {
-      line-width: 1;
-      line-color: #ccc;
-      [zoom >= 10] { line-color: #aaa }
     }
   }
 }
