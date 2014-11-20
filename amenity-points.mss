@@ -245,8 +245,11 @@
   }
 
   [feature = 'amenity_post_office'][zoom >= 17] {
-    point-file: url('symbols/post_office.p.16.png');
     point-placement: interior;
+    point-file: url('symbols_ump/2f05_Post-Office_Urzad-Pocztowy_day.png');
+    [ump_typ = 'PACZKOMAT'] {
+      point-file: url('symbols_ump/paczkomat.png');
+    }
   }
 
   [feature = 'amenity_pub'][zoom >= 17] {
