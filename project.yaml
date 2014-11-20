@@ -374,8 +374,10 @@ Layer:
                 ('highway_pedestrian', 310),
                 ('highway_raceway', 300),
                 ('highway_motorway_link', 240),
+                ('highway_ramp_fast', 235),
                 ('highway_trunk_link', 230),
                 ('highway_primary_link', 220),
+                ('highway_ramp_slow', 215),
                 ('highway_secondary_link', 210),
                 ('highway_tertiary_link', 200),
                 ('highway_service', 150),
@@ -643,8 +645,10 @@ Layer:
                   ('highway_pedestrian',310),
                   ('highway_raceway',300),
                   ('highway_motorway_link',240),
+                ('highway_ramp_fast', 235),
                   ('highway_trunk_link',230),
                   ('highway_primary_link',220),
+                ('highway_ramp_slow', 215),
                   ('highway_secondary_link',210),
                   ('highway_tertiary_link',200),
                   ('highway_service',150),
@@ -761,8 +765,10 @@ Layer:
                   ('highway_pedestrian',310),
                   ('highway_raceway',300),
                   ('highway_motorway_link',240),
+                ('highway_ramp_fast', 235),
                   ('highway_trunk_link',230),
                   ('highway_primary_link',220),
+                ('highway_ramp_slow', 215),
                   ('highway_secondary_link',210),
                   ('highway_tertiary_link',200),
                   ('highway_service',150),
@@ -929,8 +935,10 @@ Layer:
                 ('highway_pedestrian', 310),
                 ('highway_raceway', 300),
                 ('highway_motorway_link', 240),
+                ('highway_ramp_fast', 235),
                 ('highway_trunk_link', 230),
                 ('highway_primary_link', 220),
+                ('highway_ramp_slow', 215),
                 ('highway_secondary_link', 210),
                 ('highway_tertiary_link', 200),
                 ('highway_service', 150),
@@ -1357,7 +1365,7 @@ Layer:
                  CASE WHEN (tunnel = 'yes' OR tunnel = 'building_passage' OR covered = 'yes') THEN 'yes' ELSE 'no' END AS tunnel,
                  name
                FROM planet_osm_line
-               WHERE highway IN ('motorway', 'motorway_link', 'trunk', 'trunk_link', 'primary', 'primary_link', 'secondary', 'secondary_link', 'tertiary', 'tertiary_link', 'residential', 'unclassified', 'road', 'service', 'pedestrian', 'raceway', 'living_street', 'construction', 'proposed')
+               WHERE highway IN ('motorway', 'motorway_link', 'trunk', 'trunk_link', 'primary', 'primary_link', 'secondary', 'secondary_link', 'tertiary', 'tertiary_link', 'residential', 'unclassified', 'road', 'ramp_slow', 'ramp_fast', 'service', 'pedestrian', 'raceway', 'living_street', 'construction', 'proposed')
                  AND name IS NOT NULL
               ) AS roads_text_name
     advanced: {}

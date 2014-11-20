@@ -1,12 +1,21 @@
 @station-color: #7981b0;
 
 .stations {
-  [railway = 'subway_entrance'][zoom >= 15] {
-// UMP    point-file: url('symbols/walking.n.12.png');
+  [railway = 'subway_entrance'][zoom >= 13] {
     point-file: url('symbols_ump/metro.12.png');
     point-placement: interior;
-    [zoom >= 18] {
-    point-file: url('symbols_ump/metro.22.png');
+    text-name: "[name]";
+    text-face-name: @bold-fonts;
+    text-size: 9;
+    text-fill: #66f;
+    text-dy: -10;
+    text-halo-radius: 1;
+    text-wrap-width: 0;
+    text-placement: interior;
+    [zoom >= 15] {
+      point-file: url('symbols_ump/metro.22.png');
+      text-size: 11;
+      text-dy: -11;
     }
   }
 
