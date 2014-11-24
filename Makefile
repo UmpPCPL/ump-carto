@@ -8,3 +8,5 @@ status:
 	git status
 project:
 	./scripts/yaml2mml.py < project.yaml > project.mml && touch project.mml
+UMPpro:
+	./scripts/yaml2mml.py < UMPproject.yaml > project.mml && touch project.mml

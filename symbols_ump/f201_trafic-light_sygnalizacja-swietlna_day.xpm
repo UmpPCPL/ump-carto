@@ -1,0 +1,35 @@
+/* XPM */
+static char *f201_trafic_light_sygnalizacja_swietlna_day[] = {
+/* columns rows colors chars-per-pixel */
+"24 24 5 1 ",
+"r c red",
+"y c yellow",
+"g c #33CC33",
+"o c gray60",
+"  c None",
+/* pixels */
+"                        ",
+"                        ",
+"                        ",
+"                        ",
+"                        ",
+"         ooooo          ",
+"        oorrrro         ",
+"         orrrro         ",
+"         orrrro         ",
+"         orrrro         ",
+"         oooooo         ",
+"         oyyyyo         ",
+"         oyyyyo         ",
+"         oyyyyo         ",
+"         oooooo         ",
+"         oggggo         ",
+"         oggggo         ",
+"         oggggo         ",
+"         oggggo         ",
+"          oooo          ",
+"                        ",
+"                        ",
+"                        ",
+"                        "
+};

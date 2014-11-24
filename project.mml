@@ -1255,6 +1255,167 @@
       "advanced": {}
     }, 
     {
+      "name": "poi-jedzenie-point", 
+      "srs-name": "900913", 
+      "geometry": "point", 
+      "class": "poi-jedzenie", 
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
+      "Datasource": {
+        "extent": "-20037508,-20037508,20037508,20037508", 
+        "table": "(SELECT way, \"ump:typ\" AS ump_typ, name, \"ump:type\" AS garmin_typ\n      FROM planet_osm_point\n      WHERE \"ump:type\" IN ('0x2a00','0x2a01','0x2a02','0x2a03','0x2a04','0x2a05','0x2a06','0x2a07','0x2a08','0x2a09','0x2a0a','0x2a0b','0x2a0c','0x2a0d','0x2a0e','0x2a0f','0x2a10','0x2a11','0x2a12','0x2a13')\n ) AS poi_jedzenie_point", 
+        "geometry_field": "way", 
+        "type": "postgis", 
+        "key_field": "", 
+        "dbname": "umpgis"
+      }, 
+      "extent": [
+        -180, 
+        -85.05112877980659, 
+        180, 
+        85.05112877980659
+      ], 
+      "id": "poi-jedzenie-point", 
+      "advanced": {}
+    }, 
+    {
+      "name": "poi-zakupy-point", 
+      "srs-name": "900913", 
+      "geometry": "point", 
+      "class": "poi-zakupy", 
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
+      "Datasource": {
+        "extent": "-20037508,-20037508,20037508,20037508", 
+        "table": "(SELECT way, \"ump:typ\" AS ump_typ, name, \"ump:type\" AS garmin_typ\n      FROM planet_osm_point\n      WHERE \"ump:type\" IN ('0x2e00','0x2e01','0x2e02','0x2e03','0x2e04','0x2e05','0x2e06','0x2e07','0x2e08','0x2e09','0x2e0a','0x2e0b','0x2e0c','0x2e0d','0x2e0e','0x2e0f','0x2e10','0x2e11','0x2e12','0x2e13')\n ) AS poi_zakupy_point", 
+        "geometry_field": "way", 
+        "type": "postgis", 
+        "key_field": "", 
+        "dbname": "umpgis"
+      }, 
+      "extent": [
+        -180, 
+        -85.05112877980659, 
+        180, 
+        85.05112877980659
+      ], 
+      "id": "poi-zakupy-point", 
+      "advanced": {}
+    }, 
+    {
+      "name": "poi-uslugi-point", 
+      "srs-name": "900913", 
+      "geometry": "point", 
+      "class": "poi-uslugi", 
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
+      "Datasource": {
+        "extent": "-20037508,-20037508,20037508,20037508", 
+        "table": "(SELECT way, \"ump:typ\" AS ump_typ, name, \"ump:type\" AS garmin_typ\n      FROM planet_osm_point\n      WHERE \"ump:type\" IN ('0x2f01','0x2f03','0x2f05','0x2f06','0x2f07','0x2f08','0x2f09','0x2f0a','0x2f0b','0x2f0c','0x2f0d','0x2f0e','0x2f0f','0x2f10','0x2f11','0x2f12','0x2f13','0x2f14','0x2f15','0x2f16','0x2f19')\n ) AS poi_uslugi_point", 
+        "geometry_field": "way", 
+        "type": "postgis", 
+        "key_field": "", 
+        "dbname": "umpgis"
+      }, 
+      "extent": [
+        -180, 
+        -85.05112877980659, 
+        180, 
+        85.05112877980659
+      ], 
+      "id": "poi-uslugi-point", 
+      "advanced": {}
+    }, 
+    {
+      "name": "poi-transport-point", 
+      "srs-name": "900913", 
+      "geometry": "point", 
+      "class": "poi-transport", 
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
+      "Datasource": {
+        "extent": "-20037508,-20037508,20037508,20037508", 
+        "table": "(SELECT way, \"ump:typ\" AS ump_typ, name, \"ump:type\" AS garmin_typ\n      FROM planet_osm_point\n      WHERE \"ump:type\" IN ('0x2f02','0x2f04','0x2f08','0x2f17','0x2f18')\n ) AS poi_transport_point", 
+        "geometry_field": "way", 
+        "type": "postgis", 
+        "key_field": "", 
+        "dbname": "umpgis"
+      }, 
+      "extent": [
+        -180, 
+        -85.05112877980659, 
+        180, 
+        85.05112877980659
+      ], 
+      "id": "poi-transport-point", 
+      "advanced": {}
+    }, 
+    {
+      "name": "poi-nocleg-point", 
+      "srs-name": "900913", 
+      "geometry": "point", 
+      "class": "poi-nocleg", 
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
+      "Datasource": {
+        "extent": "-20037508,-20037508,20037508,20037508", 
+        "table": "(SELECT way, \"ump:typ\" AS ump_typ, name, \"ump:type\" AS garmin_typ\n      FROM planet_osm_point\n      WHERE \"ump:type\" IN ('0x2b00','0x2b01','0x2b02','0x2b03','0x2b04','0x2b05','0x2b06','0x2b07')\n ) AS poi_nocleg_point", 
+        "geometry_field": "way", 
+        "type": "postgis", 
+        "key_field": "", 
+        "dbname": "umpgis"
+      }, 
+      "extent": [
+        -180, 
+        -85.05112877980659, 
+        180, 
+        85.05112877980659
+      ], 
+      "id": "poi-nocleg-point", 
+      "advanced": {}
+    }, 
+    {
+      "name": "poi-atrakcje-point", 
+      "srs-name": "900913", 
+      "geometry": "point", 
+      "class": "poi-atrakcje", 
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
+      "Datasource": {
+        "extent": "-20037508,-20037508,20037508,20037508", 
+        "table": "(SELECT way, \"ump:typ\" AS ump_typ, name, \"ump:type\" AS garmin_typ\n      FROM planet_osm_point\n      WHERE \"ump:type\" IN ('0x2c00','0x2c01','0x2c02','0x2c03','0x2c04','0x2c05','0x2c06','0x2c07','0x2c08','0x2c09','0x2c0a','0x2c0b','0x2c0c','0x2c0d','0x2c0e','0x2c0f','0x2c10','0x2c11','0x2c12','0x2c13')\n ) AS poi_atrakcje_point", 
+        "geometry_field": "way", 
+        "type": "postgis", 
+        "key_field": "", 
+        "dbname": "umpgis"
+      }, 
+      "extent": [
+        -180, 
+        -85.05112877980659, 
+        180, 
+        85.05112877980659
+      ], 
+      "id": "poi-atrakcje-point", 
+      "advanced": {}
+    }, 
+    {
+      "name": "poi-znaki-point", 
+      "srs-name": "900913", 
+      "geometry": "point", 
+      "class": "poi-znaki", 
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
+      "Datasource": {
+        "extent": "-20037508,-20037508,20037508,20037508", 
+        "table": "(SELECT way, \"ump:typ\" AS ump_typ, \"ump:type\" AS garmin_typ, highway\n      FROM planet_osm_point\n      WHERE \"ump:type\" IN ('0xf201','0x2855')\n ) AS poi_znaki_point", 
+        "geometry_field": "way", 
+        "type": "postgis", 
+        "key_field": "", 
+        "dbname": "umpgis"
+      }, 
+      "extent": [
+        -180, 
+        -85.05112877980659, 
+        180, 
+        85.05112877980659
+      ], 
+      "id": "poi-znaki-point", 
+      "advanced": {}
+    }, 
+    {
       "name": "amenity-points-poly", 
       "srs-name": "900913", 
       "geometry": "polygon", 
@@ -1262,7 +1423,7 @@
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
-        "table": "(SELECT way, COALESCE('aeroway_' || aeroway, 'shop_' || CASE WHEN shop IN ('supermarket', 'bakery', 'butcher', 'clothes', 'fashion', 'convenience', 'department_store', 'doityourself', 'florist', 'hairdresser', 'car', 'car_repair', 'bicycle', 'mall') THEN shop WHEN NOT shop IS NULL THEN 'other' ELSE NULL END, 'amenity_' || amenity, 'leisure_' || leisure, 'landuse_' || landuse, 'man_made_' || man_made, 'natural_' || \"natural\", 'place_' || place, 'tourism_' || tourism, 'military_' || military, 'waterway_' || waterway, 'historic_' || historic, 'lock_' || lock, 'highway_' || highway) AS feature, access, religion, denomination, \"ump:typ\" AS ump_typ, name, \"ump:type\" AS garmin_type\n      FROM planet_osm_polygon\n      WHERE amenity IS NOT NULL\n         OR shop IN ('accessories', 'alcohol', 'antique', 'antiques', 'appliance', 'art', 'baby_goods', 'bag', 'bags', 'bakery', 'bathroom_furnishing', 'beauty', 'bed', 'betting', 'beverages', 'bicycle', 'boat', 'bookmaker', 'books', 'boutique', 'builder', 'building_materials', 'butcher', 'camera', 'car', 'car_parts', 'car_repair', 'car_service', 'carpet', 'charity', 'cheese', 'chemist', 'chocolate', 'clothes', 'coffee', 'communication', 'computer', 'confectionery', 'convenience', 'copyshop', 'cosmetics', 'craft', 'curtain', 'dairy', 'deli', 'delicatessen', 'department_store', 'discount', 'dive', 'doityourself', 'dry_cleaning', 'e-cigarette', 'electrical', 'electronics', 'energy', 'erotic', 'estate_agent', 'fabric', 'farm', 'fashion', 'fish', 'fishing', 'fishmonger', 'flooring', 'florist', 'food', 'frame', 'frozen_food', 'funeral_directors', 'furnace', 'furniture', 'gallery', 'gambling', 'games', 'garden_centre', 'gas', 'general', 'gift', 'glaziery', 'greengrocer', 'grocery', 'hairdresser', 'hardware', 'health', 'health_food', 'hearing_aids', 'herbalist', 'hifi', 'hobby', 'household', 'houseware', 'hunting', 'ice_cream', 'insurance', 'interior_decoration', 'jewellery', 'jewelry', 'kiosk', 'kitchen', 'laundry', 'leather', 'lighting', 'locksmith', 'lottery', 'mall', 'market', 'massage', 'medical', 'medical_supply', 'mobile_phone', 'money_lender', 'motorcycle', 'motorcycle_repair', 'music', 'musical_instrument', 'newsagent', 'office_supplies', 'optician', 'organic', 'outdoor', 'paint', 'pastry', 'pawnbroker', 'perfumery', 'pet', 'pets', 'pharmacy', 'phone', 'photo', 'photo_studio', 'photography', 'pottery', 'printing', 'radiotechnics', 'real_estate', 'religion', 'rental', 'salon', 'scuba_diving', 'seafood', 'second_hand', 'sewing', 'shoe_repair', 'shoes', 'shopping_centre', 'solarium', 'souvenir', 'sports', 'stationery', 'supermarket', 'tailor', 'tanning', 'tattoo', 'tea', 'ticket', 'tiles', 'tobacco', 'toys', 'trade', 'travel_agency', 'tyres', 'vacuum_cleaner', 'variety_store', 'video', 'video_games', 'watches', 'wholesale', 'wine', 'winery', 'yes')\n         OR tourism IN ('alpine_hut', 'camp_site', 'picnic_site', 'caravan_site', 'guest_house', 'hostel', 'hotel', 'motel', 'museum', 'viewpoint', 'information', 'chalet')\n         OR highway IN ('bus_stop', 'traffic_signals')\n         OR \"ump:type\" IN ('0x2855')\n         OR man_made IN ('mast', 'water_tower')\n         OR historic IN ('memorial', 'archaeological_site')\n         OR leisure IN ('playground', 'picnic_table')\n ORDER BY way_area desc      ) AS amenity_points_poly", 
+        "table": "(SELECT way, COALESCE('aeroway_' || aeroway, 'shop_' || CASE WHEN shop IN ('supermarket', 'bakery', 'butcher', 'clothes', 'fashion', 'convenience', 'department_store', 'doityourself', 'florist', 'hairdresser', 'car', 'car_repair', 'bicycle', 'mall') THEN shop WHEN NOT shop IS NULL THEN 'other' ELSE NULL END, 'amenity_' || amenity, 'leisure_' || leisure, 'landuse_' || landuse, 'man_made_' || man_made, 'natural_' || \"natural\", 'place_' || place, 'tourism_' || tourism, 'military_' || military, 'waterway_' || waterway, 'historic_' || historic, 'lock_' || lock, 'highway_' || highway) AS feature, access, religion, denomination, \"ump:typ\" AS ump_typ, name, \"ump:type\" AS garmin_typ\n      FROM planet_osm_polygon\n      WHERE amenity IS NOT NULL\n         OR shop IN ('accessories', 'alcohol', 'antique', 'antiques', 'appliance', 'art', 'baby_goods', 'bag', 'bags', 'bakery', 'bathroom_furnishing', 'beauty', 'bed', 'betting', 'beverages', 'bicycle', 'boat', 'bookmaker', 'books', 'boutique', 'builder', 'building_materials', 'butcher', 'camera', 'car', 'car_parts', 'car_repair', 'car_service', 'carpet', 'charity', 'cheese', 'chemist', 'chocolate', 'clothes', 'coffee', 'communication', 'computer', 'confectionery', 'convenience', 'copyshop', 'cosmetics', 'craft', 'curtain', 'dairy', 'deli', 'delicatessen', 'department_store', 'discount', 'dive', 'doityourself', 'dry_cleaning', 'e-cigarette', 'electrical', 'electronics', 'energy', 'erotic', 'estate_agent', 'fabric', 'farm', 'fashion', 'fish', 'fishing', 'fishmonger', 'flooring', 'florist', 'food', 'frame', 'frozen_food', 'funeral_directors', 'furnace', 'furniture', 'gallery', 'gambling', 'games', 'garden_centre', 'gas', 'general', 'gift', 'glaziery', 'greengrocer', 'grocery', 'hairdresser', 'hardware', 'health', 'health_food', 'hearing_aids', 'herbalist', 'hifi', 'hobby', 'household', 'houseware', 'hunting', 'ice_cream', 'insurance', 'interior_decoration', 'jewellery', 'jewelry', 'kiosk', 'kitchen', 'laundry', 'leather', 'lighting', 'locksmith', 'lottery', 'mall', 'market', 'massage', 'medical', 'medical_supply', 'mobile_phone', 'money_lender', 'motorcycle', 'motorcycle_repair', 'music', 'musical_instrument', 'newsagent', 'office_supplies', 'optician', 'organic', 'outdoor', 'paint', 'pastry', 'pawnbroker', 'perfumery', 'pet', 'pets', 'pharmacy', 'phone', 'photo', 'photo_studio', 'photography', 'pottery', 'printing', 'radiotechnics', 'real_estate', 'religion', 'rental', 'salon', 'scuba_diving', 'seafood', 'second_hand', 'sewing', 'shoe_repair', 'shoes', 'shopping_centre', 'solarium', 'souvenir', 'sports', 'stationery', 'supermarket', 'tailor', 'tanning', 'tattoo', 'tea', 'ticket', 'tiles', 'tobacco', 'toys', 'trade', 'travel_agency', 'tyres', 'vacuum_cleaner', 'variety_store', 'video', 'video_games', 'watches', 'wholesale', 'wine', 'winery', 'yes')\n         OR tourism IN ('alpine_hut', 'camp_site', 'picnic_site', 'caravan_site', 'guest_house', 'hostel', 'hotel', 'motel', 'museum', 'viewpoint', 'information', 'chalet')\n         OR highway IN ('bus_stop', 'traffic_signals')\n         OR \"ump:type\" IN ('0x2855')\n         OR man_made IN ('mast', 'water_tower')\n         OR historic IN ('memorial', 'archaeological_site')\n         OR leisure IN ('playground', 'picnic_table')\n ORDER BY way_area desc      ) AS amenity_points_poly", 
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
@@ -1285,7 +1446,7 @@
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
-        "table": "(SELECT way, COALESCE('aeroway_' || aeroway, 'shop_' || CASE WHEN shop IN ('supermarket', 'bakery', 'butcher', 'clothes', 'fashion', 'convenience', 'department_store', 'doityourself', 'florist', 'hairdresser', 'car', 'car_repair', 'bicycle', 'mall') THEN shop WHEN NOT shop IS NULL THEN 'other' ELSE NULL END, 'amenity_' || amenity, 'leisure_' || leisure, 'landuse_' || landuse, 'man_made_' || man_made, 'natural_' || \"natural\", 'place_' || place, 'tourism_' || tourism, 'military_' || military, 'waterway_' || waterway, 'historic_' || historic, 'lock_' || lock, 'highway_' || highway) AS feature, access, religion, denomination, \"ump:typ\" AS ump_typ, name, \"ump:type\" AS garmin_type\n      FROM planet_osm_point\n      WHERE shop IN ('accessories', 'alcohol', 'antique', 'antiques', 'appliance', 'art', 'baby_goods', 'bag', 'bags', 'bakery', 'bathroom_furnishing', 'beauty', 'bed', 'betting', 'beverages', 'bicycle', 'boat', 'bookmaker', 'books', 'boutique', 'builder', 'building_materials', 'butcher', 'camera', 'car', 'car_parts', 'car_repair', 'car_service', 'carpet', 'charity', 'cheese', 'chemist', 'chocolate', 'clothes', 'coffee', 'communication', 'computer', 'confectionery', 'convenience', 'copyshop', 'cosmetics', 'craft', 'curtain', 'dairy', 'deli', 'delicatessen', 'department_store', 'discount', 'dive', 'doityourself', 'dry_cleaning', 'e-cigarette', 'electrical', 'electronics', 'energy', 'erotic', 'estate_agent', 'fabric', 'farm', 'fashion', 'fish', 'fishing', 'fishmonger', 'flooring', 'florist', 'food', 'frame', 'frozen_food', 'funeral_directors', 'furnace', 'furniture', 'gallery', 'gambling', 'games', 'garden_centre', 'gas', 'general', 'gift', 'glaziery', 'greengrocer', 'grocery', 'hairdresser', 'hardware', 'health', 'health_food', 'hearing_aids', 'herbalist', 'hifi', 'hobby', 'household', 'houseware', 'hunting', 'ice_cream', 'insurance', 'interior_decoration', 'jewellery', 'jewelry', 'kiosk', 'kitchen', 'laundry', 'leather', 'lighting', 'locksmith', 'lottery', 'mall', 'market', 'massage', 'medical', 'medical_supply', 'mobile_phone', 'money_lender', 'motorcycle', 'motorcycle_repair', 'music', 'musical_instrument', 'newsagent', 'office_supplies', 'optician', 'organic', 'outdoor', 'paint', 'pastry', 'pawnbroker', 'perfumery', 'pet', 'pets', 'pharmacy', 'phone', 'photo', 'photo_studio', 'photography', 'pottery', 'printing', 'radiotechnics', 'real_estate', 'religion', 'rental', 'salon', 'scuba_diving', 'seafood', 'second_hand', 'sewing', 'shoe_repair', 'shoes', 'shopping_centre', 'solarium', 'souvenir', 'sports', 'stationery', 'supermarket', 'tailor', 'tanning', 'tattoo', 'tea', 'ticket', 'tiles', 'tobacco', 'toys', 'trade', 'travel_agency', 'tyres', 'vacuum_cleaner', 'variety_store', 'video', 'video_games', 'watches', 'wholesale', 'wine', 'winery', 'yes')\n         OR amenity IS NOT NULL\n         OR tourism IN ('alpine_hut', 'picnic_site', 'camp_site', 'caravan_site', 'guest_house', 'hostel', 'hotel', 'motel', 'museum', 'viewpoint', 'information', 'chalet')\n         OR highway IN ('bus_stop', 'traffic_signals', 'ford')\n         OR \"ump:type\" IN ('0x2855')\n         OR man_made IN ('mast', 'water_tower')\n         OR historic IN ('memorial', 'archaeological_site')\n         OR waterway = 'lock'\n         OR lock = 'yes'\n         OR leisure IN ('playground', 'slipway', 'picnic_table')\n      ) AS amenity_points", 
+        "table": "(SELECT way, COALESCE('aeroway_' || aeroway, 'shop_' || CASE WHEN shop IN ('supermarket', 'bakery', 'butcher', 'clothes', 'fashion', 'convenience', 'department_store', 'doityourself', 'florist', 'hairdresser', 'car', 'car_repair', 'bicycle', 'mall') THEN shop WHEN NOT shop IS NULL THEN 'other' ELSE NULL END, 'amenity_' || amenity, 'leisure_' || leisure, 'landuse_' || landuse, 'man_made_' || man_made, 'natural_' || \"natural\", 'place_' || place, 'tourism_' || tourism, 'military_' || military, 'waterway_' || waterway, 'historic_' || historic, 'lock_' || lock, 'highway_' || highway) AS feature, access, religion, denomination, \"ump:typ\" AS ump_typ, name, \"ump:type\" AS garmin_typ\n      FROM planet_osm_point\n      WHERE shop IN ('accessories', 'alcohol', 'antique', 'antiques', 'appliance', 'art', 'baby_goods', 'bag', 'bags', 'bakery', 'bathroom_furnishing', 'beauty', 'bed', 'betting', 'beverages', 'bicycle', 'boat', 'bookmaker', 'books', 'boutique', 'builder', 'building_materials', 'butcher', 'camera', 'car', 'car_parts', 'car_repair', 'car_service', 'carpet', 'charity', 'cheese', 'chemist', 'chocolate', 'clothes', 'coffee', 'communication', 'computer', 'confectionery', 'convenience', 'copyshop', 'cosmetics', 'craft', 'curtain', 'dairy', 'deli', 'delicatessen', 'department_store', 'discount', 'dive', 'doityourself', 'dry_cleaning', 'e-cigarette', 'electrical', 'electronics', 'energy', 'erotic', 'estate_agent', 'fabric', 'farm', 'fashion', 'fish', 'fishing', 'fishmonger', 'flooring', 'florist', 'food', 'frame', 'frozen_food', 'funeral_directors', 'furnace', 'furniture', 'gallery', 'gambling', 'games', 'garden_centre', 'gas', 'general', 'gift', 'glaziery', 'greengrocer', 'grocery', 'hairdresser', 'hardware', 'health', 'health_food', 'hearing_aids', 'herbalist', 'hifi', 'hobby', 'household', 'houseware', 'hunting', 'ice_cream', 'insurance', 'interior_decoration', 'jewellery', 'jewelry', 'kiosk', 'kitchen', 'laundry', 'leather', 'lighting', 'locksmith', 'lottery', 'mall', 'market', 'massage', 'medical', 'medical_supply', 'mobile_phone', 'money_lender', 'motorcycle', 'motorcycle_repair', 'music', 'musical_instrument', 'newsagent', 'office_supplies', 'optician', 'organic', 'outdoor', 'paint', 'pastry', 'pawnbroker', 'perfumery', 'pet', 'pets', 'pharmacy', 'phone', 'photo', 'photo_studio', 'photography', 'pottery', 'printing', 'radiotechnics', 'real_estate', 'religion', 'rental', 'salon', 'scuba_diving', 'seafood', 'second_hand', 'sewing', 'shoe_repair', 'shoes', 'shopping_centre', 'solarium', 'souvenir', 'sports', 'stationery', 'supermarket', 'tailor', 'tanning', 'tattoo', 'tea', 'ticket', 'tiles', 'tobacco', 'toys', 'trade', 'travel_agency', 'tyres', 'vacuum_cleaner', 'variety_store', 'video', 'video_games', 'watches', 'wholesale', 'wine', 'winery', 'yes')\n         OR amenity IS NOT NULL\n         OR tourism IN ('alpine_hut', 'picnic_site', 'camp_site', 'caravan_site', 'guest_house', 'hostel', 'hotel', 'motel', 'museum', 'viewpoint', 'information', 'chalet')\n         OR highway IN ('bus_stop', 'traffic_signals', 'ford')\n         OR \"ump:type\" IN ('0x2855')\n         OR man_made IN ('mast', 'water_tower')\n         OR historic IN ('memorial', 'archaeological_site')\n         OR waterway = 'lock'\n         OR lock = 'yes'\n         OR leisure IN ('playground', 'slipway', 'picnic_table')\n      ) AS amenity_points", 
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
@@ -1492,7 +1653,7 @@
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
-        "table": "(SELECT way, way_area/(!pixel_width!*!pixel_height!) AS way_pixels, COALESCE('aeroway_' || aeroway, 'shop_' || CASE WHEN shop IN ('supermarket', 'bakery', 'butcher', 'clothes', 'fashion', 'convenience', 'department_store', 'doityourself', 'florist', 'hairdresser', 'car', 'car_repair', 'bicycle', 'mall') THEN shop WHEN NOT shop IS NULL THEN 'other' ELSE NULL END, 'amenity_' || amenity, 'leisure_' || leisure, 'landuse_' || landuse, 'man_made_' || man_made, 'natural_' || \"natural\", 'place_' || place, 'tourism_' || tourism, 'military_' || military, 'waterway_' || waterway, 'historic_' || historic, 'highway_' || highway, 'power_' || power, 'boundary_' || boundary) AS feature, access, NULL AS ele, name, ref, way_area, CASE WHEN building = 'no' OR building IS NULL THEN 'no' ELSE 'yes' END AS is_building\n       FROM planet_osm_polygon\n       WHERE amenity IS NOT NULL\n          OR shop IN ('accessories', 'alcohol', 'antique', 'antiques', 'appliance', 'art', 'baby_goods', 'bag', 'bags', 'bakery', 'bathroom_furnishing', 'beauty', 'bed', 'betting', 'beverages', 'bicycle', 'boat', 'bookmaker', 'books', 'boutique', 'builder', 'building_materials', 'butcher', 'camera', 'car', 'car_parts', 'car_repair', 'car_service', 'carpet', 'charity', 'cheese', 'chemist', 'chocolate', 'clothes', 'coffee', 'communication', 'computer', 'confectionery', 'convenience', 'copyshop', 'cosmetics', 'craft', 'curtain', 'dairy', 'deli', 'delicatessen', 'department_store', 'discount', 'dive', 'doityourself', 'dry_cleaning', 'e-cigarette', 'electrical', 'electronics', 'energy', 'erotic', 'estate_agent', 'fabric', 'farm', 'fashion', 'fish', 'fishing', 'fishmonger', 'flooring', 'florist', 'food', 'frame', 'frozen_food', 'funeral_directors', 'furnace', 'furniture', 'gallery', 'gambling', 'games', 'garden_centre', 'gas', 'general', 'gift', 'glaziery', 'greengrocer', 'grocery', 'hairdresser', 'hardware', 'health', 'health_food', 'hearing_aids', 'herbalist', 'hifi', 'hobby', 'household', 'houseware', 'hunting', 'ice_cream', 'insurance', 'interior_decoration', 'jewellery', 'jewelry', 'kiosk', 'kitchen', 'laundry', 'leather', 'lighting', 'locksmith', 'lottery', 'mall', 'market', 'massage', 'medical', 'medical_supply', 'mobile_phone', 'money_lender', 'motorcycle', 'motorcycle_repair', 'music', 'musical_instrument', 'newsagent', 'office_supplies', 'optician', 'organic', 'outdoor', 'paint', 'pastry', 'pawnbroker', 'perfumery', 'pet', 'pets', 'pharmacy', 'phone', 'photo', 'photo_studio', 'photography', 'pottery', 'printing', 'radiotechnics', 'real_estate', 'religion', 'rental', 'salon', 'scuba_diving', 'seafood', 'second_hand', 'sewing', 'shoe_repair', 'shoes', 'shopping_centre', 'solarium', 'souvenir', 'sports', 'stationery', 'supermarket', 'tailor', 'tanning', 'tattoo', 'tea', 'ticket', 'tiles', 'tobacco', 'toys', 'trade', 'travel_agency', 'tyres', 'vacuum_cleaner', 'variety_store', 'video', 'video_games', 'watches', 'wholesale', 'wine', 'winery', 'yes')\n          OR leisure IS NOT NULL\n          OR landuse IS NOT NULL\n          OR tourism IS NOT NULL\n          OR \"natural\" IS NOT NULL\n          OR man_made IN ('lighthouse', 'windmill')\n          OR place = 'island'\n          OR place = 'islet'\n          OR military IS NOT NULL\n          OR historic IN ('memorial', 'archaeological_site')\n          OR power IS NOT NULL\n          OR aeroway IS NOT NULL\n          OR highway IN ('services', 'rest_area')\n          OR boundary = 'national_park'\n ORDER BY way_area desc     ) AS text_poly", 
+        "table": "(SELECT way, way_area/(!pixel_width!*!pixel_height!) AS way_pixels, COALESCE('aeroway_' || aeroway, 'shop_' || CASE WHEN shop IN ('supermarket', 'bakery', 'butcher', 'clothes', 'fashion', 'convenience', 'department_store', 'doityourself', 'florist', 'hairdresser', 'car', 'car_repair', 'bicycle', 'mall') THEN shop WHEN NOT shop IS NULL THEN 'other' ELSE NULL END, 'amenity_' || amenity, 'leisure_' || leisure, 'landuse_' || landuse, 'man_made_' || man_made, 'natural_' || \"natural\", 'place_' || place, 'tourism_' || tourism, 'military_' || military, 'waterway_' || waterway, 'historic_' || historic, 'highway_' || highway, 'power_' || power, 'boundary_' || boundary) AS feature, access, NULL AS ele, name, ref, way_area, CASE WHEN building = 'no' OR building IS NULL THEN 'no' ELSE 'yes' END AS is_building, \"ump:type\" AS garmin_typ\n       FROM planet_osm_polygon\n       WHERE amenity IS NOT NULL\n          OR shop IN ('accessories', 'alcohol', 'antique', 'antiques', 'appliance', 'art', 'baby_goods', 'bag', 'bags', 'bakery', 'bathroom_furnishing', 'beauty', 'bed', 'betting', 'beverages', 'bicycle', 'boat', 'bookmaker', 'books', 'boutique', 'builder', 'building_materials', 'butcher', 'camera', 'car', 'car_parts', 'car_repair', 'car_service', 'carpet', 'charity', 'cheese', 'chemist', 'chocolate', 'clothes', 'coffee', 'communication', 'computer', 'confectionery', 'convenience', 'copyshop', 'cosmetics', 'craft', 'curtain', 'dairy', 'deli', 'delicatessen', 'department_store', 'discount', 'dive', 'doityourself', 'dry_cleaning', 'e-cigarette', 'electrical', 'electronics', 'energy', 'erotic', 'estate_agent', 'fabric', 'farm', 'fashion', 'fish', 'fishing', 'fishmonger', 'flooring', 'florist', 'food', 'frame', 'frozen_food', 'funeral_directors', 'furnace', 'furniture', 'gallery', 'gambling', 'games', 'garden_centre', 'gas', 'general', 'gift', 'glaziery', 'greengrocer', 'grocery', 'hairdresser', 'hardware', 'health', 'health_food', 'hearing_aids', 'herbalist', 'hifi', 'hobby', 'household', 'houseware', 'hunting', 'ice_cream', 'insurance', 'interior_decoration', 'jewellery', 'jewelry', 'kiosk', 'kitchen', 'laundry', 'leather', 'lighting', 'locksmith', 'lottery', 'mall', 'market', 'massage', 'medical', 'medical_supply', 'mobile_phone', 'money_lender', 'motorcycle', 'motorcycle_repair', 'music', 'musical_instrument', 'newsagent', 'office_supplies', 'optician', 'organic', 'outdoor', 'paint', 'pastry', 'pawnbroker', 'perfumery', 'pet', 'pets', 'pharmacy', 'phone', 'photo', 'photo_studio', 'photography', 'pottery', 'printing', 'radiotechnics', 'real_estate', 'religion', 'rental', 'salon', 'scuba_diving', 'seafood', 'second_hand', 'sewing', 'shoe_repair', 'shoes', 'shopping_centre', 'solarium', 'souvenir', 'sports', 'stationery', 'supermarket', 'tailor', 'tanning', 'tattoo', 'tea', 'ticket', 'tiles', 'tobacco', 'toys', 'trade', 'travel_agency', 'tyres', 'vacuum_cleaner', 'variety_store', 'video', 'video_games', 'watches', 'wholesale', 'wine', 'winery', 'yes')\n          OR leisure IS NOT NULL\n          OR landuse IS NOT NULL\n          OR tourism IS NOT NULL\n          OR \"natural\" IS NOT NULL\n          OR man_made IN ('lighthouse', 'windmill')\n          OR place = 'island'\n          OR place = 'islet'\n          OR military IS NOT NULL\n          OR historic IN ('memorial', 'archaeological_site')\n          OR power IS NOT NULL\n          OR aeroway IS NOT NULL\n          OR highway IN ('services', 'rest_area')\n          OR boundary = 'national_park'\n ORDER BY way_area desc     ) AS text_poly", 
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
@@ -1508,6 +1669,144 @@
       "advanced": {}
     }, 
     {
+      "name": "poi-jedzenie-tekst", 
+      "srs-name": "900913", 
+      "geometry": "point", 
+      "class": "poi-jedzenie-tekst", 
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
+      "Datasource": {
+        "extent": "-20037508,-20037508,20037508,20037508", 
+        "table": "(SELECT way, \"ump:typ\" AS ump_typ, name, \"ump:type\" AS garmin_typ\n      FROM planet_osm_point\n      WHERE \"ump:type\" IN ('0x2a00','0x2a01','0x2a02','0x2a03','0x2a04','0x2a05','0x2a06','0x2a07','0x2a08','0x2a09','0x2a0a','0x2a0b','0x2a0c','0x2a0d','0x2a0e','0x2a0f','0x2a10','0x2a11','0x2a12','0x2a13')\n ) AS poi_jedzenie_tekst", 
+        "geometry_field": "way", 
+        "type": "postgis", 
+        "key_field": "", 
+        "dbname": "umpgis"
+      }, 
+      "extent": [
+        -180, 
+        -85.05112877980659, 
+        180, 
+        85.05112877980659
+      ], 
+      "id": "poi-jedzenie-tekst", 
+      "advanced": {}
+    }, 
+    {
+      "name": "poi-zakupy-tekst", 
+      "srs-name": "900913", 
+      "geometry": "point", 
+      "class": "poi-zakupy-tekst", 
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
+      "Datasource": {
+        "extent": "-20037508,-20037508,20037508,20037508", 
+        "table": "(SELECT way, \"ump:typ\" AS ump_typ, name, \"ump:type\" AS garmin_typ\n      FROM planet_osm_point\n      WHERE \"ump:type\" IN ('0x2e00','0x2e01','0x2e02','0x2e03','0x2e04','0x2e05','0x2e06','0x2e07','0x2e08','0x2e09','0x2e0a','0x2e0b','0x2e0c','0x2e0d','0x2e0e','0x2e0f','0x2e10','0x2e11','0x2e12','0x2e13')\n ) AS poi_zakupy_tekst", 
+        "geometry_field": "way", 
+        "type": "postgis", 
+        "key_field": "", 
+        "dbname": "umpgis"
+      }, 
+      "extent": [
+        -180, 
+        -85.05112877980659, 
+        180, 
+        85.05112877980659
+      ], 
+      "id": "poi-zakupy-tekst", 
+      "advanced": {}
+    }, 
+    {
+      "name": "poi-uslugi-tekst", 
+      "srs-name": "900913", 
+      "geometry": "point", 
+      "class": "poi-uslugi-tekst", 
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
+      "Datasource": {
+        "extent": "-20037508,-20037508,20037508,20037508", 
+        "table": "(SELECT way, \"ump:typ\" AS ump_typ, name, \"ump:type\" AS garmin_typ\n      FROM planet_osm_point\n      WHERE \"ump:type\" IN ('0x2f01','0x2f03','0x2f05','0x2f06','0x2f07','0x2f08','0x2f09','0x2f0a','0x2f0b','0x2f0c','0x2f0d','0x2f0e','0x2f0f','0x2f10','0x2f11','0x2f12','0x2f13','0x2f14','0x2f15','0x2f16','0x2f19')\n ) AS poi_uslugi_tekst", 
+        "geometry_field": "way", 
+        "type": "postgis", 
+        "key_field": "", 
+        "dbname": "umpgis"
+      }, 
+      "extent": [
+        -180, 
+        -85.05112877980659, 
+        180, 
+        85.05112877980659
+      ], 
+      "id": "poi-uslugi-tekst", 
+      "advanced": {}
+    }, 
+    {
+      "name": "poi-transport-tekst", 
+      "srs-name": "900913", 
+      "geometry": "point", 
+      "class": "poi-transport-tekst", 
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
+      "Datasource": {
+        "extent": "-20037508,-20037508,20037508,20037508", 
+        "table": "(SELECT way, \"ump:typ\" AS ump_typ, name, \"ump:type\" AS garmin_typ\n      FROM planet_osm_point\n      WHERE \"ump:type\" IN ('0x2f02','0x2f04','0x2f08','0x2f17','0x2f18')\n ) AS poi_transport_tekst", 
+        "geometry_field": "way", 
+        "type": "postgis", 
+        "key_field": "", 
+        "dbname": "umpgis"
+      }, 
+      "extent": [
+        -180, 
+        -85.05112877980659, 
+        180, 
+        85.05112877980659
+      ], 
+      "id": "poi-transport-tekst", 
+      "advanced": {}
+    }, 
+    {
+      "name": "poi-nocleg-tekst", 
+      "srs-name": "900913", 
+      "geometry": "point", 
+      "class": "poi-nocleg-tekst", 
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
+      "Datasource": {
+        "extent": "-20037508,-20037508,20037508,20037508", 
+        "table": "(SELECT way, \"ump:typ\" AS ump_typ, name, \"ump:type\" AS garmin_typ\n      FROM planet_osm_point\n      WHERE \"ump:type\" IN ('0x2b00','0x2b01','0x2b02','0x2b03','0x2b04','0x2b05','0x2b06','0x2b07')\n ) AS poi_nocleg_tekst", 
+        "geometry_field": "way", 
+        "type": "postgis", 
+        "key_field": "", 
+        "dbname": "umpgis"
+      }, 
+      "extent": [
+        -180, 
+        -85.05112877980659, 
+        180, 
+        85.05112877980659
+      ], 
+      "id": "poi-nocleg-tekst", 
+      "advanced": {}
+    }, 
+    {
+      "name": "poi-atrakcje-tekst", 
+      "srs-name": "900913", 
+      "geometry": "point", 
+      "class": "poi-atrakcje-tekst", 
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
+      "Datasource": {
+        "extent": "-20037508,-20037508,20037508,20037508", 
+        "table": "(SELECT way, \"ump:typ\" AS ump_typ, name, \"ump:type\" AS garmin_typ\n      FROM planet_osm_point\n      WHERE \"ump:type\" IN ('0x2c00','0x2c01','0x2c02','0x2c03','0x2c04','0x2c05','0x2c06','0x2c07','0x2c08','0x2c09','0x2c0a','0x2c0b','0x2c0c','0x2c0d','0x2c0e','0x2c0f','0x2c10','0x2c11','0x2c12','0x2c13')\n ) AS poi_atrakcje_tekst", 
+        "geometry_field": "way", 
+        "type": "postgis", 
+        "key_field": "", 
+        "dbname": "umpgis"
+      }, 
+      "extent": [
+        -180, 
+        -85.05112877980659, 
+        180, 
+        85.05112877980659
+      ], 
+      "id": "poi-atrakcje-tekst", 
+      "advanced": {}
+    }, 
+    {
       "name": "text", 
       "srs-name": "900913", 
       "geometry": "point", 
@@ -1515,7 +1814,7 @@
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
-        "table": "      (SELECT way, NULL as way_pixels, COALESCE('aeroway_' || aeroway, 'shop_' || CASE WHEN shop IN ('supermarket', 'bakery', 'butcher', 'clothes', 'fashion', 'convenience', 'department_store', 'doityourself', 'florist', 'hairdresser', 'car', 'car_repair', 'bicycle', 'mall') THEN shop WHEN NOT shop IS NULL THEN 'other' ELSE NULL END, 'amenity_' || amenity, 'leisure_' || leisure, 'landuse_' || landuse, 'man_made_' || man_made, 'natural_' || \"natural\", 'place_' || place, 'tourism_' || tourism, 'military_' || military, 'waterway_' || waterway, 'historic_' || historic, 'highway_' || highway, 'power_' || power, 'boundary_' || boundary) AS feature, access, ele, name, ref, NULL AS way_area, CASE WHEN building = 'no' OR building IS NULL THEN 'no' ELSE 'yes' END AS is_building\n       FROM planet_osm_point\n       WHERE amenity IS NOT NULL\n          OR shop IN ('accessories', 'alcohol', 'antique', 'antiques', 'appliance', 'art', 'baby_goods', 'bag', 'bags', 'bakery', 'bathroom_furnishing', 'beauty', 'bed', 'betting', 'beverages', 'bicycle', 'boat', 'bookmaker', 'books', 'boutique', 'builder', 'building_materials', 'butcher', 'camera', 'car', 'car_parts', 'car_repair', 'car_service', 'carpet', 'charity', 'cheese', 'chemist', 'chocolate', 'clothes', 'coffee', 'communication', 'computer', 'confectionery', 'convenience', 'copyshop', 'cosmetics', 'craft', 'curtain', 'dairy', 'deli', 'delicatessen', 'department_store', 'discount', 'dive', 'doityourself', 'dry_cleaning', 'e-cigarette', 'electrical', 'electronics', 'energy', 'erotic', 'estate_agent', 'fabric', 'farm', 'fashion', 'fish', 'fishing', 'fishmonger', 'flooring', 'florist', 'food', 'frame', 'frozen_food', 'funeral_directors', 'furnace', 'furniture', 'gallery', 'gambling', 'games', 'garden_centre', 'gas', 'general', 'gift', 'glaziery', 'greengrocer', 'grocery', 'hairdresser', 'hardware', 'health', 'health_food', 'hearing_aids', 'herbalist', 'hifi', 'hobby', 'household', 'houseware', 'hunting', 'ice_cream', 'insurance', 'interior_decoration', 'jewellery', 'jewelry', 'kiosk', 'kitchen', 'laundry', 'leather', 'lighting', 'locksmith', 'lottery', 'mall', 'market', 'massage', 'medical', 'medical_supply', 'mobile_phone', 'money_lender', 'motorcycle', 'motorcycle_repair', 'music', 'musical_instrument', 'newsagent', 'office_supplies', 'optician', 'organic', 'outdoor', 'paint', 'pastry', 'pawnbroker', 'perfumery', 'pet', 'pets', 'pharmacy', 'phone', 'photo', 'photo_studio', 'photography', 'pottery', 'printing', 'radiotechnics', 'real_estate', 'religion', 'rental', 'salon', 'scuba_diving', 'seafood', 'second_hand', 'sewing', 'shoe_repair', 'shoes', 'shopping_centre', 'solarium', 'souvenir', 'sports', 'stationery', 'supermarket', 'tailor', 'tanning', 'tattoo', 'tea', 'ticket', 'tiles', 'tobacco', 'toys', 'trade', 'travel_agency', 'tyres', 'vacuum_cleaner', 'variety_store', 'video', 'video_games', 'watches', 'wholesale', 'wine', 'winery', 'yes')\n          OR leisure IS NOT NULL\n          OR landuse IS NOT NULL\n          OR tourism IS NOT NULL\n          OR \"natural\" IS NOT NULL\n          OR man_made IN ('lighthouse', 'windmill')\n          OR place = 'island'\n          OR place = 'islet'\n          OR military IS NOT NULL\n          OR aeroway IS NOT NULL\n          OR waterway = 'lock'\n          OR historic IN ('memorial', 'archaeological_site')\n          OR power IS NOT NULL\n          OR highway IN ('bus_stop', 'services', 'rest_area')\n          OR boundary = 'national_park'\n      ) AS text", 
+        "table": "      (SELECT way, NULL as way_pixels, COALESCE('aeroway_' || aeroway, 'shop_' || CASE WHEN shop IN ('supermarket', 'bakery', 'butcher', 'clothes', 'fashion', 'convenience', 'department_store', 'doityourself', 'florist', 'hairdresser', 'car', 'car_repair', 'bicycle', 'mall') THEN shop WHEN NOT shop IS NULL THEN 'other' ELSE NULL END, 'amenity_' || amenity, 'leisure_' || leisure, 'landuse_' || landuse, 'man_made_' || man_made, 'natural_' || \"natural\", 'place_' || place, 'tourism_' || tourism, 'military_' || military, 'waterway_' || waterway, 'historic_' || historic, 'highway_' || highway, 'power_' || power, 'boundary_' || boundary) AS feature, access, ele, name, ref, NULL AS way_area, CASE WHEN building = 'no' OR building IS NULL THEN 'no' ELSE 'yes' END AS is_building, \"ump:type\" AS garmin_typ\n       FROM planet_osm_point\n       WHERE amenity IS NOT NULL\n          OR shop IN ('accessories', 'alcohol', 'antique', 'antiques', 'appliance', 'art', 'baby_goods', 'bag', 'bags', 'bakery', 'bathroom_furnishing', 'beauty', 'bed', 'betting', 'beverages', 'bicycle', 'boat', 'bookmaker', 'books', 'boutique', 'builder', 'building_materials', 'butcher', 'camera', 'car', 'car_parts', 'car_repair', 'car_service', 'carpet', 'charity', 'cheese', 'chemist', 'chocolate', 'clothes', 'coffee', 'communication', 'computer', 'confectionery', 'convenience', 'copyshop', 'cosmetics', 'craft', 'curtain', 'dairy', 'deli', 'delicatessen', 'department_store', 'discount', 'dive', 'doityourself', 'dry_cleaning', 'e-cigarette', 'electrical', 'electronics', 'energy', 'erotic', 'estate_agent', 'fabric', 'farm', 'fashion', 'fish', 'fishing', 'fishmonger', 'flooring', 'florist', 'food', 'frame', 'frozen_food', 'funeral_directors', 'furnace', 'furniture', 'gallery', 'gambling', 'games', 'garden_centre', 'gas', 'general', 'gift', 'glaziery', 'greengrocer', 'grocery', 'hairdresser', 'hardware', 'health', 'health_food', 'hearing_aids', 'herbalist', 'hifi', 'hobby', 'household', 'houseware', 'hunting', 'ice_cream', 'insurance', 'interior_decoration', 'jewellery', 'jewelry', 'kiosk', 'kitchen', 'laundry', 'leather', 'lighting', 'locksmith', 'lottery', 'mall', 'market', 'massage', 'medical', 'medical_supply', 'mobile_phone', 'money_lender', 'motorcycle', 'motorcycle_repair', 'music', 'musical_instrument', 'newsagent', 'office_supplies', 'optician', 'organic', 'outdoor', 'paint', 'pastry', 'pawnbroker', 'perfumery', 'pet', 'pets', 'pharmacy', 'phone', 'photo', 'photo_studio', 'photography', 'pottery', 'printing', 'radiotechnics', 'real_estate', 'religion', 'rental', 'salon', 'scuba_diving', 'seafood', 'second_hand', 'sewing', 'shoe_repair', 'shoes', 'shopping_centre', 'solarium', 'souvenir', 'sports', 'stationery', 'supermarket', 'tailor', 'tanning', 'tattoo', 'tea', 'ticket', 'tiles', 'tobacco', 'toys', 'trade', 'travel_agency', 'tyres', 'vacuum_cleaner', 'variety_store', 'video', 'video_games', 'watches', 'wholesale', 'wine', 'winery', 'yes')\n          OR leisure IS NOT NULL\n          OR landuse IS NOT NULL\n          OR tourism IS NOT NULL\n          OR \"natural\" IS NOT NULL\n          OR man_made IN ('lighthouse', 'windmill')\n          OR place = 'island'\n          OR place = 'islet'\n          OR military IS NOT NULL\n          OR aeroway IS NOT NULL\n          OR waterway = 'lock'\n          OR historic IN ('memorial', 'archaeological_site')\n          OR power IS NOT NULL\n          OR highway IN ('bus_stop', 'services', 'rest_area')\n          OR boundary = 'national_park'\n      ) AS text", 
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
@@ -1597,29 +1896,6 @@
         85.05112877980659
       ], 
       "id": "housenumbers", 
-      "advanced": {}
-    }, 
-    {
-      "name": "housenames", 
-      "srs-name": "900913", 
-      "geometry": "point", 
-      "class": "", 
-      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
-      "Datasource": {
-        "extent": "-20037508,-20037508,20037508,20037508", 
-        "table": "(SELECT way,\"addr:housename\", way_area FROM planet_osm_polygon WHERE \"addr:housename\" IS NOT NULL AND building IS NOT NULL\n       UNION\n       SELECT way,\"addr:housename\", NULL AS way_area FROM planet_osm_point WHERE \"addr:housename\" IS NOT NULL\n       ORDER BY way_area DESC\n      ) AS housenames", 
-        "geometry_field": "way", 
-        "type": "postgis", 
-        "key_field": "", 
-        "dbname": "umpgis"
-      }, 
-      "extent": [
-        -180, 
-        -85.05112877980659, 
-        180, 
-        85.05112877980659
-      ], 
-      "id": "housenames", 
       "advanced": {}
     }, 
     {
@@ -1817,8 +2093,13 @@
     "citywalls.mss", 
     "placenames.mss", 
     "buildings.mss", 
+    "POI-atrakcje.mss", 
+    "POI-jedzenie.mss", 
+    "POI-nocleg.mss", 
     "POI-transport.mss", 
     "POI-uslugi.mss", 
+    "POI-zakupy.mss", 
+    "POI-znaki.mss", 
     "stations.mss", 
     "ferry-routes.mss", 
     "aerialways.mss", 

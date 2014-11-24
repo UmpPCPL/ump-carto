@@ -64,7 +64,7 @@
   }
 
   [feature = 'highway_traffic_signals'][zoom >= 17] {
-    marker-file: url('symbols_ump/f201_trafic-light_sygnalizacja-swietlna_day.png');
+    marker-file: url('symbols_ump/f201_trafic-light_sygnalizacja-swietlnab_day.png');
 //    marker-file: url('symbols/traffic_light.svg');
 //    marker-fill: #0a0a0a;
     marker-placement: interior;
@@ -527,6 +527,17 @@
     text-wrap-width: @standard-wrap-width;
     text-placement: interior;
   }
+
+  [feature = 'amenity_post_office'][zoom >= 17] {
+    text-name: "[name]";
+    text-size: 10;
+    text-fill: #734a08;
+    text-dy: 11;
+    text-face-name: @book-fonts;
+    text-halo-radius: 1;
+    text-wrap-width: @standard-wrap-width;
+    text-placement: interior;
+   }
 
   [feature = 'amenity_place_of_worship'][zoom >= 17] {
     text-name: "[name]";
