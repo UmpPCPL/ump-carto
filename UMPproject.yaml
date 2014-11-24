@@ -52,10 +52,10 @@ Stylesheet:
   - "POI-nocleg.mss"
   #- "POI-rozrywka.mss"
   #- "POI-sluzby.mss"
-  #- "POI-transport.mss"
-  #- "POI-uslugi.mss"
-  #- "POI-zakupy.mss"
-  #- "POI-znaki.mss"
+  - "POI-transport.mss"
+  - "POI-uslugi.mss"
+  - "POI-zakupy.mss"
+  - "POI-znaki.mss"
   - "stations.mss"
   - "ferry-routes.mss"
   - "aerialways.mss"
@@ -1224,6 +1224,19 @@ Layer:
                  OR "natural" IN ('peak', 'volcano', 'spring', 'tree')
               ) AS amenity_symbols_poly
     advanced: {}
+  - id: "poi-znaki-point"
+    name: "poi-znaki-point"
+    class: "poi-znaki"
+    geometry: "point"
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |2-
+        (SELECT way, "ump:typ" AS ump_typ, "ump:type" AS garmin_typ, highway
+              FROM planet_osm_point
+              WHERE "ump:type" IN ('0xf201','0x2855')
+         ) AS poi_znaki_point
+    advanced: {}
   - id: "poi-jedzenie-point"
     name: "poi-jedzenie-point"
     class: "poi-jedzenie"
@@ -1236,6 +1249,45 @@ Layer:
               FROM planet_osm_point
               WHERE "ump:type" IN ('0x2a00','0x2a01','0x2a02','0x2a03','0x2a04','0x2a05','0x2a06','0x2a07','0x2a08','0x2a09','0x2a0a','0x2a0b','0x2a0c','0x2a0d','0x2a0e','0x2a0f','0x2a10','0x2a11','0x2a12','0x2a13')
          ) AS poi_jedzenie_point
+    advanced: {}
+  - id: "poi-zakupy-point"
+    name: "poi-zakupy-point"
+    class: "poi-zakupy"
+    geometry: "point"
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |2-
+        (SELECT way, "ump:typ" AS ump_typ, name, "ump:type" AS garmin_typ
+              FROM planet_osm_point
+              WHERE "ump:type" IN ('0x2e00','0x2e01','0x2e02','0x2e03','0x2e04','0x2e05','0x2e06','0x2e07','0x2e08','0x2e09','0x2e0a','0x2e0b','0x2e0c','0x2e0d','0x2e0e','0x2e0f','0x2e10','0x2e11','0x2e12','0x2e13')
+         ) AS poi_zakupy_point
+    advanced: {}
+  - id: "poi-uslugi-point"
+    name: "poi-uslugi-point"
+    class: "poi-uslugi"
+    geometry: "point"
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |2-
+        (SELECT way, "ump:typ" AS ump_typ, name, "ump:type" AS garmin_typ
+              FROM planet_osm_point
+              WHERE "ump:type" IN ('0x2f01','0x2f03','0x2f05','0x2f06','0x2f07','0x2f08','0x2f09','0x2f0a','0x2f0b','0x2f0c','0x2f0d','0x2f0e','0x2f0f','0x2f10','0x2f11','0x2f12','0x2f13','0x2f14','0x2f15','0x2f16','0x2f19')
+         ) AS poi_uslugi_point
+    advanced: {}
+  - id: "poi-transport-point"
+    name: "poi-transport-point"
+    class: "poi-transport"
+    geometry: "point"
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |2-
+        (SELECT way, "ump:typ" AS ump_typ, name, "ump:type" AS garmin_typ
+              FROM planet_osm_point
+              WHERE "ump:type" IN ('0x2f02','0x2f04','0x2f08','0x2f17','0x2f18')
+         ) AS poi_transport_point
     advanced: {}
   - id: "poi-nocleg-point"
     name: "poi-nocleg-point"
