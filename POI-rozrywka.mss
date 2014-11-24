@@ -1,22 +1,20 @@
-.points {
+.poi-rozrywka {
 
-// [ump_typ='TEATR'],[ump_typ='KULTURA'] { [zoom >= 17] {point-file: url('symbols_ump/ ');}}
- [ump_typ='BAR'], [ump_typ='PUB'] { [zoom >= 17] {point-file: url('symbols_ump/2d02_Bar-Nightclub_Bar-Nightclub_day.png');}}
-// nie widać?
- [ump_typ='KINO'], [ump_typ='MULTIKINO'] { [zoom >= 17] {point-file: url('symbols_ump/2d03_Cinema_Kino_day.png');}}
-// [ump_typ='KASYNO'][zoom >= 17] {point-file: url('symbols_ump/');}
-// [ump_typ='GOLF'][zoom >= 17] {point-file: url('symbols_ump/');}
-// [ump_typ='NARTY'][zoom >= 17] {point-file: url('symbols_ump/');}
- [ump_typ='KREGLE'][zoom >= 17] {point-file: url('symbols_ump/2d07_Bowling_Kregle_day.png');}
-// [ump_typ='LODOWISKO'][zoom >= 17] {point-file: url('symbols_ump/ ');}
-//2d09_Dive_Nury_night.png
- [ump_typ='BASEN'],[ump_typ='NUREK'] {[zoom >= 17] {point-file: url('symbols_ump/2d09_Dive_Nury_day.png');}}
- [ump_typ='SPORT'],[ump_typ='KORT'],[ump_typ='FITNESS'],[ump_typ='SKATEPARK'] { [zoom >= 17] {point-file: url('symbols_ump/2d0a_Sports_Sport_day.png');}}
-// [ump_typ='LOTNISKO'][zoom >= 17] {point-file: url('symbols_ump/ ');}
+ [garmin_typ = '0x2d01'] { [zoom >= 17] {point-file: url('symbols_ump/theatre.p.20.png');}}
+ [garmin_typ = '0x2d02'] { [zoom >= 17] {point-file: url('symbols_ump/2d02_Bar-Nightclub_Bar-Nightclub_day.png');}}
+ [garmin_typ = '0x2d03'] { [zoom >= 17] {point-file: url('symbols_ump/2d03_Cinema_Kino_day.png');}}
+// [garmin_typ = '0x2d04'][zoom >= 17] {point-file: url('symbols_ump/');}
+// [garmin_typ = '0x2d05'][zoom >= 17] {point-file: url('symbols_ump/');}
+// [garmin_typ = '0x2d06'][zoom >= 17] {point-file: url('symbols_ump/');}
+ [garmin_typ = '0x2d07'][zoom >= 17] {point-file: url('symbols_ump/2d07_Bowling_Kregle_day.png');}
+// [garmin_typ = '0x2d08'][zoom >= 17] {point-file: url('symbols_ump/ ');}
+ [garmin_typ = '0x2d09'] {[zoom >= 17] {point-file: url('symbols_ump/2d09_Dive_Nury_day.png');}}
+ [garmin_typ = '0x2d0a'] {[zoom >= 17] {point-file: url('symbols_ump/2d0a_Sports_Sport_day.png');}}
+// [garmin_typ = '0x2d0b']][zoom >= 17] {point-file: url('symbols_ump/ ');}
 
 } // of .points
 
-.text {
+.poi-rozrywka-tekst {
 // text-name: "[name]";
 // text-fill: #734a08;
 // text-face-name: @book-fonts;

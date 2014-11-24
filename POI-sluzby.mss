@@ -1,22 +1,22 @@
-.points {
+.poi-sluzby {
 
 // [ump_typ='EMERGENCY'][zoom >= 17] {point-file: url('symbols_ump/    ');}
- [ump_typ='POLICJA'][zoom >= 17] {point-file: url('symbols_ump/3001_Police_Policja_day.png');}
+ [garmin_typ='0x3001'][zoom >= 17] {point-file: url('symbols_ump/3001_Police_Policja_day.png');}
  [garmin_typ='0x3002'][zoom >= 17] {
     point-file: url('symbols_ump/3002_Hospital_Szpital_day.png');
     [ump_typ='WETERYNARZ'] {point-file: url('symbols_ump/wet.png');}
     }
- [ump_typ='RATUSZ'][zoom >= 17] {point-file: url('symbols_ump/3003_City-hall_Ratusz_day.png');}
- [ump_typ='SAD'][zoom >= 17] {point-file: url('symbols_ump/3004_Court_Sad_day.png');}
+ [garmin_typ='0x3003'][zoom >= 17] {point-file: url('symbols_ump/3003_City-hall_Ratusz_day.png');}
+ [garmin_typ='0x3004'][zoom >= 17] {point-file: url('symbols_ump/3004_Court_Sad_day.png');}
 
- [ump_typ='KONCERT'],[ump_typ='HALL'] { [zoom >= 17] {point-file: url('symbols/theatre.p.20.png');} }
-// BORDER 3006
+ [garmin_typ='0x3005'] { [zoom >= 17] {point-file: url('symbols/theatre.p.20.png');} }
+// BORDER [garmin_typ='0x3006'] 
  [garmin_typ='0x3007'][zoom >= 17] {point-file: url('symbols_ump/3007_Goverment-office_Urzad_day.png');}
- [ump_typ='POZARNA'][zoom >= 17] {point-file: url('symbols_ump/3008_Fire-Department_Straz-Pozarna_day.png');}
+ [garmin_typ='0x3008'][zoom >= 17] {point-file: url('symbols_ump/3008_Fire-Department_Straz-Pozarna_day.png');}
 
 } // of .points
 
-.text {
+.poi-sluzby-tekst {
 //[garmin_typ=~'0x*']{
 // text-name: "[name]";
 // text-fill: #734a08;
