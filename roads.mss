@@ -12,7 +12,8 @@
 @living-street-fill: #ccc;
 @pedestrian-fill: #ededed;
 @raceway-fill: pink;
-@road-fill: #ddd;
+//@road-fill: #ddd;
+@road-fill: @ramp-fill;
 @path-fill: #a87000;
 @footway-fill: salmon;
 @steps-fill: @footway-fill;
@@ -265,6 +266,8 @@
     }
 
     [feature = 'highway_ramp_fast'],
+    [feature = 'highway_road_link'],
+    [feature = 'highway_road'],
     [feature = 'highway_ramp_slow'] {
       [zoom >= 13] {
         line-color: @ramp-casing;
@@ -291,8 +294,7 @@
 
 
     [feature = 'highway_residential'],
-    [feature = 'highway_unclassified'],
-    [feature = 'highway_road'] {
+    [feature = 'highway_unclassified'] {
       [zoom >= 13] {
         line-color: @residential-casing;
         line-width: @residential-width-z13;
@@ -970,6 +972,7 @@
     [feature = 'highway_unclassified'][zoom >= 10][zoom < 13],
     [feature = 'highway_road'][zoom >= 10][zoom < 13],
     [feature = 'highway_ramp_fast'][zoom >= 10][zoom < 13],
+    [feature = 'highway_road_link'][zoom >= 10][zoom < 13],
     [feature = 'highway_ramp_slow'][zoom >= 10][zoom < 13],
     [feature = 'highway_living_street'][zoom >= 12][zoom < 13] {
       line-width: 1;
@@ -1009,6 +1012,7 @@
       }
     }
 
+    [feature = 'highway_road_link'],
     [feature = 'highway_road'] {
       [zoom >= 13] {
         .roads-fill, .bridges-fill {
@@ -1890,6 +1894,7 @@
     [feature = 'highway_unclassified'],
     [feature = 'highway_residential'],
     [feature = 'highway_road'],
+    [feature = 'highway_road_link'],
     [feature = 'highway_ramp_fast'],
     [feature = 'highway_ramp_slow'],
     [feature = 'highway_living_street'] {

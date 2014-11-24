@@ -6,7 +6,9 @@ styl:
 
 status:
 	git status
-project:
+oldproject:
 	./scripts/yaml2mml.py < project.yaml > project.mml && touch project.mml
-UMPpro:
+project:
 	./scripts/yaml2mml.py < UMPproject.yaml > project.mml && touch project.mml
+log:
+	tail -f /var/log/syslog
