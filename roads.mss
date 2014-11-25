@@ -742,48 +742,11 @@
      * https://github.com/mapbox/carto/issues/235
      * https://github.com/mapbox/carto/issues/237
      */
-    [feature = 'highway_proposed'],
-    [feature = 'highway_construction'] {
-      [zoom >= 12] {
+    [feature = 'highway_proposed'] {
+     [tracktype = 'DK']{
+      [zoom >= 11] {
         line-width: 2;
         line-color: #9cc;
-
-        [construction = 'motorway'],
-        [construction = 'motorway_link'] {
-          line-color: @motorway-fill;
-        }
-        [construction = 'trunk'],
-        [construction = 'trunk_link'] {
-          line-color: @trunk-fill;
-        }
-        [construction = 'primary'],
-        [construction = 'primary_link'] {
-          line-color: @primary-fill;
-        }
-        [construction = 'secondary'],
-        [construction = 'secondary_link'] {
-          line-color: @secondary-fill;
-        }
-        [construction = 'tertiary'],
-        [construction = 'tertiary_link'] {
-          line-color: @tertiary-fill;
-        }
-        [construction = 'residential'],
-        [construction = 'unclassified'],
-        [construction = 'living_street'] {
-          line-color: @residential-construction;
-          [zoom < 13] {
-            line-width: 0;
-            b/line-width: 0;
-          }
-        }
-        [construction = 'service'] {
-          line-color: @service-construction;
-          [zoom < 14] {
-            line-width: 0;
-            b/line-width: 0;
-          }
-        }
         b/line-width: 2;
         b/line-dasharray: 4,2;
         b/line-color: white;
@@ -797,17 +760,40 @@
           b/line-width: 7;
           b/line-dasharray: 8,6;
         }
-        [construction = 'cycleway'] {
-          [zoom < 14] {
-            line-width: 0;
-            b/line-width: 0;
-          }
-          line-color: white;
-          line-width: 3;
-          line-opacity: 0.4;
-          b/line-width: 1.2;
-          b/line-color: #69f;
-          b/line-dasharray: 2,6;
+      }
+     }
+     [tracktype = 'osiedlowa']{
+      [zoom >= 15] {
+        line-width: 4;
+        line-color: #9cc;
+        b/line-width: 3.5;
+        b/line-dasharray: 6,4;
+        b/line-color: white;
+        [zoom >= 16] {
+          line-width: 5;
+          b/line-width: 4;
+          b/line-dasharray: 7,5;
+        }
+      }
+     }
+    }
+
+    [feature = 'highway_construction'] {
+      [zoom >= 11] {
+        line-width: 2;
+        line-color: #f2cf95;
+        b/line-width: 2;
+        b/line-dasharray: 4,2;
+        b/line-color: white;
+        [zoom >= 13] {
+          line-width: 4;
+          b/line-width: 3.5;
+          b/line-dasharray: 6,4;
+        }
+        [zoom >= 16] {
+          line-width: 8;
+          b/line-width: 7;
+          b/line-dasharray: 8,6;
         }
       }
     }
@@ -2250,7 +2236,6 @@
       text-size: 11;
     }
   }
-  [highway = 'proposed'],
   [highway = 'construction'] {
     [zoom >= 13] {
       text-name: "[name]";
@@ -2264,6 +2249,22 @@
     }
     [zoom >= 17] {
       text-size: 11;
+    }
+  }
+  [highway = 'proposed'] {
+    [tracktype = 'DK'][zoom >= 13],
+    [tracktype = 'osiedlowa'][zoom >= 15] {
+      text-name: "[name]";
+      text-size: 9;
+      text-fill: black;
+      text-spacing: 300;
+      text-clip: false;
+      text-placement: line;
+      text-halo-radius: 1;
+      text-face-name: @book-fonts;
+      [zoom >= 17] {
+        text-size: 11;
+      }
     }
   }
   [highway = 'residential'],
