@@ -1430,7 +1430,7 @@ Layer:
                 WHERE highway IN ('motorway', 'trunk', 'primary', 'secondary')
                 AND ref IS NOT NULL
               ) AS p) AS q
-          WHERE height <= 4 AND width <= 11) AS roads_text_ref_low_zoom
+          WHERE height <= 4 AND width <= 8) AS roads_text_ref_low_zoom
     advanced: {}
   - id: "junctions"
     name: "junctions"
@@ -1468,7 +1468,7 @@ Layer:
                 WHERE (highway IN ('motorway', 'trunk', 'primary', 'secondary', 'tertiary', 'unclassified', 'residential') OR aeroway IN ('runway', 'taxiway'))
                 AND ref IS NOT NULL
               ) AS p) AS q
-          WHERE height <= 4 AND width <= 11) AS roads_text_ref
+          WHERE height <= 4 AND width <= 8) AS roads_text_ref
     advanced: {}
   - id: "roads-area-text-name"
     name: "roads-area-text-name"
