@@ -24,3 +24,19 @@
   [ump_typ='GREEK'],[ump_typ='GRECKA'],[ump_typ='LIBANSKA'] {[zoom >= 17] {point-file: url('symbols_ump/2a13_Greek_Greckie_day.png');}}
 
 }
+
+.poi-jedzenie-tekst {
+ [zoom >= 17] {
+      text-name: "[name]";
+      text-fill: #734a08;
+      text-size: 10;
+      text-dy: 11;
+      text-face-name: @bold-fonts;
+      text-halo-radius: 1;
+      text-wrap-width: @standard-wrap-width;
+      text-placement: interior;
+      text-allow-overlap: false;
+    [zoom >=18] {text-allow-overlap: true;}
+ }
+
+} // of .poi-jedzenie-tekst

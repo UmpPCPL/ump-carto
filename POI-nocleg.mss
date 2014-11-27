@@ -23,3 +23,19 @@
 //    [garmin_typ=~'0x2b*'][zoom >= 17] { text-size: 10; text-dy: 13; }
 
 } // of .text
+
+.poi-nocleg-tekst {
+ [zoom >= 17] {
+      text-name: "[name]";
+      text-fill: #0092da;
+      text-size: 10;
+      text-dy: 11;
+      text-face-name: @book-fonts;
+      text-halo-radius: 1;
+      text-wrap-width: @standard-wrap-width;
+      text-placement: interior;
+      text-allow-overlap: false;
+    [zoom >=18] {text-allow-overlap: true;}
+ }
+
+} // of .poi-nocleg-tekst

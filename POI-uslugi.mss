@@ -55,23 +55,27 @@
 
 } // of .points
 
-//.text {
-// text-name: "[name]";
-// text-size: 0; // żeby nic nie wyświetlało jeśli nie jest zdefiniowane niżej? ale wyświetla kropkę
-// text-face-name: @book-fonts; //DejaVu Sans Book
-// text-halo-radius: 1;
-// text-halo-rasterizer: fast;
-// text-wrap-width: @standard-wrap-width;
-// text-placement: interior; //allow overlap = false
-//
+.poi-uslugi-tekst {
+ [zoom >= 17] {
+      text-name: "[name]";
+      text-fill: #000; // #da0092;
+      text-size: 10;
+      text-dy: 11;
+      text-face-name: @book-fonts; //DejaVu Sans Book
+      text-halo-radius: 1;
+      text-wrap-width: @standard-wrap-width;
+      text-placement: interior;
+      text-allow-overlap: false;
+    [zoom >=18] {text-allow-overlap: true;}
+ }
+
+} // of .poi-uslugi-tekst
+
 // [feature = 'amenity_fuel'],[feature='amenity_car_repair'],
-// [ump_typ='PARKING'],
-//[ump_typ=~'INFO*'],
-// [feature='amenity_auto_club'],
+// [ump_typ='PARKING'],[ump_typ=~'INFO*'],[feature='amenity_auto_club'],
 // [ump_typ='MYJNIA'],[ump_typ = 'GARMIN'],
 // [feature = 'amenity_tatoo'],[feature = 'man_made_factory'],[feature = 'amenity_wifi']
-//,[garmin_typ='0x2f14'] {
-//,[ump_typ = 'BUDYNEK']
+//,[garmin_typ='0x2f14'],[ump_typ = 'BUDYNEK']
 //    [zoom >= 17] {
 //	text-size: 9;
 //	text-fill: @transportation-text;
