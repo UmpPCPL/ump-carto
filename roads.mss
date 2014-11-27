@@ -12,7 +12,6 @@
 @living-street-fill: #ccc;
 @pedestrian-fill: #ededed;
 @raceway-fill: pink;
-//@road-fill: #ddd;
 @road-fill: @ramp-fill;
 @path-fill: #a87000;
 @footway-fill: salmon;
@@ -24,6 +23,7 @@
 @runway-fill: @aeroway-fill;
 @taxiway-fill: @aeroway-fill;
 @helipad-fill: @aeroway-fill;
+@roundabout-fill: #FFCA41;
 
 @default-casing: white;
 @motorway-casing: #7788a1;
@@ -42,6 +42,7 @@
 @cycleway-casing: @default-casing;
 @bridleway-casing: @default-casing;
 @track-casing: @default-casing;
+@roundabout-casing: @default-casing;
 
 @residential-construction: #aaa;
 @service-construction: #aaa;
@@ -1052,6 +1053,9 @@
       [zoom >= 14][service = 'INT-normal'],
       [zoom >= 16][service = 'INT-minor'] {
         line-color: @service-fill;
+        [junction = 'roundabout'] {
+          line-color: @roundabout-fill;
+        }
         [service = 'INT-normal'] {
           line-width: @service-width-z14 - 2 * @casing-width-z14;
           [zoom >= 16] { line-width: @service-width-z16 - 2 * @casing-width-z16; }
