@@ -38,7 +38,8 @@ _parts:
 Stylesheet:
   - "style.mss"
   - "shapefiles.mss"
-  - "landcover.mss"
+#  - "landcover.mss"
+  - "UMP-teren.mss"
   - "water.mss"
   - "water-features.mss"
   - "roads.mss"
@@ -99,6 +100,24 @@ Layer:
     Datasource:
       file: "data/ne_110m_admin_0_boundary_lines_land/ne_110m_admin_0_boundary_lines_land.shp"
       type: "shape"
+    advanced: {}
+  - id: "teren"
+    name: "teren"
+    class: ""
+    geometry: "polygon"
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |-
+        (SELECT
+            way, name, way_area/(!pixel_width!*!pixel_height!) AS way_pixels, "ump:type" AS garmin_type
+            FROM planet_osm_polygon
+            WHERE (
+              "ump:type" IN ( '0x4', '0x5', '0x6','0x7','0x8','0x9','0xa','0xb','0xc','0xd', '0xe')
+              OR "ump:type" IN ( '0x14', '0x15')
+              ) AND way_area/(!pixel_width!*!pixel_height!) > 0.01
+            ORDER BY z_order, way_area DESC
+          ) AS teren
     advanced: {}
   - id: "landcover"
     name: "landcover"
