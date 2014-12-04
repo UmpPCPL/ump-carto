@@ -36,7 +36,7 @@
       text-wrap-width: @standard-wrap-width;
       text-placement: interior;
       text-allow-overlap: false;
-    [zoom >=18] {text-allow-overlap: true;}
+    [zoom >=19] {text-allow-overlap: true;}
  }
 
 } // of .poi-jedzenie-tekst

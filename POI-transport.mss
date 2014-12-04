@@ -21,23 +21,21 @@
 } // of .points
 
 
-//.text {
-// text-name: "[name]";
-// text-fill: @transportation-text;
-// text-face-name: @book-fonts;
-// text-halo-radius: 1;
-// text-wrap-width: @standard-wrap-width;
-// text-placement: interior; //allow overlap = false
-// // żeby nic nie wyświetlało jeśli nie jest zdefiniowane niżej
-// text-size: 0;
-
+.poi-transport-tekst {
+ [zoom >= 17] {
+      text-name: "[name]";
+      text-fill: @transportation-text;
+      text-size: 10;
+      text-dy: 11;
+      text-face-name: @book-fonts;
+      text-halo-radius: 1;
+      text-wrap-width: @standard-wrap-width;
+      text-placement: interior;
+      text-allow-overlap: false;
+    [zoom >=19] {text-allow-overlap: true;}
 //    [feature = 'amenity_car_rental'][zoom >= 17] { text-size: 9; text-dy: 13; }
-//    [ump_typ='METRO'][zoom>=17] {text-size: 12; text-dy: -50; }
+    [ump_typ='METRO'][zoom>=17] {text-size: 12; text-dy: -50; }
+    [ump_typ='BILETOMAT'][zoom >= 18] { text-size: 8; text-fill: #da0092; text-dy: 14; }
+ }
 
-//    [ump_typ='BILETOMAT'][zoom >= 18] {
-//    text-size: 8;
-//    text-fill: #da0092;
-//    text-dy: 14;
-// }
-
-//}
+} // of .poi-transport-tekst
