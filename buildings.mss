@@ -13,10 +13,10 @@
     }
 
     [building = 'supermarket'] {
-      polygon-fill: lighten(@supermarket, 1%);
+      polygon-fill: lighten(@supermarket, 5%);
       polygon-opacity: 0.9;
 //      polygon-clip: false;
-      building-height: 40; //px
+      building-height: 10; //px
       building-fill-opacity: 0.5; // 0.1 ledwo go widać, całość
       building-fill: @supermarket; // ściany
     }
@@ -38,17 +38,17 @@
 #buildings {
   [building = 'INT-light'][zoom >= 12] {
     polygon-fill: @building;
-    polygon-opacity: 0.7;
+    polygon-opacity: 0.8;
     polygon-clip: false;
   }
   [building != 'INT-light'][building != ''][zoom >= 12] {
-    polygon-fill: lighten(@building,30%);
-    polygon-opacity: 0.3;
+    polygon-fill: lighten(@building,70%);
+    polygon-opacity: 0.7;
     polygon-clip: false;
 //UMP
-      building-height: 25; //px
-      building-fill-opacity:1;
-      building-fill: @building; // end UMP
+      building-height: 15; //px
+      building-fill-opacity:0.8;
+      building-fill: lighten(@building,10%); // 0% to ciemniej
     [zoom >= 16] {
       line-color:transparent; // saturate(darken(@building, 50%), 10%);
       line-width: 0.2;

@@ -18,7 +18,7 @@
 
 @residential: #E1E1E1;      // Lch(89,0,0)
 @residential-line: #B9B9B9; // Lch(75,0,0)
-@retail: #FFD6D1;           // Lch(89,16,30)
+@retail: #F4D4D6;           // Lch(89,16,30)
 @retail-line: #D99C95;      // Lch(70,25,30)
 @commercial: #F2DAD9;       // Lch(89,8.5,25)
 @commercial-line: #D1B2B0;  // Lch(75,12,25)
@@ -95,11 +95,20 @@
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
-  [garmin_type = '0x8'][zoom >= 10] {   //sklep
-    polygon-fill: red;
+  [garmin_type = '0x8'][zoom >= 10] {   //sklepy
+    polygon-fill: @retail;
+    [zoom >= 16] {
+      line-width: 0.5;
+      line-color: @retail-line;
+      [name != ''] {
+        line-width: 0.7;
+      }
+      [way_pixels >= 4]  { polygon-gamma: 0.75; }
+      [way_pixels >= 64] { polygon-gamma: 0.3;  }
+    }
   }
   [garmin_type = '0x9'][zoom >= 10] {   //marina port
-    polygon-fill: red;
+    polygon-fill: red; // #DED0D5
   }
   [garmin_type = '0xa']{                //szkola
     [zoom >= 10] {
@@ -361,18 +370,6 @@
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
 
-  [feature = 'landuse_retail'][zoom >= 10] {
-    polygon-fill: @retail;
-    [zoom >= 16] {
-      line-width: 0.5;
-      line-color: @retail-line;
-      [name != ''] {
-        line-width: 0.7;
-      }
-      [way_pixels >= 4]  { polygon-gamma: 0.75; }
-      [way_pixels >= 64] { polygon-gamma: 0.3;  }
-    }
-  }
 
   [feature = 'landuse_industrial'][zoom >= 10] {
     polygon-fill: @industrial;
