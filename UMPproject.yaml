@@ -46,7 +46,8 @@ Stylesheet:
   - "power.mss"
   - "citywalls.mss"
   - "placenames.mss"
-  - "buildings.mss"
+  - "UMP-budynki.mss"
+  #- "buildings.mss"
   - "POI-atrakcje.mss"
   #- "POI-infra.mss"
   - "POI-jedzenie.mss"
@@ -113,64 +114,14 @@ Layer:
             way, name, way_area/(!pixel_width!*!pixel_height!) AS way_pixels, "ump:type" AS garmin_type
             FROM planet_osm_polygon
             WHERE (
-              "ump:type" IN ( '0x4', '0x5', '0x6','0x7','0x8','0x9','0xa','0xb','0xc','0xd', '0xe')
-              OR "ump:type" IN ( '0x14', '0x15')
+              "ump:type" IN ( '0x1', '0x2', '0x3','0x5','0x9','0xc','0xd','0xe','0x20')
+              OR ( "ump:type" BETWEEN  '0x14' AND '0x18' )
+              OR ( "ump:type" BETWEEN  '0x1a' AND '0x1f' )
+              OR ( "ump:type" BETWEEN  '0x4e' AND '0x4f' )
+              OR ( "ump:type" BETWEEN  '0x51' AND '0x53' )
               ) AND way_area/(!pixel_width!*!pixel_height!) > 0.01
             ORDER BY z_order, way_area DESC
           ) AS teren
-    advanced: {}
-  - id: "landcover"
-    name: "landcover"
-    class: ""
-    geometry: "polygon"
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |-
-        (SELECT
-            way, name, religion, way_pixels,
-            COALESCE(aeroway, amenity, landuse, leisure, military, "natural", power, tourism, highway) AS feature
-          FROM (SELECT
-              way, COALESCE(name, '') AS name,
-              ('aeroway_' || (CASE WHEN aeroway IN ('apron', 'aerodrome') THEN aeroway ELSE NULL END)) AS aeroway,
-              ('amenity_' || (CASE WHEN amenity IN ('parking', 'university', 'college', 'school', 'hospital', 'kindergarten', 'grave_yard') THEN amenity ELSE NULL END)) AS amenity,
-              ('landuse_' || (CASE WHEN landuse IN ('quarry', 'vineyard', 'orchard', 'cemetery', 'residential', 'garages', 'field', 'meadow', 'grass', 'allotments', 'forest', 'farmyard', 'farm', 'farmland', 'recreation_ground', 'conservation', 'village_green', 'retail', 'industrial', 'railway', 'commercial', 'brownfield', 'landfill', 'construction') THEN landuse ELSE NULL END)) AS landuse,
-              ('leisure_' || (CASE WHEN leisure IN ('swimming_pool', 'playground', 'park', 'recreation_ground', 'common', 'garden', 'golf_course', 'picnic_table', 'sports_centre', 'stadium', 'pitch', 'track') THEN leisure ELSE NULL END)) AS leisure,
-              ('military_' || (CASE WHEN military IN ('barracks', 'danger_area') THEN military ELSE NULL END)) AS military,
-              ('natural_' || (CASE WHEN "natural" IN ('beach', 'desert', 'heath', 'mud', 'grassland', 'wood', 'sand', 'scrub') THEN "natural" ELSE NULL END)) AS "natural",
-              ('power_' || (CASE WHEN power IN ('station', 'sub_station', 'substation', 'generator') THEN power ELSE NULL END)) AS power,
-              ('tourism_' || (CASE WHEN tourism IN ('attraction', 'camp_site', 'caravan_site', 'picnic_site', 'zoo') THEN tourism ELSE NULL END)) AS tourism,
-              ('highway_' || (CASE WHEN highway IN ('services', 'rest_area') THEN highway ELSE NULL END)) AS highway,
-              CASE WHEN religion IN ('christian', 'jewish') THEN religion ELSE 'INT-generic'::text END AS religion,
-              way_area/(!pixel_width!*!pixel_height!) AS way_pixels
-            FROM planet_osm_polygon
-            WHERE (landuse IS NOT NULL
-              OR leisure IS NOT NULL
-              OR aeroway IN ('apron', 'aerodrome')
-              OR amenity IN ('parking', 'university', 'college', 'school', 'hospital', 'kindergarten', 'grave_yard')
-              OR military IN ('barracks', 'danger_area')
-              OR "natural" IN ('beach', 'desert', 'heath', 'mud', 'grassland', 'wood', 'sand', 'scrub')
-              OR power IN ('station', 'sub_station', 'substation', 'generator')
-              OR tourism IN ('attraction', 'camp_site', 'caravan_site', 'picnic_site', 'zoo')
-              OR highway IN ('services', 'rest_area'))
-              AND way_area/(!pixel_width!*!pixel_height!) > 0.01
-            ORDER BY z_order, way_area DESC
-          ) AS landcover
-        ) AS features
-    advanced: {}
-  - id: "landcover-line"
-    name: "landcover-line"
-    class: ""
-    geometry: "linestring"
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |-
-        (SELECT
-            way
-          FROM planet_osm_line
-          WHERE man_made = 'cutline'
-        ) AS landcover_line
     advanced: {}
   - id: "water-lines-casing"
     name: "water-lines-casing"
@@ -220,21 +171,6 @@ Layer:
           ORDER BY z_order, way_area DESC
         ) AS water_areas
     advanced: {}
-  - id: "water-areas-overlay"
-    name: "water-areas-overlay"
-    class: ""
-    geometry: "polygon"
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |-
-        (SELECT
-            way, "natural"
-          FROM planet_osm_polygon
-          WHERE "natural" IN ('marsh', 'wetland') AND building IS NULL
-          ORDER BY z_order, way_area DESC
-        ) AS water_areas_overlay
-    advanced: {}
   - id: "water-lines"
     name: "water-lines"
     class: "water-lines"
@@ -252,47 +188,6 @@ Layer:
             AND (bridge IS NULL OR bridge NOT IN ('yes', 'aqueduct'))
           ORDER BY z_order
         ) AS water_lines
-    advanced: {}
-  - id: "dam"
-    name: "dam"
-    class: ""
-    geometry: "linestring"
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |-
-        (SELECT way, name
-          FROM planet_osm_line
-          WHERE waterway = 'dam'
-        ) AS dam
-    advanced: {}
-  - id: "marinas-area"
-    name: "marinas-area"
-    class: ""
-    geometry: "polygon"
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |-
-        (SELECT
-            way
-          FROM planet_osm_polygon
-          WHERE leisure = 'marina'
-        ) AS marinas_area
-    advanced: {}
-  - id: "piers-area"
-    name: "piers-area"
-    class: ""
-    geometry: "polygon"
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |-
-        (SELECT
-            way, man_made
-          FROM planet_osm_polygon
-          WHERE man_made IN ('pier', 'breakwater', 'groyne')
-        ) AS piers_area
     advanced: {}
   - id: "piers"
     name: "piers"
@@ -321,45 +216,6 @@ Layer:
           FROM planet_osm_point
           WHERE waterway = 'lock_gate'
         ) AS locks
-    advanced: {}
-  - id: "buildings-lz"
-    name: "buildings-lz"
-    class: ""
-    geometry: "polygon"
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |-
-        (SELECT
-            way, building, railway, amenity FROM planet_osm_polygon
-          WHERE railway = 'station'
-            OR building IN ('station', 'supermarket')
-            OR amenity = 'place_of_worship'
-          ORDER BY z_order, way_area DESC
-        ) AS buildings_lz
-    advanced: {}
-  - id: "buildings"
-    name: "buildings"
-    class: ""
-    geometry: "polygon"
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |-
-        (SELECT
-            way, aeroway,
-          CASE
-           WHEN building IN ('garage', 'roof', 'garages', 'service', 'shed', 'shelter', 'cabin', 'storage_tank', 'tank', 'support', 'glasshouse', 'greenhouse', 'mobile_home', 'kiosk', 'silo', 'canopy', 'tent') THEN 'INT-light'::text
-           ELSE building
-          END AS building
-          FROM planet_osm_polygon
-          WHERE (building IS NOT NULL
-              AND building NOT IN ('no', 'station', 'supermarket', 'planned')
-              AND (railway IS NULL OR railway != 'station')
-              AND (amenity IS NULL OR amenity != 'place_of_worship'))
-            OR aeroway = 'terminal'
-          ORDER BY z_order, way_area DESC
-        ) AS buildings
     advanced: {}
   - id: "tunnels"
     name: "tunnels"
@@ -588,35 +444,6 @@ Layer:
           FROM planet_osm_line
           WHERE route = 'ferry'
         ) AS ferry_routes
-    advanced: {}
-  - id: "turning-circle-casing"
-    name: "turning-circle-casing"
-    class: ""
-    geometry: "point"
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |-
-        (SELECT DISTINCT ON (p.way)
-            p.way AS way, l.highway AS int_tc_type,
-            CASE WHEN l.service IN ('parking_aisle', 'drive-through', 'driveway')
-              THEN 'INT-minor'::text
-              ELSE 'INT-normal'::text
-            END AS int_tc_service
-          FROM planet_osm_point p
-            JOIN planet_osm_line l ON ST_DWithin(p.way, l.way, 0.1) -- Assumes Mercator
-            JOIN (VALUES
-              ('tertiary', 1),
-              ('unclassified', 2),
-              ('residential', 3),
-              ('living_street', 4),
-              ('service', 5)
-              ) AS v (highway, prio)
-              ON v.highway=l.highway
-          WHERE p.highway = 'turning_circle'
-            OR p.highway = 'turning_loop'
-          ORDER BY p.way, v.prio
-        ) AS turning_circle_casing
     advanced: {}
   - id: "highway-area-casing"
     name: "highway-area-casing"
@@ -924,6 +751,22 @@ Layer:
       <<: *osm2pgsql
       table: |2-
         (SELECT way, waterway, name, CASE WHEN tunnel IN ('yes', 'culvert') THEN 'yes' ELSE 'no' END AS int_tunnel, 'yes' AS bridge FROM planet_osm_line WHERE waterway IN ('river', 'canal', 'derelict_canal', 'stream', 'drain', 'ditch', 'wadi') AND bridge IN ('yes', 'aqueduct') ORDER BY z_order) AS waterway_bridges
+    advanced: {}
+  - id: "budynki"
+    name: "budynki"
+    class: ""
+    geometry: "polygon"
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |-
+        (SELECT
+            way, name, way_area/(!pixel_width!*!pixel_height!) AS way_pixels, "ump:type" AS garmin_type
+            FROM planet_osm_polygon
+            WHERE 
+              "ump:type" IN ( '0x4', '0x6', '0x7','0x8','0xa','0xb','0x13','0x19')
+            ORDER BY z_order, way_area DESC
+          ) AS budynki
     advanced: {}
   - id: "bridges"
     name: "bridges"

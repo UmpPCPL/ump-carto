@@ -4,7 +4,7 @@
 @placeOfWorship: #777;
 @terminal: #cc99ff;
 
-#buildings-lz {
+#Ubuildings-lz {
   [zoom >= 10] {
     [railway = 'station']::railway,
     [building = 'station'] {
@@ -35,7 +35,7 @@
   }
 }
 
-#buildings {
+#Ubuildings {
   [building = 'INT-light'][zoom >= 12] {
     polygon-fill: @building;
     polygon-opacity: 0.8;

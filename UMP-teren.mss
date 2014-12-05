@@ -63,19 +63,46 @@
 @beach: #fff1ba;
 
 #teren {
-  [garmin_type = '0x4'] {              //baza wojskowa
-    [zoom >= 9][zoom < 11] {
-      polygon-fill: @danger_area;
-      polygon-opacity: 0.3;
-      [way_pixels >= 4]  { polygon-gamma: 0.75; }
-      [way_pixels >= 64] { polygon-gamma: 0.3;  }
+  [garmin_type = '0x1'][zoom >= 9][zoom <=14 ] {   //miasto duże
+    polygon-fill: @residential;
+    [zoom >= 16] {
+      line-width: .5;
+      line-color: @residential-line;
+      [name != ''] {
+        line-width: 0.7;
+      }
     }
-    [zoom >= 11] {
-      polygon-pattern-file: url('symbols/danger.png');
-      [way_pixels >= 4]  { polygon-pattern-gamma: 0.75; }
-      [way_pixels >= 64] { polygon-pattern-gamma: 0.3;  }
-    }
+    [way_pixels >= 4]  { polygon-gamma: 0.75; }
+    [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
+
+  [garmin_type = '0x2'][zoom >= 10][zoom <=14 ] {   //miasto małe
+    polygon-fill: @residential;
+    [zoom >= 16] {
+      line-width: .5;
+      line-color: @residential-line;
+      [name != ''] {
+        line-width: 0.7;
+      }
+    }
+    [way_pixels >= 4]  { polygon-gamma: 0.75; }
+    [way_pixels >= 64] { polygon-gamma: 0.3;  }
+  }
+
+  [garmin_type = '0x3'][zoom >= 11][zoom <=14 ] {   //wioska
+    polygon-fill: @residential;
+    [zoom >= 16] {
+      line-width: .5;
+      line-color: @residential-line;
+      [name != ''] {
+        line-width: 0.7;
+      }
+    }
+    [way_pixels >= 4]  { polygon-gamma: 0.75; }
+    [way_pixels >= 64] { polygon-gamma: 0.3;  }
+  }
+
+
   [garmin_type = '0x5'][zoom >= 10] {   //parking
     polygon-fill: @parking;
     [zoom >= 15] {
@@ -85,53 +112,55 @@
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
-  [garmin_type = '0x6'][zoom >= 10] {   //parking kryty garaz
-    polygon-fill: red;
+
+  [garmin_type = '0x9'][zoom >= 10] {   //marina port
+    polygon-fill: red; 
   }
-  [garmin_type = '0x7'][zoom >= 10] {   //terminal lotniczy
-    polygon-fill: @aerodrome;
-    line-width: 0.2;
-    line-color: saturate(darken(@aerodrome, 40%), 20%);
-    [way_pixels >= 4]  { polygon-gamma: 0.75; }
-    [way_pixels >= 64] { polygon-gamma: 0.3;  }
-  }
-  [garmin_type = '0x8'][zoom >= 10] {   //sklepy
-    polygon-fill: @retail;
+  
+  [garmin_type = '0xc'][zoom >= 10] {  //industrial area
+    polygon-fill: @industrial;
     [zoom >= 16] {
-      line-width: 0.5;
-      line-color: @retail-line;
+      line-width: .5;
+      line-color: @industrial-line;
       [name != ''] {
         line-width: 0.7;
       }
+    }
+    [way_pixels >= 4]  { polygon-gamma: 0.75; }
+    [way_pixels >= 64] { polygon-gamma: 0.3;  }
+  }
+
+  [garmin_type = '0xd'][zoom >= 10] {   //reservation
+    polygon-fill: red; 
+  }
+
+  [garmin_type = '0xe'][zoom >= 10] {   //lotnisko 
+    polygon-fill: @apron;
+    [way_pixels >= 4]  { polygon-gamma: 0.75; }
+    [way_pixels >= 64] { polygon-gamma: 0.3;  }
+  }
+
+  [garmin_type = '0x14'],
+  [garmin_type = '0x15'],
+  [garmin_type = '0x16'] {
+    [zoom >= 8] {
+      polygon-fill: @forest;
       [way_pixels >= 4]  { polygon-gamma: 0.75; }
       [way_pixels >= 64] { polygon-gamma: 0.3;  }
     }
+    [zoom >= 14] {
+      polygon-pattern-file: url('symbols/forest.png');
+      [way_pixels >= 4]  { polygon-pattern-gamma: 0.75; }
+      [way_pixels >= 64] { polygon-pattern-gamma: 0.3;  }
+    }
+
   }
-  [garmin_type = '0x9'][zoom >= 10] {   //marina port
-    polygon-fill: red; // #DED0D5
-  }
-  [garmin_type = '0xa']{                //szkola
-    [zoom >= 10] {
-      polygon-fill: @school;
-      [zoom >= 12] {
-        line-width: 0.3;
-        line-color: brown;
-      }
-      [way_pixels >= 4]  { polygon-gamma: 0.75; }
-      [way_pixels >= 64] { polygon-gamma: 0.3;  }
+  [garmin_type = '0x51'] {
+    [zoom >= 13] {
+      polygon-pattern-file: url('symbols/marsh.png');
     }
   }
-  [garmin_type = '0xb'] {              //szpital
-    [zoom >= 10] {
-      polygon-fill: @hospital;
-      [zoom >= 12] {
-        line-width: 0.3;
-        line-color: brown;
-      }
-      [way_pixels >= 4]  { polygon-gamma: 0.75; }
-      [way_pixels >= 64] { polygon-gamma: 0.3;  }
-    }
-  }
+
 }
 
 #Ulandcover {
@@ -219,18 +248,6 @@
     }
   }
 
-  [feature = 'landuse_residential'][zoom >= 10] {
-    polygon-fill: @residential;
-    [zoom >= 16] {
-      line-width: .5;
-      line-color: @residential-line;
-      [name != ''] {
-        line-width: 0.7;
-      }
-    }
-    [way_pixels >= 4]  { polygon-gamma: 0.75; }
-    [way_pixels >= 64] { polygon-gamma: 0.3;  }
-  }
 
   [feature = 'landuse_garages'][zoom >= 13] {
     polygon-fill: @garages;
@@ -315,19 +332,6 @@
     }
   }
 
-  [feature = 'landuse_forest'] {
-    [zoom >= 8] {
-      polygon-fill: @forest;
-      [way_pixels >= 4]  { polygon-gamma: 0.75; }
-      [way_pixels >= 64] { polygon-gamma: 0.3;  }
-    }
-    [zoom >= 14] {
-      polygon-pattern-file: url('symbols/forest.png');
-      [way_pixels >= 4]  { polygon-pattern-gamma: 0.75; }
-      [way_pixels >= 64] { polygon-pattern-gamma: 0.3;  }
-    }
-
-  }
 
   [feature = 'landuse_farmyard'][zoom >= 10] {
     polygon-fill: @farmyard;
@@ -370,19 +374,6 @@
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
 
-
-  [feature = 'landuse_industrial'][zoom >= 10] {
-    polygon-fill: @industrial;
-    [zoom >= 16] {
-      line-width: .5;
-      line-color: @industrial-line;
-      [name != ''] {
-        line-width: 0.7;
-      }
-    }
-    [way_pixels >= 4]  { polygon-gamma: 0.75; }
-    [way_pixels >= 64] { polygon-gamma: 0.3;  }
-  }
 
   [feature = 'landuse_railway'][zoom >= 10] {
     polygon-fill: @railway;
@@ -477,11 +468,6 @@
 
 
 
-  [feature = 'aeroway_apron'][zoom >= 10] {
-    polygon-fill: @apron;
-    [way_pixels >= 4]  { polygon-gamma: 0.75; }
-    [way_pixels >= 64] { polygon-gamma: 0.3;  }
-  }
 
 
   [feature = 'natural_beach'][zoom >= 10] {
@@ -591,14 +577,6 @@
   }
 }
 
-#Utree-row {
-  [natural = 'tree_row'][zoom >= 16] {
-    line-pattern-file: url('symbols/tree_row.png');
-    [zoom >= 17] {
-      line-pattern-file: url('symbols/tree_row2.png');
-    }
-  }
-}
 
 #Utheme-park {
   [tourism = 'theme_park'][zoom >= 13] {
