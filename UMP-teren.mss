@@ -155,6 +155,10 @@
     }
 
   }
+  [garmin_type = '0x1a'][zoom >= 13] {   //cemetery
+    polygon-fill: @cemetery;
+  }
+
   [garmin_type = '0x51'] {
     [zoom >= 13] {
       polygon-pattern-file: url('symbols/marsh.png');
