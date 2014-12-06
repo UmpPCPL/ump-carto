@@ -1217,7 +1217,7 @@ Layer:
       table: |2-
         (SELECT way, "ump:typ" AS ump_typ, "ump:type" AS garmin_typ
               FROM planet_osm_point
-              WHERE "ump:type" BETWEEN '0x6000' AND '0x6620')
+              WHERE "ump:type" BETWEEN '0x6000' AND '0x6620'
          ) AS poi_teren_point
     advanced: {}
   - id: "amenity-points-poly"
@@ -1530,7 +1530,7 @@ Layer:
       table: |2-
         (SELECT way, "ump:typ" AS ump_typ, name, "ump:type" AS garmin_typ
               FROM planet_osm_point
-              WHERE "ump:type" BETWEEN '0x6000' AND '0x6620')
+              WHERE "ump:type" BETWEEN '0x6000' AND '0x6620'
          ) AS poi_teren_tekst
     advanced: {}
   - id: "text"
