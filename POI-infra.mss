@@ -1,4 +1,4 @@
-.points {
+.poi-infra {
 
  [ump_typ='BUNKIER'][zoom >= 17] {point-file: url('symbols_ump/6100_Bunker_Schron_day.png');}
 // 6100_House_Dom_day.png
@@ -25,9 +25,9 @@
  [ump_typ='FORT'][zoom >= 17] {point-file: url('symbols_ump/6415_Fort_Fort_day.png');}
 // [ump_typ='B&B'][zoom >= 17] {point-file: url('symbols_ump/6415_Ghost-City_Strachy-na-lachy_day.png');}
 
-} // of .points
+} 
 
-.text {
+.poi-infra-tekst {
  [zoom >= 17] {
       text-name: "[name]";
       text-fill: #734a08;

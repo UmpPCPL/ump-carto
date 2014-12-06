@@ -1,4 +1,4 @@
-.points {
+.poi-morze {
  [zoom >= 17] {
  [ump_typ='STAWA'] {point-file: url('symbols_ump/1606_Beacon_Stawa_day.png');}
  [ump_typ='BEZP_WODA'] {point-file: url('symbols_ump/1607_Safe-water_Bezpieczna-woda_day.png');}
@@ -33,3 +33,19 @@
  [ump_typ='GLAZ'] {point-file: url('symbols_ump/1c0a_Underwater-rock_Glaz-podwodny_day.png');}
  }
 }
+.poi-morze-tekst {
+ [zoom >= 17] {
+      text-name: "[name]";
+      text-fill: #734a08;
+      text-size: 10;
+      text-dy: 11;
+      text-face-name: @book-fonts;
+      text-halo-radius: 1;
+      text-wrap-width: @standard-wrap-width;
+      text-placement: interior;
+      text-allow-overlap: false;
+    [zoom >=19] {text-allow-overlap: true;}
+ }
+
+} // of .text
+
