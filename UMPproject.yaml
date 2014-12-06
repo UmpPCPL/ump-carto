@@ -417,20 +417,6 @@ Layer:
           WHERE barrier IS NOT NULL
         ) AS area_barriers
     advanced: {}
-  - id: "tree-row"
-    name: "tree-row"
-    class: ""
-    geometry: "linestring"
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |-
-        (SELECT
-            way,"natural"
-          FROM planet_osm_line
-          WHERE "natural" = 'tree_row'
-        ) AS tree_row
-    advanced: {}
   - id: "ferry-routes"
     name: "ferry-routes"
     class: ""
@@ -1044,20 +1030,6 @@ Layer:
                  OR aerialway = 'station'
               ) AS stations
     advanced: {}
-  - id: "stations-poly"
-    name: "stations-poly"
-    class: "stations"
-    geometry: "polygon"
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |2-
-              (SELECT way, name, railway, aerialway, disused
-              FROM planet_osm_polygon
-              WHERE railway IN ('station', 'halt', 'tram_stop')
-                 OR aerialway = 'station'
-              ) AS stations_poly
-    advanced: {}
   - id: "amenity-symbols"
     name: "amenity-symbols"
     class: "symbols"
@@ -1073,22 +1045,6 @@ Layer:
                  OR (power = 'generator' AND ("generator:source" = 'wind' OR power_source = 'wind'))
                  OR "natural" IN ('peak', 'volcano', 'spring', 'tree', 'cave_entrance')
               ) AS amenity_symbols
-    advanced: {}
-  - id: "amenity-symbols-poly"
-    name: "amenity-symbols-poly"
-    class: "symbols"
-    geometry: "polygon"
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |2-
-        (SELECT *
-              FROM planet_osm_polygon
-              WHERE aeroway IN ('aerodrome', 'helipad')
-                 OR man_made IN ('lighthouse', 'power_wind', 'windmill', 'mast')
-                 OR (power = 'generator' AND ("generator:source" = 'wind' OR power_source = 'wind'))
-                 OR "natural" IN ('peak', 'volcano', 'spring', 'tree')
-              ) AS amenity_symbols_poly
     advanced: {}
   - id: "poi-jedzenie-point"
     name: "poi-jedzenie-point"
@@ -1220,25 +1176,49 @@ Layer:
               WHERE "ump:type" BETWEEN '0x6000' AND '0x6620'
          ) AS poi_teren_point
     advanced: {}
-  - id: "amenity-points-poly"
-    name: "amenity-points-poly"
-    class: "points"
-    geometry: "polygon"
+  - id: "poi-infra-point"
+    name: "poi-infra-point"
+    class: "poi-infra"
+    geometry: "point"
     <<: *extents
     Datasource:
       <<: *osm2pgsql
       table: |2-
-        (SELECT way, COALESCE('aeroway_' || aeroway, 'shop_' || CASE WHEN shop IN ('supermarket', 'bakery', 'butcher', 'clothes', 'fashion', 'convenience', 'department_store', 'doityourself', 'florist', 'hairdresser', 'car', 'car_repair', 'bicycle', 'mall') THEN shop WHEN NOT shop IS NULL THEN 'other' ELSE NULL END, 'amenity_' || amenity, 'leisure_' || leisure, 'landuse_' || landuse, 'man_made_' || man_made, 'natural_' || "natural", 'place_' || place, 'tourism_' || tourism, 'military_' || military, 'waterway_' || waterway, 'historic_' || historic, 'lock_' || lock, 'highway_' || highway) AS feature, access, religion, denomination, "ump:typ" AS ump_typ, name, "ump:type" AS garmin_typ
-              FROM planet_osm_polygon
-              WHERE amenity IS NOT NULL
-                 OR shop IN ('accessories', 'alcohol', 'antique', 'antiques', 'appliance', 'art', 'baby_goods', 'bag', 'bags', 'bakery', 'bathroom_furnishing', 'beauty', 'bed', 'betting', 'beverages', 'bicycle', 'boat', 'bookmaker', 'books', 'boutique', 'builder', 'building_materials', 'butcher', 'camera', 'car', 'car_parts', 'car_repair', 'car_service', 'carpet', 'charity', 'cheese', 'chemist', 'chocolate', 'clothes', 'coffee', 'communication', 'computer', 'confectionery', 'convenience', 'copyshop', 'cosmetics', 'craft', 'curtain', 'dairy', 'deli', 'delicatessen', 'department_store', 'discount', 'dive', 'doityourself', 'dry_cleaning', 'e-cigarette', 'electrical', 'electronics', 'energy', 'erotic', 'estate_agent', 'fabric', 'farm', 'fashion', 'fish', 'fishing', 'fishmonger', 'flooring', 'florist', 'food', 'frame', 'frozen_food', 'funeral_directors', 'furnace', 'furniture', 'gallery', 'gambling', 'games', 'garden_centre', 'gas', 'general', 'gift', 'glaziery', 'greengrocer', 'grocery', 'hairdresser', 'hardware', 'health', 'health_food', 'hearing_aids', 'herbalist', 'hifi', 'hobby', 'household', 'houseware', 'hunting', 'ice_cream', 'insurance', 'interior_decoration', 'jewellery', 'jewelry', 'kiosk', 'kitchen', 'laundry', 'leather', 'lighting', 'locksmith', 'lottery', 'mall', 'market', 'massage', 'medical', 'medical_supply', 'mobile_phone', 'money_lender', 'motorcycle', 'motorcycle_repair', 'music', 'musical_instrument', 'newsagent', 'office_supplies', 'optician', 'organic', 'outdoor', 'paint', 'pastry', 'pawnbroker', 'perfumery', 'pet', 'pets', 'pharmacy', 'phone', 'photo', 'photo_studio', 'photography', 'pottery', 'printing', 'radiotechnics', 'real_estate', 'religion', 'rental', 'salon', 'scuba_diving', 'seafood', 'second_hand', 'sewing', 'shoe_repair', 'shoes', 'shopping_centre', 'solarium', 'souvenir', 'sports', 'stationery', 'supermarket', 'tailor', 'tanning', 'tattoo', 'tea', 'ticket', 'tiles', 'tobacco', 'toys', 'trade', 'travel_agency', 'tyres', 'vacuum_cleaner', 'variety_store', 'video', 'video_games', 'watches', 'wholesale', 'wine', 'winery', 'yes')
-                 OR tourism IN ('alpine_hut', 'camp_site', 'picnic_site', 'caravan_site', 'guest_house', 'hostel', 'hotel', 'motel', 'museum', 'viewpoint', 'information', 'chalet')
-                 OR highway IN ('bus_stop', 'traffic_signals')
-                 OR "ump:type" IN ('0x2855')
-                 OR man_made IN ('mast', 'water_tower')
-                 OR historic IN ('memorial', 'archaeological_site')
-                 OR leisure IN ('playground', 'picnic_table')
-         ORDER BY way_area desc      ) AS amenity_points_poly
+        (SELECT way, "ump:typ" AS ump_typ, "ump:type" AS garmin_typ
+              FROM planet_osm_point
+              WHERE ("ump:type" BETWEEN '0x4000' AND '0x5fff')
+              OR "ump:type" IN ('0x1300')
+         ) AS poi_infra_point
+    advanced: {}
+  - id: "poi-inne-point"
+    name: "poi-inne-point"
+    class: "poi-inne"
+    geometry: "point"
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |2-
+        (SELECT way, "ump:typ" AS ump_typ, "ump:type" AS garmin_typ
+              FROM planet_osm_point
+              WHERE "ump:type" IN ('0x1605')
+              OR ("ump:type" BETWEEN '0x1708' AND '0x1712')
+              OR ("ump:type" BETWEEN '0x1f00' AND '0x2800')
+              OR ("ump:type" BETWEEN '0x6701' AND '0x670b')
+         ) AS poi_inne_point
+    advanced: {}
+  - id: "poi-morze-point"
+    name: "poi-morze-point"
+    class: "poi-morze"
+    geometry: "point"
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |2-
+        (SELECT way, "ump:typ" AS ump_typ, "ump:type" AS garmin_typ
+              FROM planet_osm_point
+              WHERE ("ump:type" BETWEEN '0x1606' AND '0x160d')
+              OR ("ump:type" BETWEEN '0x1806' AND '0x1d00')
+         ) AS poi_morze_point
     advanced: {}
   - id: "amenity-points"
     name: "amenity-points"
@@ -1306,19 +1286,6 @@ Layer:
                 AND ref IS NOT NULL
               ) AS p) AS q
           WHERE height <= 4 AND width <= 8) AS roads_text_ref_low_zoom
-    advanced: {}
-  - id: "junctions"
-    name: "junctions"
-    class: ""
-    geometry: "point"
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |2-
-             (SELECT way, highway, junction, ref, name
-              FROM planet_osm_point
-              WHERE highway = 'motorway_junction' OR highway = 'traffic_signals' OR junction = 'yes'
-             ) AS junctions
     advanced: {}
   - id: "roads-text-ref"
     name: "roads-text-ref"
@@ -1533,6 +1500,50 @@ Layer:
               WHERE "ump:type" BETWEEN '0x6000' AND '0x6620'
          ) AS poi_teren_tekst
     advanced: {}
+  - id: "poi-infra-tekst"
+    name: "poi-infra-tekst"
+    class: "poi-infra-tekst"
+    geometry: "point"
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |2-
+        (SELECT way, "ump:typ" AS ump_typ, name, "ump:type" AS garmin_typ
+              FROM planet_osm_point
+              WHERE ("ump:type" BETWEEN '0x4000' AND '0x5fff')
+              OR "ump:type" IN ('0x1300')
+         ) AS poi_infra_tekst
+    advanced: {}
+  - id: "poi-inne-tekst"
+    name: "poi-inne-tekst"
+    class: "poi-inne-tekst"
+    geometry: "point"
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |2-
+        (SELECT way, "ump:typ" AS ump_typ, name, "ump:type" AS garmin_typ
+              FROM planet_osm_point
+              WHERE "ump:type" IN ('0x1605')
+              OR ("ump:type" BETWEEN '0x1708' AND '0x1712')
+              OR ("ump:type" BETWEEN '0x1f00' AND '0x2800')
+              OR ("ump:type" BETWEEN '0x6701' AND '0x670b')
+         ) AS poi_inne_tekst
+    advanced: {}
+  - id: "poi-morze-tekst"
+    name: "poi-morze-tekst"
+    class: "poi-morze-tekst"
+    geometry: "point"
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |2-
+        (SELECT way, "ump:typ" AS ump_typ, name, "ump:type" AS garmin_typ
+              FROM planet_osm_point
+              WHERE ("ump:type" BETWEEN '0x1606' AND '0x160d')
+              OR ("ump:type" BETWEEN '0x1806' AND '0x1d00')
+         ) AS poi_morze_tekst
+    advanced: {}
   - id: "text"
     name: "text"
     class: "text"
@@ -1649,34 +1660,4 @@ Layer:
       table: |2-
         (SELECT way, name, way_area/(!pixel_width!*!pixel_height!) AS way_pixels
           FROM planet_osm_polygon WHERE "boundary" = 'national_park' OR leisure = 'nature_reserve') AS nature_reserve_text
-    advanced: {}
-  - id: "amenity-low-priority"
-    name: "amenity-low-priority"
-    class: "amenity-low-priority"
-    geometry: "point"
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |2-
-        (SELECT *
-              FROM planet_osm_point
-              WHERE barrier IN ('bollard', 'gate', 'lift_gate', 'block')
-                 OR highway IN ('mini_roundabout')
-                 OR railway = 'level_crossing'
-              ) AS amenity_low_priority
-    advanced: {}
-  - id: "amenity-low-priority-poly"
-    name: "amenity-low-priority-poly"
-    class: "amenity-low-priority"
-    geometry: "polygon"
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |2-
-        (SELECT *
-              FROM planet_osm_polygon
-              WHERE barrier IN ('bollard', 'gate', 'lift_gate', 'block')
-                 OR highway IN ('mini_roundabout')
-                 OR railway = 'level_crossing'
-              ) AS amenity_low_priority_poly
     advanced: {}
