@@ -49,7 +49,7 @@ Stylesheet:
   - "UMP-budynki.mss"
   #- "buildings.mss"
   - "POI-atrakcje.mss"
-  #- "POI-infra.mss"
+  - "POI-infra.mss"
   - "POI-jedzenie.mss"
   - "POI-nocleg.mss"
   - "POI-rozrywka.mss"
