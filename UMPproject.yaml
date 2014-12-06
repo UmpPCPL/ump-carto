@@ -60,6 +60,7 @@ Stylesheet:
   - "POI-znaki.mss"
   - "POI-teren.mss"
   - "POI-morze.mss"
+  - "POI-inne.mss"
   - "stations.mss"
   - "ferry-routes.mss"
   - "aerialways.mss"
@@ -1108,7 +1109,7 @@ Layer:
     Datasource:
       <<: *osm2pgsql
       table: |2-
-        (SELECT way, "ump:typ" AS ump_typ, name, "ump:type" AS garmin_typ
+        (SELECT way, "ump:typ" AS ump_typ, name, "ump:type" AS garmin_typ, "ump:endlevel" as ump_endlevel
               FROM planet_osm_point
               WHERE "ump:type" IN ('0x2f02','0x2f04','0x2f08','0x2f17','0x2f18')
          ) AS poi_transport_point
@@ -1445,7 +1446,7 @@ Layer:
     Datasource:
       <<: *osm2pgsql
       table: |2-
-        (SELECT way, "ump:typ" AS ump_typ, name, "ump:type" AS garmin_typ
+        (SELECT way, "ump:typ" AS ump_typ, name, "ump:type" AS garmin_typ, "ump:endlevel" as ump_endlevel
               FROM planet_osm_point
               WHERE "ump:type" IN ('0x2f02','0x2f04','0x2f08','0x2f17','0x2f18')
          ) AS poi_transport_tekst

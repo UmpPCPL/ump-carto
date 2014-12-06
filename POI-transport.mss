@@ -10,10 +10,16 @@
       [name=~'Veturilo.*'] {point-file: url('symbols_ump/veturilo.png');} // jeśli będzie RENTACAR, to też pokaże
     }
 
-    [garmin_typ = '0x2f04'][zoom >= 10] {
-      point-file: url('symbols_ump/2f04_Airport_Lotnisko_day.png');
-      [ump_typ='RENT_A_BIKE'] { point-file: url('symbols_ump/bicycle.png'); }
-      [name=~'Veturilo.*'] {point-file: url('symbols_ump/veturilo.png');} // jeśli będzie RENTACAR, to też pokaże
+    [garmin_typ = '0x2f04']{
+      [zoom >= 10][ump_endlevel >= 2]  {
+         point-file: url('symbols_ump/2f04_Airport_Lotnisko_day.png');
+      }
+      [zoom >= 14][ump_endlevel = 1]  {
+         point-file: url('symbols_ump/2f04_Airport_Lotnisko_day.png');
+      }
+      [zoom >= 16][ump_endlevel = 0]  {
+         point-file: url('symbols_ump/2f04_Airport_Lotnisko_day.png');
+      }
     }
 
     [garmin_typ = '0x2f08'][zoom >= 17] {
