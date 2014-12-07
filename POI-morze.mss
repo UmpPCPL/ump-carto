@@ -1,8 +1,18 @@
 //    WHERE ("ump:type" BETWEEN '0x1606' AND '0x1707')
 //       OR ("ump:type" BETWEEN '0x1806' AND '0x1d00')
+//./symbols_me/NavaidRed.png
+//./symbols_me/NavaidOrange.png
+//./symbols_me/NavaidViolet.png
+//./symbols_me/NavaidWhite.png
+//./symbols_me/NavaidYellow.png
+//./symbols_me/NavaidMulti.png
+//./symbols_me/Navaid.png
+//./symbols_me/NavaidBlue.png
+//./symbols_me/NavaidGreen.png
+
 
 .poi-morze {
- [zoom >= 17] {
+ [zoom >= 14] {
  [ump_typ='STAWA'] {point-file: url('symbols_ump/1606_Beacon_Stawa_day.png');}
  [ump_typ='BEZP_WODA'] {point-file: url('symbols_ump/1607_Safe-water_Bezpieczna-woda_day.png');}
  [ump_typ='LEWA'] {point-file: url('symbols_ump/1608_Left_Lewa_day.png');}
@@ -11,6 +21,31 @@
  [ump_typ='SPECJALNA'] {point-file: url('symbols_ump/160b_Special_Specjalna_day.png');}
  [ump_typ='KARDYNALNA'] {point-file: url('symbols_ump/160c_Cardinal_Kardynalna_day.png');}
  [ump_typ='INNA'] {point-file: url('symbols_ump/160d_Multicolored_Wielokolorowa_day.png');}
+
+ [ump_typ='BIALE'] { // 0x160f
+     point-file: url('symbols_me/NavaidWhite.png');
+ }
+ [ump_typ='CZERWONE'] { // 0x1610
+     point-file: url('symbols_me/NavaidRed.png');
+ }
+ [ump_typ='ZIELONE'] { // 0x1611
+     point-file: url('symbols_me/NavaidGreen.png');
+ }
+ [ump_typ='ZOLTE'] { // 0x1612
+     point-file: url('symbols_me/NavaidYellow.png');
+ }
+ [ump_typ='POMARANCZOWE'] { // 0x1613
+     point-file: url('symbols_me/NavaidOrange.png');
+ }
+ [ump_typ='FIOLETOWE'] { // 0x1614
+     point-file: url('symbols_me/NavaidViolet.png');
+ }
+ [ump_typ='NIEBIESKIE'] { // 0x1615
+     point-file: url('symbols_me/NavaidBlue.png');
+ }
+ [ump_typ='WIELOBARWNE'] { // 0x1616
+     point-file: url('symbols_me/NavaidMulti.png');
+ }
  [ump_typ='STAWA_R'] {point-file: url('symbols_ump/1806_BeaconR_StawaC_day.png');}
 // [ump_typ=''] {point-file: url('symbols_ump/1808_Right-B_Prawa-B_day.png');}
 // [ump_typ=''] {point-file: url('symbols_ump/1809_Left-B_Lewa-B_day.png');}
@@ -37,7 +72,7 @@
  }
 }
 .poi-morze-tekst {
- [zoom >= 17] {
+ [zoom >= 16] {
       text-name: "[name]";
       text-fill: #734a08;
       text-size: 10;
@@ -47,7 +82,7 @@
       text-wrap-width: @standard-wrap-width;
       text-placement: interior;
       text-allow-overlap: false;
-    [zoom >=19] {text-allow-overlap: true;}
+    [zoom >=17] {text-allow-overlap: true;}
  }
 
 } // of .text
