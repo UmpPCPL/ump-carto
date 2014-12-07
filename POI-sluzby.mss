@@ -1,3 +1,5 @@
+//WHERE "ump:type" BETWEEN '0x3000' AND '0x3009'
+
 .poi-sluzby {
 
 // [ump_typ='EMERGENCY'][zoom >= 17] {point-file: url('symbols_ump/    ');}

@@ -1,3 +1,5 @@
+//WHERE "ump:type" BETWEEN '0x2b00' AND '0x2b07'
+
 .poi-nocleg {
  [zoom >= 17] {
  [ump_typ='SCHRONISKO'], [ump_typ='HOSTEL'], [ump_typ='LODGING'] {point-file: url('symbols_ump/2b00_Lodging_Kwatera_day.png');}

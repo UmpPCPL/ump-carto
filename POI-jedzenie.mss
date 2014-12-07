@@ -1,3 +1,6 @@
+//WHERE "ump:type" BETWEEN '0x2a00' AND '0x2a13'
+
+
 .poi-jedzenie {
 
   [ump_typ='JEDZENIE'][zoom >= 17] {point-file: url('symbols_ump/2a00_Restaurant_Restauracja_day.png');}

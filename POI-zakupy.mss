@@ -1,3 +1,5 @@
+//WHERE "ump:type" BETWEEN '0x2e00' AND '0x2e13'
+
 .poi-zakupy {
  [zoom >= 17 ] {
  [ump_typ='SKLEP'], [ump_typ='KSIEGARNIA'], [ump_typ='SPECIAL'] {point-file: url('symbols_ump/2e00_Shop_Sklep_day.png');}

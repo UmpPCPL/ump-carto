@@ -1,8 +1,10 @@
+//WHERE "ump:type" IN ('0xf201','0x2855')
+
 .poi-znaki {
 
-// garmin_typ = 0xf201
+// ump_typ = SWIATLA
 //
-  [ump_typ = 'SWIATLA'][zoom >= 18] {
+  [garmin_typ = '0xf201'][zoom >= 18] {
     marker-file: url('symbols_ump/f201_trafic-light_sygnalizacja-swietlnab_day.png');
     marker-placement: interior;
   }

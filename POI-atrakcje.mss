@@ -1,3 +1,5 @@
+//WHERE "ump:type" BETWEEN '0x2c00' AND '0x2c13'
+
 .poi-atrakcje {
 
  [ump_typ='ATRAKCJA'],[ump_typ='WIDOK'] {[zoom >= 17] {point-file: url('symbols_me/Culture.png');}}

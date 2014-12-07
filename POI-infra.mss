@@ -1,3 +1,6 @@
+//              WHERE ("ump:type" BETWEEN '0x4000' AND '0x64ff')
+//              OR "ump:type" IN ('0x1300')
+
 .poi-infra {
 
  [ump_typ='BUNKIER'][zoom >= 17] {point-file: url('symbols_ump/6100_Bunker_Schron_day.png');}

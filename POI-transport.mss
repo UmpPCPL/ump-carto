@@ -1,3 +1,5 @@
+//WHERE "ump:type" IN ('0x2f02','0x2f04','0x2f08','0x2f17','0x2f18')
+
 @standard-wrap-width: 30;
 @transportation-text: #000; // carto #0066ff
 

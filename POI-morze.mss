@@ -1,3 +1,6 @@
+//    WHERE ("ump:type" BETWEEN '0x1606' AND '0x1707')
+//       OR ("ump:type" BETWEEN '0x1806' AND '0x1d00')
+
 .poi-morze {
  [zoom >= 17] {
  [ump_typ='STAWA'] {point-file: url('symbols_ump/1606_Beacon_Stawa_day.png');}

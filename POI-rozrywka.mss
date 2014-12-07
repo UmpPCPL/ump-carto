@@ -1,3 +1,5 @@
+//WHERE "ump:type" BETWEEN '0x2d00' AND '0x2d13'
+
 .poi-rozrywka {
 
  [garmin_typ = '0x2d01'] { [zoom >= 17] {point-file: url('symbols_ump/theatre.p.20.png');}}
@@ -12,7 +14,7 @@
  [garmin_typ = '0x2d0a'] {[zoom >= 17] {point-file: url('symbols_ump/2d0a_Sports_Sport_day.png');}}
 // [garmin_typ = '0x2d0b']][zoom >= 17] {point-file: url('symbols_ump/ ');}
 
-} // of .points
+}
 
 
 .poi-rozrywka-tekst {
@@ -29,4 +31,4 @@
     [zoom >=19] {text-allow-overlap: true;}
  }
 
-} // of .poi-rozrywka-tekst
+}

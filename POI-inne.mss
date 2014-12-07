@@ -4,6 +4,8 @@
 //    OR ("ump:type" BETWEEN '0x1f00' AND '0x2800')
 //    OR ("ump:type" BETWEEN '0x6701' AND '0x670b')   
 //
+//// malutkie rowerki bike_black.png bike_blue.png bike_dark_green.png bike_green.png bike_pink.png bike.png bike_red.png bike_yellow.png
+
 
 .poi-inne {
  [garmin_typ = '0x6701'][zoom >= 15] {

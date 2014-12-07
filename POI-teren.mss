@@ -1,3 +1,5 @@
+//WHERE "ump:type" BETWEEN '0x6500' AND '0x6620'
+
 // Cechy wody i ladu
 //6509_Fountain_Fontanna_day.png
 //650f_WC_ToiToi_day.bak.png
