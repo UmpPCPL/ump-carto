@@ -1019,36 +1019,6 @@ Layer:
               WHERE place IN ('suburb', 'village', 'hamlet', 'neighbourhood', 'locality', 'isolated_dwelling', 'farm')
               ) AS placenames_small
     advanced: {}
-  - id: "stations"
-    class: "stations"
-    name: "stations"
-    geometry: "point"
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |2-
-              (SELECT way, name, railway, aerialway, disused
-              FROM planet_osm_point
-              WHERE railway IN ('station', 'halt', 'tram_stop', 'subway_entrance')
-                 OR aerialway = 'station'
-              ) AS stations
-    advanced: {}
-  - id: "amenity-symbols"
-    name: "amenity-symbols"
-    class: "symbols"
-    geometry: "point"
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |2-
-        (SELECT *
-              FROM planet_osm_point
-              WHERE aeroway IN ('aerodrome', 'helipad')
-                 OR man_made IN ('lighthouse', 'power_wind', 'windmill', 'mast')
-                 OR (power = 'generator' AND ("generator:source" = 'wind' OR power_source = 'wind'))
-                 OR "natural" IN ('peak', 'volcano', 'spring', 'tree', 'cave_entrance')
-              ) AS amenity_symbols
-    advanced: {}
   - id: "poi-jedzenie-point"
     name: "poi-jedzenie-point"
     class: "poi-jedzenie"
@@ -1223,48 +1193,6 @@ Layer:
               OR ("ump:type" BETWEEN '0x1806' AND '0x1d00')
          ) AS poi_morze_point
     advanced: {}
-  - id: "amenity-points"
-    name: "amenity-points"
-    class: "points"
-    geometry: "point"
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |2-
-        (SELECT way, COALESCE('aeroway_' || aeroway, 'shop_' || CASE WHEN shop IN ('supermarket', 'bakery', 'butcher', 'clothes', 'fashion', 'convenience', 'department_store', 'doityourself', 'florist', 'hairdresser', 'car', 'car_repair', 'bicycle', 'mall') THEN shop WHEN NOT shop IS NULL THEN 'other' ELSE NULL END, 'amenity_' || amenity, 'leisure_' || leisure, 'landuse_' || landuse, 'man_made_' || man_made, 'natural_' || "natural", 'place_' || place, 'tourism_' || tourism, 'military_' || military, 'waterway_' || waterway, 'historic_' || historic, 'lock_' || lock, 'highway_' || highway) AS feature, access, religion, denomination, "ump:typ" AS ump_typ, name, "ump:type" AS garmin_typ
-              FROM planet_osm_point
-              WHERE shop IN ('accessories', 'alcohol', 'antique', 'antiques', 'appliance', 'art', 'baby_goods', 'bag', 'bags', 'bakery', 'bathroom_furnishing', 'beauty', 'bed', 'betting', 'beverages', 'bicycle', 'boat', 'bookmaker', 'books', 'boutique', 'builder', 'building_materials', 'butcher', 'camera', 'car', 'car_parts', 'car_repair', 'car_service', 'carpet', 'charity', 'cheese', 'chemist', 'chocolate', 'clothes', 'coffee', 'communication', 'computer', 'confectionery', 'convenience', 'copyshop', 'cosmetics', 'craft', 'curtain', 'dairy', 'deli', 'delicatessen', 'department_store', 'discount', 'dive', 'doityourself', 'dry_cleaning', 'e-cigarette', 'electrical', 'electronics', 'energy', 'erotic', 'estate_agent', 'fabric', 'farm', 'fashion', 'fish', 'fishing', 'fishmonger', 'flooring', 'florist', 'food', 'frame', 'frozen_food', 'funeral_directors', 'furnace', 'furniture', 'gallery', 'gambling', 'games', 'garden_centre', 'gas', 'general', 'gift', 'glaziery', 'greengrocer', 'grocery', 'hairdresser', 'hardware', 'health', 'health_food', 'hearing_aids', 'herbalist', 'hifi', 'hobby', 'household', 'houseware', 'hunting', 'ice_cream', 'insurance', 'interior_decoration', 'jewellery', 'jewelry', 'kiosk', 'kitchen', 'laundry', 'leather', 'lighting', 'locksmith', 'lottery', 'mall', 'market', 'massage', 'medical', 'medical_supply', 'mobile_phone', 'money_lender', 'motorcycle', 'motorcycle_repair', 'music', 'musical_instrument', 'newsagent', 'office_supplies', 'optician', 'organic', 'outdoor', 'paint', 'pastry', 'pawnbroker', 'perfumery', 'pet', 'pets', 'pharmacy', 'phone', 'photo', 'photo_studio', 'photography', 'pottery', 'printing', 'radiotechnics', 'real_estate', 'religion', 'rental', 'salon', 'scuba_diving', 'seafood', 'second_hand', 'sewing', 'shoe_repair', 'shoes', 'shopping_centre', 'solarium', 'souvenir', 'sports', 'stationery', 'supermarket', 'tailor', 'tanning', 'tattoo', 'tea', 'ticket', 'tiles', 'tobacco', 'toys', 'trade', 'travel_agency', 'tyres', 'vacuum_cleaner', 'variety_store', 'video', 'video_games', 'watches', 'wholesale', 'wine', 'winery', 'yes')
-                 OR amenity IS NOT NULL
-                 OR tourism IN ('alpine_hut', 'picnic_site', 'camp_site', 'caravan_site', 'guest_house', 'hostel', 'hotel', 'motel', 'museum', 'viewpoint', 'information', 'chalet')
-                 OR highway IN ('bus_stop', 'traffic_signals', 'ford')
-                 OR "ump:type" IN ('0x2855')
-                 OR man_made IN ('mast', 'water_tower')
-                 OR historic IN ('memorial', 'archaeological_site')
-                 OR waterway = 'lock'
-                 OR lock = 'yes'
-                 OR leisure IN ('playground', 'slipway', 'picnic_table')
-              ) AS amenity_points
-    advanced: {}
-  - id: "power-towers"
-    name: "power-towers"
-    class: ""
-    geometry: "point"
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |2-
-        (SELECT way FROM planet_osm_point WHERE power = 'tower') AS power_towers
-    advanced: {}
-  - id: "power-poles"
-    name: "power-poles"
-    class: ""
-    geometry: "point"
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |2-
-        (SELECT way FROM planet_osm_point WHERE power = 'pole') AS power_poles
-    advanced: {}
   - id: "roads-text-ref-low-zoom"
     name: "roads-text-ref-low-zoom"
     class: ""
@@ -1358,33 +1286,6 @@ Layer:
                WHERE highway IN ('bridleway', 'footway', 'cycleway', 'path', 'track', 'steps')
                  AND name IS NOT NULL
               ) AS paths_text_name
-    advanced: {}
-  - id: "text-poly"
-    name: "text-poly"
-    class: "text"
-    geometry: "polygon"
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |2-
-        (SELECT way, way_area/(!pixel_width!*!pixel_height!) AS way_pixels, COALESCE('aeroway_' || aeroway, 'shop_' || CASE WHEN shop IN ('supermarket', 'bakery', 'butcher', 'clothes', 'fashion', 'convenience', 'department_store', 'doityourself', 'florist', 'hairdresser', 'car', 'car_repair', 'bicycle', 'mall') THEN shop WHEN NOT shop IS NULL THEN 'other' ELSE NULL END, 'amenity_' || amenity, 'leisure_' || leisure, 'landuse_' || landuse, 'man_made_' || man_made, 'natural_' || "natural", 'place_' || place, 'tourism_' || tourism, 'military_' || military, 'waterway_' || waterway, 'historic_' || historic, 'highway_' || highway, 'power_' || power, 'boundary_' || boundary) AS feature, access, NULL AS ele, name, ref, way_area, CASE WHEN building = 'no' OR building IS NULL THEN 'no' ELSE 'yes' END AS is_building, "ump:type" AS garmin_typ
-               FROM planet_osm_polygon
-               WHERE amenity IS NOT NULL
-                  OR shop IN ('accessories', 'alcohol', 'antique', 'antiques', 'appliance', 'art', 'baby_goods', 'bag', 'bags', 'bakery', 'bathroom_furnishing', 'beauty', 'bed', 'betting', 'beverages', 'bicycle', 'boat', 'bookmaker', 'books', 'boutique', 'builder', 'building_materials', 'butcher', 'camera', 'car', 'car_parts', 'car_repair', 'car_service', 'carpet', 'charity', 'cheese', 'chemist', 'chocolate', 'clothes', 'coffee', 'communication', 'computer', 'confectionery', 'convenience', 'copyshop', 'cosmetics', 'craft', 'curtain', 'dairy', 'deli', 'delicatessen', 'department_store', 'discount', 'dive', 'doityourself', 'dry_cleaning', 'e-cigarette', 'electrical', 'electronics', 'energy', 'erotic', 'estate_agent', 'fabric', 'farm', 'fashion', 'fish', 'fishing', 'fishmonger', 'flooring', 'florist', 'food', 'frame', 'frozen_food', 'funeral_directors', 'furnace', 'furniture', 'gallery', 'gambling', 'games', 'garden_centre', 'gas', 'general', 'gift', 'glaziery', 'greengrocer', 'grocery', 'hairdresser', 'hardware', 'health', 'health_food', 'hearing_aids', 'herbalist', 'hifi', 'hobby', 'household', 'houseware', 'hunting', 'ice_cream', 'insurance', 'interior_decoration', 'jewellery', 'jewelry', 'kiosk', 'kitchen', 'laundry', 'leather', 'lighting', 'locksmith', 'lottery', 'mall', 'market', 'massage', 'medical', 'medical_supply', 'mobile_phone', 'money_lender', 'motorcycle', 'motorcycle_repair', 'music', 'musical_instrument', 'newsagent', 'office_supplies', 'optician', 'organic', 'outdoor', 'paint', 'pastry', 'pawnbroker', 'perfumery', 'pet', 'pets', 'pharmacy', 'phone', 'photo', 'photo_studio', 'photography', 'pottery', 'printing', 'radiotechnics', 'real_estate', 'religion', 'rental', 'salon', 'scuba_diving', 'seafood', 'second_hand', 'sewing', 'shoe_repair', 'shoes', 'shopping_centre', 'solarium', 'souvenir', 'sports', 'stationery', 'supermarket', 'tailor', 'tanning', 'tattoo', 'tea', 'ticket', 'tiles', 'tobacco', 'toys', 'trade', 'travel_agency', 'tyres', 'vacuum_cleaner', 'variety_store', 'video', 'video_games', 'watches', 'wholesale', 'wine', 'winery', 'yes')
-                  OR leisure IS NOT NULL
-                  OR landuse IS NOT NULL
-                  OR tourism IS NOT NULL
-                  OR "natural" IS NOT NULL
-                  OR man_made IN ('lighthouse', 'windmill')
-                  OR place = 'island'
-                  OR place = 'islet'
-                  OR military IS NOT NULL
-                  OR historic IN ('memorial', 'archaeological_site')
-                  OR power IS NOT NULL
-                  OR aeroway IS NOT NULL
-                  OR highway IN ('services', 'rest_area')
-                  OR boundary = 'national_park'
-         ORDER BY way_area desc     ) AS text_poly
     advanced: {}
   - id: "poi-jedzenie-tekst"
     name: "poi-jedzenie-tekst"
@@ -1546,34 +1447,6 @@ Layer:
               WHERE ("ump:type" BETWEEN '0x1606' AND '0x1707')
               OR ("ump:type" BETWEEN '0x1806' AND '0x1d00')
          ) AS poi_morze_tekst
-    advanced: {}
-  - id: "text"
-    name: "text"
-    class: "text"
-    geometry: "point"
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |2-
-              (SELECT way, NULL as way_pixels, COALESCE('aeroway_' || aeroway, 'shop_' || CASE WHEN shop IN ('supermarket', 'bakery', 'butcher', 'clothes', 'fashion', 'convenience', 'department_store', 'doityourself', 'florist', 'hairdresser', 'car', 'car_repair', 'bicycle', 'mall') THEN shop WHEN NOT shop IS NULL THEN 'other' ELSE NULL END, 'amenity_' || amenity, 'leisure_' || leisure, 'landuse_' || landuse, 'man_made_' || man_made, 'natural_' || "natural", 'place_' || place, 'tourism_' || tourism, 'military_' || military, 'waterway_' || waterway, 'historic_' || historic, 'highway_' || highway, 'power_' || power, 'boundary_' || boundary) AS feature, access, ele, name, ref, NULL AS way_area, CASE WHEN building = 'no' OR building IS NULL THEN 'no' ELSE 'yes' END AS is_building, "ump:type" AS garmin_typ
-               FROM planet_osm_point
-               WHERE amenity IS NOT NULL
-                  OR shop IN ('accessories', 'alcohol', 'antique', 'antiques', 'appliance', 'art', 'baby_goods', 'bag', 'bags', 'bakery', 'bathroom_furnishing', 'beauty', 'bed', 'betting', 'beverages', 'bicycle', 'boat', 'bookmaker', 'books', 'boutique', 'builder', 'building_materials', 'butcher', 'camera', 'car', 'car_parts', 'car_repair', 'car_service', 'carpet', 'charity', 'cheese', 'chemist', 'chocolate', 'clothes', 'coffee', 'communication', 'computer', 'confectionery', 'convenience', 'copyshop', 'cosmetics', 'craft', 'curtain', 'dairy', 'deli', 'delicatessen', 'department_store', 'discount', 'dive', 'doityourself', 'dry_cleaning', 'e-cigarette', 'electrical', 'electronics', 'energy', 'erotic', 'estate_agent', 'fabric', 'farm', 'fashion', 'fish', 'fishing', 'fishmonger', 'flooring', 'florist', 'food', 'frame', 'frozen_food', 'funeral_directors', 'furnace', 'furniture', 'gallery', 'gambling', 'games', 'garden_centre', 'gas', 'general', 'gift', 'glaziery', 'greengrocer', 'grocery', 'hairdresser', 'hardware', 'health', 'health_food', 'hearing_aids', 'herbalist', 'hifi', 'hobby', 'household', 'houseware', 'hunting', 'ice_cream', 'insurance', 'interior_decoration', 'jewellery', 'jewelry', 'kiosk', 'kitchen', 'laundry', 'leather', 'lighting', 'locksmith', 'lottery', 'mall', 'market', 'massage', 'medical', 'medical_supply', 'mobile_phone', 'money_lender', 'motorcycle', 'motorcycle_repair', 'music', 'musical_instrument', 'newsagent', 'office_supplies', 'optician', 'organic', 'outdoor', 'paint', 'pastry', 'pawnbroker', 'perfumery', 'pet', 'pets', 'pharmacy', 'phone', 'photo', 'photo_studio', 'photography', 'pottery', 'printing', 'radiotechnics', 'real_estate', 'religion', 'rental', 'salon', 'scuba_diving', 'seafood', 'second_hand', 'sewing', 'shoe_repair', 'shoes', 'shopping_centre', 'solarium', 'souvenir', 'sports', 'stationery', 'supermarket', 'tailor', 'tanning', 'tattoo', 'tea', 'ticket', 'tiles', 'tobacco', 'toys', 'trade', 'travel_agency', 'tyres', 'vacuum_cleaner', 'variety_store', 'video', 'video_games', 'watches', 'wholesale', 'wine', 'winery', 'yes')
-                  OR leisure IS NOT NULL
-                  OR landuse IS NOT NULL
-                  OR tourism IS NOT NULL
-                  OR "natural" IS NOT NULL
-                  OR man_made IN ('lighthouse', 'windmill')
-                  OR place = 'island'
-                  OR place = 'islet'
-                  OR military IS NOT NULL
-                  OR aeroway IS NOT NULL
-                  OR waterway = 'lock'
-                  OR historic IN ('memorial', 'archaeological_site')
-                  OR power IS NOT NULL
-                  OR highway IN ('bus_stop', 'services', 'rest_area')
-                  OR boundary = 'national_park'
-              ) AS text
     advanced: {}
   - id: "building-text"
     name: "building-text"
