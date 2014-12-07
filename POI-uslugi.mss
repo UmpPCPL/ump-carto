@@ -1,7 +1,5 @@
 //WHERE "ump:type" IN ('0x2f00','0x2f01','0x2f03','0x2f05','0x2f06','0x2f07','0x2f09','0x2f0a','0x2f0b','0x2f0c','0x2f0d','0x2f0e','0x2f0f','0x2f10','0x2f11','0x2f12','0x2f13','0x2f14','0x2f15','0x2f16','0x2f19')
 
-@standard-wrap-width: 30;
-@transportation-text: #000; // carto #0066ff
 
 .poi-uslugi {
 // nie stosuj definicji global
@@ -60,7 +58,7 @@
 .poi-uslugi-tekst {
  [zoom >= 17] {
       text-name: "[name]";
-      text-fill: #000; // #da0092;
+      text-fill: black; 
       text-size: 10;
       text-dy: 11;
       text-face-name: @book-fonts; //DejaVu Sans Book
@@ -71,44 +69,5 @@
     [zoom >=19] {text-allow-overlap: true;}
  }
 
-} // of .poi-uslugi-tekst
+}
 
-// [feature = 'amenity_fuel'],[feature='amenity_car_repair'],
-// [ump_typ='PARKING'],[ump_typ=~'INFO*'],[feature='amenity_auto_club'],
-// [ump_typ='MYJNIA'],[ump_typ = 'GARMIN'],
-// [feature = 'amenity_tatoo'],[feature = 'man_made_factory'],[feature = 'amenity_wifi']
-//,[garmin_typ='0x2f14'],[ump_typ = 'BUDYNEK']
-//    [zoom >= 17] {
-//	text-size: 9;
-//	text-fill: @transportation-text;
-//	text-dy: 13;
-//	}
-//    }
-
-// [feature = 'amenity_post_office'][zoom >= 17] {
-//    text-size: 8;
-//    text-fill: #da0092; // carto #734a08;
-//    text-dy: 14; // 11 dla paczkomatu starcza
-//   }
-
-//  [garmin_typ='0x2f06'][zoom >= 17] {
-//    text-size: 9;
-//    text-fill: black;
-//    text-dy: 15; //12
-//  }
-
-//  [feature = 'shop_car'][zoom >= 17] {
-//    text-size: 9;
-//    text-fill: black;
-//    text-dy: 15; //12
-//  }
-
-//  [feature='waterway_harbour'],[feature='waterway_marina'],[feature='waterway_anchor'],[feature='waterway_boatramp'] {
-//    [zoom>=17] {
-//    text-size: 9;
-//    text-fill: #009;
-//    text-dy: 13;
-//    }
-//   }
-
-//} // of .text

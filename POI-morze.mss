@@ -13,6 +13,7 @@
 
 .poi-morze {
  [zoom >= 14] {
+ point-allow-overlap: true;
  [ump_typ='STAWA'] {point-file: url('symbols_ump/1606_Beacon_Stawa_day.png');}
  [ump_typ='BEZP_WODA'] {point-file: url('symbols_ump/1607_Safe-water_Bezpieczna-woda_day.png');}
  [ump_typ='LEWA'] {point-file: url('symbols_ump/1608_Left_Lewa_day.png');}
@@ -76,13 +77,14 @@
       text-name: "[name]";
       text-fill: #734a08;
       text-size: 10;
-      text-dy: 11;
+      text-dy: 15;
+      //text-dy: 11;
       text-face-name: @book-fonts;
       text-halo-radius: 1;
       text-wrap-width: @standard-wrap-width;
       text-placement: interior;
       text-allow-overlap: false;
-    [zoom >=17] {text-allow-overlap: true;}
+    [zoom >=19] {text-allow-overlap: true;}
  }
 
 } // of .text

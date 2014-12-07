@@ -17,3 +17,8 @@ Map {
 
 @water-color: #b5d0d0;
 @land-color: #f2efe9;
+
+@standard-wrap-width: 30;
+@standard-text-size: 9;
+@standard-halo-radius: 1.5;
+

@@ -21,14 +21,19 @@
 .poi-sluzby-tekst {
  [zoom >= 17] {
       text-name: "[name]";
-      text-fill: #da0092;
-      text-size: 10;
+      text-fill: black;
+      text-size: @standard-text-size;
       text-dy: 11;
       text-face-name: @book-fonts;
-      text-halo-radius: 1;
+      text-halo-radius: @standard-halo-radius;
       text-wrap-width: @standard-wrap-width;
       text-placement: interior;
       text-allow-overlap: false;
-    [zoom >=19] {text-allow-overlap: true;}
+      [zoom >=18] {
+        text-allow-overlap: true;
+        [zoom >=19] {
+           text-size: @standard-text-size + 1;
+        }
+      }
  }
-} // of poi-sluzby-tekst
+} 
