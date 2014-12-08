@@ -29,11 +29,9 @@
       text-wrap-width: @standard-wrap-width;
       text-placement: interior;
       text-allow-overlap: false;
-      [zoom >=18] {
+      [zoom >=19] {
         text-allow-overlap: true;
-        [zoom >=19] {
-           text-size: @standard-text-size + 1;
-        }
+        text-size: @standard-text-size + 1;
       }
  }
 } 

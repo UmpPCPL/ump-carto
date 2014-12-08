@@ -21,14 +21,17 @@
  [zoom >= 17] {
       text-name: "[name]";
       text-fill: #734a08;
-      text-size: 10;
+      text-size: @standard-text-size;
       text-dy: @standard-text-dy;
-      text-face-name: @bold-fonts;
-      text-halo-radius: 1;
+      text-face-name: @book-fonts;
+      text-halo-radius: @standard-halo-radius;
       text-wrap-width: @standard-wrap-width;
       text-placement: interior;
       text-allow-overlap: false;
-    [zoom >=19] {text-allow-overlap: true;}
+      [zoom >=19] {
+        text-allow-overlap: true;
+        text-size: @standard-text-size + 1;
+      }
  }
-
 }
+

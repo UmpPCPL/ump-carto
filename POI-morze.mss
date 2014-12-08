@@ -1,14 +1,5 @@
 //    WHERE ("ump:type" BETWEEN '0x1606' AND '0x1707')
 //       OR ("ump:type" BETWEEN '0x1806' AND '0x1d00')
-//./symbols_me/NavaidRed.png
-//./symbols_me/NavaidOrange.png
-//./symbols_me/NavaidViolet.png
-//./symbols_me/NavaidWhite.png
-//./symbols_me/NavaidYellow.png
-//./symbols_me/NavaidMulti.png
-//./symbols_me/Navaid.png
-//./symbols_me/NavaidBlue.png
-//./symbols_me/NavaidGreen.png
 
 
 .poi-morze {
@@ -24,28 +15,28 @@
  [ump_typ='INNA'] {point-file: url('symbols_ump/160d_Multicolored_Wielokolorowa_day.png');}
 
  [ump_typ='BIALE'] { // 0x160f
-     point-file: url('symbols_me/NavaidWhite.png');
+     point-file: url('symbols_ump/NavaidWhite.png');
  }
  [ump_typ='CZERWONE'] { // 0x1610
-     point-file: url('symbols_me/NavaidRed.png');
+     point-file: url('symbols_ump/NavaidRed.png');
  }
  [ump_typ='ZIELONE'] { // 0x1611
-     point-file: url('symbols_me/NavaidGreen.png');
+     point-file: url('symbols_ump/NavaidGreen.png');
  }
  [ump_typ='ZOLTE'] { // 0x1612
-     point-file: url('symbols_me/NavaidYellow.png');
+     point-file: url('symbols_ump/NavaidYellow.png');
  }
  [ump_typ='POMARANCZOWE'] { // 0x1613
-     point-file: url('symbols_me/NavaidOrange.png');
+     point-file: url('symbols_ump/NavaidOrange.png');
  }
  [ump_typ='FIOLETOWE'] { // 0x1614
-     point-file: url('symbols_me/NavaidViolet.png');
+     point-file: url('symbols_ump/NavaidViolet.png');
  }
  [ump_typ='NIEBIESKIE'] { // 0x1615
-     point-file: url('symbols_me/NavaidBlue.png');
+     point-file: url('symbols_ump/NavaidBlue.png');
  }
  [ump_typ='WIELOBARWNE'] { // 0x1616
-     point-file: url('symbols_me/NavaidMulti.png');
+     point-file: url('symbols_ump/NavaidMulti.png');
  }
  [ump_typ='STAWA_R'] {point-file: url('symbols_ump/1806_BeaconR_StawaC_day.png');}
 // [ump_typ=''] {point-file: url('symbols_ump/1808_Right-B_Prawa-B_day.png');}
@@ -73,18 +64,21 @@
  }
 }
 .poi-morze-tekst {
- [zoom >= 16] {
+ [zoom >= 15] {
       text-name: "[name]";
-      text-fill: #734a08;
-      text-size: 10;
+      text-fill: black;
+      text-size: @standard-text-size;
       text-dy: @standard-text-dy;
       text-face-name: @book-fonts;
-      text-halo-radius: 1;
+      text-halo-radius: @standard-halo-radius;
       text-wrap-width: @standard-wrap-width;
       text-placement: interior;
       text-allow-overlap: false;
-    [zoom >=19] {text-allow-overlap: true;}
+      [zoom >=19] {
+        text-allow-overlap: true;
+        text-size: @standard-text-size + 1;
+      }
  }
+}
 
-} // of .text
 

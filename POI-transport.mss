@@ -26,7 +26,7 @@
     [garmin_typ = '0x2f08'][zoom >= 17] {
       point-file: url('symbols_ump/2f08_Bus-Station_Przystanek_day.png');
       [ump_typ='RENT_A_BIKE'] { point-file: url('symbols_ump/bicycle.png'); }
-      [name=~'Veturilo.*'] {point-file: url('symbols_ump/veturilo.png');} // jeśli będzie RENTACAR, to też pokaże
+      [ump_typ='METRO'] { point-file: url('symbols_ump/metro.22.png'); }
     }
 //2f17  UZUPELNIC BIURO PODROZY TURYSTYKA
 
@@ -34,23 +34,26 @@
     }
     [garmin_typ = '0x2f18'][ump_typ='BILETOMAT'][zoom >= 18] { point-file: url('symbols_ump/2f18_Tickets_Biletomat_day.png');}
 
-} // of .points
+}
 
 
 .poi-transport-tekst {
  [zoom >= 17] {
       text-name: "[name]";
       text-fill: @transportation-text;
-      text-size: 10;
+      text-size: @standard-text-size;
       text-dy: @standard-text-dy;
       text-face-name: @book-fonts;
-      text-halo-radius: 1;
+      text-halo-radius: @standard-halo-radius;
       text-wrap-width: @standard-wrap-width;
       text-placement: interior;
       text-allow-overlap: false;
-    [zoom >=19] {text-allow-overlap: true;}
+      [zoom >=19] {
+        text-allow-overlap: true;
+        text-size: @standard-text-size + 1;
+      }
     [ump_typ='METRO'][zoom>=17] {text-size: 12; text-dy: -50; }
     [ump_typ='BILETOMAT'][zoom >= 18] { text-size: 8; text-fill: #da0092; text-dy: 14; }
  }
 
-} // of .poi-transport-tekst
+}
