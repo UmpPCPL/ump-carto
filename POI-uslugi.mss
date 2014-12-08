@@ -60,7 +60,7 @@
       text-name: "[name]";
       text-fill: black; 
       text-size: 10;
-      text-dy: 11;
+      text-dy: @standard-text-dy;
       text-face-name: @book-fonts; //DejaVu Sans Book
       text-halo-radius: 1;
       text-wrap-width: @standard-wrap-width;

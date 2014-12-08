@@ -52,7 +52,7 @@
       text-name: "[name]";
       text-fill: #734a08;
       text-size: 10;
-      text-dy: 15;
+      text-dy: @standard-text-dy;
       text-face-name: @book-fonts;
       text-halo-radius: 1;
       text-wrap-width: @standard-wrap-width;

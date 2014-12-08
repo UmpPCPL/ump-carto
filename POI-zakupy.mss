@@ -25,7 +25,7 @@
       text-name: "[name]";
       text-fill: black;
       text-size: @standard-text-size;
-      text-dy: 11;
+      text-dy: @standard-text-dy;
       text-face-name: @book-fonts;
       text-halo-radius: @standard-halo-radius;
       text-wrap-width: @standard-wrap-width;

@@ -26,7 +26,7 @@
       text-fill:  #0067cd;
       //text-fill:  #0092da;
       text-size: @standard-text-size + 1;
-      text-dy: 11;
+      text-dy: @standard-text-dy;
       text-face-name: @book-fonts;
       text-halo-radius: @standard-halo-radius;
       text-wrap-width: @standard-wrap-width;

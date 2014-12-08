@@ -42,7 +42,7 @@
       text-name: "[name]";
       text-fill: @transportation-text;
       text-size: 10;
-      text-dy: 11;
+      text-dy: @standard-text-dy;
       text-face-name: @book-fonts;
       text-halo-radius: 1;
       text-wrap-width: @standard-wrap-width;

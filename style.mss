@@ -21,4 +21,5 @@ Map {
 @standard-wrap-width: 30;
 @standard-text-size: 9;
 @standard-halo-radius: 1.5;
+@standard-text-dy: 13;
 
