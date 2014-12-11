@@ -1,5 +1,14 @@
 //UMP uzywane 
 @building-ump: #cc9999 ;
+@military: #FDD9DC;
+@parking: #f7efb7;
+@terminal: #CF9CFF;
+@supermarket: #F9D9DB;
+@marina: #DFD1D6;
+@school: #C7A59D;
+@hospital: #D9B7AF; 
+@cemetery: #aacbaf; // also grave_yard
+@sport: #35CE9B;
 
 // --- Parks, woods, other green things ---
 
@@ -43,25 +52,20 @@
 @attraction: #f2caea;
 @barracks: #ff8f8f;
 @campsite: #def6c0; // also caravan_site, picnic_site
-@cemetery: #aacbaf; // also grave_yard
 @construction: #b6b592;
 @danger_area: pink;
 @desert: #e3b57a;
 @field: @farmland;
 @garages: #dfddce;
 @heath: #d6d99f;
-@parking: #f7efb7;
 @playground: #ccfff1;
 @power: #bbb;
 @rest_area: #efc8c8; // also services
 @sand: #ffdf88;
-@school: #f0f0d8; // also university, college, kindergarten
-@hospital: red; 
 @scrub: #b5e3b5;
 @orchard: #9ed88f;
 @theme_park: #734a08;
 @quarry: #c5c3c3;
-@military: #f55;
 @zoo: #a4f3a1;
 @beach: #fff1ba;
 
@@ -106,7 +110,17 @@
   }
 
 
-  [garmin_type = '0x5'][zoom >= 10] {   //parking
+  [garmin_type = '0x4'][zoom >= 10] {   //wojsko
+    polygon-fill: @military;
+    [zoom >= 15] {
+      line-width: 0.3;
+      line-color: saturate(darken(@military, 40%), 20%);
+    }
+    [way_pixels >= 4]  { polygon-gamma: 0.75; }
+    [way_pixels >= 64] { polygon-gamma: 0.3;  }
+  }
+
+  [garmin_type = '0x5'][zoom >= 13] {   //parking
     polygon-fill: @parking;
     [zoom >= 15] {
       line-width: 0.3;
@@ -116,10 +130,66 @@
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
 
-  [garmin_type = '0x9'][zoom >= 10] {   //marina port
-    polygon-fill: red; 
+  [garmin_type = '0x6'][zoom >= 14][zoom < 17] {   //parking kryty
+    polygon-fill: @parking;
+    [zoom >= 15] {
+      line-width: 0.3;
+      line-color: saturate(darken(@parking, 40%), 20%);
+    }
+    [way_pixels >= 4]  { polygon-gamma: 0.75; }
+    [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
-  
+
+  [garmin_type = '0x7'][zoom >= 12][zoom < 17] {   //terminal - dworzec
+    polygon-fill: @terminal;
+    [zoom >= 15] {
+      line-width: 0.3;
+      line-color: saturate(darken(@terminal, 40%), 20%);
+    }
+    [way_pixels >= 4]  { polygon-gamma: 0.75; }
+    [way_pixels >= 64] { polygon-gamma: 0.3;  }
+  }
+
+  [garmin_type = '0x8'][zoom >= 12][zoom < 17] {   //supermarket
+    polygon-fill: @supermarket;
+    [zoom >= 15] {
+      line-width: 0.3;
+      line-color: saturate(darken(@supermarket, 40%), 20%);
+    }
+    [way_pixels >= 4]  { polygon-gamma: 0.75; }
+    [way_pixels >= 64] { polygon-gamma: 0.3;  }
+  }
+
+  [garmin_type = '0x9'][zoom >= 10] {   //marina port
+    polygon-fill: @marina;
+    [zoom >= 15] {
+      line-width: 0.3;
+      line-color: saturate(darken(@marina, 40%), 20%);
+    }
+    [way_pixels >= 4]  { polygon-gamma: 0.75; }
+    [way_pixels >= 64] { polygon-gamma: 0.3;  }
+  }
+
+  [garmin_type = '0xa'][zoom >= 12][zoom < 17] {   //szkola
+    polygon-fill: @school;
+    [zoom >= 15] {
+      line-width: 0.3;
+      line-color: saturate(darken(@school, 40%), 20%);
+    }
+    [way_pixels >= 4]  { polygon-gamma: 0.75; }
+    [way_pixels >= 64] { polygon-gamma: 0.3;  }
+  }
+
+  [garmin_type = '0xb'][zoom >= 12][zoom < 17] {   //szpital
+    polygon-fill: @hospital;
+    [zoom >= 15] {
+      line-width: 0.3;
+      line-color: saturate(darken(@hospital, 40%), 20%);
+    }
+    [way_pixels >= 4]  { polygon-gamma: 0.75; }
+    [way_pixels >= 64] { polygon-gamma: 0.3;  }
+  }
+
   [garmin_type = '0xc'][zoom >= 10] {  //industrial area
     polygon-fill: @industrial;
     [zoom >= 16] {
@@ -142,7 +212,7 @@
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
-  [garmin_type = '0x13'][zoom >= 15][zoom < 18] {   //budynek low zoom
+  [garmin_type = '0x13'][zoom >= 15][zoom < 17] {   //budynek low zoom
     polygon-fill: @building-ump;
   }
 
@@ -161,6 +231,16 @@
     }
 
   }
+  [garmin_type = '0x19'][zoom >= 12][zoom < 19] {   //sport
+    polygon-fill: @sport;
+    [zoom >= 15] {
+      line-width: 0.3;
+      line-color: saturate(darken(@sport, 40%), 20%);
+    }
+    [way_pixels >= 4]  { polygon-gamma: 0.75; }
+    [way_pixels >= 64] { polygon-gamma: 0.3;  }
+  }
+
   [garmin_type = '0x1a'][zoom >= 13] {   //cemetery
     polygon-fill: @cemetery;
   }
