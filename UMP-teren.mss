@@ -1,3 +1,6 @@
+//UMP uzywane 
+@building-ump: #cc9999 ;
+
 // --- Parks, woods, other green things ---
 
 @forest: #a0cf85;
@@ -138,6 +141,9 @@
     polygon-fill: @apron;
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
+  }
+  [garmin_type = '0x13'][zoom >= 15][zoom < 18] {   //budynek low zoom
+    polygon-fill: @building-ump;
   }
 
   [garmin_type = '0x14'],

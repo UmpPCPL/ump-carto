@@ -8,7 +8,7 @@
 @sport: red;
 
 #budynki {
-  [garmin_type = '0x4'][zoom >= 12] {   //wojsko
+  [garmin_type = '0x4'][zoom >= 18] {   //wojsko
     polygon-fill: lighten(@military,70%);
     polygon-opacity: 0.7;
     polygon-clip: false;
@@ -21,7 +21,7 @@
     }
   }
 
-  [garmin_type = '0x6'][zoom >= 12] {   //parking
+  [garmin_type = '0x6'][zoom >= 18] {   //parking
     polygon-fill: @parking;
     polygon-opacity: 0.7;
     polygon-clip: false;
@@ -33,7 +33,7 @@
       line-width: 0.2;
     }
   }
-  [garmin_type = '0x7'][zoom >= 12] {   //terminal - dworzec
+  [garmin_type = '0x7'][zoom >= 18] {   //terminal - dworzec
     polygon-fill: @terminal;
     polygon-opacity: 0.7;
     polygon-clip: false;
@@ -45,7 +45,7 @@
       line-width: 0.2;
     }
   }
-  [garmin_type = '0x8'][zoom >= 12] {   //supermarket
+  [garmin_type = '0x8'][zoom >= 18] {   //supermarket
     polygon-fill: @supermarket;
     polygon-opacity: 0.7;
     polygon-clip: false;
@@ -57,7 +57,7 @@
       line-width: 0.2;
     }
   }
-  [garmin_type = '0xa'][zoom >= 12] {   //szkola
+  [garmin_type = '0xa'][zoom >= 18] {   //szkola
     polygon-fill: @school-b;
     polygon-opacity: 0.7;
     polygon-clip: false;
@@ -69,7 +69,7 @@
       line-width: 0.2;
     }
   }
-  [garmin_type = '0xb'][zoom >= 12] {   //hospital
+  [garmin_type = '0xb'][zoom >= 18] {   //hospital
     polygon-fill: @hospital;
     polygon-opacity: 0.7;
     polygon-clip: false;
@@ -81,7 +81,7 @@
       line-width: 0.2;
     }
   }
-  [garmin_type = '0x13'][zoom >= 12] {   //budynek
+  [garmin_type = '0x13'][zoom >= 18] {   //budynek
     polygon-fill: @building;
     polygon-opacity: 0.7;
     polygon-clip: false;
@@ -94,7 +94,7 @@
     }
   }
 
-  [garmin_type = '0x19'][zoom >= 12] {   // sport
+  [garmin_type = '0x19'][zoom >= 18] {   // sport
     polygon-fill: @sport;
     polygon-opacity: 0.7;
     polygon-clip: false;

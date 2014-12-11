@@ -122,6 +122,7 @@ Layer:
               OR ( "ump:type" BETWEEN  '0x1a' AND '0x1f' )
               OR ( "ump:type" BETWEEN  '0x4e' AND '0x4f' )
               OR ( "ump:type" BETWEEN  '0x51' AND '0x53' )
+              OR "ump:type" IN ( '0x4', '0x6', '0x7','0x8','0xa','0xb','0x13','0x19')
               ) AND way_area/(!pixel_width!*!pixel_height!) > 0.01
             ORDER BY z_order, way_area DESC
           ) AS teren
