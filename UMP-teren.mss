@@ -9,10 +9,12 @@
 @hospital: #D9B7AF; 
 @cemetery: #aacbaf; // also grave_yard
 @sport: #35CE9B;
+@forest: #a0cf85;
+@park: #b6fdb6;
+@orchand: #92df6f;   //sad i ogródki
 
 // --- Parks, woods, other green things ---
 
-@forest: #a0cf85;
 @grass: #cfeca8; // also meadow, common, garden, village_green, conservation
 @golf_course: #b5e3b5;
 @park: #cdf7c9; // also recreation_ground
@@ -212,6 +214,7 @@
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
+
   [garmin_type = '0x13'][zoom >= 15][zoom < 17] {   //budynek low zoom
     polygon-fill: @building-ump;
   }
@@ -229,8 +232,12 @@
       [way_pixels >= 4]  { polygon-pattern-gamma: 0.75; }
       [way_pixels >= 64] { polygon-pattern-gamma: 0.3;  }
     }
-
   }
+
+  [garmin_type = '0x17'][zoom >= 10]{   //park
+    polygon-fill: @park;
+  }
+
   [garmin_type = '0x19'][zoom >= 12][zoom < 19] {   //sport
     polygon-fill: @sport;
     [zoom >= 15] {
@@ -241,8 +248,15 @@
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
 
-  [garmin_type = '0x1a'][zoom >= 13] {   //cemetery
+  [garmin_type = '0x1a'][zoom >= 10] {   //cemetery
     polygon-fill: @cemetery;
+    [zoom >= 13] {
+      polygon-pattern-file: url('symbols/grave_yard_christian.png');
+    }
+  }
+
+  [garmin_type = '0x4e'][zoom >= 10]{   //sad , ogródki 
+    polygon-fill: @orchand;
   }
 
   [garmin_type = '0x51'] {
