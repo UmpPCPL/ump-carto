@@ -5,9 +5,12 @@
  [garmin_typ = '0x2d01'] { [zoom >= 17] {point-file: url('symbols_ump/theatre.p.20.png');}}
  [garmin_typ = '0x2d02'] { [zoom >= 17] {point-file: url('symbols_ump/2d02_Bar-Nightclub_Bar-Nightclub_day.png');}}
  [garmin_typ = '0x2d03'] { [zoom >= 17] {point-file: url('symbols_ump/2d03_Cinema_Kino_day.png');}}
-// [garmin_typ = '0x2d04'][zoom >= 17] {point-file: url('symbols_ump/');}
-// [garmin_typ = '0x2d05'][zoom >= 17] {point-file: url('symbols_ump/');}
-// [garmin_typ = '0x2d06'][zoom >= 17] {point-file: url('symbols_ump/');}
+ [garmin_typ = '0x2d04'] [zoom >= 17] 
+     {point-file: url('symbols_ump/2d04_kasyno.png');}
+ [garmin_typ = '0x2d05'][zoom >= 17] 
+     {point-file: url('symbols_ump/2d05-Golf-Club.png');}
+ [garmin_typ = '0x2d06'][zoom >= 17]
+     {point-file: url('symbols_ump/2d06-narty.png');}
  [garmin_typ = '0x2d07'][zoom >= 17] {point-file: url('symbols_ump/2d07_Bowling_Kregle_day.png');}
  [garmin_typ = '0x2d08'][zoom >= 17]
      {point-file: url('symbols_ump/2d08_Lodowisko.png');}
