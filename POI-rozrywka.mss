@@ -9,8 +9,11 @@
 // [garmin_typ = '0x2d05'][zoom >= 17] {point-file: url('symbols_ump/');}
 // [garmin_typ = '0x2d06'][zoom >= 17] {point-file: url('symbols_ump/');}
  [garmin_typ = '0x2d07'][zoom >= 17] {point-file: url('symbols_ump/2d07_Bowling_Kregle_day.png');}
-// [garmin_typ = '0x2d08'][zoom >= 17] {point-file: url('symbols_ump/ ');}
- [garmin_typ = '0x2d09'] {[zoom >= 17] {point-file: url('symbols_ump/2d09_Dive_Nury_day.png');}}
+ [garmin_typ = '0x2d08'][zoom >= 17]
+     {point-file: url('symbols_ump/2d08_Lodowisko.png');}
+ [garmin_typ = '0x2d09'][zoom >= 17] {
+      point-file: url('symbols_ump/2d09_Dive_Nury_day.png');
+ }
  [garmin_typ = '0x2d0a'] {[zoom >= 17] {point-file: url('symbols_ump/2d0a_Sports_Sport_day.png');}}
 // [garmin_typ = '0x2d0b']][zoom >= 17] {point-file: url('symbols_ump/ ');}
 
@@ -20,7 +23,7 @@
 .poi-rozrywka-tekst {
  [zoom >= 17] {
       text-name: "[name]";
-      text-fill: #734a08;
+      text-fill: black;
       text-size: @standard-text-size;
       text-dy: @standard-text-dy;
       text-face-name: @book-fonts;

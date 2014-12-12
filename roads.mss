@@ -1980,7 +1980,7 @@
   [highway = 'tertiary'][zoom >= 15] {
     shield-name: "[refs]";
     shield-size: 11;
-    shield-fill: @tertiary-fill;
+    shield-fill: #999999;
     shield-placement: line;
     shield-file: url("symbols_ump/tertiary_shield[width].png");
     shield-spacing: 750;
