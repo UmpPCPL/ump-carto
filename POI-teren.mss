@@ -16,10 +16,12 @@
          point-file: url('symbols_ump/660f_Windmill_Wiatrak_day.png');
     }
     [garmin_typ = '0x6616'][zoom >= 17] {
-         point-file: url('symbols_ump/6616_Summit_Szczyt_day.png');
+         point-file: url('symbols/peak.svg');
+      // ikona poniżej za duża i nieladna
+      //   point-file: url('symbols_ump/6616_Summit_Szczyt_day.png');
     }
     [garmin_typ = '0x6617'][zoom >= 17] {
-         point-file: url('symbols_ump/6617_Valley_Dolina_day.png');
+         point-file: url('symbols_ump/6617_przelecz.png');
     }
     [garmin_typ = '0x6618'][zoom >= 17] {
          point-file: url('symbols_ump/6618_Forest_Las_day.png');
