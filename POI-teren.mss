@@ -15,12 +15,10 @@
     [garmin_typ = '0x660f'][zoom >= 17] {
          point-file: url('symbols_ump/660f_Windmill_Wiatrak_day.png');
     }
-    [garmin_typ = '0x6616'][zoom >= 17] {
+    [garmin_typ = '0x6616'][zoom >= 11] {
          point-file: url('symbols/peak.svg');
-      // ikona poniżej za duża i nieladna
-      //   point-file: url('symbols_ump/6616_Summit_Szczyt_day.png');
     }
-    [garmin_typ = '0x6617'][zoom >= 17] {
+    [garmin_typ = '0x6617'][zoom >= 14] {
          point-file: url('symbols_ump/6617_przelecz.png');
     }
     [garmin_typ = '0x6618'][zoom >= 17] {
@@ -32,11 +30,31 @@
 
 }
 .poi-teren-tekst {
- [zoom >= 17] {
+ [zoom >= 17],
+ [zoom >= 14][garmin_typ = '0x6616'],
+ [zoom >= 14][garmin_typ = '0x6617'] {
       text-name: "[name]";
       text-fill: #734a08;
       text-size: @standard-text-size;
       text-dy: @standard-text-dy + 1 ;
+      text-face-name: @book-fonts;
+      text-halo-radius: @standard-halo-radius;
+      text-wrap-width: @standard-wrap-width;
+      text-placement: interior;
+      text-allow-overlap: false;
+      [zoom >=19] {
+        text-allow-overlap: true;
+        text-size: @standard-text-size + 1;
+      }
+ }
+}
+.poi-teren-tekst {
+ [zoom >= 14][garmin_typ = '0x6616'],
+ [zoom >= 14][garmin_typ = '0x6617'] {
+      text-name: "[height]";
+      text-fill: #734a08;
+      text-size: @standard-text-size;
+      text-dy: 0 - @standard-text-dy ;
       text-face-name: @book-fonts;
       text-halo-radius: @standard-halo-radius;
       text-wrap-width: @standard-wrap-width;
