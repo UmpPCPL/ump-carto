@@ -1078,7 +1078,7 @@
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
-        "table": "(SELECT way, \"ump:typ\" AS ump_typ, name, \"ump:type\" AS garmin_typ, \"ump:endlevel\" as ump_endlevel\n      FROM planet_osm_point\n      WHERE \"ump:type\" IN ('0x2f02','0x2f04','0x2f08','0x2f17','0x2f18')\n ) AS poi_transport_point", 
+        "table": "(SELECT way, \"ump:typ\" AS ump_typ, name, \"ump:type\" AS garmin_typ, \"ump:endlevel\" as ump_endlevel\n      FROM planet_osm_point\n      WHERE \"ump:type\" IN ('0x2f02','0x2f04','0x2f08','0x2f17','0x2f18','0x5901','0x5902','0x5903')\n ) AS poi_transport_point", 
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
@@ -1091,6 +1091,29 @@
         85.05112877980659
       ], 
       "id": "poi-transport-point", 
+      "advanced": {}
+    }, 
+    {
+      "name": "poi-highways-point", 
+      "srs-name": "900913", 
+      "geometry": "point", 
+      "class": "poi-highways", 
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
+      "Datasource": {
+        "extent": "-20037508,-20037508,20037508,20037508", 
+        "table": "(SELECT way, \"ump:typ\" AS ump_typ, name, \"ump:type\" AS garmin_typ, \"ump:endlevel\" as ump_endlevel\n      FROM planet_osm_point\n      WHERE \"ump:type\" BETWEEN '0x2000' AND '0x2700'\n ) AS poi_highways_point", 
+        "geometry_field": "way", 
+        "type": "postgis", 
+        "key_field": "", 
+        "dbname": "umpgis"
+      }, 
+      "extent": [
+        -180, 
+        -85.05112877980659, 
+        180, 
+        85.05112877980659
+      ], 
+      "id": "poi-highways-point", 
       "advanced": {}
     }, 
     {
@@ -1492,7 +1515,7 @@
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
-        "table": "(SELECT way, \"ump:typ\" AS ump_typ, name, \"ump:type\" AS garmin_typ, \"ump:endlevel\" as ump_endlevel\n      FROM planet_osm_point\n      WHERE \"ump:type\" IN ('0x2f02','0x2f04','0x2f08','0x2f17','0x2f18')\n ) AS poi_transport_tekst", 
+        "table": "(SELECT way, \"ump:typ\" AS ump_typ, name, \"ump:type\" AS garmin_typ, \"ump:endlevel\" as ump_endlevel\n      FROM planet_osm_point\n      WHERE \"ump:type\" IN ('0x2f02','0x2f04','0x2f08','0x2f17','0x2f18','0x5901','0x5902','0x5903')\n ) AS poi_transport_tekst", 
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
@@ -1505,6 +1528,29 @@
         85.05112877980659
       ], 
       "id": "poi-transport-tekst", 
+      "advanced": {}
+    }, 
+    {
+      "name": "poi-highways-tekst", 
+      "srs-name": "900913", 
+      "geometry": "point", 
+      "class": "poi-highways-tekst", 
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
+      "Datasource": {
+        "extent": "-20037508,-20037508,20037508,20037508", 
+        "table": "(SELECT way, \"ump:typ\" AS ump_typ, name, \"ump:type\" AS garmin_typ, \"ump:endlevel\" as ump_endlevel\n      FROM planet_osm_point\n      WHERE \"ump:type\" BETWEEN '0x2000' AND '0x2700'\n ) AS poi_highways_tekst", 
+        "geometry_field": "way", 
+        "type": "postgis", 
+        "key_field": "", 
+        "dbname": "umpgis"
+      }, 
+      "extent": [
+        -180, 
+        -85.05112877980659, 
+        180, 
+        85.05112877980659
+      ], 
+      "id": "poi-highways-tekst", 
       "advanced": {}
     }, 
     {
@@ -1893,6 +1939,7 @@
     "POI-rozrywka.mss", 
     "POI-sluzby.mss", 
     "POI-transport.mss", 
+    "POI-highways.mss", 
     "POI-uslugi.mss", 
     "POI-zakupy.mss", 
     "POI-znaki.mss", 

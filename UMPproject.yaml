@@ -55,6 +55,7 @@ Stylesheet:
   - "POI-rozrywka.mss"
   - "POI-sluzby.mss"
   - "POI-transport.mss"
+  - "POI-highways.mss"
   - "POI-uslugi.mss"
   - "POI-zakupy.mss"
   - "POI-znaki.mss"
@@ -1082,8 +1083,21 @@ Layer:
       table: |2-
         (SELECT way, "ump:typ" AS ump_typ, name, "ump:type" AS garmin_typ, "ump:endlevel" as ump_endlevel
               FROM planet_osm_point
-              WHERE "ump:type" IN ('0x2f02','0x2f04','0x2f08','0x2f17','0x2f18')
+              WHERE "ump:type" IN ('0x2f02','0x2f04','0x2f08','0x2f17','0x2f18','0x5901','0x5902','0x5903')
          ) AS poi_transport_point
+    advanced: {}
+  - id: "poi-highways-point"
+    name: "poi-highways-point"
+    class: "poi-highways"
+    geometry: "point"
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |2-
+        (SELECT way, "ump:typ" AS ump_typ, name, "ump:type" AS garmin_typ, "ump:endlevel" as ump_endlevel
+              FROM planet_osm_point
+              WHERE "ump:type" BETWEEN '0x2000' AND '0x2700'
+         ) AS poi_highways_point
     advanced: {}
   - id: "poi-nocleg-point"
     name: "poi-nocleg-point"
@@ -1350,8 +1364,21 @@ Layer:
       table: |2-
         (SELECT way, "ump:typ" AS ump_typ, name, "ump:type" AS garmin_typ, "ump:endlevel" as ump_endlevel
               FROM planet_osm_point
-              WHERE "ump:type" IN ('0x2f02','0x2f04','0x2f08','0x2f17','0x2f18')
+              WHERE "ump:type" IN ('0x2f02','0x2f04','0x2f08','0x2f17','0x2f18','0x5901','0x5902','0x5903')
          ) AS poi_transport_tekst
+    advanced: {}
+  - id: "poi-highways-tekst"
+    name: "poi-highways-tekst"
+    class: "poi-highways-tekst"
+    geometry: "point"
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |2-
+        (SELECT way, "ump:typ" AS ump_typ, name, "ump:type" AS garmin_typ, "ump:endlevel" as ump_endlevel
+              FROM planet_osm_point
+              WHERE "ump:type" BETWEEN '0x2000' AND '0x2700'
+         ) AS poi_highways_tekst
     advanced: {}
   - id: "poi-nocleg-tekst"
     name: "poi-nocleg-tekst"

@@ -23,6 +23,29 @@
       }
     }
 
+// airportmed lotnisko_srednie
+    [garmin_typ = '0x5902']{
+      [zoom >= 12][ump_endlevel >= 2]  {
+         point-file: url('symbols_ump/5902_Airport_Lotnisko_day.png');
+      }
+      [zoom >= 15][ump_endlevel = 1]  {
+         point-file: url('symbols_ump/5902_Airport_Lotnisko_day.png');
+      }
+      [zoom >= 17][ump_endlevel = 0]  {
+         point-file: url('symbols_ump/5902_Airport_Lotnisko_day.png');
+      }
+    }
+
+// airportsmall lotnisko_male
+    [garmin_typ = '0x5903']{
+      [zoom >= 13][ump_endlevel >= 1]  {
+         point-file: url('symbols_ump/5903_Airport_Lotnisko_day.png');
+      }
+      [zoom >= 15][ump_endlevel = 0]  {
+         point-file: url('symbols_ump/5903_Airport_Lotnisko_day.png');
+      }
+    }
+
     [garmin_typ = '0x2f08'][zoom >= 17] {
       point-file: url('symbols_ump/2f08_Bus-Station_Przystanek_day.png');
       [ump_typ='RENT_A_BIKE'] { point-file: url('symbols_ump/bicycle.png'); }

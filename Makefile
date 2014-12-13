@@ -12,3 +12,10 @@ project:
 	./scripts/yaml2mml.py < UMPproject.yaml > project.mml && touch project.mml
 log:
 	tail -f /var/log/syslog
+
+help:
+	@echo "	styl    - ... (domyślny cel)"
+	@echo "	status  - sprawdź status git-a"
+	@echo "	oldproject - ..."
+	@echo "	project - ..."
+	@echo "	log     - sprawdź logi"
