@@ -1055,7 +1055,7 @@
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
-        "table": "(SELECT way, \"ump:typ\" AS ump_typ, name, \"ump:type\" AS garmin_typ\n      FROM planet_osm_point\n      WHERE \"ump:type\" IN ('0x2f00','0x2f01','0x2f03','0x2f05','0x2f06','0x2f07','0x2f09','0x2f0a','0x2f0b','0x2f0c','0x2f0d','0x2f0e','0x2f0f','0x2f10','0x2f11','0x2f12','0x2f13','0x2f14','0x2f15','0x2f16','0x2f19')\n ) AS poi_uslugi_point", 
+        "table": "(SELECT way, \"ump:typ\" AS ump_typ, name, \"ump:type\" AS garmin_typ\n      FROM planet_osm_point\n      WHERE (\"ump:type\" BETWEEN '0x2f09' AND '0x2f16')\n      OR \"ump:type\" IN ('0x2f00','0x2f01','0x2f03','0x2f05','0x2f06','0x2f07','0x2f19')\n ) AS poi_uslugi_point", 
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
@@ -1078,7 +1078,7 @@
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
-        "table": "(SELECT way, \"ump:typ\" AS ump_typ, name, \"ump:type\" AS garmin_typ, \"ump:endlevel\" as ump_endlevel\n      FROM planet_osm_point\n      WHERE \"ump:type\" IN ('0x2f02','0x2f04','0x2f08','0x2f17','0x2f18','0x5901','0x5902','0x5903')\n ) AS poi_transport_point", 
+        "table": "(SELECT way, \"ump:typ\" AS ump_typ, name, \"ump:type\" AS garmin_typ, \"ump:endlevel\" as ump_endlevel\n      FROM planet_osm_point\n      WHERE \"ump:type\" IN ('0x2f02','0x2f04','0x2f08','0x2f17','0x2f18')\n      OR  (\"ump:type\" BETWEEN '0x5901' AND '0x5905')\n ) AS poi_transport_point", 
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
@@ -1492,7 +1492,7 @@
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
-        "table": "(SELECT way, \"ump:typ\" AS ump_typ, name, \"ump:type\" AS garmin_typ\n      FROM planet_osm_point\n      WHERE \"ump:type\" IN ('0x2f00','0x2f01','0x2f03','0x2f05','0x2f06','0x2f07','0x2f09','0x2f0a','0x2f0b','0x2f0c','0x2f0d','0x2f0e','0x2f0f','0x2f10','0x2f11','0x2f12','0x2f13','0x2f14','0x2f15','0x2f16','0x2f19')\n ) AS poi_uslugi_tekst", 
+        "table": "(SELECT way, \"ump:typ\" AS ump_typ, name, \"ump:type\" AS garmin_typ\n      FROM planet_osm_point\n      WHERE (\"ump:type\" BETWEEN '0x2f09' AND '0x2f16')\n      OR \"ump:type\" IN ('0x2f00','0x2f01','0x2f03','0x2f05','0x2f06','0x2f07','0x2f19')\n ) AS poi_uslugi_tekst", 
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
@@ -1515,7 +1515,7 @@
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
-        "table": "(SELECT way, \"ump:typ\" AS ump_typ, name, \"ump:type\" AS garmin_typ, \"ump:endlevel\" as ump_endlevel\n      FROM planet_osm_point\n      WHERE \"ump:type\" IN ('0x2f02','0x2f04','0x2f08','0x2f17','0x2f18','0x5901','0x5902','0x5903')\n ) AS poi_transport_tekst", 
+        "table": "(SELECT way, \"ump:typ\" AS ump_typ, name, \"ump:type\" AS garmin_typ, \"ump:endlevel\" as ump_endlevel\n      FROM planet_osm_point\n      WHERE \"ump:type\" IN ('0x2f02','0x2f04','0x2f08','0x2f17','0x2f18')\n      OR  (\"ump:type\" BETWEEN '0x5901' AND '0x5905')\n ) AS poi_transport_tekst", 
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
@@ -1630,7 +1630,7 @@
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
-        "table": "(SELECT way, \"ump:typ\" AS ump_typ, name, \"ump:type\" AS garmin_typ\n      FROM planet_osm_point\n      WHERE \"ump:type\" BETWEEN '0x6500' AND '0x6620'\n ) AS poi_teren_tekst", 
+        "table": "(SELECT way, \"ump:typ\" AS ump_typ, name, \"ump:type\" AS garmin_typ, \"addr:street\" AS height\n      FROM planet_osm_point\n      WHERE \"ump:type\" BETWEEN '0x6500' AND '0x6620'\n ) AS poi_teren_tekst", 
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 

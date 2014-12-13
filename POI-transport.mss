@@ -12,7 +12,7 @@
     }
 
     [garmin_typ = '0x2f04']{
-      [zoom >= 10][ump_endlevel >= 2]  {
+      [zoom >= 9][ump_endlevel >= 2]  {
          point-file: url('symbols_ump/2f04_Airport_Lotnisko_day.png');
       }
       [zoom >= 14][ump_endlevel = 1]  {
@@ -36,8 +36,8 @@
       }
     }
 
-// airportsmall lotnisko_male
-    [garmin_typ = '0x5903']{
+// airportsmall lotnisko_male & inne
+    [garmin_typ = '0x5903'],[garmin_typ = '0x5905']{
       [zoom >= 13][ump_endlevel >= 1]  {
          point-file: url('symbols_ump/5903_Airport_Lotnisko_day.png');
       }
@@ -46,6 +46,20 @@
       }
     }
 
+// HELI heliport -- na razie tymczasowo ikona z 5905
+    [garmin_typ = '0x5904']{
+      [zoom >= 12][ump_endlevel >= 2]  {
+         point-file: url('symbols_ump/5904_Heliport_day.png');
+      }
+      [zoom >= 15][ump_endlevel = 1]  {
+         point-file: url('symbols_ump/5904_Heliport_day.png');
+      }
+      [zoom >= 17][ump_endlevel = 0]  {
+         point-file: url('symbols_ump/5904_Heliport_day.png');
+      }
+    }
+
+// przystanek BUS
     [garmin_typ = '0x2f08'][zoom >= 17] {
       point-file: url('symbols_ump/2f08_Bus-Station_Przystanek_day.png');
       [ump_typ='RENT_A_BIKE'] { point-file: url('symbols_ump/bicycle.png'); }

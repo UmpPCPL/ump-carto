@@ -18,7 +18,8 @@
       point-file: url('symbols_ump/2d09_Dive_Nury_day.png');
  }
  [garmin_typ = '0x2d0a'] {[zoom >= 17] {point-file: url('symbols_ump/2d0a_Sports_Sport_day.png');}}
-// [garmin_typ = '0x2d0b']][zoom >= 17] {point-file: url('symbols_ump/ ');}
+// public sports airport/landing/ladowisko
+ [garmin_typ = '0x2d0b'] {[zoom >= 17] {point-file: url('symbols_ump/5903_Airport_Lotnisko_day.png');}}
 
 }
 
