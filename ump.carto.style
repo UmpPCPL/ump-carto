@@ -99,7 +99,7 @@ node,way   disused      text         linear
 node       ele          text         linear
 node,way   embankment   text         linear
 node,way   foot         text         linear
-node,way   generator:source    text  linear
+#node,way   generator:source    text  linear
 node,way   harbour      text         polygon
 node,way   highway      text         linear
 node,way   historic     text         polygon
@@ -157,7 +157,7 @@ node,way   ump:zoom     int4        linear
 node,way   ump:endlevel     int4        linear
 node,way   ump:typ      text        linear
 node,way   ump:type     text        linear
-node,way   ump:plik     text        linear
+#node,way   ump:plik     text        linear
 node,way   ump:line     text        linear
 node,way   ump:region     text        linear
 #node,way   toll         text        linear
@@ -172,12 +172,12 @@ node       zip              text
 # Area tags
 # We don't make columns for these tags, but objects with them are areas.
 # Mainly for use with hstore
-way         abandoned:aeroway       text    phstore
-way         abandoned:amenity       text    phstore
-way         abandoned:building      text    phstore
-way         abandoned:landuse       text    phstore
-way         abandoned:power         text    phstore
-way         area:highway            text    phstore
+#way         abandoned:aeroway       text    phstore
+#way         abandoned:amenity       text    phstore
+#way         abandoned:building      text    phstore
+#way         abandoned:landuse       text    phstore
+#way         abandoned:power         text    phstore
+#way         area:highway            text    phstore
 
 # Deleted tags
 # These are tags that are generally regarded as useless for most rendering.
