@@ -46,15 +46,15 @@
       }
     }
 
-// HELI heliport -- na razie tymczasowo ikona z 5905
+// HELI heliport 
     [garmin_typ = '0x5904']{
-      [zoom >= 12][ump_endlevel >= 2]  {
+      [zoom >= 11][ump_endlevel >= 2]  {
          point-file: url('symbols_ump/5904_Heliport_day.png');
       }
-      [zoom >= 15][ump_endlevel = 1]  {
+      [zoom >= 14][ump_endlevel = 1]  {
          point-file: url('symbols_ump/5904_Heliport_day.png');
       }
-      [zoom >= 17][ump_endlevel = 0]  {
+      [zoom >= 16][ump_endlevel = 0]  {
          point-file: url('symbols_ump/5904_Heliport_day.png');
       }
     }

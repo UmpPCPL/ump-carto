@@ -19,13 +19,13 @@
 
 //  Zjazdy z autostrad
   [garmin_typ = '0x2110'],{
-    [zoom >= 10][zoom < 14][ump_endlevel >= 2]  {
+    [zoom >= 9][zoom < 15][ump_endlevel >= 2]  {
        point-file: url('symbols_ump/HW_junction.png');
     }
-    [zoom >= 14][zoom < 16][ump_endlevel >= 1]  {
-       point-file: url('symbols_ump/2100_HW-exit_Zjazd_day.png');
+    [zoom >= 13][zoom < 15][ump_endlevel < 2 ]  {
+       point-file: url('symbols_ump/HW_junction.png');
     }
-    [zoom >= 16] {
+    [zoom >= 15] {
        point-file: url('symbols_ump/2100_HW-exit_Zjazd_day.png');
     }
   }
@@ -88,7 +88,7 @@
   [zoom >= 13] {
       text-name: "[name]";
       text-fill: @hw-text;
-      text-size: @standard-text-size;
+      text-size: @standard-text-size + 1;
       text-dy: @standard-text-dy;
       text-face-name: @oblique-fonts;
       text-halo-radius: @standard-halo-radius;
