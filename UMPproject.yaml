@@ -30,7 +30,7 @@ _parts:
     srs: "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs"
   osm2pgsql: &osm2pgsql
     type: "postgis"
-    dbname: "umpgis"
+    dbname: "umpgis2"
     key_field: ""
     geometry_field: "way"
     extent: "-20037508,-20037508,20037508,20037508"
@@ -1431,7 +1431,7 @@ Layer:
     Datasource:
       <<: *osm2pgsql
       table: |2-
-        (SELECT way, "ump:typ" AS ump_typ, name, "ump:type" AS garmin_typ, "addr:street" AS height
+        (SELECT way, "ump:typ" AS ump_typ, name, "ump:type" AS garmin_typ, "addr:street" AS ele
               FROM planet_osm_point
               WHERE "ump:type" BETWEEN '0x6500' AND '0x6620'
          ) AS poi_teren_tekst
