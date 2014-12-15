@@ -1,6 +1,8 @@
 //WHERE "ump:type" IN ('0x2f02','0x2f04','0x2f08','0x2f17','0x2f18')
 
 @transportation-text: #000; // carto #0066ff
+@transportation-bus-text: #900020; // carto #0066ff
+@transportation-tram-text: #200090; // carto #0066ff
 
 .poi-transport {
 
@@ -87,19 +89,39 @@
 
 
 .poi-transport-tekst {
- [zoom >= 17] {
+  [ump_typ='AIRPORT'][zoom >= 12],
+  [ump_typ='AIRPORTMED'][zoom >= 15] {
       text-name: "[name]";
-      text-fill: @transportation-text;
-      text-size: @standard-text-size;
+      text-fill: #300090;
+      text-size: @standard-text-size + 2;
+        [zoom >= 14] { text-size: @standard-text-size+2; }
       text-dy: @standard-text-dy;
       text-face-name: @book-fonts;
       text-halo-radius: @standard-halo-radius;
       text-wrap-width: @standard-wrap-width;
       text-placement: interior;
       text-allow-overlap: false;
+  }
+  [zoom >= 17] {
+      text-name: "[name]";
+      text-dy: @standard-text-dy;
+      text-fill: @transportation-text;
+      text-wrap-width: @standard-wrap-width;
+      text-placement: interior;
+      text-size: @standard-text-size + 1;
+      text-face-name: @bold-fonts;
+      text-halo-radius: @standard-halo-radius;
+      text-allow-overlap: false;
       [zoom >=19] {
         text-allow-overlap: true;
-        text-size: @standard-text-size + 1;
+        text-size: @standard-text-size + 3;
+      }
+      [ump_typ='PKP'],[ump_typ='TRAM'],[ump_typ='BUS'] {
+        text-dy: -12;
+        text-wrap-width: 52;
+        [ump_typ='BUS']  { text-fill: @transportation-bus-text; }
+        [ump_typ='TRAM'] { text-fill: @transportation-tram-text; }
+        [ump_typ='PKP']  { text-dy: @standard-text-dy ; }
       }
     [ump_typ='METRO'][zoom>=17] {text-size: 12; text-dy: -50; }
     [ump_typ='BILETOMAT'][zoom >= 18] { text-size: 8; text-fill: #da0092; text-dy: 14; }

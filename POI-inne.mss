@@ -45,6 +45,9 @@
      point-file: url('symbols_ump/1712_Repairs_16.png');
      [zoom >=19] {point-allow-overlap: true;}
  }
+ [ump_typ='MAPA'][zoom >= 17] {
+     point-file: url('symbols_ump/1605_Map_Mapa_day.png');
+ }
 }
 
 .poi-inne-tekst {
