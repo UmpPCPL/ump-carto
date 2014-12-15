@@ -1,0 +1,115 @@
+Binary files mapnik/bindings/python/mapnik/_mapnik.so and mapnik_grain181/bindings/python/mapnik/_mapnik.so differ
+diff -Nur mapnik/bindings/python/mapnik_image.cpp mapnik_grain181/bindings/python/mapnik_image.cpp
+--- mapnik/bindings/python/mapnik_image.cpp	2014-11-17 18:51:40.000000000 +0100
++++ mapnik_grain181/bindings/python/mapnik_image.cpp	2014-12-15 22:35:20.158520400 +0100
+@@ -246,6 +246,7 @@
+         .value("contrast", mapnik::contrast)
+         .value("invert", mapnik::invert)
+         .value("grain_merge", mapnik::grain_merge)
++        .value("grain_merge181", mapnik::grain_merge181)
+         .value("grain_extract", mapnik::grain_extract)
+         .value("hue", mapnik::hue)
+         .value("saturation", mapnik::saturation)
+diff -Nur mapnik/deps/agg/include/agg_pixfmt_rgba.h mapnik_grain181/deps/agg/include/agg_pixfmt_rgba.h
+--- mapnik/deps/agg/include/agg_pixfmt_rgba.h	2014-11-17 18:51:40.000000000 +0100
++++ mapnik_grain181/deps/agg/include/agg_pixfmt_rgba.h	2014-12-15 22:47:03.830520400 +0100
+@@ -1444,6 +1444,50 @@
+         }
+     };
+ 
++    // merge grain (GIMP)
++    // E = I + M - 181
++
++    template <typename ColorT, typename Order>
++    struct comp_op_rgba_grain_merge181
++    {
++        typedef ColorT color_type;
++        typedef Order order_type;
++        typedef typename color_type::value_type value_type;
++        typedef typename color_type::calc_type calc_type;
++        typedef typename color_type::long_type long_type;
++        enum base_scale_e
++        {
++            base_shift = color_type::base_shift,
++            base_mask  = color_type::base_mask
++        };
++
++        static AGG_INLINE void blend_pix(value_type* p,
++                                         unsigned sr, unsigned sg, unsigned sb,
++                                         unsigned sa, unsigned cover)
++        {
++
++            if (cover < 255)
++            {
++                sr = (sr * cover + 255) >> 8;
++                sg = (sg * cover + 255) >> 8;
++                sb = (sb * cover + 255) >> 8;
++                sa = (sa * cover + 255) >> 8;
++            }
++            if (sa > 0)
++            {
++                calc_type da = p[Order::A];
++                int dr = sr + p[Order::R] - 181;
++                int dg = sg + p[Order::G] - 181;
++                int db = sb + p[Order::B] - 181;
++                p[Order::R] = dr < 0 ? 0 : (dr > 255 ? 255 : dr);
++                p[Order::G] = dg < 0 ? 0 : (dg > 255 ? 255 : dg);
++                p[Order::B] = db < 0 ? 0 : (db > 255 ? 255 : db);
++                p[Order::A] = (value_type)(sa + da - ((sa * da + base_mask) >> base_shift));
++            }
++        }
++    };
++
++
+     // colorize alpha values
+     // TODO - consider moving to image-filters:
+     // https://github.com/mapnik/mapnik/issues/1371
+@@ -1675,6 +1719,7 @@
+         comp_op_rgba_invert     <ColorT,Order>::blend_pix,
+         comp_op_rgba_invert_rgb <ColorT,Order>::blend_pix,
+         comp_op_rgba_grain_merge<ColorT,Order>::blend_pix,
++        comp_op_rgba_grain_merge181<ColorT,Order>::blend_pix,
+         comp_op_rgba_grain_extract<ColorT,Order>::blend_pix,
+         comp_op_rgba_hue<ColorT,Order>::blend_pix,
+         comp_op_rgba_saturation<ColorT,Order>::blend_pix,
+@@ -1717,6 +1762,7 @@
+         comp_op_invert,        //----comp_op_invert
+         comp_op_invert_rgb,    //----comp_op_invert_rgb
+         comp_op_grain_merge,   //----comp_op_grain_merge_rgb
++        comp_op_grain_merge181,//----comp_op_grain_merge_rgb
+         comp_op_grain_extract, //----comp_op_grain_extract_rgb
+         comp_op_hue,           //----comp_op_hue
+         comp_op_saturation,    //----comp_op_saturation
+diff -Nur mapnik/include/mapnik/image_compositing.hpp mapnik_grain181/include/mapnik/image_compositing.hpp
+--- mapnik/include/mapnik/image_compositing.hpp	2014-11-17 18:51:40.000000000 +0100
++++ mapnik_grain181/include/mapnik/image_compositing.hpp	2014-12-15 22:35:52.526520400 +0100
+@@ -70,6 +70,7 @@
+     invert,
+     invert_rgb,
+     grain_merge,
++    grain_merge181,
+     grain_extract,
+     hue,
+     saturation,
+diff -Nur mapnik/src/cairo_context.cpp mapnik_grain181/src/cairo_context.cpp
+--- mapnik/src/cairo_context.cpp	2014-11-17 18:51:41.000000000 +0100
++++ mapnik_grain181/src/cairo_context.cpp	2014-12-15 22:34:16.638520400 +0100
+@@ -173,6 +173,7 @@
+     case invert:
+     case invert_rgb:
+     case grain_merge:
++    case grain_merge181:
+     case grain_extract:
+     case hue:
+     case saturation:
+diff -Nur mapnik/src/image_compositing.cpp mapnik_grain181/src/image_compositing.cpp
+--- mapnik/src/image_compositing.cpp	2014-11-17 18:51:41.000000000 +0100
++++ mapnik_grain181/src/image_compositing.cpp	2014-12-15 22:33:52.570520400 +0100
+@@ -69,6 +69,7 @@
+     (invert,"invert")
+     (invert_rgb,"invert-rgb")
+     (grain_merge,"grain-merge")
++    (grain_merge181,"grain-merge181")
+     (grain_extract,"grain-extract")
+     (hue,"hue")
+     (saturation,"saturation")
