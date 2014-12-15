@@ -9,10 +9,11 @@
       point-file: url('symbols_ump/2f02_Auto-Rental_Wypozyczalnia-samochodow_day.png');
       [ump_typ='RENT_A_BIKE'] { point-file: url('symbols_ump/bicycle.png'); }
       [name=~'Veturilo.*'] {point-file: url('symbols_ump/veturilo.png');} // jeśli będzie RENTACAR, to też pokaże
+      [name=~'NextBike.*'] {point-file: url('symbols_ump/veturilo.png');} // jeśli będzie RENTACAR, to też pokaże
     }
 
     [garmin_typ = '0x2f04']{
-      [zoom >= 7][zoom <10][ump_endlevel >= 2]  {
+      [zoom >= 7][zoom <10][ump_endlevel >= 3]  {
          point-file: url('symbols_ump/2f04_Airport_Lotnisko_day_16x16.png');
       }
       [zoom >= 10][ump_endlevel >= 2]  {
@@ -63,10 +64,18 @@
     }
 
 // przystanek BUS
-    [garmin_typ = '0x2f08'][zoom >= 17] {
-      point-file: url('symbols_ump/2f08_Bus-Station_Przystanek_day.png');
-      [ump_typ='RENT_A_BIKE'] { point-file: url('symbols_ump/bicycle.png'); }
-      [ump_typ='METRO'] { point-file: url('symbols_ump/metro.22.png'); }
+    [garmin_typ = '0x2f08'][zoom >= 15] {
+      [ump_typ='BUS'] { point-file: url('symbols_ump/bus_stop_small.png'); }
+      [ump_typ='TRAM'] { point-file: url('symbols_ump/tram_stop_small.png'); }
+      [zoom >= 17] {
+        point-file: url('symbols_ump/2f08_Bus-Station_Przystanek_day.png');
+        [ump_typ='BUS'] { point-file: url('symbols_ump/bus_stop_small.png'); }
+        [ump_typ='TRAM'] { point-file: url('symbols_ump/tram_stop_small.png'); }
+        [ump_typ='BUS'] { point-file: url('symbols_ump/bus_stop.png'); }
+        [ump_typ='TRAM'] { point-file: url('symbols_ump/tram_stop.png'); }
+        [ump_typ='RENT_A_BIKE'] { point-file: url('symbols_ump/bicycle.png'); }
+        [ump_typ='METRO'] { point-file: url('symbols_ump/metro.22.png'); }
+      }
     }
 //2f17  UZUPELNIC BIURO PODROZY TURYSTYKA
 
