@@ -23,7 +23,9 @@
  [ump_typ='POSTBOX'][zoom >= 17] {point-file: url('symbols/post_box.p.16.png');}
  [ump_typ='WIEZA'],[ump_typ='TOWER'] {[zoom >= 17] {point-file: url('symbols_ump/6411_Tower_Wieza_day.png');} }
  [ump_typ='SZLAK'][zoom >= 17] {point-file: url('symbols_ump/6412_Trailhead_Szlak-pieszy_day.png');}
-// TUNEL JASKINIA
+ [ump_typ='TUNEL'][zoom >= 17],
+ [ump_typ='JASKINIA'][zoom >= 17]
+      {point-file: url('symbols_ump/6413_Jaskinia.png');}
  [ump_typ='OLIGOCEN'][zoom >= 17] {point-file: url('symbols_ump/6414_Oligocene_Oligocen_day.png');}
  [ump_typ='FORT'][zoom >= 17] {point-file: url('symbols_ump/6415_Fort_Fort_day.png');}
 // [ump_typ='B&B'][zoom >= 17] {point-file: url('symbols_ump/6415_Ghost-City_Strachy-na-lachy_day.png');}

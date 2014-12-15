@@ -5,11 +5,26 @@
 // Cechy wody i ladu
 //
 .poi-teren {
+    [garmin_typ = '0x6508'][zoom >= 17] {
+         point-file: url('symbols_ump/6508_wodospad.png');
+    }
     [garmin_typ = '0x6509'][zoom >= 17] {
          point-file: url('symbols_ump/6509_Fountain_Fontanna_day.png');
     }
+    [garmin_typ = '0x650c'][zoom >= 17] {
+         point-file: url('symbols_ump/650c_Island.png');
+    }
+    [garmin_typ = '0x650d'][zoom >= 17] {
+         point-file: url('symbols_ump/650d_Jezioro.png');
+    }
     [garmin_typ = '0x650f'][zoom >= 17] {
          point-file: url('symbols_ump/650f_WC_ToiToi_day.png');
+    }
+    [garmin_typ = '0x6511'][zoom >= 17] {
+         point-file: url('symbols_ump/6511_zrodlo.png');
+    }
+    [garmin_typ = '0x6512'][zoom >= 17] {
+         point-file: url('symbols_ump/6512_strumien.png');
     }
     [garmin_typ = '0x660a'][zoom >= 17] {
          point-file: url('symbols_ump/660a_Forest_Las_day.png');
