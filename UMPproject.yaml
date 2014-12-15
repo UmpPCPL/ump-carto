@@ -87,33 +87,6 @@ Layer:
       file: "data/land-polygons-split-3857/land_polygons.shp"
       type: "shape"
     advanced: {}
-  - id: "dem36"
-    name: "dem36"
-    class: "dem36"
-    <<: *extents
-    Datasource:
-      file: "hill/hill_30.tif"
-      type: "gdal"
-      format: "tiff"
-    advanced: {}
-  - id: "dem18"
-    name: "dem18"
-    class: "dem18"
-    <<: *extents
-    Datasource:
-      file: "hill/hill_15.tif"
-      type: "gdal"
-      format: "tiff"
-    advanced: {}
-  - id: "dem9"
-    name: "dem9"
-    class: "dem9"
-    <<: *extents
-    Datasource:
-      file: "hill/hill_8.tif"
-      type: "gdal"
-      format: "tiff"
-    advanced: {}
   - id: "builtup"
     name: "builtup"
     geometry: "polygon"
@@ -155,6 +128,33 @@ Layer:
               ) AND way_area/(!pixel_width!*!pixel_height!) > 0.01
             ORDER BY z_order, way_area DESC
           ) AS teren
+    advanced: {}
+  - id: "dem36"
+    name: "dem36"
+    class: "dem36"
+    <<: *extents
+    Datasource:
+      file: "hill/hill_30.tif"
+      type: "gdal"
+      format: "tiff"
+    advanced: {}
+  - id: "dem18"
+    name: "dem18"
+    class: "dem18"
+    <<: *extents
+    Datasource:
+      file: "hill/hill_15.tif"
+      type: "gdal"
+      format: "tiff"
+    advanced: {}
+  - id: "dem9"
+    name: "dem9"
+    class: "dem9"
+    <<: *extents
+    Datasource:
+      file: "hill/hill_8.tif"
+      type: "gdal"
+      format: "tiff"
     advanced: {}
   - id: "water-lines-casing"
     name: "water-lines-casing"
