@@ -3,6 +3,9 @@ styl:
 	#echo renderd restart
 	service renderd restart
 	/mapnik/bin/clear_ump_cache.sh
+restart:
+	service renderd restart
+	/mapnik/bin/clear_ump_cache.sh
 
 status:
 	git status
