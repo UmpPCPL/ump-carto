@@ -295,7 +295,6 @@
     [feature = 'highway_road'],
     [feature = 'highway_ramp_slow'] {
       [zoom >= 13] {
-        line-smooth: 0.7;
         line-color: @ramp-casing;
         line-width: @residential-width-z13;
         [zoom >= 14] { line-width: @residential-width-z14; }
@@ -320,7 +319,6 @@
 
     [feature = 'highway_ramp_fast'] {
       [zoom >= 13] {
-        line-smooth: 0.7;
         line-color: @motorway-casing;
         line-width: @residential-width-z13;
         [zoom >= 14] { line-width: @residential-width-z14; }
@@ -1032,7 +1030,6 @@
 
     [feature = 'highway_ramp_slow'] {
       [zoom >= 13] {
-        line-smooth: 0.7;
         line-width: @residential-width-z13 - 2 * @residential-casing-width-z13;
         [zoom >= 14] { line-width: @residential-width-z14 - 2 * @casing-width-z14; }
         [zoom >= 15] { line-width: @residential-width-z15 - 2 * @casing-width-z15; }
@@ -1058,7 +1055,6 @@
 
     [feature = 'highway_ramp_fast'] {
       [zoom >= 13] {
-        line-smooth: 0.7;
         line-width: @residential-width-z13 - 2 * @residential-casing-width-z13;
         [zoom >= 14] { line-width: @residential-width-z14 - 2 * @casing-width-z14; }
         [zoom >= 15] { line-width: @residential-width-z15 - 2 * @casing-width-z15; }
@@ -1670,148 +1666,6 @@
 }
 
 
-#highway-area-casing {
-  [feature = 'highway_residential'],
-  [feature = 'highway_unclassified'] {
-    [zoom >= 14] {
-      line-color: #999;
-      line-width: 1;
-    }
-  }
-
-  [feature = 'highway_pedestrian'],
-  [feature = 'highway_service'],
-  [feature = 'highway_footway'],
-  [feature = 'highway_cycleway'],
-  [feature = 'highway_path'] {
-    [zoom >= 14] {
-      line-color: grey;
-      line-width: 1;
-    }
-  }
-
-  [feature = 'highway_track'][zoom >= 14] {
-    line-color: @track-fill;
-    line-width: 1;
-    line-dasharray: 5,4,2,4;
-    line-cap: round;
-    line-join: round;
-  }
-
-  [feature = 'highway_platform'],
-  [feature = 'railway_platform'] {
-    [zoom >= 16] {
-      line-color: grey;
-      line-width: 2;
-      line-cap: round;
-      line-join: round;
-    }
-  }
-}
-
-#highway-area-fill {
-  [feature = 'highway_living_street'][zoom >= 14] {
-    polygon-fill: #ccc;
-  }
-
-  [feature = 'highway_residential'],
-  [feature = 'highway_unclassified'],
-  [feature = 'highway_service'] {
-    [zoom >= 14] {
-      polygon-fill: #fff;
-    }
-  }
-
-  [feature = 'highway_pedestrian'],
-  [feature = 'highway_footway'],
-  [feature = 'highway_cycleway'],
-  [feature = 'highway_path'] {
-    [zoom >= 14] {
-      polygon-fill: #ededed;
-    }
-  }
-
-  [feature = 'highway_track'][zoom >= 14] {
-    polygon-fill: #cdbea0;
-  }
-
-  [feature = 'highway_platform'],
-  [feature = 'railway_platform'] {
-    [zoom >= 16] {
-      polygon-fill: #bbbbbb;
-      polygon-gamma: 0.65;
-    }
-  }
-
-  [feature = 'aeroway_runway'][zoom >= 11] {
-    polygon-fill: @runway-fill;
-  }
-
-  [feature = 'aeroway_taxiway'][zoom >= 13] {
-    polygon-fill: @taxiway-fill;
-  }
-
-  [feature = 'aeroway_helipad'][zoom >= 16] {
-    polygon-fill: @helipad-fill;
-  }
-}
-
-#junctions {
-  [highway = 'motorway_junction'] {
-    [zoom >= 11] {
-      ref/text-name: "[ref]";
-      ref/text-size: 10;
-      ref/text-fill: #6666ff;
-      ref/text-min-distance: 2;
-      ref/text-face-name: @oblique-fonts;
-      ref/text-halo-radius: 1.5;
-      [zoom >= 12] {
-        name/text-name: "[name]";
-        name/text-size: 9;
-        name/text-fill: #6666ff;
-        name/text-dy: -9;
-        name/text-face-name: @oblique-fonts;
-        name/text-halo-radius: 1;
-        name/text-wrap-character: ";";
-        name/text-wrap-width: 2;
-        name/text-min-distance: 2;
-      }
-      [zoom >= 15] {
-        ref/text-size: 12;
-        name/text-size: 11;
-        name/text-dy: -10;
-      }
-    }
-  }
-
-  [junction = 'yes'],
-  [highway = 'traffic_signals'] {
-    [zoom >= 14] {
-      text-name: "[name]";
-      text-size: 8;
-      text-fill: black;
-      text-face-name: @book-fonts;
-      text-halo-radius: 1;
-      text-wrap-width: 30;
-      text-min-distance: 2;
-      [zoom >= 14] {
-        text-size: 9;
-      }
-      [zoom >= 15] {
-        text-size: 10;
-      }
-      [zoom >= 17] {
-        text-size: 11;
-        /* Offset name on traffic_signals on zoomlevels where they are displayed
-        in order not to hide the text */
-        [highway = 'traffic_signals'] {
-          text-dy: 13;
-        }
-      }
-    }
-  }
-}
-
 .access::fill {
   [access = 'destination'] {
     [feature = 'highway_secondary'],
@@ -2271,23 +2125,6 @@
   }
 }
 
-#roads-area-text-name {
-  [way_pixels > 3000] {
-    [zoom >= 15] {
-      text-name: "[name]";
-      text-size: 8;
-      text-face-name: @book-fonts;
-      text-placement: interior;
-      text-wrap-width: 30;
-    }
-    [zoom >= 16] {
-      text-size: 9;
-    }
-    [zoom >= 17] {
-      text-size: 11;
-    }
-  }
-}
 
 #paths-text-name {
   [highway = 'track'] {

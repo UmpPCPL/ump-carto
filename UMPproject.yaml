@@ -30,7 +30,7 @@ _parts:
     srs: "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs"
   osm2pgsql: &osm2pgsql
     type: "postgis"
-    dbname: "umpgis"
+    dbname: "umpgis2"
     key_field: ""
     geometry_field: "way"
     extent: "-20037508,-20037508,20037508,20037508"
@@ -464,26 +464,6 @@ Layer:
           WHERE route = 'ferry'
         ) AS ferry_routes
     advanced: {}
-  - id: "highway-area-casing"
-    name: "highway-area-casing"
-    class: ""
-    geometry: "polygon"
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |-
-        (SELECT
-            way,
-            COALESCE((
-              'highway_' || (CASE WHEN highway IN ('residential', 'unclassified', 'pedestrian', 'service', 'footway', 'cycleway', 'track', 'path', 'platform') THEN highway ELSE NULL END)),
-              ('railway_' || (CASE WHEN railway IN ('platform') THEN railway ELSE NULL END))
-            ) AS feature
-          FROM planet_osm_polygon
-          WHERE highway IN ('residential', 'unclassified', 'pedestrian', 'service', 'footway', 'track', 'path', 'platform')
-            OR railway IN ('platform')
-          ORDER BY z_order, way_area DESC
-        ) AS highway_area_casing
-    advanced: {}
   - id: "roads-casing"
     name: "roads-casing"
     class: "roads-casing"
@@ -578,28 +558,6 @@ Layer:
             ) AS features
           ORDER BY prio
         ) AS roads_casing
-    advanced: {}
-  - id: "highway-area-fill"
-    name: "highway-area-fill"
-    class: ""
-    # FIXME: No geometry?
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |-
-        (SELECT
-            way,
-            COALESCE(
-              ('highway_' || (CASE WHEN highway IN ('residential', 'unclassified', 'pedestrian', 'service', 'footway', 'cycleway', 'living_street', 'track', 'path', 'platform', 'services') THEN highway ELSE NULL END)),
-              ('railway_' || (CASE WHEN railway IN ('platform') THEN railway ELSE NULL END)),
-              (('aeroway_' || CASE WHEN aeroway IN ('runway', 'taxiway', 'helipad') THEN aeroway ELSE NULL END))
-            ) AS feature
-          FROM planet_osm_polygon
-          WHERE highway IN ('residential', 'unclassified', 'pedestrian', 'service', 'footway', 'living_street', 'track', 'path', 'platform', 'services')
-            OR railway IN ('platform')
-            OR aeroway IN ('runway', 'taxiway', 'helipad')
-          ORDER BY z_order, way_area desc
-        ) AS highway_area_fill
     advanced: {}
   - id: "roads-fill"
     name: "roads-fill"
@@ -1287,19 +1245,6 @@ Layer:
                 AND ref IS NOT NULL
               ) AS p) AS q
           WHERE height <= 4 AND width <= 8) AS roads_text_ref
-    advanced: {}
-  - id: "roads-area-text-name"
-    name: "roads-area-text-name"
-    class: ""
-    geometry: "polygon"
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |2-
-              (SELECT way, way_area/(!pixel_width!*!pixel_height!) AS way_pixels, highway, name
-               FROM planet_osm_polygon
-               WHERE highway IN ('residential', 'unclassified', 'pedestrian', 'service', 'footway', 'cycleway', 'living_street', 'track', 'path', 'platform') OR railway IN ('platform') AND name IS NOT NULL
-              ) AS roads_area_text_name
     advanced: {}
   - id: "roads-text-name"
     name: "roads-text-name"
