@@ -1,4 +1,5 @@
 /* For the main linear features, such as roads and railways. */
+@road-smooth: 0.6;
 
 @motorway-fill: #809BC0;
 @trunk-fill: #A9DBA9;
@@ -168,6 +169,7 @@
   ::casing {
     [zoom >= 10] {
       [feature = 'highway_motorway'] {
+        line-smooth: @road-smooth;
         line-width: @motorway-width-z10;
         [zoom >= 11] { line-width: @motorway-width-z11; }
         [zoom >= 12] { line-width: @motorway-width-z12; }
@@ -199,6 +201,7 @@
 
     [feature = 'highway_trunk'] {
       [zoom >= 10] {
+        line-smooth: @road-smooth;
         line-color: @trunk-casing;
         line-width: @trunk-width-z10;
         [zoom >= 11] { line-width: @trunk-width-z11; }
@@ -222,6 +225,7 @@
 
     [feature = 'highway_primary'] {
       [zoom >= 10] {
+        line-smooth: @road-smooth;
         line-color: @primary-casing;
         line-width: @primary-width-z10;
         [zoom >= 11] { line-width: @primary-width-z11; }
@@ -246,6 +250,7 @@
     [feature = 'highway_secondary'] {
       [zoom >= 12] {
         line-color: @secondary-casing;
+        line-smooth: @road-smooth;
         [zoom >= 12] { line-width: @secondary-width-z12; }
         [zoom >= 13] { line-width: @secondary-width-z13; }
         [zoom >= 15] { line-width: @secondary-width-z15; }
@@ -268,6 +273,7 @@
 
     [feature = 'highway_tertiary'] {
       [zoom >= 12] {
+        line-smooth: @road-smooth;
         line-color: @tertiary-casing;
         line-width: @tertiary-width-z12;
         [zoom >= 12] { line-width: @tertiary-width-z12; }
@@ -295,7 +301,7 @@
     [feature = 'highway_road'],
     [feature = 'highway_ramp_slow'] {
       [zoom >= 13] {
-        line-smooth: 0.7;
+        line-smooth: @road-smooth;
         line-color: @ramp-casing;
         line-width: @residential-width-z13;
         [zoom >= 14] { line-width: @residential-width-z14; }
@@ -320,7 +326,7 @@
 
     [feature = 'highway_ramp_fast'] {
       [zoom >= 13] {
-        line-smooth: 0.7;
+        line-smooth: @road-smooth;
         line-color: @motorway-casing;
         line-width: @residential-width-z13;
         [zoom >= 14] { line-width: @residential-width-z14; }
@@ -348,6 +354,7 @@
     [feature = 'highway_unclassified'] {
       [zoom >= 13] {
         line-color: @residential-casing;
+        line-smooth: @road-smooth;
         line-width: @residential-width-z13;
         [zoom >= 14] { line-width: @residential-width-z14; }
         [zoom >= 15] { line-width: @residential-width-z15; }
@@ -372,6 +379,7 @@
     [feature = 'highway_service'] {
       [zoom >= 14][service = 'INT-normal'],
       [zoom >= 16][service = 'INT-minor'] {
+        line-smooth: @road-smooth;
         line-color: @service-casing;
         [service = 'INT-normal'] {
           line-width: @service-width-z14;
@@ -395,6 +403,7 @@
 
     [feature = 'highway_pedestrian'] {
       [zoom >= 13] {
+        line-smooth: @road-smooth;
         line-color: @pedestrian-casing;
         line-width: @pedestrian-width-z13;
         [zoom >= 14] { line-width: @pedestrian-width-z14; }
@@ -419,6 +428,7 @@
 
     [feature = 'highway_living_street'] {
       [zoom >= 13] {
+        line-smooth: @road-smooth;
         line-color: @living-street-casing;
         line-width: @living-street-width-z13;
         [zoom >= 14] { line-width: @living-street-width-z14; }
@@ -445,6 +455,7 @@
       .bridges-casing {
         [zoom >= 14][access != 'no'],
         [zoom >= 15] {
+          line-smooth: @road-smooth;
           line-width: @steps-width-z13 + 2 * (@paths-background-width + @paths-bridge-casing-width);
           [zoom >= 15] { line-width: @steps-width-z15 + 2 * (@paths-background-width + @paths-bridge-casing-width); }
           line-color: @bridge-casing;
@@ -458,6 +469,7 @@
       .bridges-casing {
         [zoom >= 14][access != 'no'],
         [zoom >= 15] {
+          line-smooth: @road-smooth;
           line-width: @bridleway-width-z13 + 2 * (@paths-background-width + @paths-bridge-casing-width);
           [zoom >= 15] { line-width: @bridleway-width-z15 + 2 * (@paths-background-width + @paths-bridge-casing-width); }
           line-color: @bridge-casing;
@@ -471,6 +483,7 @@
       .bridges-casing {
         [zoom >= 14][access != 'no'],
         [zoom >= 15] {
+          line-smooth: @road-smooth;
           line-width: @footway-width-z13 + 2 * (@paths-background-width + @paths-bridge-casing-width);
           [zoom >= 15] { line-width: @footway-width-z15 + 2 * (@paths-background-width + @paths-bridge-casing-width); }
           line-color: @bridge-casing;
@@ -484,6 +497,7 @@
       .bridges-casing {
         [zoom >= 14][access != 'no'],
         [zoom >= 15] {
+          line-smooth: @road-smooth;
           line-width: @cycleway-width-z13 + 2 * (@paths-background-width + @paths-bridge-casing-width);
           [zoom >= 15] { line-width: @cycleway-width-z15 + 2 * (@paths-background-width + @paths-bridge-casing-width); }
           line-color: @bridge-casing;
@@ -496,6 +510,7 @@
       .bridges-casing {
         [zoom >= 14][access != 'no'],
         [zoom >= 15] {
+          line-smooth: @road-smooth;
           line-width: @path-width-z13 + 2 * (@paths-background-width + @paths-bridge-casing-width);
           [zoom >= 15] { line-width: @path-width-z15 + 2 * (@paths-background-width + @paths-bridge-casing-width); }
           line-color: @bridge-casing;
@@ -507,6 +522,7 @@
     [feature = 'highway_track'] {
       .bridges-casing {
         [zoom >= 13][access != 'no'] {
+          line-smooth: @road-smooth;
           line-color: @bridge-casing;
           line-join: round;
           line-width: @track-width-z13 + 2 * (@paths-background-width + @paths-bridge-casing-width);
@@ -518,6 +534,7 @@
           }
         }
         [zoom >= 15] {
+          line-smooth: @road-smooth;
           line-width: @track-width-z15 + 2 * (@paths-background-width + @paths-bridge-casing-width);
           [tracktype = 'grade1'] {
             line-width: @track-grade1-width-z15 + 2 * (@paths-background-width + @paths-bridge-casing-width);
@@ -532,6 +549,7 @@
     [feature = 'railway_tram'] {
       .bridges-casing {
         [zoom >= 14] {
+          line-smooth: @road-smooth;
           line-width: 4;
           [zoom >= 15] {
             line-width: 5;
@@ -545,6 +563,7 @@
     [feature = 'railway_subway'] {
       .bridges-casing {
         [zoom >= 14] {
+          line-smooth: @road-smooth;
           line-width: 5.5;
           line-color: black;
           line-join: round;
@@ -557,6 +576,7 @@
     [feature = 'railway_narrow_gauge'] {
       .bridges-casing {
         [zoom >= 14] {
+          line-smooth: @road-smooth;
           line-width: 5.5;
           line-color: black;
           line-join: round;
@@ -570,6 +590,7 @@
       .bridges-casing {
         [zoom >= 13] {
           line-width: 6.5;
+          line-smooth: @road-smooth;
           line-color: black;
           line-join: round;
         }
@@ -579,6 +600,7 @@
     [feature = 'railway_INT-spur-siding-yard'] {
       .bridges-casing {
         [zoom >= 13] {
+          line-smooth: @road-smooth;
           line-width: 5.7;
           line-color: black;
           line-join: round;
@@ -592,6 +614,7 @@
     [feature = 'railway_INT-preserved-ssy'][zoom >= 14] {
       .bridges-casing {
         [zoom >= 13] {
+          line-smooth: @road-smooth;
           line-width: 6;
           line-color: black;
           line-join: round;
@@ -602,6 +625,7 @@
     [feature = 'aeroway_runway'] {
       .bridges-casing {
         [zoom >= 14] {
+          line-smooth: @road-smooth;
           line-width: 19;
           line-color: black;
           line-join: round;
@@ -612,6 +636,7 @@
     [feature = 'aeroway_taxiway'] {
       .bridges-casing {
         [zoom >= 14] {
+          line-smooth: @road-smooth;
           line-width: 5;
           line-color: black;
           line-join: round;
@@ -627,6 +652,7 @@
       .bridges-casing {
         [zoom >= 14][access != 'no'],
         [zoom >= 15] {
+          line-smooth: @road-smooth;
           line-width: @bridleway-width-z13 + 2 * @paths-background-width;
           [zoom >= 15] { line-width: @bridleway-width-z15 + 2 * @paths-background-width; }
           line-color: @bridleway-casing;
@@ -640,6 +666,7 @@
       .bridges-casing {
         [zoom >= 14][access != 'no'],
         [zoom >= 15] {
+          line-smooth: @road-smooth;
           line-width: @footway-width-z13 + 2 * @paths-background-width;
           [zoom >= 15] { line-width: @footway-width-z15 + 2 * @paths-background-width; }
           line-color: @footway-casing;
@@ -653,6 +680,7 @@
       .bridges-casing {
         [zoom >= 14][access != 'no'],
         [zoom >= 15] {
+          line-smooth: @road-smooth;
           line-width: @cycleway-width-z13 + 2 * @paths-background-width;
           [zoom >= 15] { line-width: @cycleway-width-z15 + 2 * @paths-background-width; }
           line-color: @cycleway-casing;
@@ -665,6 +693,7 @@
       .bridges-casing {
         [zoom >= 14][access != 'no'],
         [zoom >= 15] {
+          line-smooth: @road-smooth;
           line-width: @steps-width-z13 + 2 * @paths-background-width;
           [zoom >= 15] { line-width: @steps-width-z15 + 2 * @paths-background-width; }
           line-color: @steps-casing;
@@ -677,6 +706,7 @@
       .bridges-casing {
         [zoom >= 14][access != 'no'],
         [zoom >= 15] {
+          line-smooth: @road-smooth;
           line-width: @path-width-z13 + 2 * @paths-background-width;
           [zoom >= 15] { line-width: @path-width-z15 + 2 * @paths-background-width; }
           line-color: @path-casing;
@@ -689,6 +719,7 @@
       /* We don't set opacity here, so it's 1.0. Aside from that, it's basically a copy of roads-fill::background in the track part of ::fill */
       .bridges-casing {
         [zoom >= 13][access != 'no'] {
+          line-smooth: @road-smooth;
           line-color: @track-casing;
           line-join: round;
           line-width: @track-width-z13 + 2 * @paths-background-width;
@@ -700,6 +731,7 @@
           }
         }
         [zoom >= 15] {
+          line-smooth: @road-smooth;
           line-width: @track-width-z15 + 2 * @paths-background-width;
           [tracktype = 'grade1'] {
             line-width: @track-grade1-width-z15 + 2 * @paths-background-width;
@@ -715,6 +747,7 @@
     [feature = 'railway_preserved'][zoom >= 14],
     [feature = 'railway_monorail'][zoom >= 14] {
       .bridges-casing {
+        line-smooth: @road-smooth;
         line-width: 5;
         line-color: white;
         line-join: round;
@@ -724,6 +757,7 @@
     [feature = 'railway_INT-spur-siding-yard'] {
       .bridges-casing {
         [zoom >= 13] {
+          line-smooth: @road-smooth;
           line-width: 4;
           line-color: white;
           line-join: round;
@@ -737,6 +771,7 @@
     [feature = 'railway_INT-preserved-ssy'][zoom >= 14] {
       .bridges-casing {
         [zoom >= 13] {
+          line-smooth: @road-smooth;
           line-width: 4.5;
           line-color: white;
           line-join: round;
@@ -747,6 +782,7 @@
     [feature = 'railway_tram'] {
       .bridges-casing {
         [zoom >= 14] {
+          line-smooth: @road-smooth;
           line-width: 3;
           [zoom >= 15] {
             line-width: 4;
@@ -759,6 +795,7 @@
     [feature = 'railway_subway'] {
       .bridges-casing {
         [zoom >= 14] {
+          line-smooth: @road-smooth;
           line-width: 4;
           line-color: white;
           line-join: round;
@@ -771,6 +808,7 @@
     [feature = 'railway_narrow_gauge'] {
       .bridges-casing {
         [zoom >= 14] {
+          line-smooth: @road-smooth;
           line-width: 4;
           line-color: white;
           line-join: round;
@@ -796,8 +834,10 @@
     [feature = 'highway_proposed'] {
      [tracktype = 'DK']{
       [zoom >= 11] {
+        line-smooth: @road-smooth;
         line-width: 2;
         line-color: #9cc;
+        b/line-smooth: @road-smooth;
         b/line-width: 2;
         b/line-dasharray: 4,2;
         b/line-color: white;
@@ -815,8 +855,10 @@
      }
      [tracktype = 'osiedlowa']{
       [zoom >= 15] {
+        line-smooth: @road-smooth;
         line-width: 4;
         line-color: #9cc;
+        b/line-smooth: @road-smooth;
         b/line-width: 3.5;
         b/line-dasharray: 6,4;
         b/line-color: white;
@@ -831,8 +873,10 @@
 
     [feature = 'highway_construction'] {
       [zoom >= 11] {
+        line-smooth: @road-smooth;
         line-width: 2;
         line-color: #f2cf95;
+        b/line-smooth: @road-smooth;
         b/line-width: 2;
         b/line-dasharray: 4,2;
         b/line-color: white;
@@ -851,6 +895,7 @@
 
     [feature = 'highway_motorway'] {
       [zoom >= 10] {
+        line-smooth: @road-smooth;
         line-width: @motorway-width-z10 - 2 * @casing-width-z10;
         [zoom >= 11] { line-width: @motorway-width-z11 - 2 * @casing-width-z11; }
         [zoom >= 12] { line-width: @motorway-width-z12 - 2 * @casing-width-z12; }
@@ -892,6 +937,7 @@
 
     [feature = 'highway_trunk'] {
       [zoom >= 10] {
+        line-smooth: @road-smooth;
         line-width: @trunk-width-z10 - 2 * @casing-width-z10;
         [zoom >= 11] { line-width: @trunk-width-z11 - 2 * @casing-width-z11; }
         [zoom >= 13] { line-width: @trunk-width-z13 - 2 * @casing-width-z13; }
@@ -917,6 +963,7 @@
 
     [feature = 'highway_primary'] {
       [zoom >= 10] {
+        line-smooth: @road-smooth;
         line-width: @primary-width-z10 - 2 * @casing-width-z10;
         [zoom >= 11] { line-width: @primary-width-z11 - 2 * @casing-width-z11; }
         [zoom >= 13] { line-width: @primary-width-z13 - 2 * @casing-width-z13; }
@@ -942,6 +989,7 @@
 
     [feature = 'highway_secondary'] {
       [zoom >= 12] {
+        line-smooth: @road-smooth;
         line-width: @secondary-width-z12 - 2 * @casing-width-z12;
         [zoom >= 13] { line-width: @secondary-width-z13 - 2 * @casing-width-z13; }
         [zoom >= 15] { line-width: @secondary-width-z15 - 2 * @casing-width-z15; }
@@ -965,6 +1013,7 @@
 
     [feature = 'highway_tertiary'] {
       [zoom >= 12] {
+        line-smooth: @road-smooth;
         line-width: @tertiary-width-z12 - 2 * @casing-width-z12;
         [zoom >= 13] { line-width: @tertiary-width-z13 - 2 * @casing-width-z13; }
         [zoom >= 14] { line-width: @tertiary-width-z14 - 2 * @casing-width-z14; }
@@ -991,6 +1040,7 @@
     [feature = 'highway_residential'],
     [feature = 'highway_unclassified'] {
       [zoom >= 13] {
+        line-smooth: @road-smooth;
         line-width: @residential-width-z13 - 2 * @residential-casing-width-z13;
         [zoom >= 14] { line-width: @residential-width-z14 - 2 * @casing-width-z14; }
         [zoom >= 15] { line-width: @residential-width-z15 - 2 * @casing-width-z15; }
@@ -1016,6 +1066,8 @@
 
     [feature = 'highway_ramp_fast'][zoom >= 10][zoom < 13],
     [feature = 'highway_ramp_slow'][zoom >= 10][zoom < 13] {
+      line-smooth: @road-smooth;
+      line-smooth: @road-smooth;
       line-width: 1;
       line-color: @motorway-fill;
     }
@@ -1026,13 +1078,14 @@
     [feature = 'highway_road'][zoom >= 10][zoom < 13],
     [feature = 'highway_road_link'][zoom >= 10][zoom < 13],
     [feature = 'highway_living_street'][zoom >= 12][zoom < 13] {
+      line-smooth: @road-smooth;
       line-width: 1;
       line-color: @residential-casing;
     }
 
     [feature = 'highway_ramp_slow'] {
       [zoom >= 13] {
-        line-smooth: 0.7;
+        line-smooth: @road-smooth;
         line-width: @residential-width-z13 - 2 * @residential-casing-width-z13;
         [zoom >= 14] { line-width: @residential-width-z14 - 2 * @casing-width-z14; }
         [zoom >= 15] { line-width: @residential-width-z15 - 2 * @casing-width-z15; }
@@ -1058,7 +1111,7 @@
 
     [feature = 'highway_ramp_fast'] {
       [zoom >= 13] {
-        line-smooth: 0.7;
+        line-smooth: @road-smooth;
         line-width: @residential-width-z13 - 2 * @residential-casing-width-z13;
         [zoom >= 14] { line-width: @residential-width-z14 - 2 * @casing-width-z14; }
         [zoom >= 15] { line-width: @residential-width-z15 - 2 * @casing-width-z15; }
@@ -1085,6 +1138,7 @@
     [feature = 'highway_road_link'],
     [feature = 'highway_road'] {
       [zoom >= 13] {
+        line-smooth: @road-smooth;
         line-width: @residential-width-z13 - 2 * @residential-casing-width-z13;
         [zoom >= 14] { line-width: @residential-width-z14 - 2 * @casing-width-z14; }
         [zoom >= 15] { line-width: @residential-width-z15 - 2 * @casing-width-z15; }
@@ -1110,6 +1164,7 @@
 
     [feature = 'highway_living_street'] {
       [zoom >= 13] {
+        line-smooth: @road-smooth;
         line-width: @living-street-width-z13 - 2 * @casing-width-z13;
         [zoom >= 14] { line-width: @living-street-width-z14 - 2 * @casing-width-z14; }
         [zoom >= 15] { line-width: @living-street-width-z15 - 2 * @casing-width-z15; }
@@ -1135,11 +1190,13 @@
 
     [feature = 'highway_service'] {
       [zoom >= 13][service = 'INT-normal'] {
+        line-smooth: @road-smooth;
         line-width: 1;
         line-color: @residential-casing;
       }
       [zoom >= 14][service = 'INT-normal'],
       [zoom >= 16][service = 'INT-minor'] {
+        line-smooth: @road-smooth;
         line-color: @service-fill;
         [junction = 'roundabout'] {
           line-color: @roundabout-fill;
@@ -1172,6 +1229,7 @@
 
     [feature = 'highway_pedestrian'] {
       [zoom >= 13] {
+        line-smooth: @road-smooth;
         line-width: @living-street-width-z13 - 2 * @casing-width-z13;
         [zoom >= 14] { line-width: @pedestrian-width-z14 - 2 * @casing-width-z14; }
         [zoom >= 15] { line-width: @pedestrian-width-z15 - 2 * @casing-width-z15; }
@@ -1192,6 +1250,7 @@
 
     [feature = 'highway_raceway'] {
       [zoom >= 12] {
+        line-smooth: @road-smooth;
         line-color: @raceway-fill;
         line-width: 1.2;
         line-join: round;
@@ -1203,10 +1262,12 @@
 
     [feature = 'highway_platform'] {
       [zoom >= 16] {
+        line-smooth: @road-smooth;
         line-join: round;
         line-width: 6;
         line-color: grey;
         line-cap: round;
+        b/line-smooth: @road-smooth;
         b/line-width: 4;
         b/line-color: #bbbbbb;
         b/line-cap: round;
@@ -1218,6 +1279,7 @@
       [zoom >= 13][access != 'no'],
       [zoom >= 15] {
         .tunnels-fill {
+          tunnelcasing/line-smooth: @road-smooth;
           tunnelcasing/line-width: @steps-width-z13 + 2 * (@paths-background-width + @paths-tunnel-casing-width);
           [zoom >= 15] { tunnelcasing/line-width: @steps-width-z15 + 2 * (@paths-background-width + @paths-tunnel-casing-width); }
           tunnelcasing/line-color: @tunnel-casing;
@@ -1225,6 +1287,7 @@
         }
         .roads-fill[zoom >= 15],
         .tunnels-fill[zoom >= 13] {
+          background/line-smooth: @road-smooth;
           background/line-color: @steps-casing;
           background/line-cap: round;
           background/line-join: round;
@@ -1232,6 +1295,7 @@
           [zoom >= 15] { background/line-width: @steps-width-z15 + 2 * @paths-background-width; }
           .roads-fill { background/line-opacity: 0.4; }
         }
+        line/line-smooth: @road-smooth;
         line/line-color: @steps-fill;
         line/line-dasharray: 2,1;
         [zoom >= 15] { line/line-width:  @steps-width-z15; }
@@ -1245,6 +1309,7 @@
       [zoom >= 13][access != 'no'],
       [zoom >= 15] {
         .tunnels-fill {
+          tunnelcasing/line-smooth: @road-smooth;
           tunnelcasing/line-width: @bridleway-width-z13 + 2 * (@paths-background-width + @paths-tunnel-casing-width);
           [zoom >= 15] { tunnelcasing/line-width: @bridleway-width-z15 + 2 * (@paths-background-width + @paths-tunnel-casing-width); }
           tunnelcasing/line-color: @tunnel-casing;
@@ -1252,6 +1317,7 @@
         }
         .roads-fill[zoom >= 15],
         .tunnels-fill[zoom >= 13] {
+          background/line-smooth: @road-smooth;
           background/line-color: @bridleway-casing;
           background/line-cap: round;
           background/line-join: round;
@@ -1259,6 +1325,7 @@
           [zoom >= 15] { background/line-width: @bridleway-width-z15 + 2 * @paths-background-width; }
           .roads-fill { background/line-opacity: 0.4; }
         }
+        line/line-smooth: @road-smooth;
         line/line-color: @bridleway-fill;
         line/line-dasharray: 4,2;
         line/line-width: @bridleway-width-z13;
@@ -1275,6 +1342,7 @@
       [zoom >= 13][access != 'no'],
       [zoom >= 15] {
         .tunnels-fill {
+          tunnelcasing/line-smooth: @road-smooth;
           tunnelcasing/line-width: @footway-width-z13 + 2 * (@paths-background-width + @paths-tunnel-casing-width);
           [zoom >= 15] { tunnelcasing/line-width: @footway-width-z15 + 2 * (@paths-background-width + @paths-tunnel-casing-width); }
           tunnelcasing/line-color: @tunnel-casing;
@@ -1282,6 +1350,7 @@
         }
         .roads-fill[zoom >= 15],
         .tunnels-fill[zoom >= 13] {
+          background/line-smooth: @road-smooth;
           background/line-color: @footway-casing;
           background/line-cap: round;
           background/line-join: round;
@@ -1289,6 +1358,7 @@
           [zoom >= 15] { background/line-width: @footway-width-z15 + 2 * @paths-background-width; }
           .roads-fill { background/line-opacity: 0.4; }
         }
+        line/line-smooth: @road-smooth;
         line/line-color: @footway-fill;
         line/line-dasharray: 1,3;
         line/line-join: round;
@@ -1303,6 +1373,7 @@
       [zoom >= 13][access != 'no'],
       [zoom >= 15] {
         .tunnels-fill {
+          tunnelcasing/line-smooth: @road-smooth;
           tunnelcasing/line-width: @cycleway-width-z13 + 2 * (@paths-background-width + @paths-tunnel-casing-width);
           [zoom >= 15] { tunnelcasing/line-width: @cycleway-width-z15 + 2 * (@paths-background-width + @paths-tunnel-casing-width); }
           tunnelcasing/line-color: @tunnel-casing;
@@ -1310,6 +1381,7 @@
         }
         .roads-fill[zoom >= 15],
         .tunnels-fill[zoom >= 13] {
+          background/line-smooth: @road-smooth;
           background/line-color: @cycleway-casing;
           background/line-cap: round;
           background/line-join: round;
@@ -1317,6 +1389,7 @@
           [zoom >= 15] { background/line-width: @cycleway-width-z15 + 2 * @paths-background-width; }
           .roads-fill { background/line-opacity: 0.4; }
         }
+        line/line-smooth: @road-smooth;
         line/line-color: @cycleway-fill;
         line/line-dasharray: 1,3;
         line/line-join: round;
@@ -1334,6 +1407,7 @@
       [zoom >= 13][access != 'no'],
       [zoom >= 15] {
         .tunnels-fill {
+          tunnelcasing/line-smooth: @road-smooth;
           tunnelcasing/line-width: @path-width-z13 + 2 * (@paths-background-width + @paths-tunnel-casing-width);
           [zoom >= 15] { tunnelcasing/line-width: @path-width-z15 + 2 * (@paths-background-width + @paths-tunnel-casing-width); }
           tunnelcasing/line-color: @tunnel-casing;
@@ -1341,6 +1415,7 @@
         }
         .roads-fill[zoom >= 15],
         .tunnels-fill[zoom >= 13] {
+          background/line-smooth: @road-smooth;
           background/line-color: @path-casing;
           background/line-cap: round;
           background/line-join: round;
@@ -1348,6 +1423,7 @@
           [zoom >= 15] { background/line-width: @path-width-z15 + 2 * @paths-background-width; }
           .roads-fill { background/line-opacity: 0.4; }
         }
+        line/line-smooth: @road-smooth;
         line/line-color: @path-fill;
         line/line-dasharray: 6,3;
         line/line-join: round;
@@ -1361,6 +1437,7 @@
       [zoom >= 13][access != 'no'],
       [zoom >= 15] {
         .tunnels-fill {
+          tunnelcasing/line-smooth: @road-smooth;
           tunnelcasing/line-color: @tunnel-casing;
           tunnelcasing/line-dasharray: 4,2;
           tunnelcasing/line-width: @track-width-z13 + 2 * (@paths-background-width + @paths-tunnel-casing-width);
@@ -1384,6 +1461,7 @@
         /* The white casing that you mainly see against forests and other dark features */
         .roads-fill[zoom >= 15],
         .tunnels-fill[zoom >= 13] {
+          background/line-smooth: @road-smooth;
           background/line-opacity: 0.4;
           background/line-color: @track-casing;
           background/line-join: round;
@@ -1409,6 +1487,7 @@
         }
 
         /* Set the properties of the brown inside */
+        line/line-smooth: @road-smooth;
         line/line-color: @track-fill;
         line/line-dasharray: 5,4,2,4;
         line/line-cap: round;
@@ -1824,6 +1903,7 @@
     [feature = 'highway_ramp_slow'],
     [feature = 'highway_living_street'] {
       [zoom >= 15] {
+        access/line-smooth: @road-smooth;
         access/line-width: 6;
         access/line-color: @destination-marking;
         access/line-dasharray: 6,8;
@@ -1834,6 +1914,7 @@
     }
     [feature = 'highway_service'][service = 'INT-normal'][zoom >= 15],
     [feature = 'highway_service'][zoom >= 16] {
+      access/line-smooth: @road-smooth;
       access/line-width: 3;
       access/line-color: @destination-marking;
       access/line-dasharray: 6,8;
@@ -1859,6 +1940,7 @@
     [feature = 'highway_cycleway'],
     [feature = 'highway_bridleway'] {
       [zoom >= 15] {
+        access/line-smooth: @road-smooth;
         access/line-width: 6;
         access/line-color: @private-marking;
         access/line-dasharray: 6,8;
@@ -1869,6 +1951,7 @@
     }
     [feature = 'highway_service'][service = 'INT-normal'][zoom >= 15],
     [feature = 'highway_service'][zoom >= 16] {
+      access/line-smooth: @road-smooth;
       access/line-width: 3;
       access/line-color: @private-marking;
       access/line-dasharray: 6,8;
@@ -2341,21 +2424,25 @@
   [zoom >= 16] {
     [oneway = 'yes'],
     [oneway = '1'] {
+      dira/line-smooth: @road-smooth;
       dira/line-width: 1;
       dira/line-dasharray: 0,12,10,152;
       dira/line-color: #6c70d5;
       dira/line-join: bevel;
       dira/line-clip: false;
+      dirb/line-smooth: @road-smooth;
       dirb/line-width: 2;
       dirb/line-dasharray: 0,12,9,153;
       dirb/line-color: #6c70d5;
       dirb/line-join: bevel;
       dirb/line-clip: false;
+      dirc/line-smooth: @road-smooth;
       dirc/line-width: 3;
       dirc/line-dasharray: 0,18,2,154;
       dirc/line-color: #6c70d5;
       dirc/line-join: bevel;
       dirc/line-clip: false;
+      dird/line-smooth: @road-smooth;
       dird/line-width: 4;
       dird/line-dasharray: 0,18,1,155;
       dird/line-color: #6c70d5;
@@ -2363,21 +2450,25 @@
       dird/line-clip: false;
     }
     [oneway = '-1'] {
+      dira/line-smooth: @road-smooth;
       dira/line-width: 1;
       dira/line-dasharray: 0,12,10,152;
       dira/line-color: #6c70d5;
       dira/line-join: bevel;
       dira/line-clip: false;
+      dirb/line-smooth: @road-smooth;
       dirb/line-width: 2;
       dirb/line-dasharray: 0,13,9,152;
       dirb/line-color: #6c70d5;
       dirb/line-join: bevel;
       dirb/line-clip: false;
+      dirc/line-smooth: @road-smooth;
       dirc/line-width: 3;
       dirc/line-dasharray: 0,14,2,158;
       dirc/line-color: #6c70d5;
       dirc/line-join: bevel;
       dirc/line-clip: false;
+      dird/line-smooth: @road-smooth;
       dird/line-width: 4;
       dird/line-dasharray: 0,15,1,158;
       dird/line-color: #6c70d5;
