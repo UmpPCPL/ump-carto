@@ -56,6 +56,7 @@ Stylesheet:
   - "POI-rozrywka.mss"
   - "POI-sluzby.mss"
   - "POI-transport.mss"
+  - "POI-slupki.mss"
   - "POI-highways.mss"
   - "POI-uslugi.mss"
   - "POI-zakupy.mss"
@@ -1074,6 +1075,20 @@ Layer:
               OR  ("ump:type" BETWEEN '0x5901' AND '0x5905')
          ) AS poi_transport_point
     advanced: {}
+  - id: "poi-slupki-point"
+    name: "poi-slupki-point"
+    class: "poi-slupki"
+    geometry: "point"
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |2-
+        (SELECT way, "ump:typ" AS ump_typ, name, "ump:type" AS garmin_typ, "ump:endlevel" as ump_endlevel
+              FROM planet_osm_point
+              WHERE ("ump:type" BETWEEN '0x5a00' AND '0x5a10')
+              OR  ("ump:type" BETWEEN '0x5600' AND '0x5800')
+         ) AS poi_slupki_point
+    advanced: {}
   - id: "poi-highways-point"
     name: "poi-highways-point"
     class: "poi-highways"
@@ -1343,6 +1358,20 @@ Layer:
               WHERE "ump:type" IN ('0x2f02','0x2f04','0x2f08','0x2f17','0x2f18')
               OR  ("ump:type" BETWEEN '0x5901' AND '0x5905')
          ) AS poi_transport_tekst
+    advanced: {}
+  - id: "poi-slupki-tekst"
+    name: "poi-slupki-tekst"
+    class: "poi-slupki-tekst"
+    geometry: "point"
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |2-
+        (SELECT way, "ump:typ" AS ump_typ, name, "ump:type" AS garmin_typ, "ump:endlevel" as ump_endlevel
+              FROM planet_osm_point
+              WHERE ("ump:type" BETWEEN '0x5a00' AND '0x5a10')
+              OR  ("ump:type" BETWEEN '0x5600' AND '0x5800')
+         ) AS poi_slupki_tekst
     advanced: {}
   - id: "poi-highways-tekst"
     name: "poi-highways-tekst"

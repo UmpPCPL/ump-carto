@@ -1106,6 +1106,29 @@
       "advanced": {}
     }, 
     {
+      "name": "poi-slupki-point", 
+      "srs-name": "900913", 
+      "geometry": "point", 
+      "class": "poi-slupki", 
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
+      "Datasource": {
+        "extent": "-20037508,-20037508,20037508,20037508", 
+        "table": "(SELECT way, \"ump:typ\" AS ump_typ, name, \"ump:type\" AS garmin_typ, \"ump:endlevel\" as ump_endlevel\n      FROM planet_osm_point\n      WHERE (\"ump:type\" BETWEEN '0x5a00' AND '0x5a10')\n      OR  (\"ump:type\" BETWEEN '0x5600' AND '0x5800')\n ) AS poi_slupki_point", 
+        "geometry_field": "way", 
+        "type": "postgis", 
+        "key_field": "", 
+        "dbname": "umpgis2"
+      }, 
+      "extent": [
+        -180, 
+        -85.05112877980659, 
+        180, 
+        85.05112877980659
+      ], 
+      "id": "poi-slupki-point", 
+      "advanced": {}
+    }, 
+    {
       "name": "poi-highways-point", 
       "srs-name": "900913", 
       "geometry": "point", 
@@ -1520,6 +1543,29 @@
       "advanced": {}
     }, 
     {
+      "name": "poi-slupki-tekst", 
+      "srs-name": "900913", 
+      "geometry": "point", 
+      "class": "poi-slupki-tekst", 
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
+      "Datasource": {
+        "extent": "-20037508,-20037508,20037508,20037508", 
+        "table": "(SELECT way, \"ump:typ\" AS ump_typ, name, \"ump:type\" AS garmin_typ, \"ump:endlevel\" as ump_endlevel\n      FROM planet_osm_point\n      WHERE (\"ump:type\" BETWEEN '0x5a00' AND '0x5a10')\n      OR  (\"ump:type\" BETWEEN '0x5600' AND '0x5800')\n ) AS poi_slupki_tekst", 
+        "geometry_field": "way", 
+        "type": "postgis", 
+        "key_field": "", 
+        "dbname": "umpgis2"
+      }, 
+      "extent": [
+        -180, 
+        -85.05112877980659, 
+        180, 
+        85.05112877980659
+      ], 
+      "id": "poi-slupki-tekst", 
+      "advanced": {}
+    }, 
+    {
       "name": "poi-highways-tekst", 
       "srs-name": "900913", 
       "geometry": "point", 
@@ -1929,6 +1975,7 @@
     "POI-rozrywka.mss", 
     "POI-sluzby.mss", 
     "POI-transport.mss", 
+    "POI-slupki.mss", 
     "POI-highways.mss", 
     "POI-uslugi.mss", 
     "POI-zakupy.mss", 
