@@ -1667,36 +1667,6 @@
 
 
 .access::fill {
-  [access = 'destination'] {
-    [feature = 'highway_secondary'],
-    [feature = 'highway_tertiary'],
-    [feature = 'highway_unclassified'],
-    [feature = 'highway_residential'],
-    [feature = 'highway_road'],
-    [feature = 'highway_road_link'],
-    [feature = 'highway_ramp_fast'],
-    [feature = 'highway_ramp_slow'],
-    [feature = 'highway_living_street'] {
-      [zoom >= 15] {
-        access/line-width: 6;
-        access/line-color: @destination-marking;
-        access/line-dasharray: 6,8;
-        access/line-cap: round;
-        access/line-join: round;
-        access/line-opacity: 0.5;
-      }
-    }
-    [feature = 'highway_service'][service = 'INT-normal'][zoom >= 15],
-    [feature = 'highway_service'][zoom >= 16] {
-      access/line-width: 3;
-      access/line-color: @destination-marking;
-      access/line-dasharray: 6,8;
-      access/line-cap: round;
-      access/line-join: round;
-      access/line-opacity: 0.5;
-      [zoom >= 16] { access/line-width: 6; }
-    }
-  }
   [access = 'no'] {
     [feature = 'highway_motorway'],
     [feature = 'highway_trunk'],
@@ -1711,25 +1681,21 @@
     [feature = 'highway_path'],
     [feature = 'highway_footway'],
     [feature = 'highway_cycleway'],
-    [feature = 'highway_bridleway'] {
+    [feature = 'highway_bridleway'],
+    [feature = 'highway_service'] {
       [zoom >= 15] {
-        access/line-width: 6;
-        access/line-color: @private-marking;
-        access/line-dasharray: 6,8;
-        access/line-opacity: 0.5;
-        access/line-join: round;
-        access/line-cap: round;
+        a/line-width: 8;
+        a/line-color: #ff0000;
+        a/line-dasharray: 1,50;
+        a/line-opacity: 0.8;
+        a/line-join: round;
+        a/line-cap: round;
+        b/line-width: 6;
+        b/line-color: #ffffff;
+        b/line-dasharray: 1,50;
+        b/line-join: round;
+        b/line-cap: round;
       }
-    }
-    [feature = 'highway_service'][service = 'INT-normal'][zoom >= 15],
-    [feature = 'highway_service'][zoom >= 16] {
-      access/line-width: 3;
-      access/line-color: @private-marking;
-      access/line-dasharray: 6,8;
-      access/line-opacity: 0.5;
-      access/line-join: round;
-      access/line-cap: round;
-      [zoom >= 16] { access/line-width: 6; }
     }
   }
 }
