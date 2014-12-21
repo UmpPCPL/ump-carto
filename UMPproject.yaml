@@ -44,7 +44,7 @@ Stylesheet:
   - "water.mss"
   - "water-features.mss"
   - "roads.mss"
-  - "power.mss"
+  - "UMP-power.mss"
   - "citywalls.mss"
   - "placenames.mss"
   - "POI-highways.mss"
