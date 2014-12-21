@@ -1683,19 +1683,36 @@
     [feature = 'highway_cycleway'],
     [feature = 'highway_bridleway'],
     [feature = 'highway_service'] {
-      [zoom >= 15] {
-        a/line-width: 8;
-        a/line-color: #ff0000;
-        a/line-dasharray: 1,50;
-        a/line-opacity: 0.8;
-        a/line-join: round;
-        a/line-cap: round;
-        b/line-width: 6;
-        b/line-color: #ffffff;
-        b/line-dasharray: 1,50;
-        b/line-join: round;
-        b/line-cap: round;
+      [zoom >= 16] {
+        acca/line-width: 8;
+        acca/line-color: #ff0000;
+        acca/line-dasharray: 0,50,1,50;
+        acca/line-opacity: 0.8;
+        acca/line-join: round;
+        acca/line-cap: round;
+        acca/line-clip: false;
+        accb/line-width: 6;
+        accb/line-color: #ffffff;
+        accb/line-dasharray: 0,50,1,50;
+        accb/line-join: round;
+        accb/line-cap: round;
+        accb/line-clip: false;
       }
+        [zoom >= 18] {
+          acca/line-width: 11;
+          acca/line-color: #ff0000;
+          acca/line-dasharray: 0,50,1,50;
+          acca/line-opacity: 0.8;
+          acca/line-join: round;
+          acca/line-cap: round;
+          acca/line-clip: false;
+          accb/line-width: 8;
+          accb/line-color: #ffffff;
+          accb/line-dasharray: 0,50,1,50;
+          accb/line-join: round;
+          accb/line-cap: round;
+          accb/line-clip: false;
+        }
     }
   }
 }
@@ -1761,21 +1778,6 @@
       line-color: #aaa;
       line-join: round;
     }
-  }
-}
-
-#guideways {
-  [zoom >= 13] {
-    line-width: 3;
-    line-color: #6666ff;
-    line-join: round;
-    b/line-width: 1;
-    b/line-color: white;
-    b/line-dasharray: 8,12;
-    b/line-join: round;
-  }
-  [zoom >= 14] {
-    b/line-dasharray: 0,11,8,1;
   }
 }
 

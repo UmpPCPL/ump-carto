@@ -821,16 +821,6 @@ Layer:
     properties:
       group-by: "layernotnull"
     advanced: {}
-  - id: "guideways"
-    name: "guideways"
-    class: ""
-    geometry: "linestring"
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |2-
-        (SELECT way FROM planet_osm_line WHERE highway = 'bus_guideway' AND (tunnel IS NULL OR tunnel != 'yes')) AS guideways
-    advanced: {}
   - id: "admin-low-zoom"
     name: "admin-low-zoom"
     class: ""

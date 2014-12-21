@@ -10,15 +10,15 @@
 //  0x5a01 - słupek graniczny
 
   [garmin_typ = '0x5a00']{
-    [zoom >= 10][zoom < 15][ump_endlevel >= 1]  {
-       point-file: url('symbols_ump/5a00_Mile-marker_Slupek-milowy_day.png');
+    [zoom >= 12][zoom < 15][ump_endlevel >= 1]  {
+       point-file: url('symbols_ump/5a00_Mile-marker_Slupek-milowy_maly_day.png');
     }
     [zoom >= 15] {
        point-file: url('symbols_ump/5a00_Mile-marker_Slupek-milowy_day.png');
     }
   }
 
-  [zoom >= 15] {
+  [zoom >= 15],[zoom >= 13][ump_endlevel >= 1] {
     [garmin_typ = '0x5a01'] { point-file: url('symbols_ump/5a01_Mile-marker_Slupek-graniczny_day.png'); }
     [garmin_typ = '0x5600'] { point-file: url('symbols_ump/5600_Danger_Uwaga_day.png'); }
     [garmin_typ = '0x5700'] { point-file: url('symbols_ump/5700_Dangerous-Place_Niebezpieczne-Miejsce_day.png'); }
@@ -28,7 +28,7 @@
 }
   
 .poi-slupki-tekst {
-  [zoom >= 16] {
+  [zoom >= 16],[zoom >= 13][ump_endlevel >= 1] {
       text-name: "[name]";
       text-fill: @hw-text;
       text-size: @standard-text-size;
