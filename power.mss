@@ -8,13 +8,6 @@
   }
 }
 
-#power-minorline {
-  [zoom >= 16] {
-    line-width: 0.5;
-    line-color: #777;
-  }
-}
-
 #power-towers {
   [zoom >= 14] {
     marker-file: url('symbols/power_tower_small.svg');

@@ -552,29 +552,6 @@
       "advanced": {}
     }, 
     {
-      "name": "turning-circle-fill", 
-      "srs-name": "900913", 
-      "geometry": "point", 
-      "class": "", 
-      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
-      "Datasource": {
-        "extent": "-20037508,-20037508,20037508,20037508", 
-        "table": "(SELECT\n    DISTINCT on (p.way)\n    p.way AS way, l.highway AS int_tc_type,\n    CASE WHEN l.service IN ('parking_aisle', 'drive-through', 'driveway') THEN 'INT-minor'::text\n      ELSE 'INT-normal'::text END AS int_tc_service\n  FROM planet_osm_point p\n    JOIN planet_osm_line l\n      ON ST_DWithin(p.way, l.way, 0.1)\n    JOIN (VALUES\n      ('tertiary', 1),\n      ('unclassified', 2),\n      ('residential', 3),\n      ('living_street', 4),\n      ('service', 5)\n    ) AS v (highway, prio)\n      ON v.highway=l.highway\n  WHERE p.highway = 'turning_circle' OR p.highway = 'turning_loop'\n  ORDER BY p.way, v.prio\n) AS turning_circle_fill", 
-        "geometry_field": "way", 
-        "type": "postgis", 
-        "key_field": "", 
-        "dbname": "umpgis2"
-      }, 
-      "extent": [
-        -180, 
-        -85.05112877980659, 
-        180, 
-        85.05112877980659
-      ], 
-      "id": "turning-circle-fill", 
-      "advanced": {}
-    }, 
-    {
       "name": "aerialways", 
       "srs-name": "900913", 
       "geometry": "linestring", 
@@ -785,29 +762,6 @@
       "advanced": {}
     }, 
     {
-      "name": "power-minorline", 
-      "srs-name": "900913", 
-      "geometry": "linestring", 
-      "class": "", 
-      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
-      "Datasource": {
-        "extent": "-20037508,-20037508,20037508,20037508", 
-        "table": "(SELECT way FROM planet_osm_line WHERE \"power\" = 'minor_line') AS power_minorline", 
-        "geometry_field": "way", 
-        "type": "postgis", 
-        "key_field": "", 
-        "dbname": "umpgis2"
-      }, 
-      "extent": [
-        -180, 
-        -85.05112877980659, 
-        180, 
-        85.05112877980659
-      ], 
-      "id": "power-minorline", 
-      "advanced": {}
-    }, 
-    {
       "name": "power-line", 
       "srs-name": "900913", 
       "geometry": "linestring", 
@@ -815,7 +769,7 @@
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
-        "table": "(SELECT way FROM planet_osm_line WHERE \"power\" = 'line') AS power_line", 
+        "table": "(SELECT way FROM planet_osm_line WHERE \"ump:type\" = '0x29') AS power_line", 
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
@@ -851,29 +805,6 @@
         85.05112877980659
       ], 
       "id": "nature-reserve-boundaries", 
-      "advanced": {}
-    }, 
-    {
-      "name": "theme-park", 
-      "srs-name": "900913", 
-      "geometry": "polygon", 
-      "class": "", 
-      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
-      "Datasource": {
-        "extent": "-20037508,-20037508,20037508,20037508", 
-        "table": "(SELECT way, name, tourism FROM planet_osm_polygon WHERE tourism = 'theme_park') AS theme_park", 
-        "geometry_field": "way", 
-        "type": "postgis", 
-        "key_field": "", 
-        "dbname": "umpgis2"
-      }, 
-      "extent": [
-        -180, 
-        -85.05112877980659, 
-        180, 
-        85.05112877980659
-      ], 
-      "id": "theme-park", 
       "advanced": {}
     }, 
     {

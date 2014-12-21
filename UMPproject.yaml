@@ -667,34 +667,6 @@ Layer:
           ) AS features ORDER BY prio, case when access in ('no', 'private') then 0 when access in ('destination') then 1 else 2 end
         ) AS roads_fill
     advanced: {}
-  - id: "turning-circle-fill"
-    name: "turning-circle-fill"
-    class: ""
-    geometry: "point"
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |-
-        (SELECT
-            DISTINCT on (p.way)
-            p.way AS way, l.highway AS int_tc_type,
-            CASE WHEN l.service IN ('parking_aisle', 'drive-through', 'driveway') THEN 'INT-minor'::text
-              ELSE 'INT-normal'::text END AS int_tc_service
-          FROM planet_osm_point p
-            JOIN planet_osm_line l
-              ON ST_DWithin(p.way, l.way, 0.1)
-            JOIN (VALUES
-              ('tertiary', 1),
-              ('unclassified', 2),
-              ('residential', 3),
-              ('living_street', 4),
-              ('service', 5)
-            ) AS v (highway, prio)
-              ON v.highway=l.highway
-          WHERE p.highway = 'turning_circle' OR p.highway = 'turning_loop'
-          ORDER BY p.way, v.prio
-        ) AS turning_circle_fill
-    advanced: {}
   - id: "aerialways"
     name: "aerialways"
     class: ""
@@ -904,16 +876,6 @@ Layer:
                ORDER BY admin_level DESC
                ) AS admin_high_zoom
     advanced: {}
-  - id: "power-minorline"
-    name: "power-minorline"
-    class: ""
-    geometry: "linestring"
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |2-
-        (SELECT way FROM planet_osm_line WHERE "power" = 'minor_line') AS power_minorline
-    advanced: {}
   - id: "power-line"
     name: "power-line"
     class: ""
@@ -922,7 +884,7 @@ Layer:
     Datasource:
       <<: *osm2pgsql
       table: |2-
-        (SELECT way FROM planet_osm_line WHERE "power" = 'line') AS power_line
+        (SELECT way FROM planet_osm_line WHERE "ump:type" = '0x29') AS power_line
     advanced: {}
   - id: "nature-reserve-boundaries"
     name: "nature-reserve-boundaries"
@@ -933,16 +895,6 @@ Layer:
       <<: *osm2pgsql
       table: |2-
         (SELECT way, way_area, name, boundary FROM planet_osm_polygon WHERE (boundary = 'national_park' OR leisure = 'nature_reserve') AND building IS NULL) AS national_park_boundaries
-    advanced: {}
-  - id: "theme-park"
-    name: "theme-park"
-    class: ""
-    geometry: "polygon"
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |2-
-        (SELECT way, name, tourism FROM planet_osm_polygon WHERE tourism = 'theme_park') AS theme_park
     advanced: {}
   - id: "nepopulated"
     name: "nepopulated"
