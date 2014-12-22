@@ -205,8 +205,8 @@
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
 
-  [garmin_typ = '0xd'][zoom >= 10] {   //reservation
-    polygon-fill: red; 
+  [garmin_typ = '0xd'][zoom >= 13] {   //reservation
+    polygon-fill: #ffe4c4; 
   }
 
   [garmin_typ = '0xe'][zoom >= 10] {   //lotnisko 
@@ -268,13 +268,13 @@
 }
 
 #cliffs {
-  [garmin_typ = '0xe1b'][zoom >= 13] {
+  [garmin_typ = '0xe1b'][zoom >= 14] {
     line-pattern-file: url('symbols/cliff.png');
     [zoom >= 15] {
       line-pattern-file: url('symbols/cliff2.png');
     }
   }
-  [garmin_typ = '0xe1a'][zoom >= 15] {
+  [garmin_typ = '0xe1a'][zoom >= 14] {
     line-pattern-file: url('symbols_ump/e1a_wal.png');
   }
 }
