@@ -29,6 +29,19 @@
       }
     }
 
+// airportmed lotnisko_duże
+    [garmin_typ = '0x5901']{
+      [zoom >= 12][ump_endlevel >= 2]  {
+         point-file: url('symbols_ump/5901_Airport_Lotnisko_day.png');
+      }
+      [zoom >= 15][ump_endlevel = 1]  {
+         point-file: url('symbols_ump/5901_Airport_Lotnisko_day.png');
+      }
+      [zoom >= 17][ump_endlevel = 0]  {
+         point-file: url('symbols_ump/5901_Airport_Lotnisko_day.png');
+      }
+    }
+
 // airportmed lotnisko_srednie
     [garmin_typ = '0x5902']{
       [zoom >= 12][ump_endlevel >= 2]  {
@@ -71,8 +84,6 @@
       [ump_typ='TRAM'] { point-file: url('symbols_ump/tram_stop_small.png'); }
       [zoom >= 17] {
         point-file: url('symbols_ump/2f08_Bus-Station_Przystanek_day.png');
-        [ump_typ='BUS'] { point-file: url('symbols_ump/bus_stop_small.png'); }
-        [ump_typ='TRAM'] { point-file: url('symbols_ump/tram_stop_small.png'); }
         [ump_typ='BUS'] { point-file: url('symbols_ump/bus_stop.png'); }
         [ump_typ='TRAM'] { point-file: url('symbols_ump/tram_stop.png'); }
         [ump_typ='RENT_A_BIKE'] { point-file: url('symbols_ump/bicycle.png'); }
@@ -83,8 +94,10 @@
 
     [garmin_typ = '0x2f17'][zoom >= 17] { 
     }
-    [garmin_typ = '0x2f18'][ump_typ='BILETOMAT'][zoom >= 18] { point-file: url('symbols_ump/2f18_Tickets_Biletomat_day.png');}
-
+    [garmin_typ = '0x2f18'][zoom >= 18],
+    [ump_typ='BILETOMAT'][zoom >= 18] {
+      point-file: url('symbols_ump/2f18_Tickets_Biletomat_day.png');
+    }
 }
 
 

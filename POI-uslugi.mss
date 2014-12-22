@@ -53,11 +53,12 @@
   
     [garmin_typ='0x2f11'] {point-file: url('symbols_ump/2f11_Factory_Fabryka_day.png');}
     [garmin_typ='0x2f12'] {point-file: url('symbols_ump/2f12_WiFi_WiFi_day.png');}
+    [garmin_typ='0x2f13'] {point-file: url('symbols_ump/2f13_Service_Serwis_day.png');}
     // typ SOCIAL może powinien mieć inna ikonkę
     [garmin_typ='0x2f14'] {point-file: url('symbols_ump/2f14_Laundry_Pralnia_day.png');}
   
-    // nie działa?
-    [garmin_typ='0x2f15'][ump_typ = 'BUDYNEK'] { point-file: url('symbols_ump/2f15_Building_Budynek_day.png');}
+    [garmin_typ='0x2f15'], [ump_typ = 'BUDYNEK'] { point-file: url('symbols_ump/2f15_Building_Budynek_day.png');}
+    [garmin_typ='0x2f16'], [ump_typ = 'TRUCK_STOP'] { point-file: url('symbols_ump/TruckStop.png');}
   
     //  [feature = 'amenity_truck_stop'] {
     //    point-file: url('symbols_ump/2f16');

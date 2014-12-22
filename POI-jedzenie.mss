@@ -9,7 +9,11 @@
   // barbecue: ikona do poprawnienia, bo jest "generic"
     [garmin_typ='0x2a03'], [ump_typ='BARBECUE'], [ump_typ='GRILL'], [ump_typ='KEBAB'] {point-file: url('symbols_ump/2a03_Barbecue_Barbecue_day.png');}
     [garmin_typ='0x2a04'], [ump_typ='CHINESE'] {point-file: url('symbols_ump/2a04_Chinese_Chinskie_day.png');}
-    [garmin_typ='0x2a05'], [ump_typ='PIEKARNIA'], [ump_typ='DELI'] {point-file: url('symbols_ump/piekarnia_rogal.png');}
+    [garmin_typ='0x2a05'] {
+      point-file: url('symbols_ump/piekarnia_rogal.png');
+      // [ump_typ='PIEKARNIA'] {point-file: url('symbols_ump/piekarnia_rogal.png');}
+      [ump_typ='DELI'] {point-file: url('symbols_ump/piekarnia_precel.png');}
+    }
   // barbecue: ikona do poprawnienia, bo jest "generic"
     [garmin_typ='0x2a06'], [ump_typ='INTERNATIONAL'], [ump_typ='RESTAURACJA'], [ump_typ='RESTAURANT'] {point-file: url('symbols_ump/2a06_International_Kuchnia-miedzynarodowa_day.png');}
     [garmin_typ='0x2a07'], [ump_typ='FASTFOOD'] {point-file: url('symbols_ump/2a07_Fastfood_Fastfood_day.png');}
