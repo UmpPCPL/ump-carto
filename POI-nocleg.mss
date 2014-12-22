@@ -1,22 +1,23 @@
 //WHERE "ump:type" BETWEEN '0x2b00' AND '0x2b07'
 
 .poi-nocleg {
- [zoom >= 17] {
-   [ump_typ='SCHRONISKO'], [ump_typ='HOSTEL'], [ump_typ='LODGING'] 
-      {point-file: url('symbols_ump/2b00_Lodging_Kwatera_day.png');}
-
-   [ump_typ='HOTEL'], [ump_typ='MOTEL'] 
-      {point-file: url('symbols_ump/2b01_Hotel_Hotel_day.png');}
-
-   [ump_typ='B&B'] 
-      {point-file: url('symbols_ump/2b02_Bed-and-Breakfast_Kwatera_day.png');}
-
-   [ump_typ='CAMPING'], [ump_typ='POLENAMIOT'] 
-      {point-file: url('symbols_ump/2b03_Camping_Camping_day.png');}
-
-   [ump_typ='RESORT'] 
-      {point-file: url('symbols_ump/2b04_Resort_Osrodek-wypoczynkowy_day.png');}
- }
+  [zoom >= 17] {
+    [garmin_typ='0x2b00'], [ump_typ='SCHRONISKO'], [ump_typ='HOSTEL'], [ump_typ='LODGING'] {
+      point-file: url('symbols_ump/2b00_Lodging_Kwatera_day.png');
+    }
+    [garmin_typ='0x2b01'], [ump_typ='HOTEL'], [ump_typ='MOTEL'] {
+      point-file: url('symbols_ump/2b01_Hotel_Hotel_day.png');
+    }
+    [garmin_typ='0x2b02'], [ump_typ='B&B'] {
+      point-file: url('symbols_ump/2b02_Bed-and-Breakfast_Kwatera_day.png');
+    }
+    [garmin_typ='0x2b03'], [ump_typ='CAMPING'], [ump_typ='POLENAMIOT'] {
+      point-file: url('symbols_ump/2b03_Camping_Camping_day.png');
+    }
+    [garmin_typ='0x2b04'], [ump_typ='RESORT'] {
+      point-file: url('symbols_ump/2b04_Resort_Osrodek-wypoczynkowy_day.png');
+    }
+  }
 }
 
 
