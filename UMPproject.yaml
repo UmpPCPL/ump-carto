@@ -66,7 +66,6 @@ Stylesheet:
   - "POI-inne.mss"
   - "stations.mss"
   - "UMP-promy.mss"
-  - "aerialways.mss"
   - "admin.mss"
   - "addressing.mss"
 Layer:
@@ -664,15 +663,19 @@ Layer:
           ) AS features ORDER BY prio, case when access in ('no', 'private') then 0 when access in ('destination') then 1 else 2 end
         ) AS roads_fill
     advanced: {}
-  - id: "aerialways"
-    name: "aerialways"
-    class: ""
+  - id: "wyciagi"
+    name: "wyciagi"
+    class: "wyciagi"
     geometry: "linestring"
     <<: *extents
     Datasource:
       <<: *osm2pgsql
       table: |2-
-        (SELECT way, aerialway FROM planet_osm_line WHERE aerialway IS NOT NULL) AS aerialways
+        (SELECT way, name, "ump:type" AS garmin_type
+          FROM planet_osm_line
+          WHERE garmin_type = '0xe16' OR
+                garmin_type = '0xe17'
+        ) AS wyciagi
     advanced: {}
   - id: "roads-low-zoom"
     name: "roads-low-zoom"
