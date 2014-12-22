@@ -10,14 +10,17 @@
     [garmin_typ='0x2e05'], [ump_typ='APTEKA'] {point-file: url('symbols_ump/2e05_Pharmacy_Apteka_day.png');}
     [garmin_typ='0x2e06'], [ump_typ='24H'] {point-file: url('symbols_ump/2e06_Shop-24h_Sklep-24h_day.png');}
     //2e07_Shop_Sklep_day.png
-    [garmin_typ='0x2e07'], [ump_typ='UBRANIA'][zoom >= 17] {point-file: url('symbols_ump/2e07_Clothes_Ubrania_day.png');}
-    [garmin_typ='0x2e08'], [ump_typ='BUDOWLANE'],[ump_typ='BUDOWLANY'] {point-file: url('symbols_ump/2e08_House-and-garden_Budowlany_day.png');}
+    [garmin_typ='0x2e07'], [ump_typ='UBRANIA'] {point-file: url('symbols_ump/2e07_Clothes_Ubrania_day.png');}
+    [garmin_typ='0x2e08'] {
+      point-file: url('symbols_ump/2e08_House-and-garden_Budowlany_day.png');
+      // [ump_typ='BUDOWLANE'],[ump_typ='BUDOWLANY'] {point-file: url('symbols_ump/2e08_House-and-garden_Budowlany_day.png');}
       [ump_typ='DOM_I_OGROD'] {point-file: url('symbols_ump/2e08_House-and-garden_Dom-i-ogrod_day.png');}
-    [garmin_typ='0x2e09'], [ump_typ='WNETRZA'],[ump_typ='MEBLE'] { [zoom >= 17] {point-file: url('symbols_ump/2e09_Furniture_Meble_day.png');}}
+    }
+    [garmin_typ='0x2e09'], [ump_typ='WNETRZA'],[ump_typ='MEBLE'] {point-file: url('symbols_ump/2e09_Furniture_Meble_day.png');}
     //2e0a_Special-Retail_Sportowy_night.png
-    [garmin_typ='0x2e0a'], [ump_typ='SPORTOWY'],[ump_typ='ROWEROWY'],[ump_typ='TURYSTYCZNY'] { [zoom >= 17] {point-file: url('symbols_ump/2e0a_Special-Retail_Sportowy_day.png');}}
+    [garmin_typ='0x2e0a'], [ump_typ='SPORTOWY'],[ump_typ='ROWEROWY'],[ump_typ='TURYSTYCZNY'] {point-file: url('symbols_ump/2e0a_Special-Retail_Sportowy_day.png');}
     //2e0b_Computer_Komputery_night.png
-    [garmin_typ='0x2e0b'], [ump_typ='RTV'],[ump_typ='KOMPUTERY'] { [zoom >= 17] {point-file: url('symbols_ump/2e0b_Computer_Komputery_day.png');}}
+    [garmin_typ='0x2e0b'], [ump_typ='RTV'],[ump_typ='KOMPUTERY'] {point-file: url('symbols_ump/2e0b_Computer_Komputery_day.png');}
   }
 } 
 
