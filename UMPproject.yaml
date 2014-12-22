@@ -430,9 +430,9 @@ Layer:
       <<: *osm2pgsql
       table: |-
         (SELECT
-            way, "natural", man_made
+            way, name, "ump:type" AS garmin_typ, "ump:endlevel" as ump_endlevel
           FROM planet_osm_line
-          WHERE "natural" = 'cliff' OR man_made = 'embankment'
+          WHERE "ump:type" = '0xe1a' OR "ump:type" = '0xe1b'
         ) AS cliffs
     advanced: {}
   - id: "area-barriers"

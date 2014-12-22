@@ -267,6 +267,18 @@
 
 }
 
+#cliffs {
+  [garmin_typ = '0xe1b'][zoom >= 13] {
+    line-pattern-file: url('symbols/cliff.png');
+    [zoom >= 15] {
+      line-pattern-file: url('symbols/cliff2.png');
+    }
+  }
+  [garmin_typ = '0xe1a'][zoom >= 15] {
+    line-pattern-file: url('symbols_ump/e1a_wal.png');
+  }
+}
+
 #Ulandcover {
  [feature = 'leisure_swimming_pool'][zoom >= 14] {
     polygon-fill: @water-color;
@@ -644,17 +656,6 @@
   }
 }
 
-#Ucliffs {
-  [natural = 'cliff'][zoom >= 13] {
-    line-pattern-file: url('symbols/cliff.png');
-    [zoom >= 15] {
-      line-pattern-file: url('symbols/cliff2.png');
-    }
-  }
-  [man_made = 'embankment'][zoom >= 15]::man_made {
-    line-pattern-file: url('symbols/cliff.png');
-  }
-}
 
 #Uarea-barriers {
   [zoom >= 16] {
