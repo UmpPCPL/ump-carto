@@ -657,16 +657,6 @@
 }
 
 
-#Uarea-barriers {
-  [zoom >= 16] {
-    line-color: #444;
-    line-width: 0.4;
-    [barrier = 'hedge'] {
-      polygon-fill: #aed1a0;
-    }
-  }
-}
-
 .Ubarriers {
   [zoom >= 16] {
     line-width: 0.4;

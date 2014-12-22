@@ -65,7 +65,7 @@ Stylesheet:
   - "POI-morze.mss"
   - "POI-inne.mss"
   - "stations.mss"
-  - "UMP-promy-wyciagi.mss"
+  - "UMP-morskie-wyciagi.mss"
   - "admin.mss"
   - "addressing.mss"
 Layer:
@@ -221,20 +221,6 @@ Layer:
             AND (bridge IS NULL OR bridge NOT IN ('yes', 'aqueduct'))
           ORDER BY z_order
         ) AS water_lines
-    advanced: {}
-  - id: "piers"
-    name: "piers"
-    class: ""
-    geometry: "linestring"
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |-
-        (SELECT
-            way, man_made
-          FROM planet_osm_line
-          WHERE man_made IN ('pier', 'breakwater', 'groyne')
-        ) AS piers
     advanced: {}
   - id: "locks"
     name: "locks"
@@ -435,19 +421,21 @@ Layer:
           WHERE "ump:type" = '0xe1a' OR "ump:type" = '0xe1b'
         ) AS cliffs
     advanced: {}
-  - id: "area-barriers"
-    name: "area-barriers"
-    class: "barriers"
-    geometry: "polygon"
+  - id: "morskie-linie"
+    name: "morskie-linie"
+    class: ""
+    geometry: "linestring"
     <<: *extents
     Datasource:
       <<: *osm2pgsql
       table: |-
         (SELECT
-            way, barrier
-          FROM planet_osm_polygon
-          WHERE barrier IS NOT NULL
-        ) AS area_barriers
+            way, "ump:type" AS garmin_typ, name
+          FROM planet_osm_line
+          WHERE
+              "ump:type" BETWEEN '0xf1c' AND '0xf1f'
+              OR "ump:type" IN ( '0x2a', '0x2b')
+        ) AS morskie_linie
     advanced: {}
   - id: "ferry-routes"
     name: "ferry-routes"

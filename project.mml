@@ -250,29 +250,6 @@
       "advanced": {}
     }, 
     {
-      "name": "piers", 
-      "srs-name": "900913", 
-      "geometry": "linestring", 
-      "class": "", 
-      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
-      "Datasource": {
-        "extent": "-20037508,-20037508,20037508,20037508", 
-        "table": "(SELECT\n    way, man_made\n  FROM planet_osm_line\n  WHERE man_made IN ('pier', 'breakwater', 'groyne')\n) AS piers", 
-        "geometry_field": "way", 
-        "type": "postgis", 
-        "key_field": "", 
-        "dbname": "umpgis"
-      }, 
-      "extent": [
-        -180, 
-        -85.05112877980659, 
-        180, 
-        85.05112877980659
-      ], 
-      "id": "piers", 
-      "advanced": {}
-    }, 
-    {
       "name": "locks", 
       "srs-name": "900913", 
       "geometry": "point", 
@@ -460,14 +437,14 @@
       "advanced": {}
     }, 
     {
-      "name": "area-barriers", 
+      "name": "morskie-linie", 
       "srs-name": "900913", 
-      "geometry": "polygon", 
-      "class": "barriers", 
+      "geometry": "linestring", 
+      "class": "", 
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
-        "table": "(SELECT\n    way, barrier\n  FROM planet_osm_polygon\n  WHERE barrier IS NOT NULL\n) AS area_barriers", 
+        "table": "(SELECT\n    way, \"ump:type\" AS garmin_typ, name\n  FROM planet_osm_line\n  WHERE\n      \"ump:type\" BETWEEN '0xf1c' AND '0xf1f'\n      OR \"ump:type\" IN ( '0x2a', '0x2b')\n) AS morskie_linie", 
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
@@ -479,7 +456,7 @@
         180, 
         85.05112877980659
       ], 
-      "id": "area-barriers", 
+      "id": "morskie-linie", 
       "advanced": {}
     }, 
     {
@@ -1892,7 +1869,7 @@
     "POI-morze.mss", 
     "POI-inne.mss", 
     "stations.mss", 
-    "UMP-promy-wyciagi.mss", 
+    "UMP-morskie-wyciagi.mss", 
     "admin.mss", 
     "addressing.mss"
   ], 
