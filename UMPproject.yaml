@@ -241,9 +241,6 @@ Layer:
                   ELSE NULL
                 END AS access,
                 construction,
-                CASE WHEN service IN ('parking_aisle', 'drive-through', 'driveway') THEN 'INT-minor'::text
-                  ELSE 'INT-normal'::text
-                END AS service,
                 CASE WHEN oneway IN ('yes', '1', '-1') THEN oneway ELSE NULL END AS oneway,
                 CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN 'yes'
                   ELSE 'no' END AS link,
@@ -284,14 +281,12 @@ Layer:
           UNION ALL
           (SELECT
               way, prio,
-              COALESCE(('railway_' || (CASE WHEN railway = 'preserved' AND service IN ('spur', 'siding', 'yard') THEN 'INT-preserved-ssy'::text WHEN (railway = 'rail' AND service IN ('spur', 'siding', 'yard')) THEN 'INT-spur-siding-yard' ELSE railway END)),
-               ('aeroway_' || aeroway)) AS feature,
+              COALESCE(('railway_' || railway ),('aeroway_' || aeroway)) AS feature,
                foot, bicycle, tracktype, "ump:route_class" AS ump_route_class, junction,
               CASE WHEN access IN ('destination') THEN 'destination'::text
                 WHEN access IN ('no', 'private') THEN 'no'::text
               ELSE NULL END AS access,
               construction,
-              CASE WHEN service IN ('parking_aisle', 'drive-through', 'driveway') THEN 'INT-minor'::text ELSE 'INT-normal'::text END AS service,
               NULL AS oneway,
               'no' AS link,
               CASE WHEN layer~E'^-?\\d+$' AND length(layer)<10 THEN layer::integer ELSE 0 END AS layernotnull
@@ -454,7 +449,6 @@ Layer:
                 ('highway_' || (CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN substr(highway, 0, length(highway)-4) ELSE highway END)) AS feature,
                 foot, bicycle, tracktype, "ump:route_class" AS ump_route_class, junction,
                 CASE WHEN access IN ('destination') THEN 'destination'::text WHEN access IN ('no', 'private') THEN 'no'::text ELSE NULL END AS access, construction,
-                CASE WHEN service IN ('parking_aisle', 'drive-through', 'driveway') THEN 'INT-minor'::text ELSE 'INT-normal'::text END AS service,
                 CASE WHEN oneway IN ('yes', '1', '-1') THEN oneway ELSE NULL END AS oneway,
                 CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN 'yes' ELSE 'no' END AS link,
                 CASE WHEN layer~E'^-?\\d+$' AND length(layer)<10 THEN layer::integer ELSE 0 END AS layernotnull
@@ -495,11 +489,12 @@ Layer:
             UNION ALL
             (SELECT
                 way, prio,
-                COALESCE(('railway_' ||(CASE WHEN railway = 'preserved' AND service IN ('spur', 'siding', 'yard') THEN 'INT-preserved-ssy'::text WHEN (railway = 'rail' AND service IN ('spur', 'siding', 'yard')) THEN 'INT-spur-siding-yard' ELSE railway end)), ('aeroway_' || aeroway)) AS feature,
+                COALESCE(('railway_' || railway ),('aeroway_' || aeroway)) AS feature,
                 foot, bicycle, tracktype, "ump:route_class" AS ump_route_class, junction,
                 CASE WHEN access IN ('destination') THEN 'destination'::text WHEN access IN ('no', 'private') THEN 'no'::text ELSE NULL END AS access,
-                construction, CASE WHEN service IN ('parking_aisle', 'drive-through', 'driveway') THEN 'INT-minor'::text ELSE 'INT-normal'::text END AS service,
-                NULL AS oneway, 'no' AS link,
+                construction,
+                NULL AS oneway,
+                'no' AS link,
                 CASE WHEN layer~E'^-?\\d+$' AND length(layer)<10 THEN layer::integer ELSE 0 END AS layernotnull
               FROM planet_osm_line
                 JOIN (VALUES
@@ -550,7 +545,6 @@ Layer:
                   ELSE NULL
                 END AS access,
                 construction,
-                CASE WHEN service IN ('parking_aisle', 'drive-through', 'driveway') THEN 'INT-minor'::text ELSE 'INT-normal'::text END AS service,
                 CASE WHEN oneway IN ('yes', '1', '-1') THEN oneway ELSE NULL END AS oneway,
                 CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN 'yes' ELSE 'no' END AS link,
                 CASE WHEN layer~E'^-?\\d+$' AND length(layer)<10 THEN layer::integer ELSE 0 END AS layernotnull
@@ -591,19 +585,13 @@ Layer:
             UNION ALL
             (SELECT
                 way, prio,
-                COALESCE(
-                  ('railway_' || (CASE WHEN railway = 'preserved' AND service IN ('spur', 'siding', 'yard') THEN 'INT-preserved-ssy'::text WHEN (railway = 'rail' AND service IN ('spur', 'siding', 'yard')) THEN 'INT-spur-siding-yard' ELSE railway END)),
-                  ('aeroway_' || aeroway)
-                ) AS feature,
+                COALESCE(('railway_' || railway ),('aeroway_' || aeroway)) AS feature,
                 foot, bicycle, tracktype, "ump:route_class" AS ump_route_class, junction,
                 CASE WHEN access IN ('destination') THEN 'destination'::text
                   WHEN access IN ('no', 'private') THEN 'no'::text
                   ELSE NULL
                 END AS access,
                 construction,
-                CASE WHEN service IN ('parking_aisle', 'drive-through', 'driveway') THEN 'INT-minor'::text
-                  ELSE 'INT-normal'::text
-                END AS service,
                 NULL AS oneway,
                 'no' AS link,
                 CASE WHEN layer~E'^-?\\d+$' AND length(layer)<10 THEN layer::integer ELSE 0 END AS layernotnull
@@ -655,10 +643,10 @@ Layer:
     Datasource:
       <<: *osm2pgsql
       table: |2-
-              (SELECT way, COALESCE(('highway_' || (CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN substr(highway, 0, length(highway)-4) ELSE highway end)), ('railway_' || (CASE WHEN (railway = 'rail' AND service IN ('spur', 'siding', 'yard')) THEN 'INT-spur-siding-yard' WHEN railway IN ('rail', 'tram', 'light_rail', 'funicular', 'narrow_gauge') THEN railway ELSE NULL END))) AS feature, tunnel
+              (SELECT way, COALESCE(('highway_' || (CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN substr(highway, 0, length(highway)-4) ELSE highway end)), ('railway_' || (CASE WHEN railway IN ('rail', 'tram', 'light_rail', 'funicular', 'narrow_gauge') THEN railway ELSE NULL END))) AS feature, tunnel
                FROM planet_osm_roads
                WHERE highway IS NOT NULL
-                  OR (railway IS NOT NULL AND railway != 'preserved' AND (service IS NULL OR service NOT IN ('spur', 'siding', 'yard')))
+                  OR railway IS NOT NULL
                ORDER BY z_order
               ) AS roads_low_zoom
     advanced: {}
@@ -707,9 +695,6 @@ Layer:
                   ELSE NULL
                 END AS access,
                 construction,
-                CASE WHEN service IN ('parking_aisle', 'drive-through', 'driveway') THEN 'INT-minor'::text
-                  ELSE 'INT-normal'::text
-                END AS service,
                 CASE WHEN oneway IN ('yes', '1', '-1') THEN oneway ELSE NULL END AS oneway,
                 CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN 'yes'
                   ELSE 'no' END AS link,
@@ -751,14 +736,12 @@ Layer:
           UNION ALL
           (SELECT
               way, prio,
-              COALESCE(('railway_' || (CASE WHEN railway = 'preserved' AND service IN ('spur', 'siding', 'yard') THEN 'INT-preserved-ssy'::text WHEN (railway = 'rail' AND service IN ('spur', 'siding', 'yard')) THEN 'INT-spur-siding-yard' ELSE railway END)),
-               ('aeroway_' || aeroway)) AS feature,
-               foot, bicycle, tracktype, "ump:route_class" AS ump_route_class, junction,
+              COALESCE(('railway_' || railway ),('aeroway_' || aeroway)) AS feature,
+              foot, bicycle, tracktype, "ump:route_class" AS ump_route_class, junction,
               CASE WHEN access IN ('destination') THEN 'destination'::text
                 WHEN access IN ('no', 'private') THEN 'no'::text
               ELSE NULL END AS access,
               construction,
-              CASE WHEN service IN ('parking_aisle', 'drive-through', 'driveway') THEN 'INT-minor'::text ELSE 'INT-normal'::text END AS service,
               NULL AS oneway,
               'no' AS link,
               CASE WHEN layer~E'^-?\\d+$' AND length(layer)<10 THEN layer::integer ELSE 0 END AS layernotnull

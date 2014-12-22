@@ -124,7 +124,6 @@
 @living-street-width-z16:         5; //9
 @pedestrian-width-z16:            5; //9;
 @service-width-z16:               5; //6;
-@minor-service-width-z16:         4;
 
 @motorway-width-z17:             13; //18;
 @motorway-link-width-z17:        11.5;
@@ -364,17 +363,11 @@
     }
 
     [feature = 'highway_service'] {
-      [zoom >= 14][service = 'INT-normal'],
-      [zoom >= 16][service = 'INT-minor'] {
+      [zoom >= 14]{
         line-color: @service-casing;
-        [service = 'INT-normal'] {
-          line-width: @service-width-z14;
-          [zoom >= 16] { line-width: @service-width-z16; }
-          [zoom >= 17] { line-width: @service-width-z17; }
-        }
-        [service = 'INT-minor'] {
-          line-width: @minor-service-width-z16;
-        }
+        line-width: @service-width-z14;
+        [zoom >= 16] { line-width: @service-width-z16; }
+        [zoom >= 17] { line-width: @service-width-z17; }
         .roads-casing {
           line-join: round;
           line-cap: round;
@@ -1100,38 +1093,27 @@
     }
 
     [feature = 'highway_service'] {
-      [zoom >= 13][service = 'INT-normal'] {
+      [zoom >= 13] {
         line-width: 1;
         line-color: @residential-casing;
       }
-      [zoom >= 14][service = 'INT-normal'],
-      [zoom >= 16][service = 'INT-minor'] {
+      [zoom >= 14] {
         line-color: @service-fill;
         [junction = 'roundabout'] {
           line-color: @roundabout-fill;
         }
-        [service = 'INT-normal'] {
           line-width: @service-width-z14 - 2 * @casing-width-z14;
           [zoom >= 16] { line-width: @service-width-z16 - 2 * @casing-width-z16; }
           [zoom >= 17] { line-width: @service-width-z17 - 2 * @casing-width-z17; }
-        }
-        [service = 'INT-minor'] {
-          line-width: @minor-service-width-z16 - 2 * @casing-width-z16;
-        }
         line-join: round;
         line-cap: round;
         .tunnels-fill {
           line-color: darken(white, 5%);
         }
         .bridges-fill {
-          [service = 'INT-normal'] {
             line-width: @service-width-z14 - 2 * @bridge-casing-width-z14;
             [zoom >= 16] { line-width: @service-width-z16 - 2 * @bridge-casing-width-z16; }
             [zoom >= 17] { line-width: @service-width-z17 - 2 * @bridge-casing-width-z17; }
-          }
-          [service = 'INT-minor'] {
-            line-width: @minor-service-width-z16 - 2 * @bridge-casing-width-z16;
-          }
         }
       }
     }
