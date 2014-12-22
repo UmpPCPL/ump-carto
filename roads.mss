@@ -17,7 +17,6 @@
 @footway-fill: salmon;
 @steps-fill: @footway-fill;
 @cycleway-fill: blue;
-@bridleway-fill: green;
 @track-fill: #b37700;
 @aeroway-fill: #bbc;
 @runway-fill: @aeroway-fill;
@@ -40,7 +39,6 @@
 @footway-casing: @default-casing;
 @steps-casing: @default-casing;
 @cycleway-casing: @default-casing;
-@bridleway-casing: @default-casing;
 @track-casing: @default-casing;
 @roundabout-casing: @default-casing;
 
@@ -91,7 +89,6 @@
 @residential-width-z13:           3;
 @living-street-width-z13:         1; //2
 @pedestrian-width-z13:            2;
-@bridleway-width-z13:             0.3;
 @footway-width-z13:               0.7;
 @cycleway-width-z13:              0.7;
 @path-width-z13:                  1; //0.2;
@@ -115,7 +112,6 @@
 @residential-width-z15:           6; //8.3;
 @living-street-width-z15:         4; //6
 @pedestrian-width-z15:            4; //6;
-@bridleway-width-z15:             1.2;
 @footway-width-z15:               1.5;
 @cycleway-width-z15:              1.2;
 @path-width-z15:                  1.5; //0.5;
@@ -451,19 +447,6 @@
       }
     }
 
-    [feature = 'highway_bridleway'],
-    [feature = 'highway_path'][horse = 'designated'] {
-      .bridges-casing {
-        [zoom >= 14][access != 'no'],
-        [zoom >= 15] {
-          line-width: @bridleway-width-z13 + 2 * (@paths-background-width + @paths-bridge-casing-width);
-          [zoom >= 15] { line-width: @bridleway-width-z15 + 2 * (@paths-background-width + @paths-bridge-casing-width); }
-          line-color: @bridge-casing;
-          line-join: round;
-        }
-      }
-    }
-
     [feature = 'highway_footway'],
     [feature = 'highway_path'][foot = 'designated'] {
       .bridges-casing {
@@ -620,19 +603,6 @@
   }
 
   ::bridges_background {
-    [feature = 'highway_bridleway'],
-    [feature = 'highway_path'][horse = 'designated'] {
-      .bridges-casing {
-        [zoom >= 14][access != 'no'],
-        [zoom >= 15] {
-          line-width: @bridleway-width-z13 + 2 * @paths-background-width;
-          [zoom >= 15] { line-width: @bridleway-width-z15 + 2 * @paths-background-width; }
-          line-color: @bridleway-casing;
-          line-join: round;
-        }
-      }
-    }
-
     [feature = 'highway_footway'],
     [feature = 'highway_path'][foot = 'designated'] {
       .bridges-casing {
@@ -1236,36 +1206,6 @@
       }
     }
 
-    [feature = 'highway_bridleway'],
-    [feature = 'highway_path'][horse = 'designated'] {
-      [zoom >= 13][access != 'no'],
-      [zoom >= 15] {
-        .tunnels-fill {
-          tunnelcasing/line-width: @bridleway-width-z13 + 2 * (@paths-background-width + @paths-tunnel-casing-width);
-          [zoom >= 15] { tunnelcasing/line-width: @bridleway-width-z15 + 2 * (@paths-background-width + @paths-tunnel-casing-width); }
-          tunnelcasing/line-color: @tunnel-casing;
-          tunnelcasing/line-dasharray: 4,2;
-        }
-        .roads-fill[zoom >= 15],
-        .tunnels-fill[zoom >= 13] {
-          background/line-color: @bridleway-casing;
-          background/line-cap: round;
-          background/line-join: round;
-          background/line-width: @bridleway-width-z13 + 2 * @paths-background-width;
-          [zoom >= 15] { background/line-width: @bridleway-width-z15 + 2 * @paths-background-width; }
-          .roads-fill { background/line-opacity: 0.4; }
-        }
-        line/line-color: @bridleway-fill;
-        line/line-dasharray: 4,2;
-        line/line-width: @bridleway-width-z13;
-        [zoom >= 15] { line/line-width: @bridleway-width-z15; }
-        .tunnels-fill {
-          line/line-join: round;
-          line/line-cap: round;
-        }
-      }
-    }
-
     [feature = 'highway_footway'],
     [feature = 'highway_path'][foot = 'designated'] {
       [zoom >= 13][access != 'no'],
@@ -1681,7 +1621,6 @@
     [feature = 'highway_path'],
     [feature = 'highway_footway'],
     [feature = 'highway_cycleway'],
-    [feature = 'highway_bridleway'],
     [feature = 'highway_service'] {
       [zoom >= 16] {
         acca/line-width: 8;
@@ -2118,7 +2057,6 @@
     }
   }
 
-  [highway = 'bridleway'],
   [highway = 'footway'],
   [highway = 'cycleway'],
   [highway = 'path'],

@@ -89,7 +89,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "umpgis2"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -169,7 +169,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "umpgis2"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -192,7 +192,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "umpgis2"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -215,7 +215,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "umpgis2"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -238,7 +238,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "umpgis2"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -261,7 +261,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "umpgis2"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -284,7 +284,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "umpgis2"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -304,11 +304,11 @@
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
-        "table": "(SELECT *\n  FROM (\n    (SELECT\n        way, prio,\n        ('highway_' || (CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN substr(highway, 0, length(highway)-4) ELSE highway END)) AS feature,\n        horse, foot, bicycle, tracktype, \"ump:route_class\" AS ump_route_class, junction,\n        CASE WHEN access IN ('destination') THEN 'destination'::text\n          WHEN access IN ('no', 'private') THEN 'no'::text\n          ELSE NULL\n        END AS access,\n        construction,\n        CASE WHEN service IN ('parking_aisle', 'drive-through', 'driveway') THEN 'INT-minor'::text\n          ELSE 'INT-normal'::text\n        END AS service,\n        CASE WHEN oneway IN ('yes', '1', '-1') THEN oneway ELSE NULL END AS oneway,\n        CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN 'yes'\n          ELSE 'no' END AS link,\n        CASE WHEN layer~E'^-?\\\\d+$' AND length(layer)<10 THEN layer::integer ELSE 0 END AS layernotnull\n    FROM planet_osm_line\n      JOIN (VALUES\n        ('highway_motorway', 380),\n        ('highway_trunk', 370),\n        ('highway_primary', 360),\n        ('highway_secondary', 350),\n        ('highway_tertiary', 340),\n        ('highway_residential', 330),\n        ('highway_unclassified', 330),\n        ('highway_road', 330),\n        ('highway_living_street', 320),\n        ('highway_pedestrian', 310),\n        ('highway_raceway', 300),\n        ('highway_motorway_link', 240),\n        ('highway_ramp_fast', 235),\n        ('highway_trunk_link', 230),\n        ('highway_primary_link', 220),\n        ('highway_ramp_slow', 215),\n        ('highway_secondary_link', 210),\n        ('highway_tertiary_link', 200),\n        ('highway_road_link', 180),\n        ('highway_service', 150),\n        ('highway_track', 110),\n        ('highway_path', 100),\n        ('highway_footway', 100),\n        ('highway_bridleway', 100),\n        ('highway_cycleway', 100),\n        ('highway_steps', 100),\n        ('highway_platform', 90),\n        ('highway_proposed', 20),\n        ('highway_construction', 10)\n      ) AS ordertable (feature, prio)\n        ON ('highway_' || planet_osm_line.highway) = ordertable.feature\n    WHERE (tunnel = 'yes' OR tunnel = 'building_passage' OR covered = 'yes'))\n  UNION ALL\n  (SELECT\n      way, prio,\n      COALESCE(('railway_' || (CASE WHEN railway = 'preserved' AND service IN ('spur', 'siding', 'yard') THEN 'INT-preserved-ssy'::text WHEN (railway = 'rail' AND service IN ('spur', 'siding', 'yard')) THEN 'INT-spur-siding-yard' ELSE railway END)),\n       ('aeroway_' || aeroway)) AS feature,\n       horse, foot, bicycle, tracktype, \"ump:route_class\" AS ump_route_class, junction,\n      CASE WHEN access IN ('destination') THEN 'destination'::text\n        WHEN access IN ('no', 'private') THEN 'no'::text\n      ELSE NULL END AS access,\n      construction,\n      CASE WHEN service IN ('parking_aisle', 'drive-through', 'driveway') THEN 'INT-minor'::text ELSE 'INT-normal'::text END AS service,\n      NULL AS oneway,\n      'no' AS link,\n      CASE WHEN layer~E'^-?\\\\d+$' AND length(layer)<10 THEN layer::integer ELSE 0 END AS layernotnull\n    FROM planet_osm_line\n      JOIN (VALUES\n        ('railway_rail', 430),\n        ('railway_spur', 430),\n        ('railway_siding', 430),\n        ('railway_subway', 420),\n        ('railway_narrow_gauge', 420),\n        ('railway_light_rail', 420),\n        ('railway_preserved', 420),\n        ('railway_funicular', 420),\n        ('railway_monorail', 420),\n        ('railway_miniature', 420),\n        ('railway_turntable', 420),\n        ('railway_tram', 410),\n        ('railway_disused', 400),\n        ('railway_construction', 400),\n        ('aeroway_runway', 60),\n        ('aeroway_taxiway', 50),\n        ('railway_platform', 90)\n      ) AS ordertable (feature, prio)\n        ON COALESCE(('railway_' || planet_osm_line.railway), ('aeroway_' || planet_osm_line.aeroway)) = ordertable.feature\n    WHERE (tunnel = 'yes' OR tunnel = 'building_passage' OR covered = 'yes')\n    )) AS features\n  ORDER BY layernotnull, prio, case when access in ('no', 'private') then 0 when access in ('destination') then 1 else 2 end\n) AS tunnels", 
+        "table": "(SELECT *\n  FROM (\n    (SELECT\n        way, prio,\n        ('highway_' || (CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN substr(highway, 0, length(highway)-4) ELSE highway END)) AS feature,\n        foot, bicycle, tracktype, \"ump:route_class\" AS ump_route_class, junction,\n        CASE WHEN access IN ('destination') THEN 'destination'::text\n          WHEN access IN ('no', 'private') THEN 'no'::text\n          ELSE NULL\n        END AS access,\n        construction,\n        CASE WHEN service IN ('parking_aisle', 'drive-through', 'driveway') THEN 'INT-minor'::text\n          ELSE 'INT-normal'::text\n        END AS service,\n        CASE WHEN oneway IN ('yes', '1', '-1') THEN oneway ELSE NULL END AS oneway,\n        CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN 'yes'\n          ELSE 'no' END AS link,\n        CASE WHEN layer~E'^-?\\\\d+$' AND length(layer)<10 THEN layer::integer ELSE 0 END AS layernotnull\n    FROM planet_osm_line\n      JOIN (VALUES\n        ('highway_motorway', 380),\n        ('highway_trunk', 370),\n        ('highway_primary', 360),\n        ('highway_secondary', 350),\n        ('highway_tertiary', 340),\n        ('highway_residential', 330),\n        ('highway_unclassified', 330),\n        ('highway_road', 330),\n        ('highway_living_street', 320),\n        ('highway_pedestrian', 310),\n        ('highway_raceway', 300),\n        ('highway_motorway_link', 240),\n        ('highway_ramp_fast', 235),\n        ('highway_trunk_link', 230),\n        ('highway_primary_link', 220),\n        ('highway_ramp_slow', 215),\n        ('highway_secondary_link', 210),\n        ('highway_tertiary_link', 200),\n        ('highway_road_link', 180),\n        ('highway_service', 150),\n        ('highway_track', 110),\n        ('highway_path', 100),\n        ('highway_footway', 100),\n        ('highway_cycleway', 100),\n        ('highway_steps', 100),\n        ('highway_platform', 90),\n        ('highway_proposed', 20),\n        ('highway_construction', 10)\n      ) AS ordertable (feature, prio)\n        ON ('highway_' || planet_osm_line.highway) = ordertable.feature\n    WHERE (tunnel = 'yes' OR tunnel = 'building_passage' OR covered = 'yes'))\n  UNION ALL\n  (SELECT\n      way, prio,\n      COALESCE(('railway_' || (CASE WHEN railway = 'preserved' AND service IN ('spur', 'siding', 'yard') THEN 'INT-preserved-ssy'::text WHEN (railway = 'rail' AND service IN ('spur', 'siding', 'yard')) THEN 'INT-spur-siding-yard' ELSE railway END)),\n       ('aeroway_' || aeroway)) AS feature,\n       foot, bicycle, tracktype, \"ump:route_class\" AS ump_route_class, junction,\n      CASE WHEN access IN ('destination') THEN 'destination'::text\n        WHEN access IN ('no', 'private') THEN 'no'::text\n      ELSE NULL END AS access,\n      construction,\n      CASE WHEN service IN ('parking_aisle', 'drive-through', 'driveway') THEN 'INT-minor'::text ELSE 'INT-normal'::text END AS service,\n      NULL AS oneway,\n      'no' AS link,\n      CASE WHEN layer~E'^-?\\\\d+$' AND length(layer)<10 THEN layer::integer ELSE 0 END AS layernotnull\n    FROM planet_osm_line\n      JOIN (VALUES\n        ('railway_rail', 430),\n        ('railway_spur', 430),\n        ('railway_siding', 430),\n        ('railway_subway', 420),\n        ('railway_narrow_gauge', 420),\n        ('railway_light_rail', 420),\n        ('railway_preserved', 420),\n        ('railway_funicular', 420),\n        ('railway_monorail', 420),\n        ('railway_miniature', 420),\n        ('railway_turntable', 420),\n        ('railway_tram', 410),\n        ('railway_disused', 400),\n        ('railway_construction', 400),\n        ('aeroway_runway', 60),\n        ('aeroway_taxiway', 50),\n        ('railway_platform', 90)\n      ) AS ordertable (feature, prio)\n        ON COALESCE(('railway_' || planet_osm_line.railway), ('aeroway_' || planet_osm_line.aeroway)) = ordertable.feature\n    WHERE (tunnel = 'yes' OR tunnel = 'building_passage' OR covered = 'yes')\n    )) AS features\n  ORDER BY layernotnull, prio, case when access in ('no', 'private') then 0 when access in ('destination') then 1 else 2 end\n) AS tunnels", 
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "umpgis2"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -333,7 +333,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "umpgis2"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -356,7 +356,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "umpgis2"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -379,7 +379,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "umpgis2"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -402,7 +402,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "umpgis2"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -425,7 +425,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "umpgis2"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -448,7 +448,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "umpgis2"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -471,7 +471,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "umpgis2"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -494,7 +494,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "umpgis2"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -513,11 +513,11 @@
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
-        "table": "(SELECT\n    *\n  FROM\n  (\n    (SELECT\n        way, prio,\n        ('highway_' || (CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN substr(highway, 0, length(highway)-4) ELSE highway END)) AS feature,\n        horse, foot, bicycle, tracktype, \"ump:route_class\" AS ump_route_class, junction,\n        CASE WHEN access IN ('destination') THEN 'destination'::text WHEN access IN ('no', 'private') THEN 'no'::text ELSE NULL END AS access, construction,\n        CASE WHEN service IN ('parking_aisle', 'drive-through', 'driveway') THEN 'INT-minor'::text ELSE 'INT-normal'::text END AS service,\n        CASE WHEN oneway IN ('yes', '1', '-1') THEN oneway ELSE NULL END AS oneway,\n        CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN 'yes' ELSE 'no' END AS link,\n        CASE WHEN layer~E'^-?\\\\d+$' AND length(layer)<10 THEN layer::integer ELSE 0 END AS layernotnull\n      FROM planet_osm_line\n        JOIN (VALUES\n          ('highway_motorway',380),\n          ('highway_trunk',370),\n          ('highway_primary',360),\n          ('highway_secondary',350),\n          ('highway_tertiary',340),\n          ('highway_residential',330),\n          ('highway_unclassified',330),\n          ('highway_road',330),\n          ('highway_living_street',320),\n          ('highway_pedestrian',310),\n          ('highway_raceway',300),\n          ('highway_motorway_link',240),\n        ('highway_ramp_fast', 235),\n          ('highway_trunk_link',230),\n          ('highway_primary_link',220),\n        ('highway_ramp_slow', 215),\n          ('highway_secondary_link',210),\n          ('highway_tertiary_link',200),\n        ('highway_road_link', 180),\n          ('highway_service',150),\n          ('highway_track',110),\n          ('highway_path',100),\n          ('highway_footway',100),\n          ('highway_bridleway',100),\n          ('highway_cycleway',100),\n          ('highway_steps',100),\n          ('highway_platform',90),\n          ('highway_proposed',20),\n          ('highway_construction',10)\n        ) AS ordertable (feature, prio)\n          ON ('highway_' || planet_osm_line.highway) = ordertable.feature\n        WHERE (tunnel IS NULL OR NOT tunnel IN ('yes', 'building_passage'))\n          AND (covered IS NULL OR NOT covered = 'yes')\n          AND (bridge IS NULL OR NOT bridge IN ('yes', 'boardwalk', 'cantilever', 'covered', 'low_water_crossing', 'movable', 'trestle', 'viaduct')))\n    UNION ALL\n    (SELECT\n        way, prio,\n        COALESCE(('railway_' ||(CASE WHEN railway = 'preserved' AND service IN ('spur', 'siding', 'yard') THEN 'INT-preserved-ssy'::text WHEN (railway = 'rail' AND service IN ('spur', 'siding', 'yard')) THEN 'INT-spur-siding-yard' ELSE railway end)), ('aeroway_' || aeroway)) AS feature,\n        horse, foot, bicycle, tracktype, \"ump:route_class\" AS ump_route_class, junction,\n        CASE WHEN access IN ('destination') THEN 'destination'::text WHEN access IN ('no', 'private') THEN 'no'::text ELSE NULL END AS access,\n        construction, CASE WHEN service IN ('parking_aisle', 'drive-through', 'driveway') THEN 'INT-minor'::text ELSE 'INT-normal'::text END AS service,\n        NULL AS oneway, 'no' AS link,\n        CASE WHEN layer~E'^-?\\\\d+$' AND length(layer)<10 THEN layer::integer ELSE 0 END AS layernotnull\n      FROM planet_osm_line\n        JOIN (VALUES\n          ('railway_rail', 430),\n          ('railway_spur', 430),\n          ('railway_siding', 430),\n          ('railway_subway', 420),\n          ('railway_narrow_gauge', 420),\n          ('railway_light_rail', 420),\n          ('railway_preserved', 420),\n          ('railway_funicular', 420),\n          ('railway_monorail', 420),\n          ('railway_miniature', 420),\n          ('railway_turntable', 420),\n          ('railway_tram', 410),\n          ('railway_disused', 400),\n          ('railway_construction', 400),\n          ('aeroway_runway', 60),\n          ('aeroway_taxiway', 50),\n          ('railway_platform', 90)\n        ) AS ordertable (feature, prio)\n          ON COALESCE(('railway_' || planet_osm_line.railway), ('aeroway_' || planet_osm_line.aeroway)) = ordertable.feature\n      WHERE (tunnel IS NULL OR NOT tunnel IN ('yes', 'building_passage'))\n        AND (covered IS NULL OR NOT covered = 'yes')\n        AND (bridge IS NULL OR NOT bridge IN ('yes', 'boardwalk', 'cantilever', 'covered', 'low_water_crossing', 'movable', 'trestle', 'viaduct'))\n      )\n    ) AS features\n  ORDER BY prio\n) AS roads_casing", 
+        "table": "(SELECT\n    *\n  FROM\n  (\n    (SELECT\n        way, prio,\n        ('highway_' || (CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN substr(highway, 0, length(highway)-4) ELSE highway END)) AS feature,\n        foot, bicycle, tracktype, \"ump:route_class\" AS ump_route_class, junction,\n        CASE WHEN access IN ('destination') THEN 'destination'::text WHEN access IN ('no', 'private') THEN 'no'::text ELSE NULL END AS access, construction,\n        CASE WHEN service IN ('parking_aisle', 'drive-through', 'driveway') THEN 'INT-minor'::text ELSE 'INT-normal'::text END AS service,\n        CASE WHEN oneway IN ('yes', '1', '-1') THEN oneway ELSE NULL END AS oneway,\n        CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN 'yes' ELSE 'no' END AS link,\n        CASE WHEN layer~E'^-?\\\\d+$' AND length(layer)<10 THEN layer::integer ELSE 0 END AS layernotnull\n      FROM planet_osm_line\n        JOIN (VALUES\n          ('highway_motorway',380),\n          ('highway_trunk',370),\n          ('highway_primary',360),\n          ('highway_secondary',350),\n          ('highway_tertiary',340),\n          ('highway_residential',330),\n          ('highway_unclassified',330),\n          ('highway_road',330),\n          ('highway_living_street',320),\n          ('highway_pedestrian',310),\n          ('highway_raceway',300),\n          ('highway_motorway_link',240),\n        ('highway_ramp_fast', 235),\n          ('highway_trunk_link',230),\n          ('highway_primary_link',220),\n        ('highway_ramp_slow', 215),\n          ('highway_secondary_link',210),\n          ('highway_tertiary_link',200),\n        ('highway_road_link', 180),\n          ('highway_service',150),\n          ('highway_track',110),\n          ('highway_path',100),\n          ('highway_footway',100),\n          ('highway_cycleway',100),\n          ('highway_steps',100),\n          ('highway_platform',90),\n          ('highway_proposed',20),\n          ('highway_construction',10)\n        ) AS ordertable (feature, prio)\n          ON ('highway_' || planet_osm_line.highway) = ordertable.feature\n        WHERE (tunnel IS NULL OR NOT tunnel IN ('yes', 'building_passage'))\n          AND (covered IS NULL OR NOT covered = 'yes')\n          AND (bridge IS NULL OR NOT bridge IN ('yes', 'boardwalk', 'cantilever', 'covered', 'low_water_crossing', 'movable', 'trestle', 'viaduct')))\n    UNION ALL\n    (SELECT\n        way, prio,\n        COALESCE(('railway_' ||(CASE WHEN railway = 'preserved' AND service IN ('spur', 'siding', 'yard') THEN 'INT-preserved-ssy'::text WHEN (railway = 'rail' AND service IN ('spur', 'siding', 'yard')) THEN 'INT-spur-siding-yard' ELSE railway end)), ('aeroway_' || aeroway)) AS feature,\n        foot, bicycle, tracktype, \"ump:route_class\" AS ump_route_class, junction,\n        CASE WHEN access IN ('destination') THEN 'destination'::text WHEN access IN ('no', 'private') THEN 'no'::text ELSE NULL END AS access,\n        construction, CASE WHEN service IN ('parking_aisle', 'drive-through', 'driveway') THEN 'INT-minor'::text ELSE 'INT-normal'::text END AS service,\n        NULL AS oneway, 'no' AS link,\n        CASE WHEN layer~E'^-?\\\\d+$' AND length(layer)<10 THEN layer::integer ELSE 0 END AS layernotnull\n      FROM planet_osm_line\n        JOIN (VALUES\n          ('railway_rail', 430),\n          ('railway_spur', 430),\n          ('railway_siding', 430),\n          ('railway_subway', 420),\n          ('railway_narrow_gauge', 420),\n          ('railway_light_rail', 420),\n          ('railway_preserved', 420),\n          ('railway_funicular', 420),\n          ('railway_monorail', 420),\n          ('railway_miniature', 420),\n          ('railway_turntable', 420),\n          ('railway_tram', 410),\n          ('railway_disused', 400),\n          ('railway_construction', 400),\n          ('aeroway_runway', 60),\n          ('aeroway_taxiway', 50),\n          ('railway_platform', 90)\n        ) AS ordertable (feature, prio)\n          ON COALESCE(('railway_' || planet_osm_line.railway), ('aeroway_' || planet_osm_line.aeroway)) = ordertable.feature\n      WHERE (tunnel IS NULL OR NOT tunnel IN ('yes', 'building_passage'))\n        AND (covered IS NULL OR NOT covered = 'yes')\n        AND (bridge IS NULL OR NOT bridge IN ('yes', 'boardwalk', 'cantilever', 'covered', 'low_water_crossing', 'movable', 'trestle', 'viaduct'))\n      )\n    ) AS features\n  ORDER BY prio\n) AS roads_casing", 
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "umpgis2"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -536,11 +536,11 @@
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
-        "table": "(SELECT\n    *\n  FROM\n  (\n    (SELECT\n        way, prio,\n        ('highway_' || (CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN substr(highway, 0, length(highway)-4) ELSE highway end)) AS feature,\n        horse, foot, bicycle, tracktype, \"ump:route_class\" AS ump_route_class, junction,\n        CASE WHEN access IN ('destination') THEN 'destination'::text\n          WHEN access IN ('no', 'private') THEN 'no'::text\n          ELSE NULL\n        END AS access,\n        construction,\n        CASE WHEN service IN ('parking_aisle', 'drive-through', 'driveway') THEN 'INT-minor'::text ELSE 'INT-normal'::text END AS service,\n        CASE WHEN oneway IN ('yes', '1', '-1') THEN oneway ELSE NULL END AS oneway,\n        CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN 'yes' ELSE 'no' END AS link,\n        CASE WHEN layer~E'^-?\\\\d+$' AND length(layer)<10 THEN layer::integer ELSE 0 END AS layernotnull\n      FROM planet_osm_line\n        JOIN (VALUES\n          ('highway_motorway',380),\n          ('highway_trunk',370),\n          ('highway_primary',360),\n          ('highway_secondary',350),\n          ('highway_tertiary',340),\n          ('highway_residential',330),\n          ('highway_unclassified',330),\n          ('highway_road',330),\n          ('highway_living_street',320),\n          ('highway_pedestrian',310),\n          ('highway_raceway',300),\n          ('highway_motorway_link',240),\n        ('highway_ramp_fast', 235),\n          ('highway_trunk_link',230),\n          ('highway_primary_link',220),\n        ('highway_ramp_slow', 215),\n          ('highway_secondary_link',210),\n          ('highway_tertiary_link',200),\n        ('highway_road_link', 180),\n          ('highway_service',150),\n          ('highway_track',110),\n          ('highway_path',100),\n          ('highway_footway',100),\n          ('highway_bridleway',100),\n          ('highway_cycleway',100),\n          ('highway_steps',100),\n          ('highway_platform',90),\n          ('highway_proposed',20),\n          ('highway_construction',10)\n        ) AS ordertable (feature, prio)\n          on ('highway_' || planet_osm_line.highway) = ordertable.feature\n      WHERE (tunnel IS NULL OR NOT tunnel IN ('yes', 'building_passage'))\n        AND (covered IS NULL OR NOT covered = 'yes')\n        AND (bridge IS NULL OR NOT bridge IN ('yes', 'boardwalk', 'cantilever', 'covered', 'low_water_crossing', 'movable', 'trestle', 'viaduct')))\n    UNION ALL\n    (SELECT\n        way, prio,\n        COALESCE(\n          ('railway_' || (CASE WHEN railway = 'preserved' AND service IN ('spur', 'siding', 'yard') THEN 'INT-preserved-ssy'::text WHEN (railway = 'rail' AND service IN ('spur', 'siding', 'yard')) THEN 'INT-spur-siding-yard' ELSE railway END)),\n          ('aeroway_' || aeroway)\n        ) AS feature,\n        horse, foot, bicycle, tracktype, \"ump:route_class\" AS ump_route_class, junction,\n        CASE WHEN access IN ('destination') THEN 'destination'::text\n          WHEN access IN ('no', 'private') THEN 'no'::text\n          ELSE NULL\n        END AS access,\n        construction,\n        CASE WHEN service IN ('parking_aisle', 'drive-through', 'driveway') THEN 'INT-minor'::text\n          ELSE 'INT-normal'::text\n        END AS service,\n        NULL AS oneway,\n        'no' AS link,\n        CASE WHEN layer~E'^-?\\\\d+$' AND length(layer)<10 THEN layer::integer ELSE 0 END AS layernotnull\n      FROM planet_osm_line\n        JOIN (VALUES\n          ('railway_rail',430),\n          ('railway_spur',430),\n          ('railway_siding',430),\n          ('railway_subway',420),\n          ('railway_narrow_gauge',420),\n          ('railway_light_rail',420),\n          ('railway_preserved',420),\n          ('railway_funicular',420),\n          ('railway_monorail',420),\n          ('railway_miniature',420),\n          ('railway_turntable',420),\n          ('railway_tram',410),\n          ('railway_disused',400),\n          ('railway_construction',400),\n          ('aeroway_runway',60),\n          ('aeroway_taxiway',50),\n          ('railway_platform',90)) AS ordertable (feature, prio)\n        ON COALESCE(('railway_' || planet_osm_line.railway), ('aeroway_' || planet_osm_line.aeroway)) = ordertable.feature\n      WHERE (tunnel IS NULL OR NOT tunnel IN ('yes', 'building_passage'))\n        AND (covered IS NULL OR NOT covered = 'yes')\n        AND (bridge IS NULL OR NOT bridge IN ('yes', 'boardwalk', 'cantilever', 'covered', 'low_water_crossing', 'movable', 'trestle', 'viaduct'))\n    )\n  ) AS features ORDER BY prio, case when access in ('no', 'private') then 0 when access in ('destination') then 1 else 2 end\n) AS roads_fill", 
+        "table": "(SELECT\n    *\n  FROM\n  (\n    (SELECT\n        way, prio,\n        ('highway_' || (CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN substr(highway, 0, length(highway)-4) ELSE highway end)) AS feature,\n        foot, bicycle, tracktype, \"ump:route_class\" AS ump_route_class, junction,\n        CASE WHEN access IN ('destination') THEN 'destination'::text\n          WHEN access IN ('no', 'private') THEN 'no'::text\n          ELSE NULL\n        END AS access,\n        construction,\n        CASE WHEN service IN ('parking_aisle', 'drive-through', 'driveway') THEN 'INT-minor'::text ELSE 'INT-normal'::text END AS service,\n        CASE WHEN oneway IN ('yes', '1', '-1') THEN oneway ELSE NULL END AS oneway,\n        CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN 'yes' ELSE 'no' END AS link,\n        CASE WHEN layer~E'^-?\\\\d+$' AND length(layer)<10 THEN layer::integer ELSE 0 END AS layernotnull\n      FROM planet_osm_line\n        JOIN (VALUES\n          ('highway_motorway',380),\n          ('highway_trunk',370),\n          ('highway_primary',360),\n          ('highway_secondary',350),\n          ('highway_tertiary',340),\n          ('highway_residential',330),\n          ('highway_unclassified',330),\n          ('highway_road',330),\n          ('highway_living_street',320),\n          ('highway_pedestrian',310),\n          ('highway_raceway',300),\n          ('highway_motorway_link',240),\n        ('highway_ramp_fast', 235),\n          ('highway_trunk_link',230),\n          ('highway_primary_link',220),\n        ('highway_ramp_slow', 215),\n          ('highway_secondary_link',210),\n          ('highway_tertiary_link',200),\n        ('highway_road_link', 180),\n          ('highway_service',150),\n          ('highway_track',110),\n          ('highway_path',100),\n          ('highway_footway',100),\n          ('highway_cycleway',100),\n          ('highway_steps',100),\n          ('highway_platform',90),\n          ('highway_proposed',20),\n          ('highway_construction',10)\n        ) AS ordertable (feature, prio)\n          on ('highway_' || planet_osm_line.highway) = ordertable.feature\n      WHERE (tunnel IS NULL OR NOT tunnel IN ('yes', 'building_passage'))\n        AND (covered IS NULL OR NOT covered = 'yes')\n        AND (bridge IS NULL OR NOT bridge IN ('yes', 'boardwalk', 'cantilever', 'covered', 'low_water_crossing', 'movable', 'trestle', 'viaduct')))\n    UNION ALL\n    (SELECT\n        way, prio,\n        COALESCE(\n          ('railway_' || (CASE WHEN railway = 'preserved' AND service IN ('spur', 'siding', 'yard') THEN 'INT-preserved-ssy'::text WHEN (railway = 'rail' AND service IN ('spur', 'siding', 'yard')) THEN 'INT-spur-siding-yard' ELSE railway END)),\n          ('aeroway_' || aeroway)\n        ) AS feature,\n        foot, bicycle, tracktype, \"ump:route_class\" AS ump_route_class, junction,\n        CASE WHEN access IN ('destination') THEN 'destination'::text\n          WHEN access IN ('no', 'private') THEN 'no'::text\n          ELSE NULL\n        END AS access,\n        construction,\n        CASE WHEN service IN ('parking_aisle', 'drive-through', 'driveway') THEN 'INT-minor'::text\n          ELSE 'INT-normal'::text\n        END AS service,\n        NULL AS oneway,\n        'no' AS link,\n        CASE WHEN layer~E'^-?\\\\d+$' AND length(layer)<10 THEN layer::integer ELSE 0 END AS layernotnull\n      FROM planet_osm_line\n        JOIN (VALUES\n          ('railway_rail',430),\n          ('railway_spur',430),\n          ('railway_siding',430),\n          ('railway_subway',420),\n          ('railway_narrow_gauge',420),\n          ('railway_light_rail',420),\n          ('railway_preserved',420),\n          ('railway_funicular',420),\n          ('railway_monorail',420),\n          ('railway_miniature',420),\n          ('railway_turntable',420),\n          ('railway_tram',410),\n          ('railway_disused',400),\n          ('railway_construction',400),\n          ('aeroway_runway',60),\n          ('aeroway_taxiway',50),\n          ('railway_platform',90)) AS ordertable (feature, prio)\n        ON COALESCE(('railway_' || planet_osm_line.railway), ('aeroway_' || planet_osm_line.aeroway)) = ordertable.feature\n      WHERE (tunnel IS NULL OR NOT tunnel IN ('yes', 'building_passage'))\n        AND (covered IS NULL OR NOT covered = 'yes')\n        AND (bridge IS NULL OR NOT bridge IN ('yes', 'boardwalk', 'cantilever', 'covered', 'low_water_crossing', 'movable', 'trestle', 'viaduct'))\n    )\n  ) AS features ORDER BY prio, case when access in ('no', 'private') then 0 when access in ('destination') then 1 else 2 end\n) AS roads_fill", 
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "umpgis2"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -563,7 +563,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "umpgis2"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -586,7 +586,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "umpgis2"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -609,7 +609,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "umpgis2"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -632,7 +632,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "umpgis2"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -652,11 +652,11 @@
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
-        "table": "(SELECT *\n  FROM (\n    (SELECT\n        way, prio,\n        ('highway_' || (CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN substr(highway, 0, length(highway)-4) ELSE highway END)) AS feature,\n        horse, foot, bicycle, tracktype, \"ump:route_class\" AS ump_route_class, junction,\n        CASE WHEN access IN ('destination') THEN 'destination'::text\n          WHEN access IN ('no', 'private') THEN 'no'::text\n          ELSE NULL\n        END AS access,\n        construction,\n        CASE WHEN service IN ('parking_aisle', 'drive-through', 'driveway') THEN 'INT-minor'::text\n          ELSE 'INT-normal'::text\n        END AS service,\n        CASE WHEN oneway IN ('yes', '1', '-1') THEN oneway ELSE NULL END AS oneway,\n        CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN 'yes'\n          ELSE 'no' END AS link,\n        CASE WHEN layer~E'^-?\\\\d+$' AND length(layer)<10 THEN layer::integer ELSE 0 END AS layernotnull\n    FROM planet_osm_line\n      JOIN (VALUES\n        ('highway_motorway', 380),\n        ('highway_trunk', 370),\n        ('highway_primary', 360),\n        ('highway_secondary', 350),\n        ('highway_tertiary', 340),\n        ('highway_residential', 330),\n        ('highway_unclassified', 330),\n        ('highway_road', 330),\n        ('highway_living_street', 320),\n        ('highway_pedestrian', 310),\n        ('highway_raceway', 300),\n        ('highway_motorway_link', 240),\n        ('highway_ramp_fast', 235),\n        ('highway_trunk_link', 230),\n        ('highway_primary_link', 220),\n        ('highway_ramp_slow', 215),\n        ('highway_secondary_link', 210),\n        ('highway_tertiary_link', 200),\n        ('highway_road_link', 180),\n        ('highway_service', 150),\n        ('highway_track', 110),\n        ('highway_path', 100),\n        ('highway_footway', 100),\n        ('highway_bridleway', 100),\n        ('highway_cycleway', 100),\n        ('highway_steps', 100),\n        ('highway_platform', 90),\n        ('highway_proposed', 20),\n        ('highway_construction', 10)\n      ) AS ordertable (feature, prio)\n        ON ('highway_' || planet_osm_line.highway) = ordertable.feature\n    WHERE bridge IN ('yes', 'boardwalk', 'cantilever', 'covered', 'low_water_crossing', 'movable', 'trestle', 'viaduct')\n  )\n  UNION ALL\n  (SELECT\n      way, prio,\n      COALESCE(('railway_' || (CASE WHEN railway = 'preserved' AND service IN ('spur', 'siding', 'yard') THEN 'INT-preserved-ssy'::text WHEN (railway = 'rail' AND service IN ('spur', 'siding', 'yard')) THEN 'INT-spur-siding-yard' ELSE railway END)),\n       ('aeroway_' || aeroway)) AS feature,\n       horse, foot, bicycle, tracktype, \"ump:route_class\" AS ump_route_class, junction,\n      CASE WHEN access IN ('destination') THEN 'destination'::text\n        WHEN access IN ('no', 'private') THEN 'no'::text\n      ELSE NULL END AS access,\n      construction,\n      CASE WHEN service IN ('parking_aisle', 'drive-through', 'driveway') THEN 'INT-minor'::text ELSE 'INT-normal'::text END AS service,\n      NULL AS oneway,\n      'no' AS link,\n      CASE WHEN layer~E'^-?\\\\d+$' AND length(layer)<10 THEN layer::integer ELSE 0 END AS layernotnull\n    FROM planet_osm_line\n      JOIN (VALUES\n        ('railway_rail', 430),\n        ('railway_spur', 430),\n        ('railway_siding', 430),\n        ('railway_subway', 420),\n        ('railway_narrow_gauge', 420),\n        ('railway_light_rail', 420),\n        ('railway_preserved', 420),\n        ('railway_funicular', 420),\n        ('railway_monorail', 420),\n        ('railway_miniature', 420),\n        ('railway_turntable', 420),\n        ('railway_tram', 410),\n        ('railway_disused', 400),\n        ('railway_construction', 400),\n        ('aeroway_runway', 60),\n        ('aeroway_taxiway', 50),\n        ('railway_platform', 90)\n      ) AS ordertable (feature, prio)\n        ON COALESCE(('railway_' || planet_osm_line.railway), ('aeroway_' || planet_osm_line.aeroway)) = ordertable.feature\n    WHERE bridge IN ('yes', 'boardwalk', 'cantilever', 'covered', 'low_water_crossing', 'movable', 'trestle', 'viaduct')\n    )) AS features\n  ORDER BY layernotnull, prio, case when access in ('no', 'private') then 0 when access in ('destination') then 1 else 2 end\n) AS bridges", 
+        "table": "(SELECT *\n  FROM (\n    (SELECT\n        way, prio,\n        ('highway_' || (CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN substr(highway, 0, length(highway)-4) ELSE highway END)) AS feature,\n        foot, bicycle, tracktype, \"ump:route_class\" AS ump_route_class, junction,\n        CASE WHEN access IN ('destination') THEN 'destination'::text\n          WHEN access IN ('no', 'private') THEN 'no'::text\n          ELSE NULL\n        END AS access,\n        construction,\n        CASE WHEN service IN ('parking_aisle', 'drive-through', 'driveway') THEN 'INT-minor'::text\n          ELSE 'INT-normal'::text\n        END AS service,\n        CASE WHEN oneway IN ('yes', '1', '-1') THEN oneway ELSE NULL END AS oneway,\n        CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN 'yes'\n          ELSE 'no' END AS link,\n        CASE WHEN layer~E'^-?\\\\d+$' AND length(layer)<10 THEN layer::integer ELSE 0 END AS layernotnull\n    FROM planet_osm_line\n      JOIN (VALUES\n        ('highway_motorway', 380),\n        ('highway_trunk', 370),\n        ('highway_primary', 360),\n        ('highway_secondary', 350),\n        ('highway_tertiary', 340),\n        ('highway_residential', 330),\n        ('highway_unclassified', 330),\n        ('highway_road', 330),\n        ('highway_living_street', 320),\n        ('highway_pedestrian', 310),\n        ('highway_raceway', 300),\n        ('highway_motorway_link', 240),\n        ('highway_ramp_fast', 235),\n        ('highway_trunk_link', 230),\n        ('highway_primary_link', 220),\n        ('highway_ramp_slow', 215),\n        ('highway_secondary_link', 210),\n        ('highway_tertiary_link', 200),\n        ('highway_road_link', 180),\n        ('highway_service', 150),\n        ('highway_track', 110),\n        ('highway_path', 100),\n        ('highway_footway', 100),\n        ('highway_cycleway', 100),\n        ('highway_steps', 100),\n        ('highway_platform', 90),\n        ('highway_proposed', 20),\n        ('highway_construction', 10)\n      ) AS ordertable (feature, prio)\n        ON ('highway_' || planet_osm_line.highway) = ordertable.feature\n    WHERE bridge IN ('yes', 'boardwalk', 'cantilever', 'covered', 'low_water_crossing', 'movable', 'trestle', 'viaduct')\n  )\n  UNION ALL\n  (SELECT\n      way, prio,\n      COALESCE(('railway_' || (CASE WHEN railway = 'preserved' AND service IN ('spur', 'siding', 'yard') THEN 'INT-preserved-ssy'::text WHEN (railway = 'rail' AND service IN ('spur', 'siding', 'yard')) THEN 'INT-spur-siding-yard' ELSE railway END)),\n       ('aeroway_' || aeroway)) AS feature,\n       foot, bicycle, tracktype, \"ump:route_class\" AS ump_route_class, junction,\n      CASE WHEN access IN ('destination') THEN 'destination'::text\n        WHEN access IN ('no', 'private') THEN 'no'::text\n      ELSE NULL END AS access,\n      construction,\n      CASE WHEN service IN ('parking_aisle', 'drive-through', 'driveway') THEN 'INT-minor'::text ELSE 'INT-normal'::text END AS service,\n      NULL AS oneway,\n      'no' AS link,\n      CASE WHEN layer~E'^-?\\\\d+$' AND length(layer)<10 THEN layer::integer ELSE 0 END AS layernotnull\n    FROM planet_osm_line\n      JOIN (VALUES\n        ('railway_rail', 430),\n        ('railway_spur', 430),\n        ('railway_siding', 430),\n        ('railway_subway', 420),\n        ('railway_narrow_gauge', 420),\n        ('railway_light_rail', 420),\n        ('railway_preserved', 420),\n        ('railway_funicular', 420),\n        ('railway_monorail', 420),\n        ('railway_miniature', 420),\n        ('railway_turntable', 420),\n        ('railway_tram', 410),\n        ('railway_disused', 400),\n        ('railway_construction', 400),\n        ('aeroway_runway', 60),\n        ('aeroway_taxiway', 50),\n        ('railway_platform', 90)\n      ) AS ordertable (feature, prio)\n        ON COALESCE(('railway_' || planet_osm_line.railway), ('aeroway_' || planet_osm_line.aeroway)) = ordertable.feature\n    WHERE bridge IN ('yes', 'boardwalk', 'cantilever', 'covered', 'low_water_crossing', 'movable', 'trestle', 'viaduct')\n    )) AS features\n  ORDER BY layernotnull, prio, case when access in ('no', 'private') then 0 when access in ('destination') then 1 else 2 end\n) AS bridges", 
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "umpgis2"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -681,7 +681,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "umpgis2"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -704,7 +704,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "umpgis2"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -727,7 +727,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "umpgis2"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -750,7 +750,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "umpgis2"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -773,7 +773,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "umpgis2"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -818,7 +818,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "umpgis2"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -841,7 +841,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "umpgis2"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -864,7 +864,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "umpgis2"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -887,7 +887,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "umpgis2"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -910,7 +910,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "umpgis2"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -933,7 +933,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "umpgis2"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -956,7 +956,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "umpgis2"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -979,7 +979,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "umpgis2"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -1002,7 +1002,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "umpgis2"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -1025,7 +1025,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "umpgis2"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -1048,7 +1048,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "umpgis2"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -1071,7 +1071,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "umpgis2"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -1094,7 +1094,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "umpgis2"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -1117,7 +1117,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "umpgis2"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -1140,7 +1140,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "umpgis2"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -1163,7 +1163,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "umpgis2"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -1186,7 +1186,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "umpgis2"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -1209,7 +1209,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "umpgis2"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -1232,7 +1232,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "umpgis2"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -1255,7 +1255,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "umpgis2"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -1278,7 +1278,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "umpgis2"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -1301,7 +1301,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "umpgis2"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -1320,11 +1320,11 @@
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
-        "table": "      (SELECT way, highway, name\n       FROM planet_osm_line\n       WHERE highway IN ('bridleway', 'footway', 'cycleway', 'path', 'track', 'steps')\n         AND name IS NOT NULL\n      ) AS paths_text_name", 
+        "table": "      (SELECT way, highway, name\n       FROM planet_osm_line\n       WHERE highway IN ('footway', 'cycleway', 'path', 'track', 'steps')\n         AND name IS NOT NULL\n      ) AS paths_text_name", 
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "umpgis2"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -1347,7 +1347,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "umpgis2"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -1370,7 +1370,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "umpgis2"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -1393,7 +1393,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "umpgis2"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -1416,7 +1416,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "umpgis2"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -1439,7 +1439,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "umpgis2"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -1462,7 +1462,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "umpgis2"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -1485,7 +1485,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "umpgis2"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -1508,7 +1508,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "umpgis2"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -1531,7 +1531,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "umpgis2"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -1554,7 +1554,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "umpgis2"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -1577,7 +1577,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "umpgis2"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -1600,7 +1600,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "umpgis2"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -1623,7 +1623,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "umpgis2"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -1646,7 +1646,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "umpgis2"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -1669,7 +1669,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "umpgis2"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -1692,7 +1692,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "umpgis2"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -1715,7 +1715,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "umpgis2"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -1738,7 +1738,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "umpgis2"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -1761,7 +1761,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "umpgis2"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -1784,7 +1784,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "umpgis2"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -1807,7 +1807,7 @@
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 
-        "dbname": "umpgis2"
+        "dbname": "umpgis"
       }, 
       "extent": [
         -180, 
@@ -1840,7 +1840,7 @@
     "osm2pgsql": {
       "geometry_field": "way", 
       "type": "postgis", 
-      "dbname": "umpgis2", 
+      "dbname": "umpgis", 
       "extent": "-20037508,-20037508,20037508,20037508", 
       "key_field": ""
     }, 
