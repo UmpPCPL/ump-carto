@@ -65,7 +65,7 @@ Stylesheet:
   - "POI-morze.mss"
   - "POI-inne.mss"
   - "stations.mss"
-  - "ferry-routes.mss"
+  - "UMP-promy.mss"
   - "aerialways.mss"
   - "admin.mss"
   - "addressing.mss"
@@ -460,9 +460,9 @@ Layer:
       <<: *osm2pgsql
       table: |-
         (SELECT
-            way
+            way, "ump:type" AS garmin_typ, "ump:endlevel" as ump_endlevel
           FROM planet_osm_line
-          WHERE route = 'ferry'
+          WHERE "ump:type" = '0x1a' OR "ump:type" = '0x1b'
         ) AS ferry_routes
     advanced: {}
   - id: "roads-casing"
@@ -1487,9 +1487,9 @@ Layer:
       <<: *osm2pgsql
       table: |2-
         (SELECT
-          way, name
+          way, name, "ump:type" AS garmin_typ, "ump:endlevel" as ump_endlevel
           FROM planet_osm_line
-          WHERE route = 'ferry'
+          WHERE "ump:type" = '0x1a' OR "ump:type" = '0x1b'
         ) AS ferry_routes_text
     advanced: {}
   - id: "admin-text"
