@@ -1149,22 +1149,13 @@ Layer:
     Datasource:
       <<: *osm2pgsql
       table: |2-
-        (SELECT way, highway, height, width, refs FROM
-          (SELECT
-              way, highway,
-              array_length(refs,1) AS height,
-              (SELECT MAX(char_length(ref)) FROM unnest(refs) AS u(ref)) AS width,
-              array_to_string(refs, E'\n') AS refs
-            FROM (
-              SELECT
-                  way,
-                  highway,
-                  string_to_array(ref, ';') AS refs
-              FROM planet_osm_roads
+        (SELECT way, highway, width, refs FROM
+          (SELECT way, highway, char_length(ref) AS width, ref AS refs FROM
+              FROM planet_osm_line
                 WHERE highway IN ('motorway', 'trunk', 'primary', 'secondary')
                 AND ref IS NOT NULL
-              ) AS p) AS q
-          WHERE height <= 4 AND width <= 8) AS roads_text_ref_low_zoom
+              ) AS q
+          WHERE width <= 8) AS roads_text_ref_low_zoom
     advanced: {}
   - id: "roads-text-ref"
     name: "roads-text-ref"
@@ -1174,22 +1165,13 @@ Layer:
     Datasource:
       <<: *osm2pgsql
       table: |2-
-        (SELECT way, highway, height, width, refs FROM
-          (SELECT
-              way, highway,
-              array_length(refs,1) AS height,
-              (SELECT MAX(char_length(ref)) FROM unnest(refs) AS u(ref)) AS width,
-              array_to_string(refs, E'\n') AS refs
-            FROM (
-              SELECT
-                  way,
-                  COALESCE(highway, aeroway) AS highway,
-                  string_to_array(ref, ';') AS refs
+        (SELECT way, highway, width, refs FROM
+          (SELECT way, highway, char_length(ref) AS width, ref AS refs FROM
               FROM planet_osm_line
-                WHERE (highway IN ('motorway', 'trunk', 'primary', 'secondary', 'tertiary', 'unclassified', 'residential') OR aeroway IN ('runway', 'taxiway'))
+                WHERE highway IN ('motorway', 'trunk', 'primary', 'secondary', 'tertiary', 'unclassified', 'residential') 
                 AND ref IS NOT NULL
-              ) AS p) AS q
-          WHERE height <= 4 AND width <= 8) AS roads_text_ref
+              ) AS q
+          WHERE width <= 8) AS roads_text_ref
     advanced: {}
   - id: "roads-text-name"
     name: "roads-text-name"
