@@ -453,8 +453,7 @@
       }
     }
 
-    [feature = 'highway_cycleway'],
-    [feature = 'highway_path'][bicycle = 'designated'] {
+    [feature = 'highway_cycleway'] {
       .bridges-casing {
         [zoom >= 14][access != 'no'],
         [zoom >= 15] {
@@ -609,8 +608,7 @@
       }
     }
 
-    [feature = 'highway_cycleway'],
-    [feature = 'highway_path'][bicycle = 'designated'] {
+    [feature = 'highway_cycleway'] {
       .bridges-casing {
         [zoom >= 14][access != 'no'],
         [zoom >= 15] {
@@ -1216,8 +1214,7 @@
       }
     }
 
-    [feature = 'highway_cycleway'],
-    [feature = 'highway_path'][bicycle = 'designated'] {
+    [feature = 'highway_cycleway'] {
       [zoom >= 13][access != 'no'],
       [zoom >= 15] {
         .tunnels-fill {

@@ -234,7 +234,7 @@ Layer:
             (SELECT
                 way, prio,
                 ('highway_' || (CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN substr(highway, 0, length(highway)-4) ELSE highway END)) AS feature,
-                foot, bicycle, tracktype, "ump:route_class" AS ump_route_class, junction,
+                foot, tracktype, "ump:route_class" AS ump_route_class, junction,
                 CASE WHEN access IN ('destination') THEN 'destination'::text
                   WHEN access IN ('no', 'private') THEN 'no'::text
                   ELSE NULL
@@ -281,7 +281,7 @@ Layer:
           (SELECT
               way, prio,
               COALESCE(('railway_' || railway ),('aeroway_' || aeroway)) AS feature,
-               foot, bicycle, tracktype, "ump:route_class" AS ump_route_class, junction,
+               foot, tracktype, "ump:route_class" AS ump_route_class, junction,
               CASE WHEN access IN ('destination') THEN 'destination'::text
                 WHEN access IN ('no', 'private') THEN 'no'::text
               ELSE NULL END AS access,
@@ -404,7 +404,7 @@ Layer:
             (SELECT
                 way, prio,
                 ('highway_' || (CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN substr(highway, 0, length(highway)-4) ELSE highway END)) AS feature,
-                foot, bicycle, tracktype, "ump:route_class" AS ump_route_class, junction,
+                foot, tracktype, "ump:route_class" AS ump_route_class, junction,
                 CASE WHEN access IN ('destination') THEN 'destination'::text WHEN access IN ('no', 'private') THEN 'no'::text ELSE NULL END AS access, construction,
                 CASE WHEN oneway IN ('yes', '1', '-1') THEN oneway ELSE NULL END AS oneway,
                 CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN 'yes' ELSE 'no' END AS link,
@@ -447,7 +447,7 @@ Layer:
             (SELECT
                 way, prio,
                 COALESCE(('railway_' || railway ),('aeroway_' || aeroway)) AS feature,
-                foot, bicycle, tracktype, "ump:route_class" AS ump_route_class, junction,
+                foot, tracktype, "ump:route_class" AS ump_route_class, junction,
                 CASE WHEN access IN ('destination') THEN 'destination'::text WHEN access IN ('no', 'private') THEN 'no'::text ELSE NULL END AS access,
                 construction,
                 NULL AS oneway,
@@ -496,7 +496,7 @@ Layer:
             (SELECT
                 way, prio,
                 ('highway_' || (CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN substr(highway, 0, length(highway)-4) ELSE highway end)) AS feature,
-                foot, bicycle, tracktype, "ump:route_class" AS ump_route_class, junction,
+                foot, tracktype, "ump:route_class" AS ump_route_class, junction,
                 CASE WHEN access IN ('destination') THEN 'destination'::text
                   WHEN access IN ('no', 'private') THEN 'no'::text
                   ELSE NULL
@@ -543,7 +543,7 @@ Layer:
             (SELECT
                 way, prio,
                 COALESCE(('railway_' || railway ),('aeroway_' || aeroway)) AS feature,
-                foot, bicycle, tracktype, "ump:route_class" AS ump_route_class, junction,
+                foot, tracktype, "ump:route_class" AS ump_route_class, junction,
                 CASE WHEN access IN ('destination') THEN 'destination'::text
                   WHEN access IN ('no', 'private') THEN 'no'::text
                   ELSE NULL
@@ -646,7 +646,7 @@ Layer:
             (SELECT
                 way, prio,
                 ('highway_' || (CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN substr(highway, 0, length(highway)-4) ELSE highway END)) AS feature,
-                foot, bicycle, tracktype, "ump:route_class" AS ump_route_class, junction,
+                foot, tracktype, "ump:route_class" AS ump_route_class, junction,
                 CASE WHEN access IN ('destination') THEN 'destination'::text
                   WHEN access IN ('no', 'private') THEN 'no'::text
                   ELSE NULL
@@ -694,7 +694,7 @@ Layer:
           (SELECT
               way, prio,
               COALESCE(('railway_' || railway ),('aeroway_' || aeroway)) AS feature,
-              foot, bicycle, tracktype, "ump:route_class" AS ump_route_class, junction,
+              foot, tracktype, "ump:route_class" AS ump_route_class, junction,
               CASE WHEN access IN ('destination') THEN 'destination'::text
                 WHEN access IN ('no', 'private') THEN 'no'::text
               ELSE NULL END AS access,
