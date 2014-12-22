@@ -1136,29 +1136,6 @@
       }
     }
 
-    [feature = 'highway_raceway'] {
-      [zoom >= 12] {
-        line-color: @raceway-fill;
-        line-width: 1.2;
-        line-join: round;
-        line-cap: round;
-      }
-      [zoom >= 13] { line-width: 4; }
-      [zoom >= 15] { line-width: 7; }
-    }
-
-    [feature = 'highway_platform'] {
-      [zoom >= 16] {
-        line-join: round;
-        line-width: 6;
-        line-color: grey;
-        line-cap: round;
-        b/line-width: 4;
-        b/line-color: #bbbbbb;
-        b/line-cap: round;
-        b/line-join: round;
-      }
-    }
 
     [feature = 'highway_steps'] {
       [zoom >= 13][access != 'no'],
