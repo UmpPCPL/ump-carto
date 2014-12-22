@@ -276,75 +276,6 @@
       "advanced": {}
     }, 
     {
-      "name": "citywalls", 
-      "srs-name": "900913", 
-      "geometry": "linestring", 
-      "class": "", 
-      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
-      "Datasource": {
-        "extent": "-20037508,-20037508,20037508,20037508", 
-        "table": "(SELECT\n    way\n  FROM planet_osm_line\n  WHERE historic = 'citywalls')\nAS citywalls", 
-        "geometry_field": "way", 
-        "type": "postgis", 
-        "key_field": "", 
-        "dbname": "umpgis"
-      }, 
-      "extent": [
-        -180, 
-        -85.05112877980659, 
-        180, 
-        85.05112877980659
-      ], 
-      "id": "citywalls", 
-      "advanced": {}
-    }, 
-    {
-      "name": "castlewalls", 
-      "srs-name": "900913", 
-      "geometry": "linestring", 
-      "class": "castlewalls", 
-      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
-      "Datasource": {
-        "extent": "-20037508,-20037508,20037508,20037508", 
-        "table": "(SELECT\n    way\n  FROM planet_osm_line\n  WHERE historic = 'castle_walls'\n) AS castlewalls", 
-        "geometry_field": "way", 
-        "type": "postgis", 
-        "key_field": "", 
-        "dbname": "umpgis"
-      }, 
-      "extent": [
-        -180, 
-        -85.05112877980659, 
-        180, 
-        85.05112877980659
-      ], 
-      "id": "castlewalls", 
-      "advanced": {}
-    }, 
-    {
-      "name": "castlewalls-poly", 
-      "srs-name": "900913", 
-      "geometry": "polygon", 
-      "class": "castlewalls", 
-      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
-      "Datasource": {
-        "extent": "-20037508,-20037508,20037508,20037508", 
-        "table": "(SELECT\n    way\n  FROM planet_osm_polygon\n  WHERE historic = 'castle_walls'\n) AS castlewalls_poly", 
-        "geometry_field": "way", 
-        "type": "postgis", 
-        "key_field": "", 
-        "dbname": "umpgis"
-      }, 
-      "extent": [
-        -180, 
-        -85.05112877980659, 
-        180, 
-        85.05112877980659
-      ], 
-      "id": "castlewalls-poly", 
-      "advanced": {}
-    }, 
-    {
       "name": "landuse-overlay", 
       "srs-name": "900913", 
       "geometry": "polygon", 
@@ -1827,7 +1758,6 @@
     "water-features.mss", 
     "roads.mss", 
     "UMP-power.mss", 
-    "citywalls.mss", 
     "placenames.mss", 
     "POI-highways.mss", 
     "UMP-budynki.mss", 

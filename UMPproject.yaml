@@ -45,7 +45,6 @@ Stylesheet:
   - "water-features.mss"
   - "roads.mss"
   - "UMP-power.mss"
-  - "citywalls.mss"
   - "placenames.mss"
   - "POI-highways.mss"
   - "UMP-budynki.mss"
@@ -317,48 +316,6 @@ Layer:
         ) AS tunnels
     properties:
       group-by: "layernotnull"
-    advanced: {}
-  - id: "citywalls"
-    name: "citywalls"
-    class: ""
-    geometry: "linestring"
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |-
-        (SELECT
-            way
-          FROM planet_osm_line
-          WHERE historic = 'citywalls')
-        AS citywalls
-    advanced: {}
-  - id: "castlewalls"
-    name: "castlewalls"
-    class: "castlewalls"
-    geometry: "linestring"
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |-
-        (SELECT
-            way
-          FROM planet_osm_line
-          WHERE historic = 'castle_walls'
-        ) AS castlewalls
-    advanced: {}
-  - id: "castlewalls-poly"
-    name: "castlewalls-poly"
-    class: "castlewalls"
-    geometry: "polygon"
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |-
-        (SELECT
-            way
-          FROM planet_osm_polygon
-          WHERE historic = 'castle_walls'
-        ) AS castlewalls_poly
     advanced: {}
   - id: "landuse-overlay"
     name: "landuse-overlay"
