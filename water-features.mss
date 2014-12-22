@@ -37,12 +37,6 @@
   }
 }
 
-#piers-area {
-  [zoom >= 12] {
-    polygon-fill: @land-color;
-  }
-}
-
 #piers {
   [man_made = 'breakwater'],
   [man_made = 'groyne'] {
@@ -62,13 +56,5 @@
     line-color: @land-color;
     [zoom >= 13] { line-width: 3; }
     [zoom >= 16] { line-width: 7; }
-  }
-}
-
-#locks {
-  [waterway = 'lock_gate'][zoom >= 17] {
-    marker-fill: #969494;
-    marker-width: 9;
-    marker-line-width: 0;
   }
 }

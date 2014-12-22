@@ -26,6 +26,9 @@
     [garmin_typ = '0x6512'][zoom >= 17] {
          point-file: url('symbols_ump/6512_strumien.png');
     }
+    [garmin_typ = '0x6605'][zoom >= 17] {
+         point-file: url('symbols_ump/cog.png');
+    }
     [garmin_typ = '0x660a'][zoom >= 17] {
          point-file: url('symbols_ump/660a_Forest_Las_day.png');
     }

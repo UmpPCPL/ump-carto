@@ -222,20 +222,6 @@ Layer:
           ORDER BY z_order
         ) AS water_lines
     advanced: {}
-  - id: "locks"
-    name: "locks"
-    class: ""
-    geometry: "point"
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |-
-        (SELECT
-            way, waterway
-          FROM planet_osm_point
-          WHERE waterway = 'lock_gate'
-        ) AS locks
-    advanced: {}
   - id: "tunnels"
     name: "tunnels"
     class: "tunnels-fill tunnels-casing access directions"
@@ -294,7 +280,7 @@ Layer:
                 ('highway_construction', 10)
               ) AS ordertable (feature, prio)
                 ON ('highway_' || planet_osm_line.highway) = ordertable.feature
-            WHERE (tunnel = 'yes' OR tunnel = 'building_passage' OR covered = 'yes'))
+            WHERE (tunnel = 'yes' OR tunnel = 'building_passage' ))
           UNION ALL
           (SELECT
               way, prio,
@@ -330,7 +316,7 @@ Layer:
                 ('railway_platform', 90)
               ) AS ordertable (feature, prio)
                 ON COALESCE(('railway_' || planet_osm_line.railway), ('aeroway_' || planet_osm_line.aeroway)) = ordertable.feature
-            WHERE (tunnel = 'yes' OR tunnel = 'building_passage' OR covered = 'yes')
+            WHERE (tunnel = 'yes' OR tunnel = 'building_passage'  )
             )) AS features
           ORDER BY layernotnull, prio, case when access in ('no', 'private') then 0 when access in ('destination') then 1 else 2 end
         ) AS tunnels
@@ -505,7 +491,6 @@ Layer:
                 ) AS ordertable (feature, prio)
                   ON ('highway_' || planet_osm_line.highway) = ordertable.feature
                 WHERE (tunnel IS NULL OR NOT tunnel IN ('yes', 'building_passage'))
-                  AND (covered IS NULL OR NOT covered = 'yes')
                   AND (bridge IS NULL OR NOT bridge IN ('yes', 'boardwalk', 'cantilever', 'covered', 'low_water_crossing', 'movable', 'trestle', 'viaduct')))
             UNION ALL
             (SELECT
@@ -538,7 +523,6 @@ Layer:
                 ) AS ordertable (feature, prio)
                   ON COALESCE(('railway_' || planet_osm_line.railway), ('aeroway_' || planet_osm_line.aeroway)) = ordertable.feature
               WHERE (tunnel IS NULL OR NOT tunnel IN ('yes', 'building_passage'))
-                AND (covered IS NULL OR NOT covered = 'yes')
                 AND (bridge IS NULL OR NOT bridge IN ('yes', 'boardwalk', 'cantilever', 'covered', 'low_water_crossing', 'movable', 'trestle', 'viaduct'))
               )
             ) AS features
@@ -603,7 +587,6 @@ Layer:
                 ) AS ordertable (feature, prio)
                   on ('highway_' || planet_osm_line.highway) = ordertable.feature
               WHERE (tunnel IS NULL OR NOT tunnel IN ('yes', 'building_passage'))
-                AND (covered IS NULL OR NOT covered = 'yes')
                 AND (bridge IS NULL OR NOT bridge IN ('yes', 'boardwalk', 'cantilever', 'covered', 'low_water_crossing', 'movable', 'trestle', 'viaduct')))
             UNION ALL
             (SELECT
@@ -645,7 +628,6 @@ Layer:
                   ('railway_platform',90)) AS ordertable (feature, prio)
                 ON COALESCE(('railway_' || planet_osm_line.railway), ('aeroway_' || planet_osm_line.aeroway)) = ordertable.feature
               WHERE (tunnel IS NULL OR NOT tunnel IN ('yes', 'building_passage'))
-                AND (covered IS NULL OR NOT covered = 'yes')
                 AND (bridge IS NULL OR NOT bridge IN ('yes', 'boardwalk', 'cantilever', 'covered', 'low_water_crossing', 'movable', 'trestle', 'viaduct'))
             )
           ) AS features ORDER BY prio, case when access in ('no', 'private') then 0 when access in ('destination') then 1 else 2 end
@@ -1150,7 +1132,7 @@ Layer:
       <<: *osm2pgsql
       table: |2-
         (SELECT way, highway, width, refs FROM
-          (SELECT way, highway, char_length(ref) AS width, ref AS refs FROM
+          (SELECT way, highway, char_length(ref) AS width, ref AS refs
               FROM planet_osm_line
                 WHERE highway IN ('motorway', 'trunk', 'primary', 'secondary')
                 AND ref IS NOT NULL
@@ -1166,7 +1148,7 @@ Layer:
       <<: *osm2pgsql
       table: |2-
         (SELECT way, highway, width, refs FROM
-          (SELECT way, highway, char_length(ref) AS width, ref AS refs FROM
+          (SELECT way, highway, char_length(ref) AS width, ref AS refs
               FROM planet_osm_line
                 WHERE highway IN ('motorway', 'trunk', 'primary', 'secondary', 'tertiary', 'unclassified', 'residential') 
                 AND ref IS NOT NULL
@@ -1183,7 +1165,7 @@ Layer:
       table: |2-
               (SELECT way,
                  CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN substr(highway, 0, length(highway)-4) ELSE highway END,
-                 CASE WHEN (tunnel = 'yes' OR tunnel = 'building_passage' OR covered = 'yes') THEN 'yes' ELSE 'no' END AS tunnel,
+                 CASE WHEN (tunnel = 'yes' OR tunnel = 'building_passage' ) THEN 'yes' ELSE 'no' END AS tunnel,
                  name, tracktype
                FROM planet_osm_line
                WHERE highway IN ('motorway', 'motorway_link', 'trunk', 'trunk_link', 'primary', 'primary_link', 'secondary', 'secondary_link', 'tertiary', 'tertiary_link', 'residential', 'unclassified', 'road', 'ramp_slow', 'ramp_fast', 'road_link', 'service', 'pedestrian', 'raceway', 'living_street', 'construction', 'proposed')
