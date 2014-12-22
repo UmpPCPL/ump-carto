@@ -13,6 +13,7 @@
 
  [garmin_typ='0x3005'] { [zoom >= 17] {point-file: url('symbols/theatre.p.20.png');} }
 // BORDER [garmin_typ='0x3006'] 
+ [garmin_typ='0x3006'][zoom >= 17] {point-file: url('symbols_ump/zakaz_wjazdu.png');}
  [garmin_typ='0x3007'][zoom >= 17] {point-file: url('symbols_ump/3007_Goverment-office_Urzad_day.png');}
  [garmin_typ='0x3008'][zoom >= 17] {point-file: url('symbols_ump/3008_Fire-Department_Straz-Pozarna_day.png');}
 

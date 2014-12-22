@@ -1106,7 +1106,8 @@ Layer:
       table: |2-
         (SELECT way, "ump:typ" AS ump_typ, "ump:type" AS garmin_typ
               FROM planet_osm_point
-              WHERE ("ump:type" BETWEEN '0x4000' AND '0x64ff')
+              WHERE ("ump:type" BETWEEN '0x4000' AND '0x55ff')
+              OR ("ump:type" BETWEEN '0x5b00' AND '0x64ff')
               OR "ump:type" IN ('0x1300')
          ) AS poi_infra_point
     advanced: {}
@@ -1377,7 +1378,8 @@ Layer:
       table: |2-
         (SELECT way, "ump:typ" AS ump_typ, name, "ump:type" AS garmin_typ
               FROM planet_osm_point
-              WHERE ("ump:type" BETWEEN '0x4000' AND '0x64ff')
+              WHERE ("ump:type" BETWEEN '0x4000' AND '0x55ff')
+              OR ("ump:type" BETWEEN '0x5b00' AND '0x64ff')
               OR "ump:type" IN ('0x1300')
          ) AS poi_infra_tekst
     advanced: {}
