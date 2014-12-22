@@ -65,7 +65,7 @@ Stylesheet:
   - "POI-morze.mss"
   - "POI-inne.mss"
   - "stations.mss"
-  - "UMP-promy.mss"
+  - "UMP-promy-wyciagi.mss"
   - "admin.mss"
   - "addressing.mss"
 Layer:
@@ -116,7 +116,7 @@ Layer:
       <<: *osm2pgsql
       table: |-
         (SELECT
-            way, name, way_area/(!pixel_width!*!pixel_height!) AS way_pixels, "ump:type" AS garmin_type
+            way, name, way_area/(!pixel_width!*!pixel_height!) AS way_pixels, "ump:type" AS garmin_typ
             FROM planet_osm_polygon
             WHERE (
               "ump:type" IN ( '0x1', '0x2', '0x3','0x5','0x9','0xc','0xd','0xe','0x20')
@@ -671,10 +671,10 @@ Layer:
     Datasource:
       <<: *osm2pgsql
       table: |2-
-        (SELECT way, name, "ump:type" AS garmin_type
+        (SELECT way, name, "ump:type" AS garmin_typ
           FROM planet_osm_line
-          WHERE garmin_type = '0xe16' OR
-                garmin_type = '0xe17'
+          WHERE "ump:type" = '0xe16' OR
+                "ump:type" = '0xe17'
         ) AS wyciagi
     advanced: {}
   - id: "roads-low-zoom"
@@ -711,7 +711,7 @@ Layer:
       <<: *osm2pgsql
       table: |-
         (SELECT
-            way, name, way_area/(!pixel_width!*!pixel_height!) AS way_pixels, "ump:type" AS garmin_type
+            way, name, way_area/(!pixel_width!*!pixel_height!) AS way_pixels, "ump:type" AS garmin_typ
             FROM planet_osm_polygon
             WHERE 
               "ump:type" IN ( '0x4', '0x6', '0x7','0x8','0xa','0xb','0x13','0x19')

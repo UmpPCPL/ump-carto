@@ -72,7 +72,7 @@
 @beach: #fff1ba;
 
 #teren {
-  [garmin_type = '0x1'][zoom >= 9][zoom <=14 ] {   //miasto duże
+  [garmin_typ = '0x1'][zoom >= 9][zoom <=14 ] {   //miasto duże
     polygon-fill: @residential;
     [zoom >= 16] {
       line-width: .5;
@@ -85,7 +85,7 @@
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
 
-  [garmin_type = '0x2'][zoom >= 10][zoom <=14 ] {   //miasto małe
+  [garmin_typ = '0x2'][zoom >= 10][zoom <=14 ] {   //miasto małe
     polygon-fill: @residential;
     [zoom >= 16] {
       line-width: .5;
@@ -98,7 +98,7 @@
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
 
-  [garmin_type = '0x3'][zoom >= 11][zoom <=14 ] {   //wioska
+  [garmin_typ = '0x3'][zoom >= 11][zoom <=14 ] {   //wioska
     polygon-fill: @residential;
     [zoom >= 16] {
       line-width: .5;
@@ -112,7 +112,7 @@
   }
 
 
-  [garmin_type = '0x4'][zoom >= 10] {   //wojsko
+  [garmin_typ = '0x4'][zoom >= 10] {   //wojsko
     polygon-fill: @military;
     [zoom >= 15] {
       line-width: 0.3;
@@ -122,7 +122,7 @@
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
 
-  [garmin_type = '0x5'][zoom >= 13] {   //parking
+  [garmin_typ = '0x5'][zoom >= 13] {   //parking
     polygon-fill: @parking;
     [zoom >= 15] {
       line-width: 0.3;
@@ -132,7 +132,7 @@
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
 
-  [garmin_type = '0x6'][zoom >= 14][zoom < 17] {   //parking kryty
+  [garmin_typ = '0x6'][zoom >= 14][zoom < 17] {   //parking kryty
     polygon-fill: @parking;
     [zoom >= 15] {
       line-width: 0.3;
@@ -142,7 +142,7 @@
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
 
-  [garmin_type = '0x7'][zoom >= 12][zoom < 17] {   //terminal - dworzec
+  [garmin_typ = '0x7'][zoom >= 12][zoom < 17] {   //terminal - dworzec
     polygon-fill: @terminal;
     [zoom >= 15] {
       line-width: 0.3;
@@ -152,7 +152,7 @@
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
 
-  [garmin_type = '0x8'][zoom >= 12][zoom < 17] {   //supermarket
+  [garmin_typ = '0x8'][zoom >= 12][zoom < 17] {   //supermarket
     polygon-fill: @supermarket;
     [zoom >= 15] {
       line-width: 0.3;
@@ -162,7 +162,7 @@
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
 
-  [garmin_type = '0x9'][zoom >= 10] {   //marina port
+  [garmin_typ = '0x9'][zoom >= 10] {   //marina port
     polygon-fill: @marina;
     [zoom >= 15] {
       line-width: 0.3;
@@ -172,7 +172,7 @@
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
 
-  [garmin_type = '0xa'][zoom >= 12][zoom < 17] {   //szkola
+  [garmin_typ = '0xa'][zoom >= 12][zoom < 17] {   //szkola
     polygon-fill: @school;
     [zoom >= 15] {
       line-width: 0.3;
@@ -182,7 +182,7 @@
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
 
-  [garmin_type = '0xb'][zoom >= 12][zoom < 17] {   //szpital
+  [garmin_typ = '0xb'][zoom >= 12][zoom < 17] {   //szpital
     polygon-fill: @hospital;
     [zoom >= 15] {
       line-width: 0.3;
@@ -192,7 +192,7 @@
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
 
-  [garmin_type = '0xc'][zoom >= 10] {  //industrial area
+  [garmin_typ = '0xc'][zoom >= 10] {  //industrial area
     polygon-fill: @industrial;
     [zoom >= 16] {
       line-width: .5;
@@ -205,23 +205,23 @@
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
 
-  [garmin_type = '0xd'][zoom >= 10] {   //reservation
+  [garmin_typ = '0xd'][zoom >= 10] {   //reservation
     polygon-fill: red; 
   }
 
-  [garmin_type = '0xe'][zoom >= 10] {   //lotnisko 
+  [garmin_typ = '0xe'][zoom >= 10] {   //lotnisko 
     polygon-fill: @apron;
     [way_pixels >= 4]  { polygon-gamma: 0.75; }
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
 
-  [garmin_type = '0x13'][zoom >= 15][zoom < 17] {   //budynek low zoom
+  [garmin_typ = '0x13'][zoom >= 15][zoom < 17] {   //budynek low zoom
     polygon-fill: @building-ump;
   }
 
-  [garmin_type = '0x14'],
-  [garmin_type = '0x15'],
-  [garmin_type = '0x16'] {
+  [garmin_typ = '0x14'],
+  [garmin_typ = '0x15'],
+  [garmin_typ = '0x16'] {
     [zoom >= 8] {
       polygon-fill: @forest;
       [way_pixels >= 4]  { polygon-gamma: 0.75; }
@@ -234,11 +234,11 @@
     }
   }
 
-  [garmin_type = '0x17'][zoom >= 10]{   //park
+  [garmin_typ = '0x17'][zoom >= 10]{   //park
     polygon-fill: @park;
   }
 
-  [garmin_type = '0x19'][zoom >= 12][zoom < 19] {   //sport
+  [garmin_typ = '0x19'][zoom >= 12][zoom < 19] {   //sport
     polygon-fill: @sport;
     [zoom >= 15] {
       line-width: 0.3;
@@ -248,18 +248,18 @@
     [way_pixels >= 64] { polygon-gamma: 0.3;  }
   }
 
-  [garmin_type = '0x1a'][zoom >= 10] {   //cemetery
+  [garmin_typ = '0x1a'][zoom >= 10] {   //cemetery
     polygon-fill: @cemetery;
     [zoom >= 13] {
       polygon-pattern-file: url('symbols/grave_yard_christian.png');
     }
   }
 
-  [garmin_type = '0x4e'][zoom >= 10]{   //sad , ogródki 
+  [garmin_typ = '0x4e'][zoom >= 10]{   //sad , ogródki 
     polygon-fill: @orchand;
   }
 
-  [garmin_type = '0x51'] {
+  [garmin_typ = '0x51'] {
     [zoom >= 13] {
       polygon-pattern-file: url('symbols/marsh.png');
     }
