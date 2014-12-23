@@ -17,7 +17,6 @@
   [garmin_typ = '0x28'],
   [garmin_typ = '0x29'],
   [garmin_typ = '0x3b'],
-  [garmin_typ = '0x3c'],
   [garmin_typ = '0x42'],
   [garmin_typ = '0x43'],
   [garmin_typ = '0x44'],
@@ -65,6 +64,7 @@
   [garmin_typ = '0x32'],
   [garmin_typ = '0x46'],
   [garmin_typ = '0x47'],
+  [garmin_typ = '0x3c'],
   [garmin_typ = '0x3d']
   {  // duze
     [zoom >= 6] {
