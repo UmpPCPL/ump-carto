@@ -10,7 +10,7 @@ overlapping borders correctly.  */
 #admin-high-zoom[zoom >= 13] {
   [admin_level = '2'],
   [admin_level = '3'] {
-    [zoom >= 4] {
+    [zoom >= 5] {
       background/line-color: white;
       background/line-width: 0.6;
       line-color: @admin-boundaries;
@@ -34,7 +34,7 @@ overlapping borders correctly.  */
     }
   }
   [admin_level = '4'] {
-    [zoom >= 4] {
+    [zoom >= 5] {
       background/line-color: white;
       background/line-width: 0.6;
       line-color: @admin-boundaries;
@@ -114,7 +114,10 @@ overlapping borders correctly.  */
   text-dy: -10;
 }
 
-#nature-reserve-text[zoom >= 13][way_pixels > 192000] {
+///////////////////////////////////////////////////////
+// wymagany porządek w w danych ( nowy typ polygon ? )
+///////////////////////////////////////////////////////
+#UUnature-reserve-text[zoom >= 13][way_pixels > 192000] {
   text-name: "[name]";
   text-face-name: @book-fonts;
   text-fill: green;
@@ -124,7 +127,7 @@ overlapping borders correctly.  */
   text-dy: -10;
 }
 
-#nature-reserve-boundaries {
+#UUnature-reserve-boundaries {
   [zoom >= 7] {
     ::fill [zoom < 13] {
       opacity: 0.05;
@@ -143,3 +146,4 @@ overlapping borders correctly.  */
     }
   }
 }
+///////////////////////////////////////////////////////

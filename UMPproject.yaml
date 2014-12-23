@@ -65,7 +65,7 @@ Stylesheet:
   - "POI-inne.mss"
   - "stations.mss"
   - "UMP-morskie-wyciagi.mss"
-  - "admin.mss"
+  - "UMP-admin.mss"
   - "addressing.mss"
 Layer:
   - id: "world"
