@@ -38,7 +38,6 @@ _parts:
 Stylesheet:
   - "style.mss"
   - "shapefiles.mss"
-#  - "landcover.mss"
   - "UMP-dem.mss"
   - "UMP-teren.mss"
   - "water.mss"
@@ -48,7 +47,6 @@ Stylesheet:
   - "placenames.mss"
   - "POI-highways.mss"
   - "UMP-budynki.mss"
-  #- "buildings.mss"
   - "POI-transport.mss"
   - "POI-atrakcje.mss"
   - "POI-infra.mss"
