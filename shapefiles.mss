@@ -6,13 +6,25 @@
 }
 
 #nepopulated {
-  [zoom >= 3][zoom < 5] {
+  [zoom = 3] {
     [SCALERANK = 0],
     [SCALERANK = 2],
     [SCALERANK = 1] {
       text-name: "[NAME]";
       text-size: 11;
-      text-fill: gray;
+      text-fill: #444444;
+      text-face-name: @book-fonts;
+      text-halo-radius: 1;
+    }
+  }
+  [zoom = 4] {
+    [SCALERANK = 0],
+    [SCALERANK = 2],
+    [SCALERANK = 3],
+    [SCALERANK = 1] {
+      text-name: "[NAME]";
+      text-size: 10;
+      text-fill: #444444;
       text-face-name: @book-fonts;
       text-halo-radius: 1;
     }

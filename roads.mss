@@ -1615,7 +1615,7 @@
 #roads-low-zoom {
   [feature = 'highway_motorway'] {
     [zoom >= 5][zoom < 12] {
-      line-width: 0.7;
+      line-width: 1.5;
       line-color: @motorway-fill;
       [zoom >= 7] { line-width: 2.5; }
       [zoom >= 9] { line-width: 2.8; }
@@ -1626,8 +1626,8 @@
 
   [feature = 'highway_trunk'] {
     [zoom >= 5][zoom < 12] {
-      line-width: 0.7;
-      line-color: @trunk-fill;
+      line-width: 1.5;
+      line-color: @trunk-fill-alternative;
       [zoom >= 7] {
         line-width: 2;
         line-color: @trunk-fill-alternative;
@@ -1638,12 +1638,12 @@
   }
 
   [feature = 'highway_primary'] {
-    [zoom >= 7][zoom < 12] {
-      line-width: 0.7; // 0.5
+    [zoom >= 6][zoom < 12] {
+      line-width: 1;
       line-color: @primary-fill;
-      [zoom >= 9] { line-width: 2.2; } // 1.2
-      [zoom >= 10] { line-width: 3; } // 2
-      [zoom >= 11] { line-width: 3.5; } // 2.5
+      [zoom >= 9] { line-width: 2.2; }
+      [zoom >= 10] { line-width: 3; } 
+      [zoom >= 11] { line-width: 3.5; } 
     }
   }
 
@@ -1656,7 +1656,7 @@
   }
 
   [feature = 'railway_rail'] {
-    [zoom >= 6][zoom < 13] {
+    [zoom >= 8][zoom < 13] {
       line-width: 0.6;
       line-color: #aaa;
       [zoom >= 9] { line-width: 1; }
