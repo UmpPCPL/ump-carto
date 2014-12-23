@@ -30,7 +30,7 @@ _parts:
     srs: "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs"
   osm2pgsql: &osm2pgsql
     type: "postgis"
-    dbname: "umpgis"
+    dbname: "umpgis2"
     key_field: ""
     geometry_field: "way"
     extent: "-20037508,-20037508,20037508,20037508"
@@ -40,7 +40,7 @@ Stylesheet:
   - "shapefiles.mss"
   - "UMP-dem.mss"
   - "UMP-teren.mss"
-  - "water.mss"
+  - "UMP-water.mss"
   - "water-features.mss"
   - "roads.mss"
   - "UMP-power.mss"
@@ -190,14 +190,12 @@ Layer:
       <<: *osm2pgsql
       table: |-
         (SELECT
-            way, "natural", waterway, landuse, name, way_area/(!pixel_width!*!pixel_height!) AS way_pixels
+            way, name, way_area/(!pixel_width!*!pixel_height!) AS way_pixels, "ump:type" AS garmin_typ
           FROM planet_osm_polygon
           WHERE
-            (waterway IN ('dock', 'riverbank', 'canal')
-              OR landuse IN ('reservoir', 'basin')
-              OR "natural" IN ('lake', 'water', 'land', 'glacier', 'mud'))
-            AND building IS NULL
-            AND way_area/(!pixel_width!*!pixel_height!) > 0.01
+            ( "ump:type" IN ( '0x28', '0x29', '0x32','0x4c','04d')
+              OR ( "ump:type" BETWEEN  '0x3b' AND '0x49' )
+            ) AND way_area/(!pixel_width!*!pixel_height!) > 0.01
           ORDER BY z_order, way_area DESC
         ) AS water_areas
     advanced: {}
@@ -254,7 +252,6 @@ Layer:
                 ('highway_road', 330),
                 ('highway_living_street', 320),
                 ('highway_pedestrian', 310),
-                ('highway_raceway', 300),
                 ('highway_motorway_link', 240),
                 ('highway_ramp_fast', 235),
                 ('highway_trunk_link', 230),
@@ -269,7 +266,6 @@ Layer:
                 ('highway_footway', 100),
                 ('highway_cycleway', 100),
                 ('highway_steps', 100),
-                ('highway_platform', 90),
                 ('highway_proposed', 20),
                 ('highway_construction', 10)
               ) AS ordertable (feature, prio)
@@ -419,7 +415,6 @@ Layer:
                   ('highway_road',330),
                   ('highway_living_street',320),
                   ('highway_pedestrian',310),
-                  ('highway_raceway',300),
                   ('highway_motorway_link',240),
                 ('highway_ramp_fast', 235),
                   ('highway_trunk_link',230),
@@ -434,7 +429,6 @@ Layer:
                   ('highway_footway',100),
                   ('highway_cycleway',100),
                   ('highway_steps',100),
-                  ('highway_platform',90),
                   ('highway_proposed',20),
                   ('highway_construction',10)
                 ) AS ordertable (feature, prio)
@@ -515,7 +509,6 @@ Layer:
                   ('highway_road',330),
                   ('highway_living_street',320),
                   ('highway_pedestrian',310),
-                  ('highway_raceway',300),
                   ('highway_motorway_link',240),
                 ('highway_ramp_fast', 235),
                   ('highway_trunk_link',230),
@@ -530,7 +523,6 @@ Layer:
                   ('highway_footway',100),
                   ('highway_cycleway',100),
                   ('highway_steps',100),
-                  ('highway_platform',90),
                   ('highway_proposed',20),
                   ('highway_construction',10)
                 ) AS ordertable (feature, prio)
@@ -666,7 +658,6 @@ Layer:
                 ('highway_road', 330),
                 ('highway_living_street', 320),
                 ('highway_pedestrian', 310),
-                ('highway_raceway', 300),
                 ('highway_motorway_link', 240),
                 ('highway_ramp_fast', 235),
                 ('highway_trunk_link', 230),
@@ -681,7 +672,6 @@ Layer:
                 ('highway_footway', 100),
                 ('highway_cycleway', 100),
                 ('highway_steps', 100),
-                ('highway_platform', 90),
                 ('highway_proposed', 20),
                 ('highway_construction', 10)
               ) AS ordertable (feature, prio)
@@ -1106,7 +1096,7 @@ Layer:
                  CASE WHEN (tunnel = 'yes' OR tunnel = 'building_passage' ) THEN 'yes' ELSE 'no' END AS tunnel,
                  name, tracktype
                FROM planet_osm_line
-               WHERE highway IN ('motorway', 'motorway_link', 'trunk', 'trunk_link', 'primary', 'primary_link', 'secondary', 'secondary_link', 'tertiary', 'tertiary_link', 'residential', 'unclassified', 'road', 'ramp_slow', 'ramp_fast', 'road_link', 'service', 'pedestrian', 'raceway', 'living_street', 'construction', 'proposed')
+               WHERE highway IN ('motorway', 'motorway_link', 'trunk', 'trunk_link', 'primary', 'primary_link', 'secondary', 'secondary_link', 'tertiary', 'tertiary_link', 'residential', 'unclassified', 'road', 'ramp_slow', 'ramp_fast', 'road_link', 'service', 'pedestrian', 'living_street', 'construction', 'proposed')
                  AND name IS NOT NULL
               ) AS roads_text_name
     advanced: {}

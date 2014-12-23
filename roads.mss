@@ -11,7 +11,6 @@
 @service-fill: @residential-fill;
 @living-street-fill: #ccc;
 @pedestrian-fill: #ededed;
-@raceway-fill: pink;
 @road-fill: @ramp-fill;
 @path-fill: #a87000;
 @footway-fill: salmon;
@@ -1946,7 +1945,6 @@
     }
   }
 
-  [highway = 'raceway'],
   [highway = 'service'] {
     [zoom >= 16] {
       text-name: "[name]";
@@ -1956,8 +1954,7 @@
       text-clip: false;
       text-placement: line;
       text-halo-radius: 1;
-      [highway = 'raceway'] { text-halo-fill: @raceway-fill; }
-      [highway = 'service'] { text-halo-fill: @service-fill; }
+      text-halo-fill: @service-fill;
       text-face-name: @book-fonts;
     }
     [zoom >= 17] {

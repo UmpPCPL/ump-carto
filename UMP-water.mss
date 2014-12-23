@@ -1,10 +1,9 @@
 @water-text: #6699cc;
 @glacier: #ddecec;
 @glacier-line: #9cf;
-@mud: #e6dcd1;
 
 #water-areas {
-  [natural = 'glacier']::natural {
+  [garmin_typ = '0x4d']{ //lodowiec
     [zoom >= 6] {
       line-dasharray: 4,2;
       line-width: 1.5;
@@ -15,10 +14,28 @@
       }
     }
   }
+  [garmin_typ = '0x28'],
+  [garmin_typ = '0x29'],
+  [garmin_typ = '0x3b'],
+  [garmin_typ = '0x3c'],
+  [garmin_typ = '0x42'],
+  [garmin_typ = '0x43'],
+  [garmin_typ = '0x44'],
+  [garmin_typ = '0x45']
+  { //    bledne typy 
+    [zoom >= 8] {
+      line-dasharray: 4,2;
+      line-width: 1.5;
+      line-color: red;
+      polygon-fill: orange;
+    }
+  }
 
-  [waterway = 'dock'],
-  [waterway = 'canal'] {
-    [zoom >= 9]::waterway {
+  [garmin_typ = '0x49'],
+  [garmin_typ = '0x40'],
+  [garmin_typ = '0x41']
+  { //małe
+    [zoom >= 10]{
       polygon-fill: @water-color;
       [way_pixels >= 4] {
         polygon-gamma: 0.75;
@@ -29,20 +46,27 @@
     }
   }
 
-  [landuse = 'basin'][zoom >= 7]::landuse {
-    polygon-fill: @water-color;
-    [way_pixels >= 4] {
-      polygon-gamma: 0.75;
-    }
-    [way_pixels >= 64] {
-      polygon-gamma: 0.6;
+  [garmin_typ = '0x4c'],
+  [garmin_typ = '0x48'],
+  [garmin_typ = '0x3e'],
+  [garmin_typ = '0x3f'] 
+  {  //srednie
+    [zoom >= 8]{
+      polygon-fill: @water-color;
+      [way_pixels >= 4] {
+        polygon-gamma: 0.75;
+      }
+      [way_pixels >= 64] {
+        polygon-gamma: 0.6;
+      }
     }
   }
 
-  [natural = 'lake']::natural,
-  [natural = 'water']::natural,
-  [landuse = 'reservoir']::landuse,
-  [waterway = 'riverbank']::waterway {
+  [garmin_typ = '0x32'],
+  [garmin_typ = '0x46'],
+  [garmin_typ = '0x47'],
+  [garmin_typ = '0x3d']
+  {  // duze
     [zoom >= 6] {
       polygon-fill: @water-color;
       [way_pixels >= 4] {
@@ -54,11 +78,6 @@
     }
   }
 
-  [natural = 'mud'][zoom >= 13]::natural {
-    polygon-fill: @mud;
-    polygon-pattern-file: url('symbols/mud.png');
-    polygon-pattern-alignment: global;
-  }
 }
 
 #water-lines-casing {
@@ -87,21 +106,6 @@
 }
 
 .water-lines {
-  [waterway = 'weir'][zoom >= 15] {
-    line-color: #aaa;
-    line-width: 2;
-    line-join: round;
-    line-cap: round;
-  }
-
-  [waterway = 'wadi'][zoom >= 13] {
-    line-color: @water-color;
-    line-width: 1;
-    line-dasharray: 4,4;
-    line-cap: round;
-    line-join: round;
-    [zoom >= 16] { line-width: 2; }
-  }
 
   [waterway = 'canal'][zoom >= 12],
   [waterway = 'river'][zoom >= 12] {
