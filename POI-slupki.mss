@@ -23,7 +23,9 @@
     [garmin_typ = '0x5a01'] { point-file: url('symbols_ump/5a01_Mile-marker_Slupek-graniczny_day.png'); }
     [garmin_typ = '0x5600'] {
       point-file: url('symbols_ump/5600_Danger_Uwaga_day.png');
-      [ump_typ = 'KD']  { point-file: url('symbols_ump/5600_Danger_KD_day.png'); }
+      [ump_typ = 'FS']  { point-file: url('symbols_ump/5600_Danger_KD_day2.png'); }
+      [ump_typ = 'FP']  { point-file: url('symbols_ump/5600_Fotoradar_FP.png'); }
+      [ump_typ = 'KD']  { point-file: url('symbols_ump/5600_Fotoradar_FS.png'); }
     }
     [garmin_typ = '0x5700'] { point-file: url('symbols_ump/5700_Dangerous-Place_Niebezpieczne-Miejsce_day.png'); }
     [ump_typ = 'NPK'] {
