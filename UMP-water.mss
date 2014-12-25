@@ -1,4 +1,5 @@
 @water-text: #6699cc;
+@water-text1: #0B0B61;
 @glacier: #ddecec;
 @glacier-line: #9cf;
 
@@ -42,6 +43,14 @@
       [way_pixels >= 64] {
         polygon-gamma: 0.6;
       }
+      [zoom >= 13] {
+        text-name: "[name]";
+        text-face-name: @oblique-fonts;
+        text-fill: @water-text1;
+        text-size: 10;
+        text-halo-radius: 2;
+        [zoom >= 15] { text-size: 12; }
+      }
     }
   }
 
@@ -57,6 +66,14 @@
       }
       [way_pixels >= 64] {
         polygon-gamma: 0.6;
+      }
+      [zoom >= 10] {
+        text-name: "[name]";
+        text-face-name: @oblique-fonts;
+        text-fill: @water-text1;
+        text-size: 10;
+        text-halo-radius: 2;
+        [zoom >= 15] { text-size: 12; }
       }
     }
   }
@@ -74,6 +91,15 @@
       }
       [way_pixels >= 64] {
         polygon-gamma: 0.6;
+      }
+      [zoom >= 7] {
+        text-name: "[name]";
+        text-face-name: @oblique-fonts;
+        text-fill: @water-text1;
+        text-size: 10;
+        text-halo-radius: 2;
+        [zoom >= 11] { text-size: 12; }
+        [zoom >= 14] { text-size: 15; }
       }
     }
   }
@@ -201,7 +227,6 @@
     text-size: 10;
     text-halo-radius: 1;
     [zoom >= 14] { text-size: 12; }
-    [int_tunnel = 'yes'] { text-min-distance: 200; }
   }
 
   [waterway = 'canal'][zoom >= 13][zoom < 14] {
