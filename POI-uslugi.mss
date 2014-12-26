@@ -18,8 +18,8 @@
     [garmin_typ = '0x2f05'] {
       point-file: url('symbols_ump/2f05_Post-Office_Urzad-Pocztowy_day.png');
       [ump_typ = 'PACZKOMAT'] { point-file: url('symbols_ump/paczkomat.png'); }
-      // [ump_typ = 'INPOST'] { point-file: url('symbols_ump/paczkomat.png'); }
-      // [ump_typ = 'KURIER'] { point-file: url('symbols_ump/paczkomat.png'); }
+      [ump_typ = 'INPOST'] { point-file: url('symbols_ump/inpostlogo-24.png'); }
+      [ump_typ = 'KURIER'] { point-file: url('symbols_ump/delivery-22.png'); }
     }
   
     [garmin_typ='0x2f06'] {
