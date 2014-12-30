@@ -252,6 +252,8 @@
     polygon-fill: @cemetery;
     [zoom >= 13] {
       polygon-pattern-file: url('symbols/grave_yard_christian.png');
+      line-width: 0.5;
+      line-color: saturate(darken(@cemetery, 50%), 20%);
     }
   }
 
