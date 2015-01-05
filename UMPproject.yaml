@@ -44,7 +44,7 @@ Stylesheet:
   - "water-features.mss"
   - "roads.mss"
   - "UMP-power.mss"
-  - "placenames.mss"
+  - "UMP-miasta.mss"
   - "POI-highways.mss"
   - "UMP-budynki.mss"
   - "POI-transport.mss"
@@ -796,29 +796,16 @@ Layer:
       encoding: "windows-1252"
   - id: "placenames-large"
     name: "placenames-large"
-    class: "country state"
-    geometry: "point"
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |2-
-        (SELECT way, place, name, ref
-               FROM planet_osm_point
-               WHERE place IN ('country', 'state')
-              ) AS placenames_large
-    advanced: {}
-  - id: "placenames-capital"
-    name: "placenames-capital"
     class: ""
     geometry: "point"
     <<: *extents
     Datasource:
       <<: *osm2pgsql
       table: |2-
-        (SELECT way, place, name, ref
-               FROM planet_osm_point
-               WHERE place IN ('city', 'town') AND capital = 'yes'
-              ) AS placenames_capital
+        (SELECT way, place, name, "ump:type" AS garmin_typ
+              FROM planet_osm_point
+              WHERE "ump:type" IN ('0x4','0x5','0x6','0x7','0x8','0x9')
+        ) AS placenames_large
     advanced: {}
   - id: "placenames-medium"
     name: "placenames-medium"
@@ -828,11 +815,10 @@ Layer:
     Datasource:
       <<: *osm2pgsql
       table: |2-
-        (SELECT way, place, name
+        (SELECT way, place, name, "ump:type" AS garmin_typ
               FROM planet_osm_point
-              WHERE place IN ('city', 'town')
-                AND (capital IS NULL OR capital != 'yes')
-              ) AS placenames_medium
+              WHERE "ump:type" IN ('0xa','0xb','0xc')
+        ) AS placenames_medium
     advanced: {}
   - id: "placenames-small"
     name: "placenames-small"
@@ -842,10 +828,10 @@ Layer:
     Datasource:
       <<: *osm2pgsql
       table: |2-
-        (SELECT way, place, name
+        (SELECT way, place, name, "ump:type" AS garmin_typ
               FROM planet_osm_point
-              WHERE place IN ('suburb', 'village', 'hamlet', 'neighbourhood', 'locality', 'isolated_dwelling', 'farm')
-              ) AS placenames_small
+              WHERE "ump:type" IN ('0xd','0xe')
+        ) AS placenames_small
     advanced: {}
   - id: "poi-jedzenie-point"
     name: "poi-jedzenie-point"
