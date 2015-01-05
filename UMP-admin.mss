@@ -6,9 +6,9 @@ for low, middle and high zoom levels.
 For each zoomlevel, all borders come from a single attachment, to handle
 overlapping borders correctly.  */
 
-#admin-low-zoom[zoom < 11],
-#admin-mid-zoom[zoom >= 11][zoom < 13],
-#admin-high-zoom[zoom >= 13] {
+#admin-low-zoom[zoom < 12],
+#admin-mid-zoom[zoom >= 12][zoom < 14],
+#admin-high-zoom[zoom >= 14] {
   [admin_level = '2'],
   [admin_level = '3'] {
     [zoom >= 5] {
@@ -56,9 +56,9 @@ overlapping borders correctly.  */
   comp-op: darken;
 }
 
-#admin-mid-zoom[zoom >= 11][zoom < 13],
-#admin-high-zoom[zoom >= 13] {
-  [admin_level = '5'][zoom >= 11] {
+#admin-mid-zoom[zoom >= 12][zoom < 14],
+#admin-high-zoom[zoom >= 14] {
+  [admin_level = '5'][zoom >= 12] {
     background/line-color: white;
     background/line-width: 2;
     line-color: @admin-boundaries;
@@ -66,7 +66,7 @@ overlapping borders correctly.  */
     line-dasharray: 6,3,2,3,2,3;
     line-clip: false;
   }
-  [admin_level = '6'][zoom >= 11] {
+  [admin_level = '6'][zoom >= 13] {
     background/line-color: white;
     background/line-width: 2;
     line-color: @admin-boundaries;
@@ -74,9 +74,14 @@ overlapping borders correctly.  */
     line-dasharray: 6,3,2,3;
     line-clip: false;
   }
+  opacity: 0.5;
+  comp-op: darken;
+}
+
+#admin-high-zoom[zoom >= 14] {
   [admin_level = '7'],
   [admin_level = '8'] {
-    [zoom >= 12] {
+    [zoom >= 14] {
       background/line-color: white;
       background/line-width: 1.5;
       line-color: @admin-boundaries;
@@ -85,14 +90,9 @@ overlapping borders correctly.  */
       line-clip: false;
     }
   }
-  opacity: 0.5;
-  comp-op: darken;
-}
-
-#admin-high-zoom[zoom >= 13] {
   [admin_level = '9'],
   [admin_level = '10'] {
-    [zoom >= 13] {
+    [zoom >= 14] {
       background/line-color: white;
       background/line-width: 2;
       line-color: @admin-boundaries;
