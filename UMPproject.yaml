@@ -30,7 +30,7 @@ _parts:
     srs: "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs"
   osm2pgsql: &osm2pgsql
     type: "postgis"
-    dbname: "umpgis1"
+    dbname: "umpgis2"
     key_field: ""
     geometry_field: "way"
     extent: "-20037508,-20037508,20037508,20037508"
@@ -300,7 +300,6 @@ Layer:
                 ('railway_disused', 400),
                 ('railway_construction', 400),
                 ('aeroway_runway', 60),
-                ('aeroway_taxiway', 50),
                 ('railway_platform', 90)
               ) AS ordertable (feature, prio)
                 ON COALESCE(('railway_' || planet_osm_line.railway), ('aeroway_' || planet_osm_line.aeroway)) = ordertable.feature
@@ -462,7 +461,6 @@ Layer:
                   ('railway_disused', 400),
                   ('railway_construction', 400),
                   ('aeroway_runway', 60),
-                  ('aeroway_taxiway', 50),
                   ('railway_platform', 90)
                 ) AS ordertable (feature, prio)
                   ON COALESCE(('railway_' || planet_osm_line.railway), ('aeroway_' || planet_osm_line.aeroway)) = ordertable.feature
@@ -559,7 +557,6 @@ Layer:
                   ('railway_disused',400),
                   ('railway_construction',400),
                   ('aeroway_runway',60),
-                  ('aeroway_taxiway',50),
                   ('railway_platform',90)) AS ordertable (feature, prio)
                 ON COALESCE(('railway_' || planet_osm_line.railway), ('aeroway_' || planet_osm_line.aeroway)) = ordertable.feature
               WHERE (tunnel IS NULL OR NOT tunnel IN ('yes', 'building_passage'))
@@ -707,7 +704,6 @@ Layer:
                 ('railway_disused', 400),
                 ('railway_construction', 400),
                 ('aeroway_runway', 60),
-                ('aeroway_taxiway', 50),
                 ('railway_platform', 90)
               ) AS ordertable (feature, prio)
                 ON COALESCE(('railway_' || planet_osm_line.railway), ('aeroway_' || planet_osm_line.aeroway)) = ordertable.feature

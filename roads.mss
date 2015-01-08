@@ -16,10 +16,9 @@
 @footway-fill: salmon;
 @steps-fill: @footway-fill;
 @cycleway-fill: blue;
-@track-fill: #b37700;
+@track-fill: #C69C48;
 @aeroway-fill: #bbc;
 @runway-fill: @aeroway-fill;
-@taxiway-fill: @aeroway-fill;
 @helipad-fill: @aeroway-fill;
 @roundabout-fill: #FFCA41;
 
@@ -581,16 +580,6 @@
       }
     }
 
-    [feature = 'aeroway_taxiway'] {
-      .bridges-casing {
-        [zoom >= 14] {
-          line-width: 5;
-          line-color: black;
-          line-join: round;
-          [zoom >= 15] { line-width: 7; }
-        }
-      }
-    }
   }
 
   ::bridges_background {
@@ -1546,17 +1535,6 @@
       }
     }
 
-    [feature = 'aeroway_taxiway'] {
-      [zoom >= 11][zoom < 14] {
-        line-width: 1;
-        line-color: @taxiway-fill;
-      }
-      [zoom >= 14] {
-        line-width: 4;
-        line-color: @taxiway-fill;
-        [zoom >= 15] { line-width: 6; }
-      }
-    }
   }
 }
 
@@ -1792,7 +1770,7 @@
     shield-face-name: @bold-fonts;
     shield-clip: false;
   }
-
+/*
   [highway = 'unclassified'],
   [highway = 'residential'] {
     [zoom >= 15] {
@@ -1806,9 +1784,9 @@
       text-clip: false;
     }
   }
+*/
 
-  [highway = 'runway'],
-  [highway = 'taxiway'] {
+  [highway = 'runway'] {
     [zoom >= 15] {
       text-name: "[refs]";
       text-size: 10;
