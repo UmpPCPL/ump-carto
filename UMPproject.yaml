@@ -286,21 +286,9 @@ Layer:
             FROM planet_osm_line
               JOIN (VALUES
                 ('railway_rail', 430),
-                ('railway_spur', 430),
-                ('railway_siding', 430),
-                ('railway_subway', 420),
-                ('railway_narrow_gauge', 420),
-                ('railway_light_rail', 420),
-                ('railway_preserved', 420),
-                ('railway_funicular', 420),
-                ('railway_monorail', 420),
-                ('railway_miniature', 420),
-                ('railway_turntable', 420),
                 ('railway_tram', 410),
                 ('railway_disused', 400),
-                ('railway_construction', 400),
-                ('aeroway_runway', 60),
-                ('railway_platform', 90)
+                ('aeroway_runway', 60)
               ) AS ordertable (feature, prio)
                 ON COALESCE(('railway_' || planet_osm_line.railway), ('aeroway_' || planet_osm_line.aeroway)) = ordertable.feature
             WHERE (tunnel = 'yes' OR tunnel = 'building_passage'  )
@@ -447,21 +435,9 @@ Layer:
               FROM planet_osm_line
                 JOIN (VALUES
                   ('railway_rail', 430),
-                  ('railway_spur', 430),
-                  ('railway_siding', 430),
-                  ('railway_subway', 420),
-                  ('railway_narrow_gauge', 420),
-                  ('railway_light_rail', 420),
-                  ('railway_preserved', 420),
-                  ('railway_funicular', 420),
-                  ('railway_monorail', 420),
-                  ('railway_miniature', 420),
-                  ('railway_turntable', 420),
                   ('railway_tram', 410),
                   ('railway_disused', 400),
-                  ('railway_construction', 400),
-                  ('aeroway_runway', 60),
-                  ('railway_platform', 90)
+                  ('aeroway_runway', 60)
                 ) AS ordertable (feature, prio)
                   ON COALESCE(('railway_' || planet_osm_line.railway), ('aeroway_' || planet_osm_line.aeroway)) = ordertable.feature
               WHERE (tunnel IS NULL OR NOT tunnel IN ('yes', 'building_passage'))
@@ -543,21 +519,10 @@ Layer:
               FROM planet_osm_line
                 JOIN (VALUES
                   ('railway_rail',430),
-                  ('railway_spur',430),
-                  ('railway_siding',430),
-                  ('railway_subway',420),
-                  ('railway_narrow_gauge',420),
-                  ('railway_light_rail',420),
-                  ('railway_preserved',420),
-                  ('railway_funicular',420),
-                  ('railway_monorail',420),
-                  ('railway_miniature',420),
-                  ('railway_turntable',420),
                   ('railway_tram',410),
                   ('railway_disused',400),
-                  ('railway_construction',400),
-                  ('aeroway_runway',60),
-                  ('railway_platform',90)) AS ordertable (feature, prio)
+                  ('aeroway_runway',60)
+                  ) AS ordertable (feature, prio)
                 ON COALESCE(('railway_' || planet_osm_line.railway), ('aeroway_' || planet_osm_line.aeroway)) = ordertable.feature
               WHERE (tunnel IS NULL OR NOT tunnel IN ('yes', 'building_passage'))
                 AND (bridge IS NULL OR NOT bridge IN ('yes', 'boardwalk', 'cantilever', 'covered', 'low_water_crossing', 'movable', 'trestle', 'viaduct'))
@@ -587,7 +552,7 @@ Layer:
     Datasource:
       <<: *osm2pgsql
       table: |2-
-              (SELECT way, COALESCE(('highway_' || (CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN substr(highway, 0, length(highway)-4) ELSE highway end)), ('railway_' || (CASE WHEN railway IN ('rail', 'tram', 'light_rail', 'funicular', 'narrow_gauge') THEN railway ELSE NULL END))) AS feature, tunnel
+              (SELECT way, COALESCE(('highway_' || (CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN substr(highway, 0, length(highway)-4) ELSE highway end)), ('railway_' || (CASE WHEN railway IN ('rail', 'tram') THEN railway ELSE NULL END))) AS feature, tunnel
                FROM planet_osm_roads
                WHERE highway IS NOT NULL
                   OR railway IS NOT NULL
@@ -690,21 +655,9 @@ Layer:
             FROM planet_osm_line
               JOIN (VALUES
                 ('railway_rail', 430),
-                ('railway_spur', 430),
-                ('railway_siding', 430),
-                ('railway_subway', 420),
-                ('railway_narrow_gauge', 420),
-                ('railway_light_rail', 420),
-                ('railway_preserved', 420),
-                ('railway_funicular', 420),
-                ('railway_monorail', 420),
-                ('railway_miniature', 420),
-                ('railway_turntable', 420),
                 ('railway_tram', 410),
                 ('railway_disused', 400),
-                ('railway_construction', 400),
-                ('aeroway_runway', 60),
-                ('railway_platform', 90)
+                ('aeroway_runway', 60)
               ) AS ordertable (feature, prio)
                 ON COALESCE(('railway_' || planet_osm_line.railway), ('aeroway_' || planet_osm_line.aeroway)) = ordertable.feature
             WHERE bridge IN ('yes', 'boardwalk', 'cantilever', 'covered', 'low_water_crossing', 'movable', 'trestle', 'viaduct')
