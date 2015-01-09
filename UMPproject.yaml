@@ -199,6 +199,61 @@ Layer:
           ORDER BY z_order
         ) AS water_lines
     advanced: {}
+  - id: "admin-low-zoom"
+    name: "admin-low-zoom"
+    class: ""
+    geometry: "linestring"
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |2-
+        (SELECT way, admin_level
+               FROM planet_osm_roads
+               WHERE "boundary" = 'administrative'
+                 AND admin_level IN ('0', '1', '2', '3', '4')
+               ORDER BY admin_level DESC
+               ) AS admin_low_zoom
+    advanced: {}
+  - id: "admin-mid-zoom"
+    name: "admin-mid-zoom"
+    class: ""
+    geometry: "linestring"
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |2-
+        (SELECT way, admin_level
+               FROM planet_osm_roads
+               WHERE "boundary" = 'administrative'
+                 AND admin_level IN ('0', '1', '2', '3', '4', '5', '6', '7', '8')
+               ORDER BY admin_level DESC
+               ) AS admin_mid_zoom
+    advanced: {}
+  - id: "admin-high-zoom"
+    name: "admin-high-zoom"
+    class: ""
+    geometry: "linestring"
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |2-
+        (SELECT way, admin_level
+               FROM planet_osm_roads
+               WHERE "boundary" = 'administrative'
+                 AND admin_level IN ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10')
+               ORDER BY admin_level DESC
+               ) AS admin_high_zoom
+    advanced: {}
+  - id: "power-line"
+    name: "power-line"
+    class: ""
+    geometry: "linestring"
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |2-
+        (SELECT way FROM planet_osm_line WHERE "ump:type" = '0x29') AS power_line
+    advanced: {}
   - id: "tunnels"
     name: "tunnels"
     class: "tunnels-fill tunnels-casing access directions"
@@ -618,61 +673,6 @@ Layer:
         ) AS bridges
     properties:
       group-by: "layernotnull"
-    advanced: {}
-  - id: "admin-low-zoom"
-    name: "admin-low-zoom"
-    class: ""
-    geometry: "linestring"
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |2-
-        (SELECT way, admin_level
-               FROM planet_osm_roads
-               WHERE "boundary" = 'administrative'
-                 AND admin_level IN ('0', '1', '2', '3', '4')
-               ORDER BY admin_level DESC
-               ) AS admin_low_zoom
-    advanced: {}
-  - id: "admin-mid-zoom"
-    name: "admin-mid-zoom"
-    class: ""
-    geometry: "linestring"
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |2-
-        (SELECT way, admin_level
-               FROM planet_osm_roads
-               WHERE "boundary" = 'administrative'
-                 AND admin_level IN ('0', '1', '2', '3', '4', '5', '6', '7', '8')
-               ORDER BY admin_level DESC
-               ) AS admin_mid_zoom
-    advanced: {}
-  - id: "admin-high-zoom"
-    name: "admin-high-zoom"
-    class: ""
-    geometry: "linestring"
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |2-
-        (SELECT way, admin_level
-               FROM planet_osm_roads
-               WHERE "boundary" = 'administrative'
-                 AND admin_level IN ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10')
-               ORDER BY admin_level DESC
-               ) AS admin_high_zoom
-    advanced: {}
-  - id: "power-line"
-    name: "power-line"
-    class: ""
-    geometry: "linestring"
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |2-
-        (SELECT way FROM planet_osm_line WHERE "ump:type" = '0x29') AS power_line
     advanced: {}
   - id: "nature-reserve-boundaries"
     name: "nature-reserve-boundaries"
