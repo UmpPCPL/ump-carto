@@ -420,8 +420,7 @@
 
     [feature = 'highway_cycleway'] {
       .bridges-casing {
-        [zoom >= 14][access != 'no'],
-        [zoom >= 15] {
+        [zoom >= 14] {
           line-width: @cycleway-width-z13 + 2 * (@paths-background-width + @paths-bridge-casing-width);
           [zoom >= 15] { line-width: @cycleway-width-z15 + 2 * (@paths-background-width + @paths-bridge-casing-width); }
           line-color: @bridge-casing;
@@ -517,8 +516,7 @@
 
     [feature = 'highway_cycleway'] {
       .bridges-casing {
-        [zoom >= 14][access != 'no'],
-        [zoom >= 15] {
+        [zoom >= 14] {
           line-width: @cycleway-width-z13 + 2 * @paths-background-width;
           [zoom >= 15] { line-width: @cycleway-width-z15 + 2 * @paths-background-width; }
           line-color: @cycleway-casing;
@@ -1025,9 +1023,8 @@
       }
     }
 
-    [feature = 'highway_cycleway'] {
-      [zoom >= 13][access != 'no'],
-      [zoom >= 15] {
+    [feature = 'highway_cycleway'] {   // 0xd oraz szlaki rowerowe
+      [zoom >= 13] {
         .tunnels-fill {
           tunnelcasing/line-width: @cycleway-width-z13 + 2 * (@paths-background-width + @paths-tunnel-casing-width);
           [zoom >= 15] { tunnelcasing/line-width: @cycleway-width-z15 + 2 * (@paths-background-width + @paths-tunnel-casing-width); }
@@ -1040,15 +1037,37 @@
           background/line-cap: round;
           background/line-join: round;
           background/line-width: @cycleway-width-z13 + 2 * @paths-background-width;
+          [tracktype = 'yellow' ] {background/line-color: gray; }
           [zoom >= 15] { background/line-width: @cycleway-width-z15 + 2 * @paths-background-width; }
           .roads-fill { background/line-opacity: 0.4; }
         }
-        line/line-color: @cycleway-fill;
-        line/line-dasharray: 1,3;
-        line/line-join: round;
-        line/line-cap: round;
-        line/line-width: @cycleway-width-z13;
-        [zoom >= 15] { line/line-width: @cycleway-width-z15; }
+        .tunnels-fill,
+        .bridges-fill {
+           line/line-color: @cycleway-fill;
+           line/line-dasharray: 1,3;
+           line/line-join: round;
+           line/line-cap: round;
+           line/line-width: @cycleway-width-z13;
+           [zoom >= 15] { line/line-width: @cycleway-width-z15; }
+        }
+        .roads-fill {
+           line/line-color: gray;
+           [tracktype = 'red' ] { line/line-color: red; }
+           [tracktype = 'green' ] { line/line-color: green; }
+           [tracktype = 'blue' ] { line/line-color: blue; }
+           [tracktype = 'yellow' ] {line/line-color: yellow; }
+           [tracktype = 'black' ] { line/line-color: black; }
+           [tracktype = 'color' ] { line/line-color: purple; }
+           line/line-dasharray: 1,5;
+           line/line-join: round;
+           line/line-cap: round;
+           line/line-width: 3;
+           [zoom >= 17] {
+               line/line-width: 5;
+               line/line-dasharray: 1,8;
+               line/line-opacity: 0.7;
+           }
+        }
       }
     }
 
@@ -1056,7 +1075,7 @@
     * The above defininitions should override this when needed
     * given the specitivity precedence.
     */
-    [feature = 'highway_path'] {
+    [feature = 'highway_path'] {       // 0x16 fill
       [zoom >= 13][access != 'no'],
       [zoom >= 15] {
         .tunnels-fill {
@@ -1710,7 +1729,7 @@
       text-size: 9;
       text-halo-radius: 1.5;
       text-halo-fill: rgba(255,255,255,0.8);
-      text-spacing: 200;
+      text-spacing: 300;
       text-clip: false;
       text-placement: line;
       text-face-name: @book-fonts;

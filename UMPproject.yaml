@@ -246,6 +246,8 @@ Layer:
                 ('highway_trunk', 370),
                 ('highway_primary', 360),
                 ('highway_secondary', 350),
+                ('highway_footway', 346),
+                ('highway_cycleway', 343),
                 ('highway_tertiary', 340),
                 ('highway_residential', 330),
                 ('highway_road', 330),
@@ -262,8 +264,6 @@ Layer:
                 ('highway_service', 150),
                 ('highway_track', 110),
                 ('highway_path', 100),
-                ('highway_footway', 100),
-                ('highway_cycleway', 100),
                 ('highway_proposed', 20),
                 ('highway_construction', 10)
               ) AS ordertable (feature, prio)
@@ -380,6 +380,8 @@ Layer:
                   ('highway_trunk',370),
                   ('highway_primary',360),
                   ('highway_secondary',350),
+                ('highway_footway', 346),
+                ('highway_cycleway', 343),
                   ('highway_tertiary',340),
                   ('highway_residential',330),
                   ('highway_road',330),
@@ -396,8 +398,6 @@ Layer:
                   ('highway_service',150),
                   ('highway_track',110),
                   ('highway_path',100),
-                  ('highway_footway',100),
-                  ('highway_cycleway',100),
                   ('highway_proposed',20),
                   ('highway_construction',10)
                 ) AS ordertable (feature, prio)
@@ -460,6 +460,8 @@ Layer:
                   ('highway_trunk',370),
                   ('highway_primary',360),
                   ('highway_secondary',350),
+                ('highway_footway', 346),
+                ('highway_cycleway', 343),
                   ('highway_tertiary',340),
                   ('highway_residential',330),
                   ('highway_road',330),
@@ -476,8 +478,6 @@ Layer:
                   ('highway_service',150),
                   ('highway_track',110),
                   ('highway_path',100),
-                  ('highway_footway',100),
-                  ('highway_cycleway',100),
                   ('highway_proposed',20),
                   ('highway_construction',10)
                 ) AS ordertable (feature, prio)
@@ -596,6 +596,8 @@ Layer:
                 ('highway_trunk', 370),
                 ('highway_primary', 360),
                 ('highway_secondary', 350),
+                ('highway_footway', 346),
+                ('highway_cycleway', 343),
                 ('highway_tertiary', 340),
                 ('highway_residential', 330),
                 ('highway_road', 330),
@@ -612,8 +614,6 @@ Layer:
                 ('highway_service', 150),
                 ('highway_track', 110),
                 ('highway_path', 100),
-                ('highway_footway', 100),
-                ('highway_cycleway', 100),
                 ('highway_proposed', 20),
                 ('highway_construction', 10)
               ) AS ordertable (feature, prio)
