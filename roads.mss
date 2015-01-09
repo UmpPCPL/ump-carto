@@ -330,8 +330,7 @@
     }
 
 
-    [feature = 'highway_residential'],
-    [feature = 'highway_unclassified'] {
+    [feature = 'highway_residential'] {
       [zoom >= 13] {
         line-color: @residential-casing;
         line-width: @residential-width-z13;
@@ -835,8 +834,7 @@
       }
     }
 
-    [feature = 'highway_residential'],
-    [feature = 'highway_unclassified'] {
+    [feature = 'highway_residential'] {
       [zoom >= 13] {
         line-width: @residential-width-z13 - 2 * @residential-casing-width-z13;
         [zoom >= 14] { line-width: @residential-width-z14 - 2 * @casing-width-z14; }
@@ -869,7 +867,6 @@
 
     [feature = 'highway_tertiary'][zoom >= 10][zoom < 12],
     [feature = 'highway_residential'][zoom >= 10][zoom < 13],
-    [feature = 'highway_unclassified'][zoom >= 10][zoom < 13],
     [feature = 'highway_road'][zoom >= 10][zoom < 13],
     [feature = 'highway_road_link'][zoom >= 10][zoom < 13],
     [feature = 'highway_living_street'][zoom >= 12][zoom < 13] {
@@ -1300,7 +1297,6 @@
     [feature = 'highway_primary'],
     [feature = 'highway_secondary'],
     [feature = 'highway_tertiary'],
-    [feature = 'highway_unclassified'],
     [feature = 'highway_residential'],
     [feature = 'highway_road'],
     [feature = 'highway_living_street'],
@@ -1518,7 +1514,6 @@
     shield-clip: false;
   }
 /*
-  [highway = 'unclassified'],
   [highway = 'residential'] {
     [zoom >= 15] {
       text-name: "[refs]";
@@ -1648,7 +1643,6 @@
     }
   }
   [highway = 'residential'],
-  [highway = 'unclassified'],
   [highway = 'road'] {
     [zoom >= 15] {
       text-name: "[name]";
