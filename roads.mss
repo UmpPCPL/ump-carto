@@ -420,8 +420,7 @@
       }
     }
 
-    [feature = 'highway_footway'],
-    [feature = 'highway_path'][foot = 'designated'] {
+    [feature = 'highway_footway'] {
       .bridges-casing {
         [zoom >= 14][access != 'no'],
         [zoom >= 15] {
@@ -529,8 +528,7 @@
   }
 
   ::bridges_background {
-    [feature = 'highway_footway'],
-    [feature = 'highway_path'][foot = 'designated'] {
+    [feature = 'highway_footway'] {
       .bridges-casing {
         [zoom >= 14][access != 'no'],
         [zoom >= 15] {
@@ -950,7 +948,7 @@
       }
     }
 
-    [feature = 'highway_living_street'] {
+    [feature = 'highway_living_street'] {  // typ (0x7)
       [zoom >= 13] {
         line-width: @living-street-width-z13 - 2 * @casing-width-z13;
         [zoom >= 14] { line-width: @living-street-width-z14 - 2 * @casing-width-z14; }
@@ -975,7 +973,7 @@
       }
     }
 
-    [feature = 'highway_service'] {
+    [feature = 'highway_service'] {     //tylko ronda (0xc)
       [zoom >= 13] {
         line-width: 1;
         line-color: @residential-casing;
@@ -1001,7 +999,7 @@
       }
     }
 
-    [feature = 'highway_pedestrian'] {
+    [feature = 'highway_pedestrian'] {    //prawie nieużywny typ deptak (0x116)
       [zoom >= 13] {
         line-width: @living-street-width-z13 - 2 * @casing-width-z13;
         [zoom >= 14] { line-width: @pedestrian-width-z14 - 2 * @casing-width-z14; }
@@ -1022,8 +1020,7 @@
     }
 
 
-    [feature = 'highway_footway'],
-    [feature = 'highway_path'][foot = 'designated'] {
+    [feature = 'highway_footway'] {    //szlaki piesze kolorowe
       [zoom >= 13][access != 'no'],
       [zoom >= 15] {
         .tunnels-fill {
