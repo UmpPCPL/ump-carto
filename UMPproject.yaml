@@ -153,21 +153,6 @@ Layer:
       type: "gdal"
       format: "tiff"
     advanced: {}
-  - id: "water-lines-casing"
-    name: "water-lines-casing"
-    class: ""
-    geometry: "linestring"
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |-
-        (SELECT
-            way, waterway,
-            CASE WHEN tunnel IN ('yes') THEN 'yes' ELSE 'no' END AS int_tunnel
-          FROM planet_osm_line
-          WHERE waterway IN ('stream', 'drain', 'ditch')
-        ) AS water_lines_casing
-    advanced: {}
   - id: "water-lines-low-zoom"
     name: "water-lines-low-zoom"
     class: ""
@@ -176,9 +161,9 @@ Layer:
     Datasource:
       <<: *osm2pgsql
       table: |-
-        (SELECT way, waterway
+        (SELECT way, "ump:type" AS garmin_typ
           FROM planet_osm_line
-          WHERE waterway = 'river'
+          WHERE "ump:type" = '0x1f'
         ) AS water_lines_low_zoom
     advanced: {}
   - id: "water-areas"
@@ -208,12 +193,9 @@ Layer:
       <<: *osm2pgsql
       table: |-
         (SELECT
-            way, waterway, lock, name,
-            CASE WHEN tunnel IN ('yes') THEN 'yes' ELSE 'no' END AS int_tunnel,
-            'no' AS bridge
+            way, "ump:type" AS garmin_typ, name
           FROM planet_osm_line
-          WHERE waterway IN ('weir', 'river', 'canal', 'derelict_canal', 'stream', 'drain', 'ditch', 'wadi')
-            AND (bridge IS NULL OR bridge NOT IN ('yes'))
+          WHERE "ump:type"  IN ( '0x26' , '0x18' , '0x1f')
           ORDER BY z_order
         ) AS water_lines
     advanced: {}
@@ -540,16 +522,6 @@ Layer:
                   OR railway IS NOT NULL
                ORDER BY z_order
               ) AS roads_low_zoom
-    advanced: {}
-  - id: "waterway-bridges"
-    name: "waterway-bridges"
-    class: "water-lines"
-    geometry: "linestring"
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |2-
-        (SELECT way, waterway, name, CASE WHEN tunnel IN ('yes') THEN 'yes' ELSE 'no' END AS int_tunnel, 'yes' AS bridge FROM planet_osm_line WHERE waterway IN ('river', 'canal', 'derelict_canal', 'stream', 'drain', 'ditch', 'wadi') AND bridge IN ('yes') ORDER BY z_order) AS waterway_bridges
     advanced: {}
   - id: "budynki"
     name: "budynki"
@@ -1268,11 +1240,12 @@ Layer:
     Datasource:
       <<: *osm2pgsql
       table: |2-
-              (SELECT way, waterway, lock, name, CASE WHEN tunnel IN ('yes') THEN 'yes' ELSE 'no' END AS int_tunnel
-              FROM planet_osm_line
-              WHERE waterway IN ('weir', 'river', 'canal', 'derelict_canal', 'stream', 'drain', 'ditch', 'wadi')
-               ORDER BY z_order
-              ) AS water_lines_text
+        (SELECT
+            way, "ump:type" AS garmin_typ, name
+          FROM planet_osm_line
+          WHERE "ump:type"  IN ( '0x26' , '0x18' , '0x1f')
+          ORDER BY z_order
+        ) AS water_lines_text
     advanced: {}
   - id: "ferry-routes-text"
     name: "ferry-routes-text"
