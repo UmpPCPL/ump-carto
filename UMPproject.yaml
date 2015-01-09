@@ -213,7 +213,7 @@ Layer:
             'no' AS bridge
           FROM planet_osm_line
           WHERE waterway IN ('weir', 'river', 'canal', 'derelict_canal', 'stream', 'drain', 'ditch', 'wadi')
-            AND (bridge IS NULL OR bridge NOT IN ('yes', 'aqueduct'))
+            AND (bridge IS NULL OR bridge NOT IN ('yes'))
           ORDER BY z_order
         ) AS water_lines
     advanced: {}
@@ -403,7 +403,8 @@ Layer:
                 ) AS ordertable (feature, prio)
                   ON ('highway_' || planet_osm_line.highway) = ordertable.feature
                 WHERE (tunnel IS NULL OR NOT tunnel IN ('yes'))
-                  AND (bridge IS NULL OR NOT bridge IN ('yes', 'boardwalk', 'cantilever', 'covered', 'low_water_crossing', 'movable', 'trestle', 'viaduct')))
+                  AND (bridge IS NULL OR NOT bridge IN ('yes'))
+              )
             UNION ALL
             (SELECT
                 way, prio,
@@ -423,7 +424,7 @@ Layer:
                 ) AS ordertable (feature, prio)
                   ON COALESCE(('railway_' || planet_osm_line.railway), ('aeroway_' || planet_osm_line.aeroway)) = ordertable.feature
               WHERE (tunnel IS NULL OR NOT tunnel IN ('yes'))
-                AND (bridge IS NULL OR NOT bridge IN ('yes', 'boardwalk', 'cantilever', 'covered', 'low_water_crossing', 'movable', 'trestle', 'viaduct'))
+                AND (bridge IS NULL OR NOT bridge IN ('yes'))
               )
             ) AS features
           ORDER BY prio
@@ -482,7 +483,8 @@ Layer:
                 ) AS ordertable (feature, prio)
                   on ('highway_' || planet_osm_line.highway) = ordertable.feature
               WHERE (tunnel IS NULL OR NOT tunnel IN ('yes'))
-                AND (bridge IS NULL OR NOT bridge IN ('yes', 'boardwalk', 'cantilever', 'covered', 'low_water_crossing', 'movable', 'trestle', 'viaduct')))
+                AND (bridge IS NULL OR NOT bridge IN ('yes'))
+             )
             UNION ALL
             (SELECT
                 way, prio,
@@ -505,7 +507,7 @@ Layer:
                   ) AS ordertable (feature, prio)
                 ON COALESCE(('railway_' || planet_osm_line.railway), ('aeroway_' || planet_osm_line.aeroway)) = ordertable.feature
               WHERE (tunnel IS NULL OR NOT tunnel IN ('yes'))
-                AND (bridge IS NULL OR NOT bridge IN ('yes', 'boardwalk', 'cantilever', 'covered', 'low_water_crossing', 'movable', 'trestle', 'viaduct'))
+                AND (bridge IS NULL OR NOT bridge IN ('yes'))
             )
           ) AS features ORDER BY prio, case when access in ('no', 'private') then 0 when access in ('destination') then 1 else 2 end
         ) AS roads_fill
@@ -547,7 +549,7 @@ Layer:
     Datasource:
       <<: *osm2pgsql
       table: |2-
-        (SELECT way, waterway, name, CASE WHEN tunnel IN ('yes') THEN 'yes' ELSE 'no' END AS int_tunnel, 'yes' AS bridge FROM planet_osm_line WHERE waterway IN ('river', 'canal', 'derelict_canal', 'stream', 'drain', 'ditch', 'wadi') AND bridge IN ('yes', 'aqueduct') ORDER BY z_order) AS waterway_bridges
+        (SELECT way, waterway, name, CASE WHEN tunnel IN ('yes') THEN 'yes' ELSE 'no' END AS int_tunnel, 'yes' AS bridge FROM planet_osm_line WHERE waterway IN ('river', 'canal', 'derelict_canal', 'stream', 'drain', 'ditch', 'wadi') AND bridge IN ('yes') ORDER BY z_order) AS waterway_bridges
     advanced: {}
   - id: "budynki"
     name: "budynki"
@@ -616,7 +618,7 @@ Layer:
                 ('highway_construction', 10)
               ) AS ordertable (feature, prio)
                 ON ('highway_' || planet_osm_line.highway) = ordertable.feature
-            WHERE bridge IN ('yes', 'boardwalk', 'cantilever', 'covered', 'low_water_crossing', 'movable', 'trestle', 'viaduct')
+            WHERE bridge IN ('yes')
           )
           UNION ALL
           (SELECT
@@ -638,7 +640,7 @@ Layer:
                 ('aeroway_runway', 60)
               ) AS ordertable (feature, prio)
                 ON COALESCE(('railway_' || planet_osm_line.railway), ('aeroway_' || planet_osm_line.aeroway)) = ordertable.feature
-            WHERE bridge IN ('yes', 'boardwalk', 'cantilever', 'covered', 'low_water_crossing', 'movable', 'trestle', 'viaduct')
+            WHERE bridge IN ('yes')
             )) AS features
           ORDER BY layernotnull, prio, case when access in ('no', 'private') then 0 when access in ('destination') then 1 else 2 end
         ) AS bridges
