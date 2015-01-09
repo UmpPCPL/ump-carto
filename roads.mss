@@ -13,7 +13,6 @@
 @pedestrian-fill: #ededed;
 @road-fill: @ramp-fill;
 @path-fill: #a87000;
-@footway-fill: salmon;
 @cycleway-fill: blue;
 @track-fill: #C69C48;
 @aeroway-fill: #bbc;
@@ -32,7 +31,6 @@
 @living-street-casing: @residential-casing;
 @pedestrian-casing: @residential-casing;
 @path-casing: @default-casing;
-@footway-casing: @default-casing;
 @cycleway-casing: @default-casing;
 @track-casing: @default-casing;
 @roundabout-casing: @default-casing;
@@ -84,7 +82,7 @@
 @residential-width-z13:           3;
 @living-street-width-z13:         1; //2
 @pedestrian-width-z13:            2;
-@footway-width-z13:               0.7;
+@footway-width-z13:               1;
 @cycleway-width-z13:              0.7;
 @path-width-z13:                  1; //0.2;
 @track-width-z13:                 2; //0.5;
@@ -420,18 +418,6 @@
       }
     }
 
-    [feature = 'highway_footway'] {
-      .bridges-casing {
-        [zoom >= 14][access != 'no'],
-        [zoom >= 15] {
-          line-width: @footway-width-z13 + 2 * (@paths-background-width + @paths-bridge-casing-width);
-          [zoom >= 15] { line-width: @footway-width-z15 + 2 * (@paths-background-width + @paths-bridge-casing-width); }
-          line-color: @bridge-casing;
-          line-join: round;
-        }
-      }
-    }
-
     [feature = 'highway_cycleway'] {
       .bridges-casing {
         [zoom >= 14][access != 'no'],
@@ -528,17 +514,6 @@
   }
 
   ::bridges_background {
-    [feature = 'highway_footway'] {
-      .bridges-casing {
-        [zoom >= 14][access != 'no'],
-        [zoom >= 15] {
-          line-width: @footway-width-z13 + 2 * @paths-background-width;
-          [zoom >= 15] { line-width: @footway-width-z15 + 2 * @paths-background-width; }
-          line-color: @footway-casing;
-          line-join: round;
-        }
-      }
-    }
 
     [feature = 'highway_cycleway'] {
       .bridges-casing {
@@ -1021,29 +996,32 @@
 
 
     [feature = 'highway_footway'] {    //szlaki piesze kolorowe
-      [zoom >= 13][access != 'no'],
-      [zoom >= 15] {
-        .tunnels-fill {
-          tunnelcasing/line-width: @footway-width-z13 + 2 * (@paths-background-width + @paths-tunnel-casing-width);
-          [zoom >= 15] { tunnelcasing/line-width: @footway-width-z15 + 2 * (@paths-background-width + @paths-tunnel-casing-width); }
-          tunnelcasing/line-color: @tunnel-casing;
-          tunnelcasing/line-dasharray: 4,2;
+      [zoom >= 13] {
+        footbck/line-color: white;
+        footbck/line-join: round;
+        footbck/line-cap: round;
+        footbck/line-width: @footway-width-z13 + @casing-width-z13 * 3 ;
+        footbck/line-opacity: 0.4;
+        line/line-dasharray: 6,3;
+        [tracktype = 'red' ] { line/line-color: red; }
+        [tracktype = 'green' ] { line/line-color: green; }
+        [tracktype = 'blue' ] { line/line-color: blue; }
+        [tracktype = 'yellow' ] {
+                line/line-color: yellow; 
+                footbck/line-color: gray;
         }
-        .roads-fill[zoom >= 15],
-        .tunnels-fill[zoom >= 13] {
-          background/line-color: @footway-casing;
-          background/line-cap: round;
-          background/line-join: round;
-          background/line-width: @footway-width-z13 + 2 * @paths-background-width;
-          [zoom >= 15] { background/line-width: @footway-width-z15 + 2 * @paths-background-width; }
-          .roads-fill { background/line-opacity: 0.4; }
+        [tracktype = 'black' ] { line/line-color: black; }
+        [tracktype = 'other' ] { 
+                  line/line-color: black;
+                  line/line-dasharray: 1,3;
         }
-        line/line-color: @footway-fill;
-        line/line-dasharray: 1,3;
         line/line-join: round;
         line/line-cap: round;
         line/line-width: @footway-width-z13;
-        [zoom >= 15] { line/line-width:  @footway-width-z15; }
+        [zoom >= 15] { 
+              line/line-width:  @footway-width-z15;
+              footbck/line-width: @footway-width-z15 + @casing-width-z15 * 3 ;
+        }
       }
     }
 
@@ -1708,21 +1686,18 @@
       text-name: "[name]";
       text-fill: #222;
       text-size: 8;
-      text-halo-radius: 1;
+      text-halo-radius: 1.5;
       text-halo-fill: rgba(255,255,255,0.8);
       text-spacing: 300;
       text-clip: false;
       text-placement: line;
       text-face-name: @book-fonts;
-      text-dy: 5;
     }
     [zoom >= 16] {
       text-size: 9;
-      text-dy: 7;
     }
     [zoom >= 17] {
-      text-size: 11;
-      text-dy: 9;
+      text-size: 10;
     }
   }
 
@@ -1733,17 +1708,15 @@
       text-name: "[name]";
       text-fill: #222;
       text-size: 9;
-      text-halo-radius: 1;
+      text-halo-radius: 1.5;
       text-halo-fill: rgba(255,255,255,0.8);
       text-spacing: 200;
       text-clip: false;
       text-placement: line;
       text-face-name: @book-fonts;
-      text-dy: 7;
     }
     [zoom >= 17] {
-      text-size: 11;
-      text-dy: 9;
+      text-size: 10;
     }
   }
 }
