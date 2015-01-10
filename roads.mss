@@ -1,8 +1,8 @@
 /* For the main linear features, such as roads and railways. */
 
 @motorway-fill: #809BC0;
-@trunk-fill: #A9DBA9;
-@trunk-fill-alternative: #97d397;
+@trunk-fill: #A9DBA9;               // zoom >= 10
+@trunk-fill-alternative: #97d397;   // zoom > 10
 @primary-fill: #EC989A;
 @secondary-fill: #fed7a5;
 @tertiary-fill: #FFFFCC;
@@ -1679,18 +1679,18 @@
   [highway = 'pedestrian'] {
     [zoom >= 15] {
       text-name: "[name]";
-      text-size: 8;
+      text-size: 9;
       text-fill: black;
       text-spacing: 300;
       text-clip: false;
       text-placement: line;
-      text-halo-radius: 1;
-      [highway = 'living_street'] { text-halo-fill: @living-street-fill; }
-      [highway = 'pedestrian'] { text-halo-fill: @pedestrian-fill; }
+      text-halo-radius: 1.5;
+      [highway = 'living_street'] { text-halo-fill: white; }
+      [highway = 'pedestrian'] { text-halo-fill: white; }
       text-face-name: @book-fonts;
     }
     [zoom >= 16] {
-      text-size: 9;
+      text-size: 10;
     }
     [zoom >= 17] {
       text-size: 11;
