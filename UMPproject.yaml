@@ -987,6 +987,19 @@ Layer:
                  AND name IS NOT NULL
               ) AS roads_text_name
     advanced: {}
+  - id: "rails-text-name"
+    name: "rails-text-name"
+    class: ""
+    geometry: "linestring"
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |2-
+              (SELECT way, name, railway, "ump:type" AS garmin_type  
+               FROM planet_osm_line
+               WHERE "ump:type" IN ('0x14','0xe10', '0x15')
+              ) AS rails_text_name
+    advanced: {}
   - id: "paths-text-name"
     name: "paths-text-name"
     class: ""
@@ -1205,18 +1218,6 @@ Layer:
         WHERE building IS NOT NULL AND building NOT IN ('no', 'station', 'supermarket')
         ORDER BY way_area DESC
         ) AS building_text
-    advanced: {}
-  - id: "interpolation"
-    name: "interpolation"
-    class: ""
-    geometry: "linestring"
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |2-
-        (SELECT way
-        FROM planet_osm_line
-        WHERE "addr:interpolation" IS NOT NULL) AS interpolation
     advanced: {}
   - id: "housenumbers"
     name: "housenumbers"

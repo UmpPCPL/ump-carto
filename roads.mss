@@ -1539,6 +1539,23 @@
   }
 }
 
+#rails-text-name {
+  [garmin_type = '0xe10'][zoom >= 15] { //tramwaj
+      text-name: "[name]";
+      text-size: 9;
+      text-fill: @tram-fill;
+      text-spacing: 800;
+      text-clip: false;
+      text-placement: line;
+      text-face-name: @book-fonts;
+      text-halo-radius: 1.5;
+      text-halo-fill: white; 
+      [zoom >= 17] {
+        text-size: 11;
+      }
+    }
+}
+
 #roads-text-name {
   [highway = 'motorway'],
   [highway = 'trunk'],

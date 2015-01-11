@@ -1,11 +1,3 @@
-#interpolation {
-  [zoom >= 17] {
-    line-color: #888;
-    line-width: 1;
-    line-dasharray: 2,4;
-  }
-}
-
 #housenumbers {
   [zoom >= 17] {
 // stary serwer vertical_alignment="middle" dy="0" wrap_width="0" allow_overlap="false"/
