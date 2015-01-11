@@ -997,7 +997,7 @@ Layer:
       table: |2-
               (SELECT way, name, railway, "ump:type" AS garmin_type  
                FROM planet_osm_line
-               WHERE "ump:type" IN ('0x14','0xe10', '0x15')
+               WHERE "ump:type" IN ('0x14','0xe10', '0xe15')
               ) AS rails_text_name
     advanced: {}
   - id: "paths-text-name"

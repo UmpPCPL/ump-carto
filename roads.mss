@@ -1554,6 +1554,21 @@
         text-size: 11;
       }
     }
+  [garmin_type = '0x14'][zoom >= 15],  //kolej
+  [garmin_type = '0xe15'][zoom >= 15] {  //kolej rozebrana i podziemna
+      text-name: "[name]"; 
+      text-size: 9;
+      text-fill: black;
+      text-spacing: 800;
+      text-clip: false;
+      text-placement: line;
+      text-face-name: @book-fonts;
+      text-halo-radius: 1.5;
+      text-halo-fill: white; 
+      [zoom >= 17] {
+        text-size: 11;
+      }
+    }
 }
 
 #roads-text-name {
