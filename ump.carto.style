@@ -98,8 +98,7 @@ node,way   building     text         polygon
 #node,way   disused      text         linear
 #node       ele          text         linear
 #node,way   embankment   text         linear
-# DO WYWALENIA
-node,way   foot         text         linear
+#node,way   foot         text         linear
 #node,way   generator:source    text  linear
 #node,way   harbour      text         polygon
 node,way   highway      text         linear
