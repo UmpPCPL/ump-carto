@@ -86,7 +86,7 @@
 @trunk-width-z13:                 5;
 @primary-width-z13:               5;
 @secondary-width-z13:             5;
-@construction-width-z13:          5;
+@construction-width-z13:          4; //5;
 @tertiary-width-z13:              5;
 @residential-width-z13:           3;
 @living-street-width-z13:         1;
@@ -100,8 +100,8 @@
 
 @tertiary-width-z14:              6;
 @residential-width-z14:           4.5;
-@living-street-width-z14:         2;
-@pedestrian-width-z14:            2;
+@living-street-width-z14:         3;
+@pedestrian-width-z14:            3;
 @service-width-z14:               3;
 
 @motorway-width-z15:             9;
@@ -109,7 +109,7 @@
 @trunk-width-z15:                9;
 @primary-width-z15:              9;
 @secondary-width-z15:            9;
-@construction-width-z15:         9;
+@construction-width-z15:         6; //9;
 @tertiary-width-z15:             9;
 @residential-width-z15:           6;
 @living-street-width-z15:         4;
@@ -131,7 +131,7 @@
 @trunk-width-z17:                13;
 @primary-width-z17:              13;
 @secondary-width-z17:            13;
-@construction-width-z17:         13;
+@construction-width-z17:         9; //13;
 @tertiary-width-z17:             13;
 @residential-width-z17:          13;
 @living-street-width-z17:        7;
@@ -152,10 +152,10 @@
 @bridge-casing-width-z11:         0.5; // 0.5;
 @bridge-casing-width-z12:         0.5; // 0.5;
 @bridge-casing-width-z13:         0.5; // 0.5;
-@bridge-casing-width-z14:         0.75; // 0.5;
+@bridge-casing-width-z14:         0.5; // 0.5;
 @bridge-casing-width-z15:         0.75; // 0.75;
-@bridge-casing-width-z16:         1.0; // 0.75;
-@bridge-casing-width-z17:         1.0; // 0.75;
+@bridge-casing-width-z16:         0.75; // 0.75;
+@bridge-casing-width-z17:         0.75; // 0.75;
 
 @paths-background-width:          1;
 @paths-bridge-casing-width:       0.5;
@@ -285,7 +285,6 @@
         [zoom >= 17] { line-width: @construction-width-z17; }
         .roads-casing {
           line-join: round;
-          line-cap: round;
         }
         .tunnels-casing {
           line-dasharray: 4,2;
@@ -716,7 +715,7 @@
         [zoom >= 15] { 
             line-width: @construction-width-z15 - 2 * @casing-width-z15;
             b/line-width: @construction-width-z15 - 2 * @casing-width-z15;
-            b/line-dasharray: 6,4;
+            b/line-dasharray: 7,5;
         }
         [zoom >= 17] { 
             line-width: @construction-width-z17 - 2 * @casing-width-z17; 
