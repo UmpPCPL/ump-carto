@@ -90,8 +90,7 @@ node,way   bridge       text         linear
 node,way   boundary     text         linear
 node,way   building     text         polygon
 #node       capital      text         linear
-# DO WYWALENIA 
-node,way   construction text         linear
+#node,way   construction text         linear
 #node,way   covered      text         linear
 #node,way   culvert      text         linear
 #node,way   cutting      text         linear

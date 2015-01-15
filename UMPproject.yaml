@@ -272,7 +272,7 @@ Layer:
                   WHEN access IN ('no', 'private') THEN 'no'::text
                   ELSE NULL
                 END AS access,
-                construction,
+                "ump:endlevel" as ump_endlevel,
                 CASE WHEN oneway IN ('yes', '1', '-1') THEN oneway ELSE NULL END AS oneway,
                 CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN 'yes'
                   ELSE 'no' END AS link,
@@ -314,7 +314,7 @@ Layer:
               CASE WHEN access IN ('destination') THEN 'destination'::text
                 WHEN access IN ('no', 'private') THEN 'no'::text
               ELSE NULL END AS access,
-              construction,
+              "ump:endlevel" as ump_endlevel,
               NULL AS oneway,
               'no' AS link,
               CASE WHEN layer~E'^-?\\d+$' AND length(layer)<10 THEN layer::integer ELSE 0 END AS layernotnull
@@ -407,7 +407,8 @@ Layer:
                 way, prio,
                 ('highway_' || (CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN substr(highway, 0, length(highway)-4) ELSE highway END)) AS feature,
                 foot, tracktype, "ump:route_class" AS ump_route_class, junction,
-                CASE WHEN access IN ('destination') THEN 'destination'::text WHEN access IN ('no', 'private') THEN 'no'::text ELSE NULL END AS access, construction,
+                CASE WHEN access IN ('destination') THEN 'destination'::text WHEN access IN ('no', 'private') THEN 'no'::text ELSE NULL END AS access,
+              "ump:endlevel" as ump_endlevel,
                 CASE WHEN oneway IN ('yes', '1', '-1') THEN oneway ELSE NULL END AS oneway,
                 CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN 'yes' ELSE 'no' END AS link,
                 CASE WHEN layer~E'^-?\\d+$' AND length(layer)<10 THEN layer::integer ELSE 0 END AS layernotnull
@@ -448,7 +449,7 @@ Layer:
                 COALESCE(('railway_' || railway ),('aeroway_' || aeroway)) AS feature,
                 foot, tracktype, "ump:route_class" AS ump_route_class, junction,
                 CASE WHEN access IN ('destination') THEN 'destination'::text WHEN access IN ('no', 'private') THEN 'no'::text ELSE NULL END AS access,
-                construction,
+              "ump:endlevel" as ump_endlevel,
                 NULL AS oneway,
                 'no' AS link,
                 CASE WHEN layer~E'^-?\\d+$' AND length(layer)<10 THEN layer::integer ELSE 0 END AS layernotnull
@@ -487,7 +488,7 @@ Layer:
                   WHEN access IN ('no', 'private') THEN 'no'::text
                   ELSE NULL
                 END AS access,
-                construction,
+              "ump:endlevel" as ump_endlevel,
                 CASE WHEN oneway IN ('yes', '1', '-1') THEN oneway ELSE NULL END AS oneway,
                 CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN 'yes' ELSE 'no' END AS link,
                 CASE WHEN layer~E'^-?\\d+$' AND length(layer)<10 THEN layer::integer ELSE 0 END AS layernotnull
@@ -531,7 +532,7 @@ Layer:
                   WHEN access IN ('no', 'private') THEN 'no'::text
                   ELSE NULL
                 END AS access,
-                construction,
+              "ump:endlevel" as ump_endlevel,
                 NULL AS oneway,
                 'no' AS link,
                 CASE WHEN layer~E'^-?\\d+$' AND length(layer)<10 THEN layer::integer ELSE 0 END AS layernotnull
@@ -612,7 +613,7 @@ Layer:
                   WHEN access IN ('no', 'private') THEN 'no'::text
                   ELSE NULL
                 END AS access,
-                construction,
+              "ump:endlevel" as ump_endlevel,
                 CASE WHEN oneway IN ('yes', '1', '-1') THEN oneway ELSE NULL END AS oneway,
                 CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN 'yes'
                   ELSE 'no' END AS link,
@@ -655,7 +656,7 @@ Layer:
               CASE WHEN access IN ('destination') THEN 'destination'::text
                 WHEN access IN ('no', 'private') THEN 'no'::text
               ELSE NULL END AS access,
-              construction,
+              "ump:endlevel" as ump_endlevel,
               NULL AS oneway,
               'no' AS link,
               CASE WHEN layer~E'^-?\\d+$' AND length(layer)<10 THEN layer::integer ELSE 0 END AS layernotnull
