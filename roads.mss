@@ -1,9 +1,7 @@
 /* For the main linear features, such as roads and railways. */
 
 @motorway-fill: #809BC0;
-//@trunk-fill: #A9DBA9;         
 @trunk-fill: #63B963;            
-//@trunk-fill-lowzoom: #97d397;   
 @trunk-fill-lowzoom: #55B255;   // zoom > 10
 @primary-fill: #EC989A;
 @secondary-fill: #fed7a5;
@@ -11,7 +9,6 @@
 @tertiary-fill: #FFFFCC;
 @residential-fill: #ffffff;
 @ramp-fill: #ec989a;
-@service-fill: @residential-fill;
 @living-street-fill: #ccc;
 @pedestrian-fill: #ededed;
 @road-fill: @ramp-fill;
@@ -20,29 +17,25 @@
 @track-fill: #C69C48;
 @aeroway-fill: #bbc;
 @runway-fill: @aeroway-fill;
-@roundabout-fill: #FFCA41;
+//@roundabout-fill: #FFCA41;
+@roundabout-fill: #fee298;
 
 @default-casing: white;
-//@motorway-casing: #7788a1;
 @motorway-casing: #687B97;
-//@trunk-casing: #7eae7e;
 @trunk-casing: #619461;
 @primary-casing: #c57b7e;
 @secondary-casing: #cca16a;
 @tertiary-casing: #c6c68a;
 @ramp-casing: #8d4346;
 @residential-casing: #bbb;
-@service-casing: @residential-casing;
+@roundabout-casing: @residential-casing;
 @construction-casing: #f2cf95;
 @living-street-casing: @residential-casing;
 @pedestrian-casing: @residential-casing;
 @path-casing: @default-casing;
 @cycleway-casing: @default-casing;
 @track-casing: @default-casing;
-@roundabout-casing: @default-casing;
 
-@residential-construction: #aaa;
-@service-construction: #aaa;
 
 @destination-marking: #c2e0ff;
 @private-marking: #ef2233; // #efa9a9;
@@ -102,7 +95,7 @@
 @residential-width-z14:           4.5;
 @living-street-width-z14:         3;
 @pedestrian-width-z14:            3;
-@service-width-z14:               3;
+@service-width-z14:               5;
 
 @motorway-width-z15:             9;
 @motorway-link-width-z15:        7.8;
@@ -114,6 +107,7 @@
 @residential-width-z15:           6;
 @living-street-width-z15:         4;
 @pedestrian-width-z15:            4;
+@service-width-z15:               7;
 @footway-width-z15:               1.5;
 @cycleway-width-z15:              1.2;
 @path-width-z15:                  1.5;
@@ -124,7 +118,7 @@
 @residential-width-z16:           6;
 @living-street-width-z16:         5;
 @pedestrian-width-z16:            5;
-@service-width-z16:               5;
+@service-width-z16:               7;
 
 @motorway-width-z17:             13;
 @motorway-link-width-z17:        11.5;
@@ -136,7 +130,7 @@
 @residential-width-z17:          13;
 @living-street-width-z17:        7;
 @pedestrian-width-z17:           7;
-@service-width-z17:               7;
+@service-width-z17:               12;
 
 @casing-width-z10:                0.4;
 @casing-width-z11:                0.5;
@@ -396,10 +390,11 @@
       }
     }
 
-    [feature = 'highway_service'] {
+    [feature = 'highway_service'] { //0xc tylko rondo
       [zoom >= 14]{
-        line-color: @service-casing;
+        line-color: @roundabout-casing;
         line-width: @service-width-z14;
+        [zoom >= 15] { line-width: @service-width-z15; }
         [zoom >= 16] { line-width: @service-width-z16; }
         [zoom >= 17] { line-width: @service-width-z17; }
         .roads-casing {
@@ -1014,14 +1009,11 @@
     [feature = 'highway_service'] {     //tylko ronda (0xc)
       [zoom >= 13] {
         line-width: 1;
-        line-color: @residential-casing;
+        line-color: @roundabout-fill;
       }
       [zoom >= 14] {
-        line-color: @service-fill;
-        [junction = 'roundabout'] {
-          line-color: @roundabout-fill;
-        }
           line-width: @service-width-z14 - 2 * @casing-width-z14;
+          [zoom >= 15] { line-width: @service-width-z15 - 2 * @casing-width-z15; }
           [zoom >= 16] { line-width: @service-width-z16 - 2 * @casing-width-z16; }
           [zoom >= 17] { line-width: @service-width-z17 - 2 * @casing-width-z17; }
         line-join: round;
@@ -1031,6 +1023,7 @@
         }
         .bridges-fill {
             line-width: @service-width-z14 - 2 * @bridge-casing-width-z14;
+            [zoom >= 15] { line-width: @service-width-z15 - 2 * @bridge-casing-width-z15; }
             [zoom >= 16] { line-width: @service-width-z16 - 2 * @bridge-casing-width-z16; }
             [zoom >= 17] { line-width: @service-width-z17 - 2 * @bridge-casing-width-z17; }
         }
@@ -1758,7 +1751,7 @@
       text-clip: false;
       text-placement: line;
       text-halo-radius: 1;
-      text-halo-fill: @service-fill;
+      text-halo-fill: @roundabout-fill;
       text-face-name: @book-fonts;
     }
     [zoom >= 17] {
