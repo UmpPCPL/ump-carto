@@ -564,6 +564,23 @@ Layer:
                 "ump:type" = '0xe17'
         ) AS wyciagi
     advanced: {}
+  - id: "roads-low-zoom-casing"
+    name: "roads-low-zoom-casing"
+    class: ""
+    geometry: "linestring"
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |2-
+              (SELECT way, COALESCE(('highway_' ||  highway ), ('railway_' || (CASE WHEN railway IN ('rail', 'tram') THEN railway ELSE NULL END))) AS feature, tunnel,
+               "ump:endlevel" as ump_endlevel,
+               char_length(ref) AS ref_length
+               FROM planet_osm_roads
+               WHERE highway IS NOT NULL
+                  OR railway IS NOT NULL
+               ORDER BY z_order
+              ) AS roads_low_zoom_casing
+    advanced: {}
   - id: "roads-low-zoom"
     name: "roads-low-zoom"
     class: ""
@@ -572,8 +589,9 @@ Layer:
     Datasource:
       <<: *osm2pgsql
       table: |2-
-              (SELECT way, COALESCE(('highway_' || (CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN substr(highway, 0, length(highway)-4) ELSE highway end)), ('railway_' || (CASE WHEN railway IN ('rail', 'tram') THEN railway ELSE NULL END))) AS feature, tunnel,
-               "ump:endlevel" as ump_endlevel
+              (SELECT way, COALESCE(('highway_' ||  highway ), ('railway_' || (CASE WHEN railway IN ('rail', 'tram') THEN railway ELSE NULL END))) AS feature, tunnel,
+               "ump:endlevel" as ump_endlevel,
+               char_length(ref) AS ref_length
                FROM planet_osm_roads
                WHERE highway IS NOT NULL
                   OR railway IS NOT NULL
