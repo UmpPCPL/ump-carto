@@ -1,8 +1,8 @@
 # UMP-pcPL Carto
 
-![screenshot](https://raw.github.com/gravitystorm/openstreetmap-carto/master/inprogress.jpg)
-
 These are the CartoCSS map stylesheets adapted to [UMP-pcPL](http://www.ump.waw.pl/).
+
+Porównanie map [NOWE vs. STARE](http://mapa.cloudapp.net/compare).
 
 Work started 19.11.2014.
 
