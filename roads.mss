@@ -1,10 +1,14 @@
 /* For the main linear features, such as roads and railways. */
 
 @motorway-fill: #809BC0;
-@trunk-fill: #63B963;            
-@trunk-fill-lowzoom: #55B255;   // zoom > 10
+@motorway-fill-lowzoom: #738CAD;
+//@trunk-fill: #63B963;
+@trunk-fill: #BC8D9E;
+//@trunk-fill-lowzoom: #55B255;   // zoom > 10
+@trunk-fill-lowzoom: #AA6C82;   // zoom > 10
 @primary-fill: #EC989A;
 @secondary-fill: #fed7a5;
+@secondary-fill-lowzoom: #F6BE74;
 @construction-fill: #f2cf95;
 @tertiary-fill: #FFFFCC;
 @residential-fill: #ffffff;
@@ -22,7 +26,8 @@
 
 @default-casing: white;
 @motorway-casing: #687B97;
-@trunk-casing: #619461;
+//@trunk-casing: #619461;
+@trunk-casing: 	#a05c74;
 @primary-casing: #c57b7e;
 @secondary-casing: #cca16a;
 @tertiary-casing: #c6c68a;
@@ -97,9 +102,9 @@
 @pedestrian-width-z14:            3;
 @service-width-z14:               5;
 
-@motorway-width-z15:             9;
+@motorway-width-z15:             8; //9;
 @motorway-link-width-z15:        7.8;
-@trunk-width-z15:                9;
+@trunk-width-z15:                8; //9;
 @primary-width-z15:              9;
 @secondary-width-z15:            9;
 @construction-width-z15:         6; //9;
@@ -120,9 +125,9 @@
 @pedestrian-width-z16:            5;
 @service-width-z16:               7;
 
-@motorway-width-z17:             13;
+@motorway-width-z17:             11.5; //13;
 @motorway-link-width-z17:        11.5;
-@trunk-width-z17:                13;
+@trunk-width-z17:                11.5; // 13;
 @primary-width-z17:              13;
 @secondary-width-z17:            13;
 @construction-width-z17:         9; //13;
@@ -394,6 +399,7 @@
       [zoom >= 14]{
         line-color: @roundabout-casing;
         line-width: @service-width-z14;
+        line-smooth: 0.4;
         [zoom >= 15] { line-width: @service-width-z15; }
         [zoom >= 16] { line-width: @service-width-z16; }
         [zoom >= 17] { line-width: @service-width-z17; }
@@ -649,13 +655,21 @@
      * https://github.com/mapbox/carto/issues/235
      * https://github.com/mapbox/carto/issues/237
      */
-    [feature = 'highway_tertiary'][zoom >= 10][zoom < 12],
     [feature = 'highway_residential'][zoom >= 10][zoom < 13],
     [feature = 'highway_road'][zoom >= 10][zoom < 13],
     [feature = 'highway_road_link'][zoom >= 10][zoom < 13],
     [feature = 'highway_living_street'][zoom >= 12][zoom < 13] {
       line-width: 1;
-      line-color: @residential-casing;
+      line-color: #D0D0D0;
+      [zoom >= 12] {
+         line-width: 2;
+         line-color: #cccccc;
+      }
+    }
+
+    [feature = 'highway_tertiary'][zoom >= 10][zoom < 12]{
+      line-width: 1.5;
+      line-color: #cccccc;
     }
 
     [feature = 'highway_proposed'] {
@@ -1010,6 +1024,7 @@
       [zoom >= 13] {
         line-width: 1;
         line-color: @roundabout-fill;
+        line-smooth: 0.4;
       }
       [zoom >= 14] {
           line-width: @service-width-z14 - 2 * @casing-width-z14;
@@ -1259,9 +1274,9 @@
     }
 
     [feature = 'railway_rail']{
-      [zoom >= 10][zoom < 13] {
+      [zoom >= 10][zoom < 13][ump_endlevel >= 1] {
         line-width: 2;
-        line-color: #aaa;
+        line-color: #999;
         .tunnels-casing {
           line-dasharray: 5,2;
         }
@@ -1402,7 +1417,7 @@
   [feature = 'highway_motorway'] {
     [zoom >= 5][zoom < 10] {
       line-width: 1.5;
-      line-color: @motorway-fill;
+      line-color: @motorway-fill-lowzoom;
       [zoom >= 7] { line-width: 2.5; }
       [zoom >= 9] { line-width: 2.8; }
     }
@@ -1428,17 +1443,27 @@
   }
 
   [feature = 'highway_secondary'] {
-    [zoom >= 9][zoom < 10] {
-      line-width: 2; 
-      line-color: @secondary-fill;
+    [zoom >= 8][zoom < 10] {
+      line-width: 1; 
+      line-color: @secondary-fill-lowzoom;
+      [zoom >= 9] { line-width: 2; }
     }
   }
 
   [feature = 'railway_rail'] {
-    [zoom >= 8][zoom < 10] {
-      line-width: 0.6;
-      line-color: #aaa;
-      [zoom >= 9] { line-width: 1; }
+    [zoom >= 6][zoom < 10][ump_endlevel >= 3] {
+      line-width: 1;
+      line-color: #999;
+      [zoom >= 8] { line-width: 1.5; }
+    }
+    [zoom >= 8][zoom < 10][ump_endlevel = 2] {
+      line-width: 1;
+      line-color: #999;
+      [zoom >= 9] { line-width: 1.5; }
+    }
+    [zoom >= 9][zoom < 10][ump_endlevel = 1] {
+      line-width: 1.5;
+      line-color: #999;
     }
   }
 
@@ -1721,10 +1746,13 @@
     }
   }
   [highway = 'residential'],
+  [highway = 'ramp_fast'],
+  [highway = 'ramp_slow'],
+  [highway = 'road_link'],
   [highway = 'road'] {
     [zoom >= 15] {
       text-name: "[name]";
-      text-size: 8;
+      text-size: 9;
       text-fill: black;
       text-spacing: 300;
       text-clip: false;
@@ -1732,9 +1760,6 @@
       text-halo-radius: 1;
       text-halo-fill: @residential-fill;
       text-face-name: @book-fonts;
-    }
-    [zoom >= 16] {
-      text-size: 9;
     }
     [zoom >= 17] {
       text-size: 11;

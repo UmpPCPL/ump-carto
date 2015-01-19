@@ -513,7 +513,7 @@
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
       "Datasource": {
         "extent": "-20037508,-20037508,20037508,20037508", 
-        "table": "      (SELECT way, COALESCE(('highway_' || (CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN substr(highway, 0, length(highway)-4) ELSE highway end)), ('railway_' || (CASE WHEN railway IN ('rail', 'tram') THEN railway ELSE NULL END))) AS feature, tunnel\n       FROM planet_osm_roads\n       WHERE highway IS NOT NULL\n          OR railway IS NOT NULL\n       ORDER BY z_order\n      ) AS roads_low_zoom", 
+        "table": "      (SELECT way, COALESCE(('highway_' || (CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN substr(highway, 0, length(highway)-4) ELSE highway end)), ('railway_' || (CASE WHEN railway IN ('rail', 'tram') THEN railway ELSE NULL END))) AS feature, tunnel,\n       \"ump:endlevel\" as ump_endlevel\n       FROM planet_osm_roads\n       WHERE highway IS NOT NULL\n          OR railway IS NOT NULL\n       ORDER BY z_order\n      ) AS roads_low_zoom", 
         "geometry_field": "way", 
         "type": "postgis", 
         "key_field": "", 

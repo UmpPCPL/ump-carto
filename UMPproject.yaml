@@ -572,7 +572,8 @@ Layer:
     Datasource:
       <<: *osm2pgsql
       table: |2-
-              (SELECT way, COALESCE(('highway_' || (CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN substr(highway, 0, length(highway)-4) ELSE highway end)), ('railway_' || (CASE WHEN railway IN ('rail', 'tram') THEN railway ELSE NULL END))) AS feature, tunnel
+              (SELECT way, COALESCE(('highway_' || (CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN substr(highway, 0, length(highway)-4) ELSE highway end)), ('railway_' || (CASE WHEN railway IN ('rail', 'tram') THEN railway ELSE NULL END))) AS feature, tunnel,
+               "ump:endlevel" as ump_endlevel
                FROM planet_osm_roads
                WHERE highway IS NOT NULL
                   OR railway IS NOT NULL
