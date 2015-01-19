@@ -950,7 +950,7 @@ Layer:
       table: |2-
         (SELECT way, highway, width, refs FROM
           (SELECT way, highway, char_length(ref) AS width, ref AS refs
-              FROM planet_osm_line
+              FROM planet_osm_roads
                 WHERE highway IN ('motorway', 'trunk', 'primary', 'secondary')
                 AND ref IS NOT NULL
               ) AS q
