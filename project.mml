@@ -646,29 +646,6 @@
       }
     }, 
     {
-      "name": "placenames-large", 
-      "srs-name": "900913", 
-      "geometry": "point", 
-      "class": "", 
-      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
-      "Datasource": {
-        "extent": "-20037508,-20037508,20037508,20037508", 
-        "table": "(SELECT way, place, name, \"ump:type\" AS garmin_typ\n      FROM planet_osm_point\n      WHERE \"ump:type\" IN ('0x4','0x5','0x6','0x7','0x8','0x9')\n) AS placenames_large", 
-        "geometry_field": "way", 
-        "type": "postgis", 
-        "key_field": "", 
-        "dbname": "UMPGIS"
-      }, 
-      "extent": [
-        -180, 
-        -85.05112877980659, 
-        180, 
-        85.05112877980659
-      ], 
-      "id": "placenames-large", 
-      "advanced": {}
-    }, 
-    {
       "name": "placenames-medium", 
       "srs-name": "900913", 
       "geometry": "point", 
@@ -827,6 +804,29 @@
         85.05112877980659
       ], 
       "id": "poi-transport-point", 
+      "advanced": {}
+    }, 
+    {
+      "name": "placenames-large", 
+      "srs-name": "900913", 
+      "geometry": "point", 
+      "class": "", 
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over", 
+      "Datasource": {
+        "extent": "-20037508,-20037508,20037508,20037508", 
+        "table": "(SELECT way, place, name, \"ump:type\" AS garmin_typ\n      FROM planet_osm_point\n      WHERE \"ump:type\" IN ('0x4','0x5','0x6','0x7','0x8','0x9')\n) AS placenames_large", 
+        "geometry_field": "way", 
+        "type": "postgis", 
+        "key_field": "", 
+        "dbname": "UMPGIS"
+      }, 
+      "extent": [
+        -180, 
+        -85.05112877980659, 
+        180, 
+        85.05112877980659
+      ], 
+      "id": "placenames-large", 
       "advanced": {}
     }, 
     {

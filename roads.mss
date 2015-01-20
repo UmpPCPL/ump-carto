@@ -1,9 +1,11 @@
 /* For the main linear features, such as roads and railways. */
 
 @motorway-fill: #809BC0;
-@motorway-fill-lowzoom: #809bc0;
+//@motorway-fill-lowzoom: #809bc0;
+@motorway-fill-lowzoom: #5A6CD3;
 @trunk-fill: #BC8D9E;
-@trunk-fill-lowzoom: #AA6C82;   // zoom > 10
+//@trunk-fill-lowzoom: #AA6C82;   // zoom > 10
+@trunk-fill-lowzoom: #7775C8;   // zoom > 10
 @primary-fill: #EC989A;
 @secondary-fill: #fed7a5;
 @secondary-fill-lowzoom: #F6BE74;
@@ -24,9 +26,10 @@
 
 @default-casing: white;
 @motorway-casing: #687B97;
-@motorway-casing-lowzoom: #506077; 
+//@motorway-casing-lowzoom: #506077; 
+@motorway-casing-lowzoom: #3F4C94; 
 @trunk-casing: 	#a05c74;
-@trunk-casing-lowzoom: black;
+@trunk-casing-lowzoom: #53528C;
 @primary-casing: #c57b7e;
 @primary-casing-lowzoom: #8d4346;
 @secondary-casing: #cca16a;
@@ -68,7 +71,7 @@
 
 @motorway-width-z7:              3;
 @trunk-width-z7:                 3;
-@primary-width-z7:               3;
+@primary-width-z7:               2;
 
 @motorway-width-z8:              4;
 @trunk-width-z8:                 4;
@@ -76,7 +79,7 @@
 @secondary-width-z8:             1;
 
 @motorway-width-z9:              4;
-@trunk-width-z9:                 3;
+@trunk-width-z9:                 4;
 @primary-width-z9:               3;
 @secondary-width-z9:             2;
 
@@ -1459,7 +1462,7 @@
     [zoom >= 8][zoom < 10] {
       line-width: @primary-width-z8;
       line-color: @primary-casing-lowzoom;
-      [zoom >= 9] { line-width: @motorway-width-z9 }
+      [zoom >= 9] { line-width: @primary-width-z9 }
     }
   }
 }
@@ -1495,8 +1498,8 @@
       line-width: @primary-width-z6;
       line-color: @primary-fill;
       [zoom >= 7] { line-width: @primary-width-z7; }
-      [zoom >= 8] { line-width: @primary-width-z8 - 2 * @primary-width-z8; }
-      [zoom >= 9] { line-width: @primary-width-z9 - 2 * @primary-width-z9; }
+      [zoom >= 8] { line-width: @primary-width-z8 - 2 * @casing-width-z8; }
+      [zoom >= 9] { line-width: @primary-width-z9 - 2 * @casing-width-z9; }
     }
   }
 
@@ -1544,7 +1547,7 @@
     shield-clip: false;
   }
 
-  [highway = 'trunk'][zoom >= 9][zoom < 14] {
+  [highway = 'trunk'][zoom >= 8][zoom < 14] {
     shield-name: "[refs]";
     shield-size: 11;
     shield-fill: @trunk-fill;

@@ -30,7 +30,7 @@ for h in $heights; do
     for shield in $colours; do
       class=$(echo $shield | awk -F ":" '{print $1}')
       colour=$(echo $shield | awk -F ":" '{print $2}')
-      ./ump_create_shield $colour $xpixels $ypixels> "${class}_${xchars}.svg"
+      ./ump_create_shield $colour $xpixels $ypixels > "../symbols_ump/${class}_${xchars}.svg"
     done;
   done;
 done;

@@ -45,16 +45,16 @@
       [way_pixels >= 64] {
         polygon-gamma: 0.6;
       }
-      [zoom >= 13][way_pixels >= 240] {
-        text-name: "[name]";
-        text-face-name: @oblique-fonts;
-        text-fill: @water-text1;
-        text-size: 10;
-        text-spacing: 600;
-        text-halo-radius: 1.5;
-        text-halo-fill: @water-halo;
-        [zoom >= 15] { text-size: 12; }
-      }
+//      [zoom >= 13][way_pixels >= 240] {
+//        text-name: "[name]";
+//        text-face-name: @oblique-fonts;
+//        text-fill: @water-text1;
+//        text-size: 10;
+//        text-spacing: 600;
+//        text-halo-radius: 1.5;
+//        text-halo-fill: @water-halo;
+//        [zoom >= 15] { text-size: 12; }
+//      }
     }
   }
 
@@ -71,16 +71,16 @@
       [way_pixels >= 64] {
         polygon-gamma: 0.6;
       }
-      [zoom >= 10][way_pixels >= 240] {
-        text-name: "[name]";
-        text-face-name: @oblique-fonts;
-        text-fill: @water-text1;
-        text-size: 10;
-        text-spacing: 400;
-        text-halo-radius: 1.5;
-        text-halo-fill: @water-halo;
-        [zoom >= 15] { text-size: 12; }
-      }
+//      [zoom >= 10][way_pixels >= 240] {
+//        text-name: "[name]";
+//        text-face-name: @oblique-fonts;
+//        text-fill: @water-text1;
+//        text-size: 10;
+//        text-spacing: 400;
+//        text-halo-radius: 1.5;
+//        text-halo-fill: @water-halo;
+//        [zoom >= 15] { text-size: 12; }
+//      }
     }
   }
 
@@ -98,16 +98,16 @@
       [way_pixels >= 64] {
         polygon-gamma: 0.6;
       }
-      [zoom >= 7][way_pixels >= 240] {
-        text-name: "[name]";
-        text-face-name: @oblique-fonts;
-        text-fill: @water-text1;
-        text-size: 10;
-        text-halo-radius: 1.5;
-        text-halo-fill: @water-halo;
-        [zoom >= 11] { text-size: 12; }
-        [zoom >= 14] { text-size: 15; }
-      }
+//      [zoom >= 7][way_pixels >= 240] {
+//        text-name: "[name]";
+//        text-face-name: @oblique-fonts;
+//        text-fill: @water-text1;
+//        text-size: 10;
+//        text-halo-radius: 1.5;
+//        text-halo-fill: @water-halo;
+//        [zoom >= 11] { text-size: 12; }
+//        [zoom >= 14] { text-size: 15; }
+//      }
     }
   }
 
