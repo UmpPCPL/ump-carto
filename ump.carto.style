@@ -77,7 +77,7 @@
 node,way   access       text         linear
 #node,way   addr:housename      text  linear
 node,way   addr:housenumber    text  linear
-node,way   addr:interpolation  text  linear
+#node,way   addr:interpolation  text  linear
 node,way   admin_level  text         linear
 #node,way   aerialway    text         linear
 node,way   aeroway      text         polygon
@@ -90,8 +90,7 @@ node,way   bridge       text         linear
 node,way   boundary     text         linear
 node,way   building     text         polygon
 #node       capital      text         linear
-# DO WYWALENIA 
-node,way   construction text         linear
+#node,way   construction text         linear
 #node,way   covered      text         linear
 #node,way   culvert      text         linear
 #node,way   cutting      text         linear
@@ -99,8 +98,7 @@ node,way   construction text         linear
 #node,way   disused      text         linear
 #node       ele          text         linear
 #node,way   embankment   text         linear
-# DO WYWALENIA
-node,way   foot         text         linear
+#node,way   foot         text         linear
 #node,way   generator:source    text  linear
 #node,way   harbour      text         polygon
 node,way   highway      text         linear

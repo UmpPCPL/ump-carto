@@ -223,7 +223,10 @@
   [garmin_typ = '0x15'],
   [garmin_typ = '0x16'] {
     [zoom >= 8] {
-      polygon-fill: @forest;
+      polygon-fill: lighten(@forest,15%);
+      [zoom >=9] { polygon-fill: lighten(@forest,10%); }
+      [zoom >=10] { polygon-fill: lighten(@forest,5%); }
+      [zoom >=11] { polygon-fill: @forest; }
       [way_pixels >= 4]  { polygon-gamma: 0.75; }
       [way_pixels >= 64] { polygon-gamma: 0.3;  }
     }

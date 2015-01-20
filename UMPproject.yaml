@@ -30,7 +30,7 @@ _parts:
     srs: "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs"
   osm2pgsql: &osm2pgsql
     type: "postgis"
-    dbname: "umpgis2"
+    dbname: "UMPGIS"
     key_field: ""
     geometry_field: "way"
     extent: "-20037508,-20037508,20037508,20037508"
@@ -199,6 +199,61 @@ Layer:
           ORDER BY z_order
         ) AS water_lines
     advanced: {}
+  - id: "admin-low-zoom"
+    name: "admin-low-zoom"
+    class: ""
+    geometry: "linestring"
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |2-
+        (SELECT way, admin_level
+               FROM planet_osm_roads
+               WHERE "boundary" = 'administrative'
+                 AND admin_level IN ('0', '1', '2', '3', '4')
+               ORDER BY admin_level DESC
+               ) AS admin_low_zoom
+    advanced: {}
+  - id: "admin-mid-zoom"
+    name: "admin-mid-zoom"
+    class: ""
+    geometry: "linestring"
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |2-
+        (SELECT way, admin_level
+               FROM planet_osm_roads
+               WHERE "boundary" = 'administrative'
+                 AND admin_level IN ('0', '1', '2', '3', '4', '5', '6', '7', '8')
+               ORDER BY admin_level DESC
+               ) AS admin_mid_zoom
+    advanced: {}
+  - id: "admin-high-zoom"
+    name: "admin-high-zoom"
+    class: ""
+    geometry: "linestring"
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |2-
+        (SELECT way, admin_level
+               FROM planet_osm_roads
+               WHERE "boundary" = 'administrative'
+                 AND admin_level IN ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10')
+               ORDER BY admin_level DESC
+               ) AS admin_high_zoom
+    advanced: {}
+  - id: "power-line"
+    name: "power-line"
+    class: ""
+    geometry: "linestring"
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |2-
+        (SELECT way FROM planet_osm_line WHERE "ump:type" = '0x29') AS power_line
+    advanced: {}
   - id: "tunnels"
     name: "tunnels"
     class: "tunnels-fill tunnels-casing access directions"
@@ -212,12 +267,12 @@ Layer:
             (SELECT
                 way, prio,
                 ('highway_' || (CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN substr(highway, 0, length(highway)-4) ELSE highway END)) AS feature,
-                foot, tracktype, "ump:route_class" AS ump_route_class, junction,
+                tracktype, "ump:route_class" AS ump_route_class, junction,
                 CASE WHEN access IN ('destination') THEN 'destination'::text
                   WHEN access IN ('no', 'private') THEN 'no'::text
                   ELSE NULL
                 END AS access,
-                construction,
+                "ump:endlevel" as ump_endlevel,
                 CASE WHEN oneway IN ('yes', '1', '-1') THEN oneway ELSE NULL END AS oneway,
                 CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN 'yes'
                   ELSE 'no' END AS link,
@@ -255,11 +310,11 @@ Layer:
           (SELECT
               way, prio,
               COALESCE(('railway_' || railway ),('aeroway_' || aeroway)) AS feature,
-               foot, tracktype, "ump:route_class" AS ump_route_class, junction,
+               tracktype, "ump:route_class" AS ump_route_class, junction,
               CASE WHEN access IN ('destination') THEN 'destination'::text
                 WHEN access IN ('no', 'private') THEN 'no'::text
               ELSE NULL END AS access,
-              construction,
+              "ump:endlevel" as ump_endlevel,
               NULL AS oneway,
               'no' AS link,
               CASE WHEN layer~E'^-?\\d+$' AND length(layer)<10 THEN layer::integer ELSE 0 END AS layernotnull
@@ -351,8 +406,9 @@ Layer:
             (SELECT
                 way, prio,
                 ('highway_' || (CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN substr(highway, 0, length(highway)-4) ELSE highway END)) AS feature,
-                foot, tracktype, "ump:route_class" AS ump_route_class, junction,
-                CASE WHEN access IN ('destination') THEN 'destination'::text WHEN access IN ('no', 'private') THEN 'no'::text ELSE NULL END AS access, construction,
+                tracktype, "ump:route_class" AS ump_route_class, junction,
+                CASE WHEN access IN ('destination') THEN 'destination'::text WHEN access IN ('no', 'private') THEN 'no'::text ELSE NULL END AS access,
+              "ump:endlevel" as ump_endlevel,
                 CASE WHEN oneway IN ('yes', '1', '-1') THEN oneway ELSE NULL END AS oneway,
                 CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN 'yes' ELSE 'no' END AS link,
                 CASE WHEN layer~E'^-?\\d+$' AND length(layer)<10 THEN layer::integer ELSE 0 END AS layernotnull
@@ -391,9 +447,9 @@ Layer:
             (SELECT
                 way, prio,
                 COALESCE(('railway_' || railway ),('aeroway_' || aeroway)) AS feature,
-                foot, tracktype, "ump:route_class" AS ump_route_class, junction,
+                tracktype, "ump:route_class" AS ump_route_class, junction,
                 CASE WHEN access IN ('destination') THEN 'destination'::text WHEN access IN ('no', 'private') THEN 'no'::text ELSE NULL END AS access,
-                construction,
+              "ump:endlevel" as ump_endlevel,
                 NULL AS oneway,
                 'no' AS link,
                 CASE WHEN layer~E'^-?\\d+$' AND length(layer)<10 THEN layer::integer ELSE 0 END AS layernotnull
@@ -427,12 +483,12 @@ Layer:
             (SELECT
                 way, prio,
                 ('highway_' || (CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN substr(highway, 0, length(highway)-4) ELSE highway end)) AS feature,
-                foot, tracktype, "ump:route_class" AS ump_route_class, junction,
+                tracktype, "ump:route_class" AS ump_route_class, junction,
                 CASE WHEN access IN ('destination') THEN 'destination'::text
                   WHEN access IN ('no', 'private') THEN 'no'::text
                   ELSE NULL
                 END AS access,
-                construction,
+              "ump:endlevel" as ump_endlevel,
                 CASE WHEN oneway IN ('yes', '1', '-1') THEN oneway ELSE NULL END AS oneway,
                 CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN 'yes' ELSE 'no' END AS link,
                 CASE WHEN layer~E'^-?\\d+$' AND length(layer)<10 THEN layer::integer ELSE 0 END AS layernotnull
@@ -471,12 +527,12 @@ Layer:
             (SELECT
                 way, prio,
                 COALESCE(('railway_' || railway ),('aeroway_' || aeroway)) AS feature,
-                foot, tracktype, "ump:route_class" AS ump_route_class, junction,
+                tracktype, "ump:route_class" AS ump_route_class, junction,
                 CASE WHEN access IN ('destination') THEN 'destination'::text
                   WHEN access IN ('no', 'private') THEN 'no'::text
                   ELSE NULL
                 END AS access,
-                construction,
+              "ump:endlevel" as ump_endlevel,
                 NULL AS oneway,
                 'no' AS link,
                 CASE WHEN layer~E'^-?\\d+$' AND length(layer)<10 THEN layer::integer ELSE 0 END AS layernotnull
@@ -508,6 +564,23 @@ Layer:
                 "ump:type" = '0xe17'
         ) AS wyciagi
     advanced: {}
+  - id: "roads-low-zoom-casing"
+    name: "roads-low-zoom-casing"
+    class: ""
+    geometry: "linestring"
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |2-
+              (SELECT way, COALESCE(('highway_' ||  highway ), ('railway_' || (CASE WHEN railway IN ('rail', 'tram') THEN railway ELSE NULL END))) AS feature, tunnel,
+               "ump:endlevel" as ump_endlevel,
+               char_length(ref) AS ref_length
+               FROM planet_osm_roads
+               WHERE highway IS NOT NULL
+                  OR railway IS NOT NULL
+               ORDER BY z_order
+              ) AS roads_low_zoom_casing
+    advanced: {}
   - id: "roads-low-zoom"
     name: "roads-low-zoom"
     class: ""
@@ -516,7 +589,9 @@ Layer:
     Datasource:
       <<: *osm2pgsql
       table: |2-
-              (SELECT way, COALESCE(('highway_' || (CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN substr(highway, 0, length(highway)-4) ELSE highway end)), ('railway_' || (CASE WHEN railway IN ('rail', 'tram') THEN railway ELSE NULL END))) AS feature, tunnel
+              (SELECT way, COALESCE(('highway_' ||  highway ), ('railway_' || (CASE WHEN railway IN ('rail', 'tram') THEN railway ELSE NULL END))) AS feature, tunnel,
+               "ump:endlevel" as ump_endlevel,
+               char_length(ref) AS ref_length
                FROM planet_osm_roads
                WHERE highway IS NOT NULL
                   OR railway IS NOT NULL
@@ -552,12 +627,12 @@ Layer:
             (SELECT
                 way, prio,
                 ('highway_' || (CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN substr(highway, 0, length(highway)-4) ELSE highway END)) AS feature,
-                foot, tracktype, "ump:route_class" AS ump_route_class, junction,
+                tracktype, "ump:route_class" AS ump_route_class, junction,
                 CASE WHEN access IN ('destination') THEN 'destination'::text
                   WHEN access IN ('no', 'private') THEN 'no'::text
                   ELSE NULL
                 END AS access,
-                construction,
+              "ump:endlevel" as ump_endlevel,
                 CASE WHEN oneway IN ('yes', '1', '-1') THEN oneway ELSE NULL END AS oneway,
                 CASE WHEN substr(highway, length(highway)-3, 4) = 'link' THEN 'yes'
                   ELSE 'no' END AS link,
@@ -596,11 +671,11 @@ Layer:
           (SELECT
               way, prio,
               COALESCE(('railway_' || railway ),('aeroway_' || aeroway)) AS feature,
-              foot, tracktype, "ump:route_class" AS ump_route_class, junction,
+              tracktype, "ump:route_class" AS ump_route_class, junction,
               CASE WHEN access IN ('destination') THEN 'destination'::text
                 WHEN access IN ('no', 'private') THEN 'no'::text
               ELSE NULL END AS access,
-              construction,
+              "ump:endlevel" as ump_endlevel,
               NULL AS oneway,
               'no' AS link,
               CASE WHEN layer~E'^-?\\d+$' AND length(layer)<10 THEN layer::integer ELSE 0 END AS layernotnull
@@ -618,61 +693,6 @@ Layer:
         ) AS bridges
     properties:
       group-by: "layernotnull"
-    advanced: {}
-  - id: "admin-low-zoom"
-    name: "admin-low-zoom"
-    class: ""
-    geometry: "linestring"
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |2-
-        (SELECT way, admin_level
-               FROM planet_osm_roads
-               WHERE "boundary" = 'administrative'
-                 AND admin_level IN ('0', '1', '2', '3', '4')
-               ORDER BY admin_level DESC
-               ) AS admin_low_zoom
-    advanced: {}
-  - id: "admin-mid-zoom"
-    name: "admin-mid-zoom"
-    class: ""
-    geometry: "linestring"
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |2-
-        (SELECT way, admin_level
-               FROM planet_osm_roads
-               WHERE "boundary" = 'administrative'
-                 AND admin_level IN ('0', '1', '2', '3', '4', '5', '6', '7', '8')
-               ORDER BY admin_level DESC
-               ) AS admin_mid_zoom
-    advanced: {}
-  - id: "admin-high-zoom"
-    name: "admin-high-zoom"
-    class: ""
-    geometry: "linestring"
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |2-
-        (SELECT way, admin_level
-               FROM planet_osm_roads
-               WHERE "boundary" = 'administrative'
-                 AND admin_level IN ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10')
-               ORDER BY admin_level DESC
-               ) AS admin_high_zoom
-    advanced: {}
-  - id: "power-line"
-    name: "power-line"
-    class: ""
-    geometry: "linestring"
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |2-
-        (SELECT way FROM planet_osm_line WHERE "ump:type" = '0x29') AS power_line
     advanced: {}
   - id: "nature-reserve-boundaries"
     name: "nature-reserve-boundaries"
@@ -948,7 +968,7 @@ Layer:
       table: |2-
         (SELECT way, highway, width, refs FROM
           (SELECT way, highway, char_length(ref) AS width, ref AS refs
-              FROM planet_osm_line
+              FROM planet_osm_roads
                 WHERE highway IN ('motorway', 'trunk', 'primary', 'secondary')
                 AND ref IS NOT NULL
               ) AS q
@@ -986,6 +1006,19 @@ Layer:
                WHERE highway IN ('motorway', 'motorway_link', 'trunk', 'trunk_link', 'primary', 'primary_link', 'secondary', 'secondary_link', 'tertiary', 'tertiary_link', 'residential', 'road', 'ramp_slow', 'ramp_fast', 'road_link', 'service', 'pedestrian', 'living_street', 'construction', 'proposed')
                  AND name IS NOT NULL
               ) AS roads_text_name
+    advanced: {}
+  - id: "rails-text-name"
+    name: "rails-text-name"
+    class: ""
+    geometry: "linestring"
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |2-
+              (SELECT way, name, railway, "ump:type" AS garmin_type  
+               FROM planet_osm_line
+               WHERE "ump:type" IN ('0x14','0xe10', '0xe15')
+              ) AS rails_text_name
     advanced: {}
   - id: "paths-text-name"
     name: "paths-text-name"
@@ -1205,18 +1238,6 @@ Layer:
         WHERE building IS NOT NULL AND building NOT IN ('no', 'station', 'supermarket')
         ORDER BY way_area DESC
         ) AS building_text
-    advanced: {}
-  - id: "interpolation"
-    name: "interpolation"
-    class: ""
-    geometry: "linestring"
-    <<: *extents
-    Datasource:
-      <<: *osm2pgsql
-      table: |2-
-        (SELECT way
-        FROM planet_osm_line
-        WHERE "addr:interpolation" IS NOT NULL) AS interpolation
     advanced: {}
   - id: "housenumbers"
     name: "housenumbers"

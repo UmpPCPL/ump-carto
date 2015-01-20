@@ -1,7 +1,6 @@
 styl:
-	carto project.mml > styl.xml
-	#echo renderd restart
-	service renderd restart
+	carto project.mml | sed "s|UMPGIS|`cat DB`|g"> styl.xml
+#	service renderd restart
 	/mapnik/bin/clear_ump_cache.sh
 restart:
 	service renderd restart

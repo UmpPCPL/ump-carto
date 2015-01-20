@@ -17,6 +17,7 @@
     [garmin_typ = '0x2f04']{
       [zoom >= 7][zoom <10][ump_endlevel >= 3]  {
          point-file: url('symbols_ump/2f04_Airport_Lotnisko_day_16x16.png');
+         point-allow-overlap: true;
       }
       [zoom >= 10][ump_endlevel >= 2]  {
          point-file: url('symbols_ump/2f04_Airport_Lotnisko_day.png');
