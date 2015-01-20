@@ -1540,7 +1540,8 @@
     shield-size: 11;
     shield-fill: @motorway-fill;
     shield-placement: line;
-    shield-file: url("symbols_ump/motorway_shield[width].png");
+//    shield-file: url("symbols_ump/motorway_shield[width].png");
+    shield-file: url("symbols_ump/motorway_[width].png");
     shield-spacing: @shield-space;
     shield-min-distance: @shield-min-dist;
     shield-face-name: @bold-fonts;
