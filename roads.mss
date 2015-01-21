@@ -5,7 +5,8 @@
 @trunk-fill: #7775C8;
 @trunk-fill-lowzoom: #7775C8;   // zoom > 10
 @primary-fill: #EC989A;
-@secondary-fill: #fed7a5;
+//@secondary-fill: #fed7a5;
+@secondary-fill: #F6BE74;
 @secondary-fill-lowzoom: #F6BE74;
 @construction-fill: #f2cf95;
 @tertiary-fill: #FFFFCC;
@@ -1576,7 +1577,7 @@
     shield-size: 11;
     shield-fill: @secondary-fill;
     shield-placement: line;
-    shield-file: url("symbols_ump/secondary_shield[width].png");
+    shield-file: url("symbols_ump/secondary_[width].svg");
     shield-spacing: @shield-space;
     shield-min-distance: @shield-min-dist;
     shield-face-name: @bold-fonts;
@@ -1591,7 +1592,7 @@
     shield-size: 11;
     shield-fill: @motorway-fill;
     shield-placement: line;
-    shield-file: url("symbols_ump/motorway_shield[width].png");
+    shield-file: url("symbols_ump/motorway_[width].svg");
     shield-spacing: 750;
     shield-min-distance: @shield-min-dist;
     shield-face-name: @bold-fonts;
@@ -1603,7 +1604,7 @@
     shield-size: 11;
     shield-fill: @trunk-fill;
     shield-placement: line;
-    shield-file: url("symbols_ump/trunk_shield[width].png");
+    shield-file: url("symbols_ump/trunk_[width].svg");
     shield-spacing: 750;
     shield-min-distance: @shield-min-dist;
     shield-face-name: @bold-fonts;
@@ -1615,7 +1616,7 @@
     shield-size: 11;
     shield-fill: @primary-fill;
     shield-placement: line;
-    shield-file: url("symbols_ump/primary_shield[width].png");
+    shield-file: url("symbols_ump/primary_[width].svg");
     shield-spacing: 750;
     shield-min-distance: @shield-min-dist;
     shield-face-name: @bold-fonts;
@@ -1627,7 +1628,7 @@
     shield-size: 11;
     shield-fill: @secondary-fill;
     shield-placement: line;
-    shield-file: url("symbols_ump/secondary_shield[width].png");
+    shield-file: url("symbols_ump/secondary_[width].svg");
     shield-spacing: 750;
     shield-min-distance: @shield-min-dist;
     shield-face-name: @bold-fonts;
@@ -1639,7 +1640,7 @@
     shield-size: 11;
     shield-fill: #999999;
     shield-placement: line;
-    shield-file: url("symbols_ump/tertiary_shield[width].png");
+    shield-file: url("symbols_ump/tertiary_[width].svg");
     shield-spacing: 750;
     shield-min-distance: @shield-min-dist;
     shield-face-name: @bold-fonts;
