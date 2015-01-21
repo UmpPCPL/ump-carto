@@ -1,10 +1,8 @@
 /* For the main linear features, such as roads and railways. */
 
-@motorway-fill: #809BC0;
-//@motorway-fill-lowzoom: #809bc0;
+@motorway-fill: #5A6CD3;
 @motorway-fill-lowzoom: #5A6CD3;
-@trunk-fill: #BC8D9E;
-//@trunk-fill-lowzoom: #AA6C82;   // zoom > 10
+@trunk-fill: #7775C8;
 @trunk-fill-lowzoom: #7775C8;   // zoom > 10
 @primary-fill: #EC989A;
 @secondary-fill: #fed7a5;
@@ -23,6 +21,8 @@
 @runway-fill: @aeroway-fill;
 //@roundabout-fill: #FFCA41;
 @roundabout-fill: #fee298;
+
+@tarcze-czerwony: #ED2224;
 
 @default-casing: white;
 @motorway-casing: #687B97;
@@ -1540,8 +1540,7 @@
     shield-size: 11;
     shield-fill: @motorway-fill;
     shield-placement: line;
-//    shield-file: url("symbols_ump/motorway_shield[width].png");
-    shield-file: url("symbols_ump/motorway_[width].png");
+    shield-file: url("symbols_ump/motorway_[width].svg");
     shield-spacing: @shield-space;
     shield-min-distance: @shield-min-dist;
     shield-face-name: @bold-fonts;
@@ -1551,9 +1550,9 @@
   [highway = 'trunk'][zoom >= 8][zoom < 14] {
     shield-name: "[refs]";
     shield-size: 11;
-    shield-fill: @trunk-fill;
+    shield-fill: @trunk-fill-lowzoom;
     shield-placement: line;
-    shield-file: url("symbols_ump/trunk_shield[width].png");
+    shield-file: url("symbols_ump/trunk_[width].svg");
     shield-spacing: @shield-space;
     shield-min-distance: @shield-min-dist;
     shield-face-name: @bold-fonts;
@@ -1565,7 +1564,7 @@
     shield-size: 11;
     shield-fill: @primary-fill;
     shield-placement: line;
-    shield-file: url("symbols_ump/primary_shield[width].png");
+    shield-file: url("symbols_ump/primary_[width].svg");
     shield-spacing: @shield-space;
     shield-min-distance: @shield-min-dist;
     shield-face-name: @bold-fonts;

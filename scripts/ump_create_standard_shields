@@ -13,11 +13,13 @@ widths='
 5:46
 6:52.5'
 
-colours='motorway:#5A6CD3'
+colours='motorway:#5A6CD3
+trunk:#7775C8
+primary:#EC989A'
 
 
 heights='
-1:18'
+1:17'
 
 for h in $heights; do
   for w in $widths; do
